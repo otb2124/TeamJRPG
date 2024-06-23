@@ -5,6 +5,26 @@
     {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\pythontranslator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:pythontranslator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\python\\testscript.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:python\\testscript.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\teamjrpg.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:teamjrpg.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +34,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": ".gitattributes",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\.gitattributes",
+              "RelativeDocumentMoniker": ".gitattributes",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\.gitattributes",
+              "RelativeToolTip": ".gitattributes",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG/SURBVDhPrZRNTgIxFMerDIaEhHgU97JxwUKGGaNeQJdyCY0XUBDWGhg4AB\u002BuvQk7OQCRFTP1fXWmMxUMCT94ee177eu/LVQdFK31kTSJ0WgEIa0SMJ2A6QTHcF9iicQqlYpa/6zv2\u002B2HD5nuEkWR/l4udRzHZBtjGzFor1YrPR6P9WKx0MNhpN96vTuZThyLJ1AJLK/iJFFxjBanBsXIozqkWq2qev1c1Wq19063e0ZBwBNP4JaQ6WRC/i8ajQb5wWBAvnxyghpOqQPkC8L5IEEQKjgxaqOTFsCd65tb6nmlkur1\u002BxwXCgX58KfT7QptwvCK52wrSLcJvtUKOABkQ6HFXwbGsmMRBkchzpjNphLZDSrEn5G1qnsp\u002BPEtheloXouRnXDTTjhb5tXmeyg0IgzuliHp\u002By0OANbiOCDXp1IYo3mMUxBT8/mMA/8QhGH6ZzC4Zwi5ZqoQB9M3h62I/\u002B/SAQpniBmtPvdQyGeYUdgyX8pl05eIBSxmTzQYEYbc42AuJQWLGJNQEcrJG4A4BTHneSW2sqfKOyybkxXMPbAvrx3IsyLzkPJFmUcWYtDntjG6lIvnp8cvKXNIlPoFvstpJRlQPIAAAAAASUVORK5CYII=",
+              "WhenOpened": "2024-06-23T10:05:52.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PythonTranslator.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\PythonTranslator.cs",
+              "RelativeDocumentMoniker": "PythonTranslator.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\PythonTranslator.cs",
+              "RelativeToolTip": "PythonTranslator.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAwwFYAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-23T09:45:59.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TestScript.py",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\python\\TestScript.py",
+              "RelativeDocumentMoniker": "python\\TestScript.py",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\python\\TestScript.py",
+              "RelativeToolTip": "python\\TestScript.py",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-06-23T10:16:48.6Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,9 +83,35 @@
               "RelativeDocumentMoniker": "Game1.cs",
               "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Game1.cs",
               "RelativeToolTip": "Game1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAApAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-21T13:14:52.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-23T10:06:23.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TeamJRPG",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\TeamJRPG.csproj",
+              "RelativeDocumentMoniker": "TeamJRPG.csproj",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\TeamJRPG.csproj",
+              "RelativeToolTip": "TeamJRPG.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-23T09:46:21.61Z",
               "EditorCaption": ""
             }
           ]

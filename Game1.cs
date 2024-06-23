@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace TeamJRPG
 {
@@ -19,7 +20,7 @@ namespace TeamJRPG
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            PythonTranslator.InitializePythonEngine();
             base.Initialize();
         }
 
@@ -27,16 +28,16 @@ namespace TeamJRPG
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+           
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
-
+            
+            PythonTranslator.RunScript("TestScript", "info", "0");
+            
             base.Update(gameTime);
         }
 
@@ -47,6 +48,16 @@ namespace TeamJRPG
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+        }
+
+
+
+
+        protected override void OnExiting(object sender, EventArgs args)
+        {
+            // Shutdown the Python engine when the game exits
+            PythonTranslator.ShutdownPythonEngine();
+            base.OnExiting(sender, args);
         }
     }
 }
