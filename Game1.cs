@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Diagnostics;
 
 namespace TeamJRPG
 {
@@ -35,7 +36,9 @@ namespace TeamJRPG
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            
+            ;
+
+
             PythonTranslator.RunScript("TestScript", "info", "0");
             
             base.Update(gameTime);
