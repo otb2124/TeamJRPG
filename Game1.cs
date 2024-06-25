@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
-using System.Diagnostics;
 
 namespace TeamJRPG
 {
@@ -16,31 +14,31 @@ namespace TeamJRPG
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            _graphics.PreferredBackBufferWidth = 1280;
+            _graphics.PreferredBackBufferHeight = 720;
+            _graphics.ApplyChanges();
+
+            Globals.graphics = _graphics;
         }
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             PythonTranslator.InitializePythonEngine();
+            Globals.Init();
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-           
+            Globals.spriteBatch = _spriteBatch;
+            Globals.gameManager.Load();
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-            ;
-
-
-            PythonTranslator.RunScript("TestScript", "info", "0");
-            
+            Globals.gameManager.Update();   
             base.Update(gameTime);
         }
 
@@ -48,7 +46,10 @@ namespace TeamJRPG
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+
+            Globals.spriteBatch.Begin(transformMatrix: Globals.camera.Transform);
+            Globals.gameManager.Draw();
+            Globals.spriteBatch.End();
 
             base.Draw(gameTime);
         }
@@ -58,7 +59,6 @@ namespace TeamJRPG
 
         protected override void OnExiting(object sender, EventArgs args)
         {
-            // Shutdown the Python engine when the game exits
             PythonTranslator.ShutdownPythonEngine();
             base.OnExiting(sender, args);
         }

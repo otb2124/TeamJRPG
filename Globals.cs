@@ -1,0 +1,38 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace TeamJRPG
+{
+    public static class Globals
+    {
+
+        public static readonly float gameScale = 1.75f;
+        public static readonly Vector2 tileSize = new Vector2(32 * gameScale, 32 * gameScale);
+        public static readonly Point roomSize = new Point(10, 10);
+
+
+        public static GameManager gameManager {  get; set; }
+        public static Map map { get; set; }
+
+
+        public static AssetSetter assetSetter { get; set; }
+        public static InputManager inputManager { get; set; }   
+
+        public static void Init()
+        {
+            assetSetter = new AssetSetter();
+            inputManager = new InputManager();
+            gameManager = new GameManager();
+            camera = new Camera(graphics.GraphicsDevice.Viewport);
+        }
+
+
+        public static SpriteBatch spriteBatch { get; set; }
+        public static GraphicsDeviceManager graphics { get; set; }
+        public static ContentManager Content { get; set; }
+        public static Camera camera { get; set; }
+
+
+    }
+}

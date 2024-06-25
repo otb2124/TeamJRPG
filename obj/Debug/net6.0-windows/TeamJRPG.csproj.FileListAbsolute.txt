@@ -37,3 +37,5 @@ C:\Users\orest\Downloads\pojects\TeamJRPG\obj\Debug\net6.0-windows\refint\TeamJR
 C:\Users\orest\Downloads\pojects\TeamJRPG\obj\Debug\net6.0-windows\TeamJRPG.pdb
 C:\Users\orest\Downloads\pojects\TeamJRPG\obj\Debug\net6.0-windows\TeamJRPG.genruntimeconfig.cache
 C:\Users\orest\Downloads\pojects\TeamJRPG\obj\Debug\net6.0-windows\ref\TeamJRPG.dll
+C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\tiles\tile0.png
+C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\tiles\tile1.png
