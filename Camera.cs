@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace TeamJRPG
 {
@@ -26,6 +27,19 @@ namespace TeamJRPG
             rotation = 0f;
             UpdateTransform();
         }
+
+
+        public void Update()
+        {
+            if (Globals.inputManager.IsKeyPressed(Keys.Left)) Move(new Vector2(-5, 0));
+            if (Globals.inputManager.IsKeyPressed(Keys.Right)) Move(new Vector2(5, 0));
+            if (Globals.inputManager.IsKeyPressed(Keys.Up)) Move(new Vector2(0, -5));
+            if (Globals.inputManager.IsKeyPressed(Keys.Down)) Move(new Vector2(0, 5));
+
+            if (Globals.inputManager.IsKeyPressed(Keys.OemPlus)) Zoom(0.05f);
+            if (Globals.inputManager.IsKeyPressed(Keys.OemMinus)) Zoom(-0.05f);
+        }
+
 
         public void Move(Vector2 delta)
         {

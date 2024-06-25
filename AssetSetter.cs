@@ -35,7 +35,7 @@ namespace TeamJRPG
         public void SetTextures()
         {
             LoadTextures(0, "Content/tiles/tile");    // Load tile textures
-            //LoadTextures(1, "Content/player/player"); // Load player textures
+            LoadTextures(1, "Content/player/player"); // Load player textures
             //LoadTextures(2, "Content/objects/object");// Load object textures
             //LoadTextures(3, "Content/ui/uielement");// Load ui textures
         }
@@ -83,6 +83,19 @@ namespace TeamJRPG
                 string fontPath = Path.Combine("fonts", Path.GetFileNameWithoutExtension(fontFiles[i]));
                 fonts[i] = Globals.Content.Load<SpriteFont>(fontPath);
             }
+        }
+
+
+
+        public Texture2D createRect(int width, int height)
+        {
+            Texture2D rect = new Texture2D(Globals.graphics.GraphicsDevice, width, height);
+
+            Color[] data = new Color[width * height];
+            for (int i = 0; i < data.Length; ++i) data[i] = new Color(255, 0, 0, 1);
+            rect.SetData(data);
+
+            return rect;
         }
     }
 }

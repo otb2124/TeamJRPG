@@ -10,6 +10,8 @@ namespace TeamJRPG
 
         public Tile[,] tiles;
         public Vector2 position;
+        public Vector2 size;
+        public System.Drawing.RectangleF bounds;
 
 
         public Room(Vector2 position)
@@ -17,6 +19,7 @@ namespace TeamJRPG
             tiles = new Tile[Globals.roomSize.X, Globals.roomSize.Y];
             this.position = position;
             Init();
+            bounds = new System.Drawing.RectangleF(position.X, position.Y, position.X + size.X, position.Y + size.Y);
         }
 
 
@@ -32,14 +35,24 @@ namespace TeamJRPG
 
                     if (isBorderTile)
                     {
-                        // Set border tile texture
-                        tiles[x, y] = new Tile(new Vector2(x * Globals.tileSize.X + position.X, y * Globals.tileSize.Y + position.Y), Globals.assetSetter.textures[0][1][0]);
+                        if ((x % 7 == 0 || y % 7 == 0) && !(x == 0 && y == 0) && !(x == tiles.GetLength(0) - 1 && y == tiles.GetLength(1) - 1))
+                        {
+                            tiles[x, y] = new Tile(new Vector2(x * Globals.tileSize.X + position.X, y * Globals.tileSize.Y + position.Y), 0);
+                        }
+                        else
+                        {
+                            // Set border tile texture and make it collidable
+                            tiles[x, y] = new Tile(new Vector2(x * Globals.tileSize.X + position.X, y * Globals.tileSize.Y + position.Y), 1);
+                            tiles[x, y].collision = true;
+                        }
                     }
                     else
                     {
                         // Set regular tile texture (assuming index 0 is for regular tiles)
-                        tiles[x, y] = new Tile(new Vector2(x * Globals.tileSize.X + position.X, y * Globals.tileSize.Y + position.Y), Globals.assetSetter.textures[0][0][0]);
+                        tiles[x, y] = new Tile(new Vector2(x * Globals.tileSize.X + position.X, y * Globals.tileSize.Y + position.Y), 0);
                     }
+
+                    size += Globals.tileSize;
                 }
             }
         }

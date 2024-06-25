@@ -14,16 +14,21 @@ namespace TeamJRPG
 
         public static GameManager gameManager {  get; set; }
         public static Map map { get; set; }
+        public static Player player { get; set; }
 
 
         public static AssetSetter assetSetter { get; set; }
         public static InputManager inputManager { get; set; }   
+        public static CollisionManager collisionManager { get; set; }
 
         public static void Init()
         {
+            gameManager = new GameManager();
+
             assetSetter = new AssetSetter();
             inputManager = new InputManager();
-            gameManager = new GameManager();
+            collisionManager = new CollisionManager();  
+
             camera = new Camera(graphics.GraphicsDevice.Viewport);
         }
 

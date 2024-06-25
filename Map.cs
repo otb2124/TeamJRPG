@@ -9,36 +9,32 @@ namespace TeamJRPG
     public class Map
     {
 
-        public Room[,] rooms;
+        public Room[] rooms;
         
 
 
         public Map()
         {
-            rooms = new Room[10, 10];
+            rooms = new Room[10];
         }
 
 
-        public void Init()
+        public void Load()
         {
-            for (int x = 0; x < rooms.GetLength(0); x++)
+            for (int x = 0; x < rooms.Length; x++)
             {
-                for (int y = 0; y < rooms.GetLength(1); y++)
-                {
-                    rooms[x, y] = new Room(new Vector2(x * Globals.tileSize.X * Globals.roomSize.X, y * Globals.roomSize.Y * Globals.tileSize.Y));
-                }
+
+                rooms[x] = new Room(new Vector2(x * Globals.tileSize.X * Globals.roomSize.X, 0));
+                
             }
         }
 
 
         public void Draw()
         {
-            for (int x = 0; x < rooms.GetLength(0); x++)
+            for (int x = 0; x < rooms.Length; x++)
             {
-                for (int y = 0; y < rooms.GetLength(1); y++)
-                {
-                    rooms[x, y].Draw();
-                }
+                rooms[x].Draw();
             }
         }
     }

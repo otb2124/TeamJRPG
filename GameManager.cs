@@ -1,16 +1,10 @@
-﻿using SharpDX.XAudio2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+
 
 namespace TeamJRPG
 {
     public class GameManager
     {
-
-        Map map;
 
 
         public GameManager() 
@@ -22,7 +16,7 @@ namespace TeamJRPG
 
         public void Init()
         {
-            map = new Map();
+            Globals.map = new Map();
         }
 
 
@@ -30,21 +24,25 @@ namespace TeamJRPG
         public void Load()
         {
             Globals.assetSetter.SetAssets();
-            map.Init();
+            Globals.map.Load();
+            Globals.player = new Player(new Vector2(1, 1), Globals.assetSetter.textures[1][0][0]);
+            Globals.player = Globals.player;
         }
 
         public void Update()
         {
             Globals.inputManager.Update();
+            Globals.player.Update();
+            Globals.camera.Update();
 
-            
         }
 
 
 
         public void Draw()
         {
-            map.Draw();
+            Globals.map.Draw();
+            Globals.player.Draw();
         }
     }
 }
