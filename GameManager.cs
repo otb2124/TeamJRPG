@@ -35,9 +35,13 @@ namespace TeamJRPG
         {
             Globals.assetSetter.SetAssets();
             Globals.map.Load();
+            //Globals.mapReader.WriteMap("Content/maps/map1.json");
+
             Globals.player = new Player(new Vector2(1, 1), Globals.assetSetter.textures[1][0][0]);
             Globals.entities.Add(Globals.player);
             Globals.entities.Add(new Object(new Vector2(15, 5), Globals.assetSetter.textures[2][0][0]));
+
+            
         }
 
         public void Update()

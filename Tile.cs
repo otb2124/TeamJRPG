@@ -1,14 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace TeamJRPG
 {
+    [Serializable]
     public class Tile
     {
 
         public Vector2 position;
         public Texture2D texture;
-        public int id;
         public bool collision;
         public System.Drawing.RectangleF collisionBox;
         public Texture2D collisionTexture;
@@ -17,7 +18,6 @@ namespace TeamJRPG
         {
             this.position = position;
             this.texture = Globals.assetSetter.textures[0][id][0];
-            this.id = id;
             this.collision = false;
             this.collisionBox = new System.Drawing.RectangleF(position.X, position.Y, Globals.tileSize.X, Globals.tileSize.Y);
             this.collisionTexture = Globals.assetSetter.CreateSolidColorTexture((int)Globals.tileSize.X, (int)Globals.tileSize.Y, new Color(0, 0, 0.5f, 0.01f));

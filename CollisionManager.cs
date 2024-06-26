@@ -1,9 +1,6 @@
-﻿using SharpDX.Direct2D1.Effects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+using Microsoft.Xna.Framework;
 
 namespace TeamJRPG
 {
@@ -32,6 +29,13 @@ namespace TeamJRPG
                         }
                     }
                 }
+            }
+
+            Globals.map.CalculateMapBounds(out Vector2 min, out Vector2 max);
+
+            if(entity.collisionBox.Y < min.Y || entity.collisionBox.X < min.X || entity.collisionBox.Y > max.Y || entity.collisionBox.X > max.X)
+            {
+                return true;
             }
 
             return false;

@@ -69,7 +69,7 @@ namespace TeamJRPG
             {
                 if (Globals.map.rooms[i].bounds.Contains(collisionBox))
                 {
-                    currentRoom = i;
+                    currentRoom = i; break;
                 }
             }
         }

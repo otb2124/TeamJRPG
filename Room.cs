@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 
 
 namespace TeamJRPG
 {
+    [Serializable]
     public class Room
     {
 
@@ -14,11 +16,11 @@ namespace TeamJRPG
         public Vector2 size;
         public System.Drawing.RectangleF bounds;
         public Texture2D collisionTexture;
-
+        public Point roomSize = new Point(10, 10);
 
         public Room(Vector2 position)
         {
-            tiles = new Tile[Globals.roomSize.X, Globals.roomSize.Y];
+            tiles = new Tile[roomSize.X, roomSize.Y];
             this.position = position;
             Init();
             bounds = new System.Drawing.RectangleF(position.X, position.Y, size.X, size.Y);
@@ -55,8 +57,9 @@ namespace TeamJRPG
                         tiles[x, y] = new Tile(new Vector2(x * Globals.tileSize.X + position.X, y * Globals.tileSize.Y + position.Y), 0);
                     }
 
-                    size += Globals.tileSize;
+                    
                 }
+                size += Globals.tileSize;
             }
         }
 
