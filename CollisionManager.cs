@@ -11,7 +11,7 @@ namespace TeamJRPG
     {
 
 
-        public bool CheckCollision(Entity entity)
+        public bool CheckTileCollision(Entity entity)
         {
             // Loop through all rooms
             for (int i = 0; i < Globals.map.rooms.Length; i++)
@@ -36,6 +36,51 @@ namespace TeamJRPG
 
             return false;
         }
+
+
+        public Entity CheckEntityCollision(Entity entity)
+        {
+
+            for (int i = 0; i < Globals.entities.Count; i++)
+            {
+                if (entity.collisionBox.IntersectsWith(Globals.entities[i].collisionBox) && entity != Globals.entities[i])
+                {
+                    return Globals.entities[i];
+                }
+            }
+
+            return null;
+        }
+
+
+        public Entity CheckEntityInterraction(Entity entity)
+        {
+            for (int i = 0; i < Globals.entities.Count; i++)
+            {
+                if (Globals.entities[i] != entity)
+                {
+                    if (Globals.entities[i] is Object obj)
+                    {
+                        if (entity.collisionBox.IntersectsWith(obj.interractionBox))
+                        {
+                            return obj;
+                        }
+                    }
+
+                    /*if (Globals.entities[i] is NPC npc)
+                    {
+                        if (entity.collisionBox.IntersectsWith(npc.interractionBox))
+                        {
+                            return npc;
+                        }
+                    }*/
+                }
+            }
+
+            return null;
+        }
+
+
     }
 }
 

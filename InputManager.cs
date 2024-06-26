@@ -5,51 +5,54 @@ namespace TeamJRPG
 {
     public class InputManager
     {
+        public enum MouseButton { Left, Right, Wheel }
+        private MouseState currentMouseState;
+        private MouseState previousMouseState;
+        private KeyboardState currentKeyboardState;
+        private KeyboardState previousKeyboardState;
 
-        public enum MouseButton {  Left, Right, Wheel }
-        private MouseState mouseState;
-        private KeyboardState keyboardState;
-
+        public InputManager()
+        {
+            currentMouseState = Mouse.GetState();
+            currentKeyboardState = Keyboard.GetState();
+        }
 
         public bool IsKeyPressed(Keys key)
         {
-            return keyboardState.IsKeyDown(key); 
+            return currentKeyboardState.IsKeyDown(key);
         }
-   
-
-
 
         public bool IsMouseButtonClick(MouseButton button)
         {
-            
-            var mouseState = Mouse.GetState();
             bool isClick = false;
             if (button == MouseButton.Left)
             {
-                isClick = mouseState.LeftButton == ButtonState.Pressed;
+                isClick = currentMouseState.LeftButton == ButtonState.Pressed;
             }
             else if (button == MouseButton.Right)
             {
-                isClick = mouseState.RightButton == ButtonState.Pressed;
+                isClick = currentMouseState.RightButton == ButtonState.Pressed;
             }
             else if (button == MouseButton.Wheel)
             {
-                isClick = mouseState.MiddleButton == ButtonState.Pressed;
+                isClick = currentMouseState.MiddleButton == ButtonState.Pressed;
             }
 
-            this.mouseState = mouseState;
             return isClick;
         }
 
-
-
-
-
+        public bool IsKeyPressedAndReleased(Keys key)
+        {
+            return previousKeyboardState.IsKeyDown(key) && currentKeyboardState.IsKeyUp(key);
+        }
 
         public void Update()
         {
-            mouseState = Mouse.GetState();
-            keyboardState = Keyboard.GetState();
+            previousMouseState = currentMouseState;
+            previousKeyboardState = currentKeyboardState;
+
+            currentMouseState = Mouse.GetState();
+            currentKeyboardState = Keyboard.GetState();
         }
     }
 }

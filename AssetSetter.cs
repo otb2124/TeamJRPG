@@ -21,6 +21,9 @@ namespace TeamJRPG
             textures[2] = new Texture2D[10][];
             textures[3] = new Texture2D[10][];
 
+
+            textures[9] = new Texture2D[10][];
+
             fonts = new SpriteFont[10];
         }
 
@@ -34,9 +37,9 @@ namespace TeamJRPG
 
         public void SetTextures()
         {
-            LoadTextures(0, "Content/tiles/tile");    // Load tile textures
-            LoadTextures(1, "Content/player/player"); // Load player textures
-            //LoadTextures(2, "Content/objects/object");// Load object textures
+            LoadTextures(0, "Content/res/tiles/tile");    // Load tile textures
+            LoadTextures(1, "Content/res/player/player"); // Load player textures
+            LoadTextures(2, "Content/res/objects/object");// Load object textures
             //LoadTextures(3, "Content/ui/uielement");// Load ui textures
         }
 
@@ -75,7 +78,7 @@ namespace TeamJRPG
             }
 
             string[] fontFiles = Directory.GetFiles(fontsDirectory, "*.xnb");
-
+            
             fonts = new SpriteFont[fontFiles.Length];
 
             for (int i = 0; i < fontFiles.Length; i++)
@@ -87,15 +90,12 @@ namespace TeamJRPG
 
 
 
-        public Texture2D createRect(int width, int height)
+        public Texture2D CreateSolidColorTexture(int width, int height, Color color)
         {
-            Texture2D rect = new Texture2D(Globals.graphics.GraphicsDevice, width, height);
-
-            Color[] data = new Color[width * height];
-            for (int i = 0; i < data.Length; ++i) data[i] = new Color(255, 0, 0, 1);
-            rect.SetData(data);
-
-            return rect;
+            Texture2D texture = new Texture2D(Globals.graphics.GraphicsDevice, width, height);
+            Color[] data = Enumerable.Repeat(color, width * height).ToArray();
+            texture.SetData(data);
+            return texture;
         }
     }
 }

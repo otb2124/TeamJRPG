@@ -9,6 +9,7 @@ namespace TeamJRPG
 
 
         public Vector2 position;
+        public Vector2 drawPosition;
         public Texture2D texture;
         public int currentRoom;
 
@@ -24,7 +25,8 @@ namespace TeamJRPG
 
 
         public System.Drawing.RectangleF collisionBox;
-
+        public Texture2D collisionTexture;
+        public bool collision;
 
 
         public Entity(Vector2 position, Texture2D texture) 
@@ -32,16 +34,23 @@ namespace TeamJRPG
             this.position = position * Globals.tileSize;
             this.texture = texture;
             this.direction = Direction.up;
-            this.collisionBox = new System.Drawing.RectangleF(position.X, position.Y, Globals.tileSize.X + position.X, Globals.tileSize.Y + position.Y);
+
+            this.collision = false;
+
+            float collisionBoxWidth = Globals.tileSize.X / 2;
+            float collisionBoxHeight = Globals.tileSize.Y / 2;
+            float collisionBoxX = this.position.X;
+            float collisionBoxY = this.position.Y;
+            this.collisionBox = new System.Drawing.RectangleF(collisionBoxX, collisionBoxY, collisionBoxWidth, collisionBoxHeight);
+            this.collisionTexture = Globals.assetSetter.CreateSolidColorTexture((int)collisionBoxWidth, (int)collisionBoxHeight, new Color(0.5f, 0, 0, 0.01f));
         }
 
 
         public void Update()
         {
-            this.collisionBox.Location = new System.Drawing.PointF(position.X, position.Y);
 
 
-            if (Globals.collisionManager.CheckCollision(this))
+            if ((Globals.collisionManager.CheckTileCollision(this) || (Globals.collisionManager.CheckEntityCollision(this) != null && Globals.collisionManager.CheckEntityCollision(this).collision)) && collision)
             {
                 switch (direction)
                 {
@@ -53,7 +62,6 @@ namespace TeamJRPG
                         position.X -= speed; break;
                     case Direction.left:
                         position.X += speed; break;
-                    
                 }
             }
 
@@ -61,29 +69,22 @@ namespace TeamJRPG
             {
                 if (Globals.map.rooms[i].bounds.Contains(collisionBox))
                 {
-                    currentRoom = i; break;
+                    currentRoom = i;
                 }
             }
         }
 
 
 
-        public void Draw()
+        public virtual void Draw()
         {
-            Vector2 drawPosition = new Vector2(position.X, position.Y - Globals.tileSize.Y);
-
             Globals.spriteBatch.Draw(texture, drawPosition, null, Color.White, 0f, Vector2.Zero, Globals.gameScale, SpriteEffects.None, 0f);
 
-
-
-            Texture2D rect = new Texture2D(Globals.graphics.GraphicsDevice, (int)collisionBox.Width, (int)collisionBox.Height);
-
-            Color[] data = new Color[(int)collisionBox.Width * (int)collisionBox.Height];
-            for (int i = 0; i < data.Length; ++i) data[i] = new Color(255, 0, 0, 1);
-            rect.SetData(data);
-
-            Vector2 coor = new Vector2(collisionBox.X, collisionBox.Y);
-            Globals.spriteBatch.Draw(rect, coor, null, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
+            if(Globals.currentGameMode == Globals.GameMode.debugmode)
+            {
+                Globals.spriteBatch.Draw(collisionTexture, new Vector2(collisionBox.X, collisionBox.Y), null, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
+            }
+            
         }
     }
 }

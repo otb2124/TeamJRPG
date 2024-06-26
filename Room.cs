@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 
 
@@ -12,6 +13,7 @@ namespace TeamJRPG
         public Vector2 position;
         public Vector2 size;
         public System.Drawing.RectangleF bounds;
+        public Texture2D collisionTexture;
 
 
         public Room(Vector2 position)
@@ -19,7 +21,8 @@ namespace TeamJRPG
             tiles = new Tile[Globals.roomSize.X, Globals.roomSize.Y];
             this.position = position;
             Init();
-            bounds = new System.Drawing.RectangleF(position.X, position.Y, position.X + size.X, position.Y + size.Y);
+            bounds = new System.Drawing.RectangleF(position.X, position.Y, size.X, size.Y);
+            this.collisionTexture = Globals.assetSetter.CreateSolidColorTexture((int)size.X, (int)size.Y, new Color(0.1f, 0, 0.1f, 0.01f));
         }
 
 
@@ -67,6 +70,13 @@ namespace TeamJRPG
                 {
                     tiles[x, y].Draw();
                 }
+            }
+
+
+
+            if (Globals.currentGameMode == Globals.GameMode.debugmode)
+            {
+                Globals.spriteBatch.Draw(collisionTexture, new Vector2(bounds.X, bounds.Y), null, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace TeamJRPG
 {
@@ -10,7 +11,12 @@ namespace TeamJRPG
         public static readonly float gameScale = 1.75f;
         public static readonly Vector2 tileSize = new Vector2(32 * gameScale, 32 * gameScale);
         public static readonly Point roomSize = new Point(10, 10);
+        public static readonly int mapSize = 3;
 
+        public enum GameMode { playmode, debugmode }
+        public static GameMode currentGameMode;
+
+        public static List<Entity> entities;
 
         public static GameManager gameManager {  get; set; }
         public static Map map { get; set; }
