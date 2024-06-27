@@ -10,32 +10,22 @@ namespace TeamJRPG
 
         public bool CheckTileCollision(Entity entity)
         {
-            // Loop through all rooms
-            for (int i = 0; i < Globals.map.rooms.Length; i++)
-            {
                 // Loop through all tiles in the current room
-                for (int x = 0; x < Globals.map.rooms[i].tiles.GetLength(0); x++)
+                for (int x = 0; x < Globals.map.tiles.GetLength(0); x++)
                 {
-                    for (int y = 0; y < Globals.map.rooms[i].tiles.GetLength(1); y++)
+                    for (int y = 0; y < Globals.map.tiles.GetLength(1); y++)
                     {
                         // Check if the current tile is collidable
-                        if (Globals.map.rooms[i].tiles[x, y].collision)
+                        if (Globals.map.tiles[x, y].collision)
                         {
                             // Check for intersection with the entity's collision box
-                            if (entity.collisionBox.IntersectsWith(Globals.map.rooms[i].tiles[x, y].collisionBox))
+                            if (entity.collisionBox.IntersectsWith(Globals.map.tiles[x, y].collisionBox))
                             {
                                 return true;
                             }
                         }
                     }
-                }
-            }
-
-            Globals.map.CalculateMapBounds(out Vector2 min, out Vector2 max);
-
-            if(entity.collisionBox.Y < min.Y || entity.collisionBox.X < min.X || entity.collisionBox.Y > max.Y || entity.collisionBox.X > max.X)
-            {
-                return true;
+                
             }
 
             return false;

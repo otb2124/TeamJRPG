@@ -24,15 +24,127 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Content\res\objects\object0.png" />
+    <None Remove="Content\res\objects\object1.png" />
+    <None Remove="Content\res\objects\object10.png" />
+    <None Remove="Content\res\objects\object11.png" />
+    <None Remove="Content\res\objects\object12.png" />
+    <None Remove="Content\res\objects\object13.png" />
+    <None Remove="Content\res\objects\object14.png" />
+    <None Remove="Content\res\objects\object15.png" />
+    <None Remove="Content\res\objects\object16.png" />
+    <None Remove="Content\res\objects\object17.png" />
+    <None Remove="Content\res\objects\object18.png" />
+    <None Remove="Content\res\objects\object19.png" />
+    <None Remove="Content\res\objects\object2.png" />
+    <None Remove="Content\res\objects\object20.png" />
+    <None Remove="Content\res\objects\object21.png" />
+    <None Remove="Content\res\objects\object22.png" />
+    <None Remove="Content\res\objects\object23.png" />
+    <None Remove="Content\res\objects\object24.png" />
+    <None Remove="Content\res\objects\object25.png" />
+    <None Remove="Content\res\objects\object26.png" />
+    <None Remove="Content\res\objects\object27.png" />
+    <None Remove="Content\res\objects\object3.png" />
+    <None Remove="Content\res\objects\object4.png" />
+    <None Remove="Content\res\objects\object5.png" />
+    <None Remove="Content\res\objects\object6.png" />
+    <None Remove="Content\res\objects\object7.png" />
+    <None Remove="Content\res\objects\object8.png" />
+    <None Remove="Content\res\objects\object9.png" />
     <None Remove="Content\res\player\player0.png" />
     <None Remove="Content\res\player\player1.png" />
     <None Remove="Content\res\player\player2.png" />
     <None Remove="Content\res\player\player3.png" />
     <None Remove="Content\res\tiles\tile0.png" />
     <None Remove="Content\res\tiles\tile1.png" />
+    <None Remove="Content\res\tiles\tile2.png" />
+    <None Remove="Content\res\tiles\tile3.png" />
+    <None Remove="Content\res\tiles\tile4.png" />
+    <None Remove="Content\res\tiles\tile5.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\res\objects\object0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object17.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object18.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object19.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object21.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object22.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object23.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object25.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object26.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object27.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\objects\object9.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\player\player0.png">
@@ -51,6 +163,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\tiles\tile1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\tiles\tile2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\tiles\tile3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\tiles\tile4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\tiles\tile5.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -65,13 +65,6 @@ namespace TeamJRPG
                 }
             }
 
-            for (int i = 0; i < Globals.map.rooms.Length; i++)
-            {
-                if (Globals.map.rooms[i].bounds.Contains(collisionBox))
-                {
-                    currentRoom = i; break;
-                }
-            }
         }
 
 
