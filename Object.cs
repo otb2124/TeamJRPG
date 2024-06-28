@@ -7,7 +7,6 @@ namespace TeamJRPG
     public class Object : Entity
     {
 
-        public string name;
         public enum ObjectType { pickable, unPickable, autoPickable}
         public ObjectType type;
 
@@ -16,10 +15,9 @@ namespace TeamJRPG
 
         public Object(Vector2 position, Texture2D texture) : base(position, texture)
         {
-            name = "apple";
-            type = ObjectType.pickable;
 
-            this.collision = true;
+
+            this.tileCollision = true;
 
             this.collisionBox.Height = Globals.tileSize.Y / 4;
             this.collisionBox.Width = Globals.tileSize.X / 3;
@@ -34,6 +32,10 @@ namespace TeamJRPG
             float interractionBoxY = this.collisionBox.Y - Globals.tileSize.Y;
             this.interractionBox = new System.Drawing.RectangleF(interractionBoxX, interractionBoxY, interractionBoxWidth, interractionBoxHeight);
             this.interractionBoxTexture = Globals.assetSetter.CreateSolidColorTexture((int)this.interractionBox.Width, (int)this.interractionBox.Height, new Color(0, 0, 0.1f, 0.1f));
+
+            type = ObjectType.pickable;
+
+            this.inventory.Add(new Item("apple"));
         }
 
 

@@ -18,13 +18,15 @@ namespace TeamJRPG
 
         public static GameManager gameManager {  get; set; }
         public static Map map { get; set; }
-        public static Player player { get; set; }
+        public static GroupMember player { get; set; }
+        public static List<GroupMember> group { get; set; }
 
 
         public static AssetSetter assetSetter { get; set; }
         public static InputManager inputManager { get; set; }   
         public static CollisionManager collisionManager { get; set; }
         public static MapReader mapReader { get; set; }
+        public static AStarPathfinding aStarPathfinding { get; set; }
 
         public static void Init()
         {
@@ -34,6 +36,7 @@ namespace TeamJRPG
             inputManager = new InputManager();
             collisionManager = new CollisionManager();  
             mapReader = new MapReader();
+            aStarPathfinding = new AStarPathfinding();
 
             camera = new Camera(graphics.GraphicsDevice.Viewport);
         }

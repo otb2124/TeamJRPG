@@ -1,6 +1,7 @@
 ﻿
 
 using Microsoft.Xna.Framework;
+using System.Drawing;
 
 namespace TeamJRPG
 {
@@ -18,7 +19,7 @@ namespace TeamJRPG
                         // Check if the current tile is collidable
                         if (Globals.map.tiles[x, y].collision)
                         {
-                            // Check for intersection with the entity's collision box
+                            // Check for intersection with the entity's tileCollision box
                             if (entity.collisionBox.IntersectsWith(Globals.map.tiles[x, y].collisionBox))
                             {
                                 return true;
@@ -47,6 +48,7 @@ namespace TeamJRPG
         }
 
 
+
         public Entity CheckEntityInterraction(Entity entity)
         {
             for (int i = 0; i < Globals.entities.Count; i++)
@@ -73,6 +75,9 @@ namespace TeamJRPG
 
             return null;
         }
+
+
+
 
 
     }
