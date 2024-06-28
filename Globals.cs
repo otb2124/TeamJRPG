@@ -27,6 +27,7 @@ namespace TeamJRPG
         public static CollisionManager collisionManager { get; set; }
         public static MapReader mapReader { get; set; }
         public static AStarPathfinding aStarPathfinding { get; set; }
+        public static UIManager uiManager { get; set; }
 
         public static void Init()
         {
@@ -37,6 +38,7 @@ namespace TeamJRPG
             collisionManager = new CollisionManager();  
             mapReader = new MapReader();
             aStarPathfinding = new AStarPathfinding();
+            uiManager = new UIManager();
 
             camera = new Camera(graphics.GraphicsDevice.Viewport);
         }

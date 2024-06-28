@@ -23,6 +23,25 @@
     <None Remove="lib\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Content\res\fonts\Chiller_10_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_11_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_12_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_13_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_14_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_15_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_16_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_17_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_18_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_19_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_20_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_21_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_22_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_23_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_24_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_25_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_26_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_8_Regular.xnb" />
+    <None Remove="Content\res\fonts\Chiller_9_Regular.xnb" />
     <None Remove="Content\res\objects\object0.png" />
     <None Remove="Content\res\objects\object1.png" />
     <None Remove="Content\res\objects\object10.png" />
@@ -61,8 +80,70 @@
     <None Remove="Content\res\tiles\tile3.png" />
     <None Remove="Content\res\tiles\tile4.png" />
     <None Remove="Content\res\tiles\tile5.png" />
+    <None Remove="Content\res\ui\uielement0.png" />
+    <None Remove="Content\res\ui\uielement1.png" />
+    <None Remove="Content\res\ui\uielement1_1.png" />
+    <None Remove="Content\res\ui\uielement1_2.png" />
+    <None Remove="Content\res\ui\uielement1_3.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\res\fonts\Chiller_10_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_11_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_12_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_13_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_14_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_15_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_16_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_17_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_18_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_19_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_20_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_21_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_22_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_23_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_24_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_25_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_26_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_8_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Chiller_9_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\res\objects\object0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -175,6 +256,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\tiles\tile5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\ui\uielement0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\ui\uielement1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\ui\uielement1_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\ui\uielement1_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\ui\uielement1_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

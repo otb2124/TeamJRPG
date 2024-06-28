@@ -20,6 +20,7 @@ namespace TeamJRPG
             textures[1] = new Texture2D[10][];
             textures[2] = new Texture2D[10][];
             textures[3] = new Texture2D[10][];
+            textures[4] = new Texture2D[10][];
 
 
             textures[9] = new Texture2D[10][];
@@ -40,7 +41,8 @@ namespace TeamJRPG
             LoadTextures(0, "Content/res/tiles/tile");    // Load tile textures
             LoadTextures(1, "Content/res/player/player"); // Load player textures
             LoadTextures(2, "Content/res/objects/object");// Load object textures
-            //LoadTextures(3, "Content/ui/uielement");// Load ui textures
+            //LoadTextures(3, "Content/res/mobs/mob");// Load mob textures
+            LoadTextures(4, "Content/res/ui/uielement");// Load ui textures
         }
 
         private void LoadTextures(int index, string basePath)
@@ -69,7 +71,7 @@ namespace TeamJRPG
 
         public void SetFonts()
         {
-            string fontsDirectory = Path.Combine(Environment.CurrentDirectory, "Content", "fonts");
+            string fontsDirectory = Path.Combine("Content", "res", "fonts");
 
             if (!Directory.Exists(fontsDirectory))
             {
@@ -78,13 +80,20 @@ namespace TeamJRPG
             }
 
             string[] fontFiles = Directory.GetFiles(fontsDirectory, "*.xnb");
-            
-            fonts = new SpriteFont[fontFiles.Length];
 
-            for (int i = 0; i < fontFiles.Length; i++)
+            if (fontFiles.Length > 0)
             {
-                string fontPath = Path.Combine("fonts", Path.GetFileNameWithoutExtension(fontFiles[i]));
-                fonts[i] = Globals.Content.Load<SpriteFont>(fontPath);
+                fonts = new SpriteFont[fontFiles.Length];
+
+                for (int i = 0; i < fontFiles.Length; i++)
+                {
+                    string fontPath = Path.Combine("res", "fonts", Path.GetFileNameWithoutExtension(fontFiles[i]));
+                    fonts[i] = Globals.Content.Load<SpriteFont>(fontPath);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No font files found.");
             }
         }
 

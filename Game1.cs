@@ -13,7 +13,7 @@ namespace TeamJRPG
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            //IsMouseVisible = true;
 
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 720;
@@ -21,6 +21,7 @@ namespace TeamJRPG
             _graphics.ApplyChanges();
 
             Globals.graphics = _graphics;
+            Globals.Content = Content;
         }
 
         protected override void Initialize()

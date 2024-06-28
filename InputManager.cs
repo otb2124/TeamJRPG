@@ -41,6 +41,15 @@ namespace TeamJRPG
             return isClick;
         }
 
+
+
+        public Vector2 GetCursorPos()
+        {
+            return new Vector2(Globals.inputManager.currentMouseState.X - Globals.camera.viewport.Width / 2, Globals.inputManager.currentMouseState.Y - Globals.camera.viewport.Height / 2);
+        }
+
+
+
         public bool IsKeyPressedAndReleased(Keys key)
         {
             return previousKeyboardState.IsKeyDown(key) && currentKeyboardState.IsKeyUp(key);

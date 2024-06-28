@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Reflection;
 
 namespace TeamJRPG
 {
@@ -27,7 +28,6 @@ namespace TeamJRPG
             rotation = 0f;
             UpdateTransform();
         }
-
 
         public void Update()
         {

@@ -10,6 +10,8 @@ namespace TeamJRPG
         public List<Entity> underDraw;
         private List<Entity> entitiesToUpdate;
 
+
+
         public GameManager()
         {
             Init();
@@ -32,6 +34,7 @@ namespace TeamJRPG
             Globals.assetSetter.SetAssets();
             Globals.map.Load();
             Globals.aStarPathfinding.Init();
+            Globals.uiManager.Init();
 
             Globals.player = new GroupMember(new Vector2(1, 1), Globals.assetSetter.textures[1][0][0]);
             Globals.player.isPlayer = true;
@@ -73,6 +76,7 @@ namespace TeamJRPG
                 }
             }
 
+
             // Copy the entities that need to be updated to a separate list
             entitiesToUpdate.Clear();
             foreach (var entity in Globals.entities)
@@ -105,7 +109,9 @@ namespace TeamJRPG
                 }
             }
 
+
             Globals.camera.Update();
+            Globals.uiManager.Update();
         }
 
         public void Draw()
@@ -124,6 +130,8 @@ namespace TeamJRPG
 
             underDraw.Clear();
             overDraw.Clear();
+
+            Globals.uiManager.Draw();
         }
     }
 }

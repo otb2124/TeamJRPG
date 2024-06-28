@@ -198,6 +198,8 @@ namespace TeamJRPG
                 this.isPlayer = false;
                 newPlayer.isPlayer = true;
 
+                //Globals.uimanager.drawPointer();
+
                 if (Globals.group.Contains(newPlayer))
                 {
                     Globals.group.Remove(newPlayer);
