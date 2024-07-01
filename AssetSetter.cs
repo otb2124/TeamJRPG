@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -11,6 +12,7 @@ namespace TeamJRPG
 
         public Texture2D[][][] textures;
         public SpriteFont[] fonts;
+        public Effect[] effects;
 
         public AssetSetter()
         {
@@ -20,12 +22,16 @@ namespace TeamJRPG
             textures[1] = new Texture2D[10][];
             textures[2] = new Texture2D[10][];
             textures[3] = new Texture2D[10][];
-            textures[4] = new Texture2D[10][];
+            textures[4] = new Texture2D[20][];
+            textures[5] = new Texture2D[10][];
+            textures[6] = new Texture2D[10][];
+            textures[7] = new Texture2D[10][];
 
 
             textures[9] = new Texture2D[10][];
 
             fonts = new SpriteFont[10];
+            effects = new Effect[10];
         }
 
 
@@ -43,6 +49,9 @@ namespace TeamJRPG
             LoadTextures(2, "Content/res/objects/object");// Load object textures
             //LoadTextures(3, "Content/res/mobs/mob");// Load mob textures
             LoadTextures(4, "Content/res/ui/uielement");// Load ui textures
+            LoadTextures(5, "Content/res/battlesprites/battlesprite");
+            LoadTextures(6, "Content/res/placeholders/placeholder");
+            LoadTextures(7, "Content/res/items/item");
         }
 
         private void LoadTextures(int index, string basePath)
@@ -96,6 +105,10 @@ namespace TeamJRPG
                 Console.WriteLine("No font files found.");
             }
         }
+
+
+
+
 
 
 

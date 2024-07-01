@@ -6,6 +6,10 @@ namespace TeamJRPG
 {
     public class GameManager
     {
+
+        
+
+
         public List<Entity> overDraw;
         public List<Entity> underDraw;
         private List<Entity> entitiesToUpdate;
@@ -27,6 +31,7 @@ namespace TeamJRPG
             entitiesToUpdate = new List<Entity>();
 
             Globals.currentGameMode = Globals.GameMode.playmode;
+            Globals.currentGameState = Globals.GameState.playstate;
         }
 
         public void Load()
@@ -61,20 +66,48 @@ namespace TeamJRPG
 
         public void Update()
         {
+
             Globals.inputManager.Update();
 
-            // Game modes
-            if (Globals.inputManager.IsKeyPressedAndReleased(Keys.H))
+            //Game States
+            if (Globals.currentGameState == Globals.GameState.playstate)
             {
-                if (Globals.currentGameMode == Globals.GameMode.playmode)
+                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape))
                 {
-                    Globals.currentGameMode = Globals.GameMode.debugmode;
+                    Globals.currentGameState = Globals.GameState.ingamemenustate;
+                    Globals.uiManager.currentMenuState = UIManager.MenuState.inGameMenu;
+                    Globals.uiManager.MenuStateNeedsChange = true;
                 }
-                else
+                // Game modes
+                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.H))
                 {
-                    Globals.currentGameMode = Globals.GameMode.playmode;
+                    if (Globals.currentGameMode == Globals.GameMode.playmode)
+                    {
+                        Globals.currentGameMode = Globals.GameMode.debugmode;
+                    }
+                    else
+                    {
+                        Globals.currentGameMode = Globals.GameMode.playmode;
+                    }
                 }
             }
+            else if(Globals.currentGameState == Globals.GameState.ingamemenustate)
+            {
+                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape))
+                {
+                    Globals.currentGameState = Globals.GameState.playstate;
+                    Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
+                    Globals.uiManager.MenuStateNeedsChange = true;
+                }
+            }
+            
+
+            
+
+
+            
+
+            
 
 
             // Copy the entities that need to be updated to a separate list
@@ -133,5 +166,8 @@ namespace TeamJRPG
 
             Globals.uiManager.Draw();
         }
+
+
+        
     }
 }

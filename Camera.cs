@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace TeamJRPG
@@ -14,6 +15,7 @@ namespace TeamJRPG
         public Viewport viewport;
         public readonly float DEFAULT_ZOOM = 1.0f;
 
+        public bool FollowPlayer = false;
 
         public Camera(Viewport viewport)
         {
@@ -38,6 +40,20 @@ namespace TeamJRPG
 
             if (Globals.inputManager.IsKeyPressed(Keys.OemPlus)) Zoom(0.05f);
             if (Globals.inputManager.IsKeyPressed(Keys.OemMinus)) Zoom(-0.05f);
+
+
+            if (Globals.inputManager.IsKeyPressedAndReleased(Keys.OemTilde))
+            {
+                FollowPlayer = !FollowPlayer;
+            }
+
+
+            if (FollowPlayer)
+            {
+                position = Globals.player.position;
+                UpdateTransform();
+            }
+            
         }
 
 

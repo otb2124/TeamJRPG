@@ -14,8 +14,12 @@ namespace TeamJRPG
         public enum GameMode { playmode, debugmode }
         public static GameMode currentGameMode;
 
+        public enum GameState { playstate, ingamemenustate }
+        public static GameState currentGameState;
+
         public static List<Entity> entities;
 
+        public static Game1 game;
         public static GameManager gameManager {  get; set; }
         public static Map map { get; set; }
         public static GroupMember player { get; set; }
@@ -42,7 +46,10 @@ namespace TeamJRPG
 
             camera = new Camera(graphics.GraphicsDevice.Viewport);
         }
-
+        public static void Exit()
+        {
+            game.Exit();
+        }
 
         public static SpriteBatch spriteBatch { get; set; }
         public static GraphicsDeviceManager graphics { get; set; }

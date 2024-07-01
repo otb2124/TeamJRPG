@@ -22,6 +22,7 @@ namespace TeamJRPG
 
             Globals.graphics = _graphics;
             Globals.Content = Content;
+            Globals.game = this;
         }
 
         protected override void Initialize()
@@ -48,11 +49,9 @@ namespace TeamJRPG
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-
             Globals.spriteBatch.Begin(transformMatrix: Globals.camera.Transform);
             Globals.gameManager.Draw();
             Globals.spriteBatch.End();
-
             base.Draw(gameTime);
         }
 
