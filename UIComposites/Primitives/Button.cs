@@ -7,7 +7,7 @@ namespace TeamJRPG
 {
     public class Button : UIComposite
     {
-
+        public bool Active = false;
         public int id;
         public System.Drawing.RectangleF buttonBox;
 
@@ -33,11 +33,15 @@ namespace TeamJRPG
 
         public override void Update()
         {
+            Active = false;
 
             if (buttonBox.Contains(new System.Drawing.PointF(Globals.inputManager.GetCursorPos().X, Globals.inputManager.GetCursorPos().Y)))
             {
                 if (Globals.inputManager.IsMouseButtonClick(InputManager.MouseButton.Left))
                 {
+
+                    Active = true;
+
                     switch (id)
                     {
                         case 0:

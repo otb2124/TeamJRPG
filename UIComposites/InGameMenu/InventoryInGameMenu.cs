@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.XAudio2;
 using System;
+using System.Diagnostics;
 using System.Security.Cryptography.Xml;
 using System.Windows.Forms;
 using TeamJRPG.Primitives;
@@ -9,6 +11,10 @@ namespace TeamJRPG
 {
     public class InventoryInGameMenu : UIComposite
     {
+
+        public ButtonChoicePanel bcp;
+
+
         public InventoryInGameMenu()
         {
             type = UICompositeType.INGAME_MENU_INVENTORY;
@@ -98,6 +104,22 @@ namespace TeamJRPG
 
             children.Add(frame3);
 
+            //Categories
+            Vector2 catMargin = new Vector2(10, 5);
+            Vector2 catItemSize = new Vector2(64, 64);
+            Vector2 catPadding = new Vector2(catItemSize.X * 0.8f, 10);
+
+            Button weaponCategory = new Button(Globals.assetSetter.textures[4][6][0], framePos3 + catMargin, 20);
+            Button armorCategory = new Button(Globals.assetSetter.textures[4][6][1], new Vector2(framePos3.X + catMargin.X + catItemSize.X + catPadding.X, framePos3.Y + catMargin.Y), 21);
+            Button potionCategory = new Button(Globals.assetSetter.textures[4][6][2], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X)*2, framePos3.Y + catMargin.Y), 22);
+            Button materialCategory = new Button(Globals.assetSetter.textures[4][6][3], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 3, framePos3.Y + catMargin.Y), 23);
+            Button valueableCategory = new Button(Globals.assetSetter.textures[4][6][4], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 4, framePos3.Y + catMargin.Y), 24);
+            Button questItemCategory = new Button(Globals.assetSetter.textures[4][6][5], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 5, framePos3.Y + catMargin.Y), 25);
+
+            bcp = new ButtonChoicePanel(new Button[] { weaponCategory, armorCategory, potionCategory, materialCategory, valueableCategory, questItemCategory });
+            children.Add(bcp);
+
+
             //inventoryFrame
             Vector2 frameSize2 = new Vector2(frameSize.X, frameSize.Y / 2 - InventoryFrameOffset);
             Vector2 framePos2 = new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + InventoryFrameOffset);
@@ -111,21 +133,26 @@ namespace TeamJRPG
             //inventory items
             Vector2 itemPadding = new Vector2(12, 12);
             Vector2 inventoryMargin = new Vector2(12, 12);
-            for (int x = 0; x < 10; x++)
+            for (int cols = 0; cols < 7; cols++)
             {
-                for (global::System.Int32 y = 0; y < 7; y++)
+                for (global::System.Int32 rows = 0; rows < 10; rows++)
                 {
-                    ItemHolder invItem = new ItemHolder(new Weapon("item"), new Vector2(framePos2.X + inventoryMargin.X + x * (itemSize.X + itemPadding.X), framePos2.Y + inventoryMargin.Y + y * (itemSize.Y + itemPadding.Y)));
+                    ItemHolder invItem = new ItemHolder(new Weapon("item"), new Vector2(framePos2.X + inventoryMargin.X + cols * (itemSize.X + itemPadding.X), framePos2.Y + inventoryMargin.Y + rows * (itemSize.Y + itemPadding.Y)));
                     inventoryFrame.children.Add(invItem);
                 }
                 
             }
-            ItemHolder invItem2 = new ItemHolder(new Armor("item"), new Vector2(framePos2.X + inventoryMargin.X + 0 * (itemSize.X + itemPadding.X), framePos2.Y + inventoryMargin.Y + 11 * (itemSize.Y + itemPadding.Y)));
+            ItemHolder invItem2 = new ItemHolder(new Armor("item"), new Vector2(framePos2.X + inventoryMargin.X + 0 * (itemSize.X + itemPadding.X), framePos2.Y + inventoryMargin.Y + 10 * (itemSize.Y + itemPadding.Y)));
             inventoryFrame.children.Add(invItem2);
             children.Add(inventoryFrame);
 
         }
 
+
+        public override void Update()
+        {
+            base.Update();
+        }
 
     }
 }

@@ -36,6 +36,8 @@ namespace TeamJRPG
         public Entity CheckEntityCollision(Entity entity)
         {
 
+            ConstrainEntityToMap(entity);
+
             for (int i = 0; i < Globals.entities.Count; i++)
             {
                 if (entity.collisionBox.IntersectsWith(Globals.entities[i].collisionBox) && entity != Globals.entities[i])
@@ -77,6 +79,21 @@ namespace TeamJRPG
         }
 
 
+
+        public void ConstrainEntityToMap(Entity entity)
+        {
+            // Get map boundaries
+            float mapWidth = Globals.map.mapSize.X * Globals.tileSize.X;
+            float mapHeight = Globals.map.mapSize.Y * Globals.tileSize.Y;
+
+            // Constrain entity's position within the map boundaries
+            entity.position.X = MathHelper.Clamp(entity.position.X, 0, mapWidth - entity.collisionBox.Width);
+            entity.position.Y = MathHelper.Clamp(entity.position.Y, 0, mapHeight - entity.collisionBox.Height);
+
+            // Update the collision box position
+            entity.collisionBox.X = (int)entity.position.X;
+            entity.collisionBox.Y = (int)entity.position.Y;
+        }
 
 
 

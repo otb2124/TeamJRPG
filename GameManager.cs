@@ -62,6 +62,8 @@ namespace TeamJRPG
 
             Globals.entities.AddRange(Globals.group);
             Globals.entities.Add(new Object(new Vector2(15, 5), Globals.assetSetter.textures[2][0][0]));
+
+            Globals.camera.Load();
         }
 
         public void Update()

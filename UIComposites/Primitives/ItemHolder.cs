@@ -20,9 +20,11 @@ namespace TeamJRPG {
             Frame frame = new Frame(position, new Vector2(item.texture.Width * scale + padding.X, item.texture.Height * scale + padding.Y));
             frameSize = frame.frameSize;
             components.AddRange(frame.components);
+            children.Add(frame);
 
             ImageHolder icon = new ImageHolder(item.texture, position + padding*2, new Vector2(scale*1.5f, scale*1.5f));
             components.AddRange(icon.components);
+            children.Add(icon);
         }
     }
 }

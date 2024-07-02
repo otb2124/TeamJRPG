@@ -1,8 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Diagnostics;
-using System.Reflection;
+
 
 namespace TeamJRPG
 {
@@ -14,6 +13,7 @@ namespace TeamJRPG
         private Matrix transform;
         public Viewport viewport;
         public readonly float DEFAULT_ZOOM = 1.0f;
+        public readonly Vector2 MAX_DISTANCE_FROM_PLAYER = new Vector2(700.0f, 500.0f);
 
         public bool FollowPlayer = false;
 
@@ -25,9 +25,14 @@ namespace TeamJRPG
 
         public void Init()
         {
-            position = Vector2.Zero;
             zoom = DEFAULT_ZOOM;
             rotation = 0f;
+        }
+
+        public void Load()
+        {
+            position = Globals.player.position;
+            ClampCameraPosition();
             UpdateTransform();
         }
 
@@ -51,6 +56,7 @@ namespace TeamJRPG
             if (FollowPlayer)
             {
                 position = Globals.player.position;
+                ClampCameraPosition();
                 UpdateTransform();
             }
             
@@ -60,18 +66,39 @@ namespace TeamJRPG
         public void Move(Vector2 delta)
         {
             position += delta;
+            ClampCameraPosition();
             UpdateTransform();
         }
 
         public void Zoom(float delta)
         {
             zoom += delta;
-            if (zoom < 0.5f) zoom = 0.5f;
-            if (zoom > 10f) zoom = 10f;
+            zoom = MathHelper.Clamp(zoom, 0.5f, 10f);
+            ClampCameraPosition();
             UpdateTransform();
         }
 
         public Matrix Transform => transform;
+
+        private void ClampCameraPosition()
+        {
+            float cameraWidth = viewport.Width / zoom;
+            float cameraHeight = viewport.Height / zoom;
+
+
+            if (!FollowPlayer)
+            {
+                Vector2 playerPosition = Globals.player.position;
+                position.X = MathHelper.Clamp(position.X, playerPosition.X - MAX_DISTANCE_FROM_PLAYER.X, playerPosition.X + MAX_DISTANCE_FROM_PLAYER.X);
+                position.Y = MathHelper.Clamp(position.Y, playerPosition.Y - MAX_DISTANCE_FROM_PLAYER.Y, playerPosition.Y + MAX_DISTANCE_FROM_PLAYER.Y);
+            }
+
+
+            position.X = MathHelper.Clamp(position.X, cameraWidth / 2, Globals.map.mapSize.X * Globals.tileSize.X - cameraWidth / 2);
+            position.Y = MathHelper.Clamp(position.Y, cameraHeight / 2, Globals.map.mapSize.Y * Globals.tileSize.Y - cameraHeight / 2);
+
+            
+        }
 
         private void UpdateTransform()
         {

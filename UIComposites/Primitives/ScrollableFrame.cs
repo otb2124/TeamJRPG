@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Diagnostics;
 
@@ -17,6 +18,7 @@ namespace TeamJRPG
         private float rowHeight; // Height of each row
         private float scrollValue; // Current scroll position (0 to 1)
         private Vector2 scrollPosition; // Scroll position in pixels
+        private int scrollCounter = 0;
 
         public Vector2 frameSize;
         public Vector2 size;
@@ -32,7 +34,6 @@ namespace TeamJRPG
             // Initialize viewport properties
             startIndex = 0;
             endIndex = 0;
-            maxVisibleRows = 7;
             scrollValue = 0;
             scrollPosition = Vector2.Zero;
             this.frameSize = frameSize;
@@ -43,24 +44,27 @@ namespace TeamJRPG
             // Calculate the mouse wheel delta
             int mouseWheelDelta = Globals.inputManager.currentMouseState.ScrollWheelValue - Globals.inputManager.previousMouseState.ScrollWheelValue;
 
-            // Check if the mouse wheel was scrolled
-            if (mouseWheelDelta != 0)
+
+            scrollCounter++;
+            if (scrollCounter >= 1 * 30)
             {
-                scrollPosition.Y = MathHelper.Clamp(scrollPosition.Y - mouseWheelDelta / 10, 0, Math.Max(0, rowHeight * ((children.Count + itemsPerRow - 1) / itemsPerRow) - size.Y));
+                scrollPosition.Y = 0;
+                scrollCounter = 0;
             }
 
-            // Update the components
-            foreach (var child in children)
+            if (mouseWheelDelta != 0)
             {
-                child.Update();
+                scrollPosition.Y = MathHelper.Clamp(scrollPosition.Y - mouseWheelDelta / 100, -Math.Max(0, rowHeight * ((children.Count + itemsPerRow - 1) / itemsPerRow) - size.Y), Math.Max(0, rowHeight * ((children.Count + itemsPerRow - 1) / itemsPerRow) - size.Y));
             }
+
+            base.Update();
         }
 
         public override void Draw()
         {
 
             startIndex = (int)(scrollPosition.Y / rowHeight);
-            endIndex = Math.Min(startIndex + maxVisibleRows, (children.Count + itemsPerRow - 1) / itemsPerRow);
+            endIndex = Math.Min(startIndex + children.Count, (children.Count + itemsPerRow - 1) / itemsPerRow);
 
             for (int rowIndex = startIndex; rowIndex < endIndex; rowIndex++)
             {
@@ -69,15 +73,33 @@ namespace TeamJRPG
                     int childIndex = rowIndex * itemsPerRow + itemIndex;
                     if (childIndex < children.Count && children[childIndex] != null)
                     {
-                        // Adjust the position of the component based on its index and scroll position
+
                         Vector2 drawPosition = new Vector2(
-                            position.X + itemIndex * (frameSize.X + 10), 
-                            position.Y + (rowIndex - startIndex) * rowHeight - (scrollPosition.Y % rowHeight)
+                             0,
+                             (scrollPosition.Y % rowHeight)
                         );
                         children[childIndex].position = drawPosition;
-                        children[childIndex].Draw();
+                        bool isOut = false;
+
+                        for (global::System.Int32 i = 0; i < children[childIndex].components.Count; i++)
+                        {
+                            children[childIndex].components[i].position -= drawPosition;
+                            if(children[childIndex].components[i].position.Y < frameSize.Y - 64 || children[childIndex].components[i].position.Y > frameSize.Y*6)
+                            {
+                                isOut = true;
+                            }
+                        }
+
+                        if (!isOut)
+                        {
+                            children[childIndex].Draw();
+                        }
+                        
                     }
+
+
                 }
+
             }
         }
     }
