@@ -14,8 +14,8 @@ namespace TeamJRPG
 
 
             //frame
-            Vector2 frameSize = new Vector2(Globals.camera.viewport.Width - Globals.camera.viewport.Width / 3 * 1.75f - 50, Globals.camera.viewport.Height - 40);
-            Vector2 framePos = new Vector2(Globals.camera.viewport.Width / 3 * 1.75f, 10);
+            Vector2 frameSize = new Vector2(Globals.camera.viewport.Width - Globals.camera.viewport.Width / 3 * 1.75f - 50 + 100, Globals.camera.viewport.Height - 40);
+            Vector2 framePos = new Vector2(Globals.camera.viewport.Width / 3 * 1.75f - 100, 10);
            
 
             Frame frame = new Frame(framePos, frameSize);
@@ -24,9 +24,9 @@ namespace TeamJRPG
 
 
             //top label
-            Label characterName = new Label(name, new Vector2(framePos.X + frameSize.X/2, framePos.Y));
+            Label characterName = new Label(name, new Vector2(framePos.X + frameSize.X/2, framePos.Y), 2);
 
-            Vector2 textSize = Globals.assetSetter.fonts[characterName.fontID].MeasureString(name);
+            Vector2 textSize = Globals.assetSetter.fonts[2].MeasureString(name);
             for (int i = 0; i < characterName.components.Count; i++)
             {
                 characterName.components[i].position.X -= textSize.X / 2;
@@ -52,13 +52,118 @@ namespace TeamJRPG
 
             //Character sprite
             Texture2D texture = Globals.assetSetter.textures[5][0][0];
-            Vector2 spritePos = new Vector2(framePos.X + frameSize.X/2 - texture.Width/2, framePos.Y + frameSize.Y / 3 - texture.Height / 2);
+            Vector2 spritePos = new Vector2(framePos.X + frameSize.X/2 - texture.Width/2, framePos.Y + frameSize.Y / 3 - texture.Height / 1.5f);
             ImageHolder character = new ImageHolder(texture, spritePos, new Vector2(1f, 1f));
             children.Add(character);
 
 
 
-            //Table
+            // Table of labels
+            Vector2 cellSize = new Vector2(160, 16); // Example cell size
+
+            //LEFT
+            //EXPIRIENCE
+            string title = "EXPIRIENCE";
+            Label tableTitle = new Label(title, new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 - cellSize.Y), 1);
+            children.Add(tableTitle);
+
+            string[][] playerStatTableData = new string[][]
+            {
+                new string[] { "Level", "100" },
+                new string[] { "Expirience", "100" },
+                new string[] { "Next Level", "50" },
+                new string[] { "Skill Points", "200" },
+            };
+
+            Vector2 tableStartPosition = new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + cellSize.Y);
+            LabelTable labelTable = new LabelTable(playerStatTableData, tableStartPosition, cellSize);
+            children.Add(labelTable);
+
+
+
+
+            //ATTRIBUTES
+            title = "ATTRIBUTES";
+            tableTitle = new Label(title, new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + cellSize.Y * 6), 1);
+            children.Add(tableTitle);
+
+
+            string[][] playerAttributesTableData = new string[][]
+            {
+                new string[] { "Strength", "100" },
+                new string[] { "Dexterity", "100" },
+                new string[] { "Wisdom", "50" },
+                new string[] { "Mana", "200/200" },
+                new string[] { "Life", "100/100" },
+            };
+
+            tableStartPosition = new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + 32 + cellSize.Y*6);
+            labelTable = new LabelTable(playerAttributesTableData, tableStartPosition, cellSize);
+            children.Add(labelTable);
+
+
+
+            //FIGHTING SKILLS
+            title = "FIGHTING SKILLS";
+            tableTitle = new Label(title, new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + cellSize.Y * 14), 1);
+            children.Add(tableTitle);
+
+            playerAttributesTableData = new string[][]
+            {
+                new string[] { "One-Handed", "100%" },
+                new string[] { "Two-Handed", "25%" },
+                new string[] { "Bow", "10%" },
+                new string[] { "Crossbow", "2%" },
+                new string[] { "Magic Circle", "5" },
+            };
+
+            tableStartPosition = new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + 32 + cellSize.Y * 14);
+            labelTable = new LabelTable(playerAttributesTableData, tableStartPosition, cellSize);
+            children.Add(labelTable);
+
+
+
+            //RIGHT
+            float XOffset = frameSize.X / 2;
+
+            //WEAPONS
+            title = "ATTACK";
+            tableTitle = new Label(title, new Vector2(framePos.X + XOffset, framePos.Y + frameSize.Y / 2 - cellSize.Y), 1);
+            children.Add(tableTitle);
+
+            playerAttributesTableData = new string[][]
+            {
+                new string[] { "Physical Damage", "1" },
+                new string[] { "Magical Damage", "0" },
+                new string[] { "Elemental Damage", "0" },
+                new string[] { "Crit Chance", "2%" },
+            };
+
+            tableStartPosition = new Vector2(framePos.X + XOffset, framePos.Y + frameSize.Y / 2 + cellSize.Y);
+            labelTable = new LabelTable(playerAttributesTableData, tableStartPosition, cellSize);
+            children.Add(labelTable);
+
+
+            //WEAPONS
+            title = "PROTECTION";
+            tableTitle = new Label(title, new Vector2(framePos.X + XOffset, framePos.Y + frameSize.Y / 2 + cellSize.Y*6), 1);
+            children.Add(tableTitle);
+
+            playerAttributesTableData = new string[][]
+            {
+                new string[] { "Physical Protection", "10%"},
+                new string[] { "Magical Protection", "1%" },
+                new string[] { "Fire Protection", "1%" },
+                new string[] { "Cold Protection", "1%" },
+                new string[] { "Lightning Protection", "1%" },
+                new string[] { "", ""},
+                new string[] { "Armor Defense", "150" },
+                new string[] { "Other Defense", "10"},
+            };
+
+            tableStartPosition = new Vector2(framePos.X + XOffset, framePos.Y + frameSize.Y / 2 + cellSize.Y *8);
+            labelTable = new LabelTable(playerAttributesTableData, tableStartPosition, cellSize);
+            children.Add(labelTable);
         }
 
 

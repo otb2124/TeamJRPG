@@ -10,7 +10,9 @@ namespace TeamJRPG
     {
         public bool isPlayer;
         public string name;
-        public GroupMember(Vector2 position, Texture2D texture) : base(position, texture)
+
+
+        public GroupMember(Vector2 position) : base(position)
         {
             speed = 3.5f;
             tileCollision = true;
@@ -25,9 +27,24 @@ namespace TeamJRPG
             isPlayer = false;
             name = "BLANK_NAME";
 
-
             characterTexture = Globals.assetSetter.textures[1][0][4];
+            SetTextures();
         }
+
+        public void SetTextures()
+        {
+            texture = new Texture2D[3];
+
+            texture[0] = Globals.assetSetter.textures[1][0][0];
+            texture[1] = Globals.assetSetter.textures[8][0][0];
+            texture[2] = Globals.assetSetter.textures[8][1][0];
+
+            skinColor = RandomHelper.RandomColor();
+        }
+
+
+
+
 
         public override void Update()
         {
@@ -165,13 +182,21 @@ namespace TeamJRPG
             switch (direction)
             {
                 case Direction.up:
-                    texture = Globals.assetSetter.textures[1][0][1]; break;
+                    texture[0] = Globals.assetSetter.textures[1][0][1];
+                    texture[1] = Globals.assetSetter.textures[8][2][1];
+                    texture[2] = Globals.assetSetter.textures[8][1][1]; break;
                 case Direction.down:
-                    texture = Globals.assetSetter.textures[1][0][0]; break;
+                    texture[0] = Globals.assetSetter.textures[1][0][0]; 
+                    texture[1] = Globals.assetSetter.textures[8][2][0];
+                    texture[2] = Globals.assetSetter.textures[8][1][0]; break;
                 case Direction.right:
-                    texture = Globals.assetSetter.textures[1][0][2]; break;
+                    texture[0] = Globals.assetSetter.textures[1][0][2];
+                    texture[1] = Globals.assetSetter.textures[8][2][2];
+                    texture[2] = Globals.assetSetter.textures[8][1][2]; break;
                 case Direction.left:
-                    texture = Globals.assetSetter.textures[1][0][3]; break;
+                    texture[0] = Globals.assetSetter.textures[1][0][3];
+                    texture[1] = Globals.assetSetter.textures[8][2][3];
+                    texture[2] = Globals.assetSetter.textures[8][1][3]; break;
             }
         }
 

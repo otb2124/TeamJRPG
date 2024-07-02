@@ -11,7 +11,12 @@ namespace TeamJRPG
 
         public Vector2 position;
         public Vector2 drawPosition;
-        public Texture2D texture;
+
+        public Texture2D[] texture;
+
+        public Color skinColor;
+        public Color drawColor;
+
         public Texture2D characterTexture;
         public Texture2D battleTexture;
         public int currentRoom;
@@ -39,10 +44,9 @@ namespace TeamJRPG
 
         public List<Item> inventory;
 
-        public Entity(Vector2 position, Texture2D texture) 
+        public Entity(Vector2 position) 
         {
             this.position = position * Globals.tileSize;
-            this.texture = texture;
             this.direction = Direction.up;
 
             this.tileCollision = false;
@@ -54,6 +58,8 @@ namespace TeamJRPG
             float collisionBoxY = this.position.Y;
             this.collisionBox = new System.Drawing.RectangleF(collisionBoxX, collisionBoxY, collisionBoxWidth, collisionBoxHeight);
             this.collisionTexture = Globals.assetSetter.CreateSolidColorTexture((int)collisionBoxWidth, (int)collisionBoxHeight, new Color(0.5f, 0, 0, 0.01f));
+
+            this.drawColor = Color.White;
 
             this.inventory = new List<Item>();
         }
@@ -133,7 +139,20 @@ namespace TeamJRPG
 
         public virtual void Draw()
         {
-            Globals.spriteBatch.Draw(texture, drawPosition, null, new Color(1f, 1f, 1f), 0f, Vector2.Zero, Globals.gameScale, SpriteEffects.None, 0f);
+
+            for (int i = 0; i < texture.Length; i++)
+            {
+                if (i == 0)
+                {
+                    drawColor = skinColor;
+                }
+                else
+                {
+                    drawColor = Color.White;
+                }
+                Globals.spriteBatch.Draw(texture[i], drawPosition, null, drawColor, 0f, Vector2.Zero, Globals.gameScale, SpriteEffects.None, 0f);
+            }
+            
 
             if(Globals.currentGameMode == Globals.GameMode.debugmode)
             {

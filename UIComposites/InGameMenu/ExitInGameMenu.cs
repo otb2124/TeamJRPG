@@ -20,8 +20,8 @@ namespace TeamJRPG
 
             //string
             string str = "Are you sure you want to exit?\nAll unsaved data will be lost.";
-            Label label = new Label(str, new Vector2(framePos.X + frameSize.X/2, framePos.Y));
-            Vector2 textSize = Globals.assetSetter.fonts[label.fontID].MeasureString(str);
+            Label label = new Label(str, new Vector2(framePos.X + frameSize.X/2, framePos.Y), 2);
+            Vector2 textSize = Globals.assetSetter.fonts[2].MeasureString(str);
             for (int i = 0; i < label.components.Count; i++)
             {
                 label.components[i].position.X -= textSize.X / 2;
@@ -31,18 +31,8 @@ namespace TeamJRPG
 
 
             //buttons
-            TextButton noTextButton = new TextButton("No", new Vector2(framePos.X, framePos.Y + frameSize.Y), 11);
-            for (int i = 0; i < noTextButton.components.Count; i++)
-            {
-                noTextButton.components[i].position.Y -= noTextButton.frameSize.Y / 4;
-            }
-            TextButton yesTextButton = new TextButton("Yes", new Vector2(framePos.X + frameSize.X, framePos.Y + frameSize.Y), 12);
-            for (int i = 0; i < yesTextButton.components.Count; i++)
-            {
-                yesTextButton.components[i].position.Y -= noTextButton.frameSize.Y / 4;
-                yesTextButton.components[i].position.X -= noTextButton.frameSize.X / 4 + 10;
-            }
-
+            TextButton noTextButton = new TextButton("No", new Vector2(framePos.X, framePos.Y + frameSize.Y - 32), 11);
+            TextButton yesTextButton = new TextButton("Yes", new Vector2(framePos.X + frameSize.X - 48, framePos.Y + frameSize.Y - 32), 12);
 
             children.Add(noTextButton);
             children.Add(yesTextButton);

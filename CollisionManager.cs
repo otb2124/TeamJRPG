@@ -1,7 +1,7 @@
-﻿
-
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Drawing;
+
+
 
 namespace TeamJRPG
 {
@@ -9,24 +9,33 @@ namespace TeamJRPG
     {
 
 
+        public RectangleF worldBounds = new RectangleF(0, 0, Globals.map.mapSize.X * Globals.tileSize.X, Globals.map.mapSize.Y * Globals.tileSize.Y);
+
         public bool CheckTileCollision(Entity entity)
         {
-                // Loop through all tiles in the current room
-                for (int x = 0; x < Globals.map.tiles.GetLength(0); x++)
+
+
+            if (!worldBounds.Contains(entity.collisionBox))
+            {
+                return true;
+            }
+
+            // Loop through all tiles in the current room
+            for (int x = 0; x < Globals.map.tiles.GetLength(0); x++)
+            {
+                for (int y = 0; y < Globals.map.tiles.GetLength(1); y++)
                 {
-                    for (int y = 0; y < Globals.map.tiles.GetLength(1); y++)
+                    // Check if the current tile is collidable
+                    if (Globals.map.tiles[x, y].collision)
                     {
-                        // Check if the current tile is collidable
-                        if (Globals.map.tiles[x, y].collision)
+                        // Check for intersection with the entity's tileCollision box
+                        if (entity.collisionBox.IntersectsWith(Globals.map.tiles[x, y].collisionBox))
                         {
-                            // Check for intersection with the entity's tileCollision box
-                            if (entity.collisionBox.IntersectsWith(Globals.map.tiles[x, y].collisionBox))
-                            {
-                                return true;
-                            }
+                            return true;
                         }
                     }
-                
+                }
+
             }
 
             return false;
@@ -36,7 +45,7 @@ namespace TeamJRPG
         public Entity CheckEntityCollision(Entity entity)
         {
 
-            ConstrainEntityToMap(entity);
+
 
             for (int i = 0; i < Globals.entities.Count; i++)
             {

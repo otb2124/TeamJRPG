@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Diagnostics;
 
 namespace TeamJRPG
@@ -10,6 +9,7 @@ namespace TeamJRPG
         public bool Active = false;
         public int id;
         public System.Drawing.RectangleF buttonBox;
+        public float scale = 1f;
 
         public Button(Texture2D texture, Vector2 startPosition, int id)
         {
@@ -17,6 +17,11 @@ namespace TeamJRPG
             this.id = id;
 
             ImageHolder img = new ImageHolder(texture, startPosition, new Vector2(1f, 1f));
+
+            for (int i = 0; i < img.components.Count; i++)
+            {
+                img.components[i].scale = new Vector2(this.scale, this.scale);
+            }
 
             buttonBox = new System.Drawing.RectangleF(position.X, position.Y, texture.Width, texture.Height);
 
@@ -37,6 +42,7 @@ namespace TeamJRPG
 
             if (buttonBox.Contains(new System.Drawing.PointF(Globals.inputManager.GetCursorPos().X, Globals.inputManager.GetCursorPos().Y)))
             {
+
                 if (Globals.inputManager.IsMouseButtonClick(InputManager.MouseButton.Left))
                 {
 
@@ -171,6 +177,25 @@ namespace TeamJRPG
                             Debug.WriteLine("secondary quests");
                             break;
 
+
+
+
+
+                        case 100:
+                            Debug.WriteLine("100");
+                            break;
+                        case 101:
+                            Debug.WriteLine("101");
+                            break;
+                        case 102:
+                            Debug.WriteLine("102");
+                            break;
+                        case 103:
+                            Debug.WriteLine("103");
+                            break;
+                        case 104:
+                            Debug.WriteLine("104");
+                            break;
                     }
                 }
             }

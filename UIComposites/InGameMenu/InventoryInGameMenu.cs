@@ -1,18 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SharpDX.XAudio2;
 using System;
-using System.Diagnostics;
-using System.Security.Cryptography.Xml;
-using System.Windows.Forms;
-using TeamJRPG.Primitives;
 
 namespace TeamJRPG
 {
     public class InventoryInGameMenu : UIComposite
     {
 
-        public ButtonChoicePanel bcp;
+        public ButtonChoicePanel catBCP;
+        public ButtonChoicePanel characterBCP;
+        //public int 
 
 
         public InventoryInGameMenu()
@@ -84,12 +81,23 @@ namespace TeamJRPG
             float totalIconWidth = Globals.group.Count * charIconWidth; // Total width needed for icons
             float startX = spritePos.X - (charTexture.Width / 2 * scale); // Center icons within the frame
 
+
+
+            Button[] buttonArray = new Button[Globals.group.Count];
             for (int i = 0; i < Globals.group.Count; i++)
             {
                 Vector2 iconPos = new Vector2(startX + (i * charIconWidth), framePos.Y + margin.Y + charTexture.Height * scale + 24);
                 CharacterIconHolder icon = new CharacterIconHolder(Globals.group[i], iconPos, new Vector2(iconScale, iconScale));
                 children.Add(icon);
+
+
+                buttonArray[i] = new Button(Globals.assetSetter.textures[6][0][0], iconPos, 100+i);
             }
+
+            ButtonChoicePanel characterBCP = new ButtonChoicePanel(buttonArray);
+            children.Add(characterBCP);
+
+
 
 
 
@@ -109,15 +117,15 @@ namespace TeamJRPG
             Vector2 catItemSize = new Vector2(64, 64);
             Vector2 catPadding = new Vector2(catItemSize.X * 0.8f, 10);
 
-            Button weaponCategory = new Button(Globals.assetSetter.textures[4][6][0], framePos3 + catMargin, 20);
-            Button armorCategory = new Button(Globals.assetSetter.textures[4][6][1], new Vector2(framePos3.X + catMargin.X + catItemSize.X + catPadding.X, framePos3.Y + catMargin.Y), 21);
-            Button potionCategory = new Button(Globals.assetSetter.textures[4][6][2], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X)*2, framePos3.Y + catMargin.Y), 22);
-            Button materialCategory = new Button(Globals.assetSetter.textures[4][6][3], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 3, framePos3.Y + catMargin.Y), 23);
-            Button valueableCategory = new Button(Globals.assetSetter.textures[4][6][4], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 4, framePos3.Y + catMargin.Y), 24);
-            Button questItemCategory = new Button(Globals.assetSetter.textures[4][6][5], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 5, framePos3.Y + catMargin.Y), 25);
+            Button weaponCategory = new Button(Globals.assetSetter.textures[4][6][0], framePos3 + catMargin, 30);
+            Button armorCategory = new Button(Globals.assetSetter.textures[4][6][1], new Vector2(framePos3.X + catMargin.X + catItemSize.X + catPadding.X, framePos3.Y + catMargin.Y), 31);
+            Button potionCategory = new Button(Globals.assetSetter.textures[4][6][2], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X)*2, framePos3.Y + catMargin.Y), 32);
+            Button materialCategory = new Button(Globals.assetSetter.textures[4][6][3], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 3, framePos3.Y + catMargin.Y), 33);
+            Button valueableCategory = new Button(Globals.assetSetter.textures[4][6][4], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 4, framePos3.Y + catMargin.Y), 34);
+            Button questItemCategory = new Button(Globals.assetSetter.textures[4][6][5], new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 5, framePos3.Y + catMargin.Y), 35);
 
-            bcp = new ButtonChoicePanel(new Button[] { weaponCategory, armorCategory, potionCategory, materialCategory, valueableCategory, questItemCategory });
-            children.Add(bcp);
+            catBCP = new ButtonChoicePanel(new Button[] { weaponCategory, armorCategory, potionCategory, materialCategory, valueableCategory, questItemCategory });
+            children.Add(catBCP);
 
 
             //inventoryFrame

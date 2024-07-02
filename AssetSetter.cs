@@ -26,7 +26,7 @@ namespace TeamJRPG
             textures[5] = new Texture2D[10][];
             textures[6] = new Texture2D[10][];
             textures[7] = new Texture2D[10][];
-
+            textures[8] = new Texture2D[10][];
 
             textures[9] = new Texture2D[10][];
 
@@ -52,6 +52,7 @@ namespace TeamJRPG
             LoadTextures(5, "Content/res/battlesprites/battlesprite");
             LoadTextures(6, "Content/res/placeholders/placeholder");
             LoadTextures(7, "Content/res/items/item");
+            LoadTextures(8, "Content/res/characterDetails/characterDetail");
         }
 
         private void LoadTextures(int index, string basePath)

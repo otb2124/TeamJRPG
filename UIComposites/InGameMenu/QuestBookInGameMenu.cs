@@ -24,9 +24,9 @@ namespace TeamJRPG
 
 
             //top label
-            Label characterName = new Label(name, new Vector2(framePos.X + frameSize.X / 2, framePos.Y));
+            Label characterName = new Label(name, new Vector2(framePos.X + frameSize.X / 2, framePos.Y), 2);
 
-            Vector2 textSize = Globals.assetSetter.fonts[characterName.fontID].MeasureString(name);
+            Vector2 textSize = Globals.assetSetter.fonts[2].MeasureString(name);
             for (int i = 0; i < characterName.components.Count; i++)
             {
                 characterName.components[i].position.X -= textSize.X / 2;
@@ -50,9 +50,37 @@ namespace TeamJRPG
             children.Add(leftArrow);
             children.Add(rightArrow);
 
+            
+            //quest list frame
+            framePos = new Vector2(framePos.X, framePos.Y + textSize.Y + 16);
+            Frame questFrame = new Frame(framePos, new Vector2(frameSize.X/3, frameSize.Y - textSize.Y - 16));
+            children.Add(questFrame);
+
+            //quest list
+            Button[] buttonArray = new Button[7];
+            Vector2 Offset = new Vector2(10, 64);
+
+            for (int i = 0; i < 7; i++)
+            {
+                TextButton txtBtn = new TextButton("Quest Name", new Vector2(framePos.X + Offset.X, framePos.Y + i * Offset.Y), 30 + i);
+                buttonArray[i] = txtBtn;
+            }
+
+            ButtonChoicePanel questBCP = new ButtonChoicePanel(buttonArray);
+            children.Add(questBCP);
 
 
-            //Table
+            //quest descript frame
+            framePos = new Vector2(framePos.X + frameSize.X / 3 + 36, framePos.Y);
+            questFrame = new Frame(framePos, new Vector2(frameSize.X / 3 * 2 - 36, frameSize.Y - textSize.Y - 16));
+            children.Add(questFrame);
+
+            Label questTitle = new Label("Quest Name", new Vector2(framePos.X + questFrame.frameSize.X/4, framePos.Y), 1);
+            children.Add(questTitle);
+
+            Label questDesr = new Label("This quest is just a regular one to describe\nhow ui kinda works/doesnt.\nI actually like next paragraph.\n\nUh here it  is.", new Vector2(framePos.X, framePos.Y + 64), 0);
+            children.Add(questDesr);
+
         }
 
 

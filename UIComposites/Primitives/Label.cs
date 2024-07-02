@@ -9,9 +9,8 @@ namespace TeamJRPG
 
 
         public Vector2 textSize;
-        public int fontID = 1;
 
-        public Label(string text, Vector2 startPosition)
+        public Label(string text, Vector2 startPosition, int fontID)
         {
 
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);

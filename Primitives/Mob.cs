@@ -17,7 +17,7 @@ namespace TeamJRPG
 
 
 
-        public Mob(Vector2 position, Texture2D texture) : base(position, texture)
+        public Mob(Vector2 position, Texture2D texture) : base(position)
         {
             speed = 1f;
 

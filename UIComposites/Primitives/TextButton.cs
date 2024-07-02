@@ -16,17 +16,16 @@ namespace TeamJRPG
 
         public TextButton(string text, Vector2 startPosition, int id) : base(Globals.assetSetter.textures[6][0][0], startPosition, id)
         {
-            TextFrame textFrame = new TextFrame(text, startPosition);
-            components.AddRange(textFrame.components);
+            this.position = startPosition;
+            Vector2 adjposition = new Vector2(position.X - Globals.camera.viewport.Width / 2, position.Y - Globals.camera.viewport.Height / 2);
 
-            frameSize = textFrame.frameSize*2;
-            buttonBox = new System.Drawing.RectangleF(textFrame.position.X - frameSize.X/2, textFrame.position.Y - frameSize.Y/2, frameSize.X, frameSize.Y);
+
+            TextFrame textFrame = new TextFrame(text, position);
+            children.Add(textFrame);
+
+            frameSize = textFrame.frameSize*10;
+            buttonBox = new System.Drawing.RectangleF(adjposition.X, adjposition.Y, frameSize.X, frameSize.Y);
         }
 
-
-        public override void Update()
-        {
-            base.Update();
-        }
     }
 }

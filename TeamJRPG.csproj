@@ -24,28 +24,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Content\res\battlesprites\battlesprite0.png" />
+    <None Remove="Content\res\characterDetails\characterDetail0.png" />
+    <None Remove="Content\res\characterDetails\characterDetail0_1.png" />
+    <None Remove="Content\res\characterDetails\characterDetail0_2.png" />
+    <None Remove="Content\res\characterDetails\characterDetail0_3.png" />
+    <None Remove="Content\res\characterDetails\characterDetail1.png" />
+    <None Remove="Content\res\characterDetails\characterDetail1_1.png" />
+    <None Remove="Content\res\characterDetails\characterDetail1_2.png" />
+    <None Remove="Content\res\characterDetails\characterDetail1_3.png" />
+    <None Remove="Content\res\characterDetails\characterDetail2.png" />
+    <None Remove="Content\res\characterDetails\characterDetail2_1.png" />
+    <None Remove="Content\res\characterDetails\characterDetail2_2.png" />
+    <None Remove="Content\res\characterDetails\characterDetail2_3.png" />
     <None Remove="Content\res\effects\CircularMask.fx" />
-    <None Remove="Content\res\fonts\Roboto_20_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_21_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_22_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_23_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_24_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_25_Regular.xnb" />
+    <None Remove="Content\res\fonts\Roboto_12_Regular.xnb" />
+    <None Remove="Content\res\fonts\Roboto_18_Regular.xnb" />
     <None Remove="Content\res\fonts\Roboto_26_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_27_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_28_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_29_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_30_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_31_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_32_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_33_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_34_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_35_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_36_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_37_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_38_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_39_Regular.xnb" />
-    <None Remove="Content\res\fonts\Roboto_40_Regular.xnb" />
     <None Remove="Content\res\items\item0.png" />
     <None Remove="Content\res\items\item1.png" />
     <None Remove="Content\res\items\item2.png" />
@@ -120,68 +114,50 @@
     <Content Include="Content\res\battlesprites\battlesprite0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\fonts\Roboto_20_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Content\res\characterDetails\characterDetail0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\fonts\Roboto_21_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Content\res\characterDetails\characterDetail0_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\fonts\Roboto_22_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Content\res\characterDetails\characterDetail0_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\fonts\Roboto_23_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Content\res\characterDetails\characterDetail0_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\fonts\Roboto_24_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Content\res\characterDetails\characterDetail1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\res\fonts\Roboto_25_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Content\res\characterDetails\characterDetail1_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characterDetails\characterDetail1_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characterDetails\characterDetail1_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characterDetails\characterDetail2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characterDetails\characterDetail2_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characterDetails\characterDetail2_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characterDetails\characterDetail2_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Roboto_12_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\fonts\Roboto_18_Regular.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\fonts\Roboto_26_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_27_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_28_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_29_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_30_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_31_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_32_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_33_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_34_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_35_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_36_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_37_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_38_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_39_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\res\fonts\Roboto_40_Regular.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\items\item0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

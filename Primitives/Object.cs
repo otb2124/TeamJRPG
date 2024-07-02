@@ -13,9 +13,8 @@ namespace TeamJRPG
         public System.Drawing.RectangleF interractionBox;
         public Texture2D interractionBoxTexture;
 
-        public Object(Vector2 position, Texture2D texture) : base(position, texture)
+        public Object(Vector2 position) : base(position)
         {
-
 
             this.tileCollision = true;
 
@@ -36,6 +35,17 @@ namespace TeamJRPG
             type = ObjectType.pickable;
 
             this.inventory.Add(new Item("apple"));
+            SetTextures();
+        }
+
+
+        public void SetTextures()
+        {
+            texture = new Texture2D[1];
+
+            texture[0] = Globals.assetSetter.textures[2][0][0];
+
+            skinColor = Color.White;
         }
 
 

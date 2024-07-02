@@ -41,18 +41,26 @@ namespace TeamJRPG
             Globals.aStarPathfinding.Init();
             Globals.uiManager.Init();
 
-            Globals.player = new GroupMember(new Vector2(1, 1), Globals.assetSetter.textures[1][0][0]);
+            Globals.player = new GroupMember(new Vector2(1, 1));
             Globals.player.isPlayer = true;
             Globals.player.name = "Vika";
+            Globals.player.inventory.Add(new Weapon("weapon"));
+            Globals.player.inventory.Add(new Weapon("weapon"));
+            Globals.player.inventory.Add(new Weapon("weapon"));
+            Globals.player.inventory.Add(new Weapon("weapon"));
+            Globals.player.inventory.Add(new Weapon("weapon"));
+            Globals.player.inventory.Add(new Weapon("weapon"));
+            Globals.player.inventory.Add(new Armor("armor"));
 
-            GroupMember member1 = new GroupMember(new Vector2(1, 2), Globals.assetSetter.textures[1][0][0]);
-            member1.speed = 3f;
+
+
+            GroupMember member1 = new GroupMember(new Vector2(1, 2));
             member1.name = "Orest";
-            GroupMember member2 = new GroupMember(new Vector2(1, 3), Globals.assetSetter.textures[1][0][0]);
-            member2.speed = 3f;
+            GroupMember member2 = new GroupMember(new Vector2(1, 3));
+
             member1.name = "Slavic";
-            GroupMember member3 = new GroupMember(new Vector2(1, 4), Globals.assetSetter.textures[1][0][0]);
-            member3.speed = 3f;
+            GroupMember member3 = new GroupMember(new Vector2(1, 4));
+
             member1.name = "Artur";
 
             Globals.group.Add(Globals.player);
@@ -61,7 +69,7 @@ namespace TeamJRPG
             Globals.group.Add(member3);
 
             Globals.entities.AddRange(Globals.group);
-            Globals.entities.Add(new Object(new Vector2(15, 5), Globals.assetSetter.textures[2][0][0]));
+            Globals.entities.Add(new Object(new Vector2(15, 5)));
 
             Globals.camera.Load();
         }
@@ -129,12 +137,12 @@ namespace TeamJRPG
             }
 
             // Sort entities for drawing
-            Globals.entities.Sort((e1, e2) => (e1.drawPosition.Y + e1.texture.Height * Globals.gameScale).CompareTo(e2.drawPosition.Y + e2.texture.Height * Globals.gameScale));
+            Globals.entities.Sort((e1, e2) => (e1.drawPosition.Y + e1.texture[0].Height * Globals.gameScale).CompareTo(e2.drawPosition.Y + e2.texture[0].Height * Globals.gameScale));
 
             // Split entities into overDraw and underDraw lists
             foreach (Entity entity in Globals.entities)
             {
-                if (entity.drawPosition.Y + (entity.texture.Height * Globals.gameScale) <= Globals.player.drawPosition.Y + (Globals.player.texture.Height * Globals.gameScale) && !(entity is GroupMember))
+                if (entity.drawPosition.Y + (entity.texture[0].Height * Globals.gameScale) <= Globals.player.drawPosition.Y + (Globals.player.texture[0].Height * Globals.gameScale) && !(entity is GroupMember))
                 {
                     underDraw.Add(entity);
                 }
