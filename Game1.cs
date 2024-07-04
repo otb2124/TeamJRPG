@@ -49,7 +49,7 @@ namespace TeamJRPG
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            Globals.spriteBatch.Begin(transformMatrix: Globals.camera.Transform);
+            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.Default, transformMatrix: Globals.camera.Transform);
             Globals.gameManager.Draw();
             Globals.spriteBatch.End();
             base.Draw(gameTime);

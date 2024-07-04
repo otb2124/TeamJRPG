@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace TeamJRPG
 {
@@ -44,15 +46,6 @@ namespace TeamJRPG
             Globals.player = new GroupMember(new Vector2(1, 1));
             Globals.player.isPlayer = true;
             Globals.player.name = "Vika";
-            Globals.player.inventory.Add(new Weapon("weapon"));
-            Globals.player.inventory.Add(new Weapon("weapon"));
-            Globals.player.inventory.Add(new Weapon("weapon"));
-            Globals.player.inventory.Add(new Weapon("weapon"));
-            Globals.player.inventory.Add(new Weapon("weapon"));
-            Globals.player.inventory.Add(new Weapon("weapon"));
-            Globals.player.inventory.Add(new Armor("armor"));
-
-
 
             GroupMember member1 = new GroupMember(new Vector2(1, 2));
             member1.name = "Orest";
