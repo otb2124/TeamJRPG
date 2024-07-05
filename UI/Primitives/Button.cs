@@ -175,6 +175,22 @@ namespace TeamJRPG
 
 
 
+                        //inventory itemholders
+                        case 40:
+                            Debug.WriteLine(id);
+                            break;
+                        case 41:
+                            Debug.WriteLine(id);
+                            break;
+                        case 42:
+                            Debug.WriteLine(id);
+                            break;
+                        case 43:
+                            Debug.WriteLine(id);
+                            break;
+                        case 44:
+                            Debug.WriteLine(id);
+                            break;
 
 
                         case 100:

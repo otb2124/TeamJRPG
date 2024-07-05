@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SharpDX.Direct3D9;
-using System.ComponentModel.Design.Serialization;
 
 
 namespace TeamJRPG

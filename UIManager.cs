@@ -1,5 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using SharpDX.Direct2D1.Effects;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace TeamJRPG
@@ -15,14 +16,13 @@ namespace TeamJRPG
         public UIManager()
         {
             composites = new List<UIComposite>();
-            currentMenuState = MenuState.clean;
-            MenuStateNeedsChange = true;
         }
 
 
         public void Init()
         {
-            
+            currentMenuState = MenuState.clean;
+            MenuStateNeedsChange = true;
         }
 
 
@@ -163,6 +163,33 @@ namespace TeamJRPG
         }
 
 
+        public List<UIComposite> GetAllChildrenOfType(UIComposite.UICompositeType type)
+        {
+            List<UIComposite> result = new List<UIComposite>();
+            foreach (var composite in composites)
+            {
+                result.AddRange(GetChildrenOfTypeRecursive(composite, type));
+            }
+            return result;
+        }
+
+        private List<UIComposite> GetChildrenOfTypeRecursive(UIComposite composite, UIComposite.UICompositeType type)
+        {
+            List<UIComposite> result = new List<UIComposite>();
+            if (composite.type == type)
+            {
+                result.Add(composite);
+            }
+            foreach (var child in composite.children)
+            {
+                result.AddRange(GetChildrenOfTypeRecursive(child, type));
+            }
+            return result;
+        }
+
+
+
+
 
         public void Update()
         {
@@ -178,17 +205,30 @@ namespace TeamJRPG
         public void Draw()
         {
 
-            // Draw all composites except the cursor first
-            foreach (var composite in composites.Where(c => !(c is MouseCursor)))
+            foreach (var composite in composites)
             {
-                composite.Draw();
+                if (composite.type != UIComposite.UICompositeType.FLOATING_INFO_BOX && composite.type != UIComposite.UICompositeType.MOUSE_CURSOR)
+                {
+                    composite.Draw();
+                }
+            }
+
+            // Draw the FloatingInfoBox
+            foreach (var infoBox in composites)
+            {
+                if (infoBox.type == UIComposite.UICompositeType.FLOATING_INFO_BOX)
+                {
+                    infoBox.Draw();
+                }
             }
 
             // Draw the cursor last
-            foreach (var composite in composites.Where(c => c is MouseCursor))
+            foreach (var cursor in composites)
             {
-                composite.Draw();
-
+                if (cursor.type == UIComposite.UICompositeType.MOUSE_CURSOR)
+                {
+                    cursor.Draw();
+                }
             }
         }
     }

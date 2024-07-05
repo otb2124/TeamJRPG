@@ -56,31 +56,31 @@ namespace TeamJRPG
 
         public void SetEquipment()
         {
-            weapon1 = new Weapon("hand");
-            weapon2 = new Weapon("hand");
+            weapon1 = new Weapon(0);
+            weapon2 = new Weapon(0);
             armor = new Armor[9];
             for (int i = 0; i < armor.Length; i++)
             {
-                armor[i] = new Armor("armor");
+                armor[i] = new Armor(0);
             }
         }
 
 
         public void SetInventory()
         {
-            inventory.Add(new Consumable("weapon"));
-            inventory.Add(new QuestItem("weapon"));
-            inventory.Add(new Valuable("weapon"));
-            inventory.Add(new Material("weapon"));
-            inventory.Add(new Weapon("armor"));
-            inventory.Add(new Consumable("weapon"));
-            inventory.Add(new QuestItem("weapon"));
-            inventory.Add(new Valuable("weapon"));
-            inventory.Add(new Material("weapon"));
-            inventory.Add(new Weapon("armor"));
-            inventory.Add(new Armor("armor"));
-            inventory.Add(new Armor("armor"));
-            inventory.Add(new Armor("armor"));
+            inventory.Add(new Consumable(0));
+            inventory.Add(new QuestItem(0));
+            inventory.Add(new Valuable(0));
+            inventory.Add(new Material(0));
+            inventory.Add(new Weapon(1));
+            inventory.Add(new Consumable(0));
+            inventory.Add(new QuestItem(0));
+            inventory.Add(new Valuable(0));
+            inventory.Add(new Material(0));
+            inventory.Add(new Weapon(1));
+            inventory.Add(new Armor(1));
+            inventory.Add(new Armor(1));
+            inventory.Add(new Armor(1));
 
         }
 

@@ -12,11 +12,50 @@ namespace TeamJRPG
         public enum ArmorType { helmet, chestplate, boots, gloves, cape, belt, necklace, ring }
         public ArmorType armorType;
 
-        public Armor(string name) : base(name)
+        public int armorID;
+        public int textureID;
+
+        public Armor(int armorID)
         {
-            texture = Globals.assetSetter.textures[Globals.assetSetter.ITEMS_ARMOR][0][0];
+            this.armorID = armorID;
             type = ItemType.ARMOR;
-            armorType = ArmorType.helmet;
+
+            SetArmor();
+        }
+
+
+        public void SetArmor()
+        {
+            switch (armorID)
+            {
+                case 0:
+                    name = "Armor Slot";
+                    description = "";
+                    break;
+                case 1:
+                    name = "Black Cotton Coat";
+                    armorType = ArmorType.chestplate;
+                    description = "A regular cotton black coat.\nWorn by strongest knights.";
+                    value = 150;
+
+                    textureID = 0;
+                    break;
+            }
+
+            SetTexture();
+        }
+
+        public void SetTexture()
+        {
+            if (armorID != 0)
+            {
+
+                texture = Globals.assetSetter.textures[Globals.assetSetter.ITEMS_ARMOR][textureID][0];
+            }
+            else
+            {
+                texture = Globals.assetSetter.textures[Globals.assetSetter.PLACEHOLDERS][0][0];
+            }
         }
     }
 }

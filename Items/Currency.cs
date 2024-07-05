@@ -10,10 +10,11 @@ namespace TeamJRPG
     {
 
 
-        public Currency() : base("Dinar")
+        public Currency()
         {
-            texture = Globals.assetSetter.textures[7][1][0];
+            texture = Globals.assetSetter.textures[Globals.assetSetter.ITEMS_CURRENCY][0][0];
             type = ItemType.CURRENCY;
+            value = 1;
         }
     }
 }

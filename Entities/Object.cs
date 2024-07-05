@@ -34,7 +34,7 @@ namespace TeamJRPG
 
             type = ObjectType.pickable;
 
-            this.inventory.Add(new Item("apple"));
+            this.inventory.Add(new Consumable(0));
             SetTextures();
         }
 

@@ -9,11 +9,37 @@ namespace TeamJRPG
     public class Valuable : Item
     {
 
+        public int valuableID;
+        public int textureID;
 
-        public Valuable(string name) : base(name)
+        public Valuable(int valuableID)
         {
-            texture = Globals.assetSetter.textures[Globals.assetSetter.ITEMS_VALUABLES][0][0];
+            this.valuableID = valuableID;
             type = ItemType.VALUEABLE;
+            SetValuable();
+        }
+
+
+
+        public void SetValuable()
+        {
+            switch (valuableID)
+            {
+                case 0:
+                    name = "Diamond";
+                    description = "Shiny.";
+                    value = 300;
+
+                    textureID = 0;
+                    break;
+            }
+
+            SetTexture();
+        }
+
+        public void SetTexture()
+        {
+            texture = Globals.assetSetter.textures[Globals.assetSetter.ITEMS_VALUABLES][textureID][0];
         }
     }
 }

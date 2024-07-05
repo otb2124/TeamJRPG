@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+
 
 namespace TeamJRPG
 {
@@ -18,6 +18,9 @@ namespace TeamJRPG
 
         public Vector2 itemSize;
         public float InventoryFrameOffset = 40;
+
+
+        public bool inventoryRefreshed = false;
 
         public InventoryInGameMenu()
         {
@@ -38,40 +41,40 @@ namespace TeamJRPG
             //EQUIPMENT
             //left
             Vector2 margin = new Vector2(20, 30);
-            ItemHolder weapon1 = new ItemHolder(new Weapon("sword1"), framePos + margin);
+            ItemHolder weapon1 = new ItemHolder(new Weapon(0), framePos + margin);
             children.Add(weapon1);
 
             Vector2 iconSize = weapon1.frameSize;
             Vector2 padding = new Vector2(10, 10);
-            ItemHolder weapon2 = new ItemHolder(new Weapon("sword2"), new Vector2(framePos.X + margin.X + iconSize.X + padding.X, framePos.Y + margin.Y));
+            ItemHolder weapon2 = new ItemHolder(new Weapon(0), new Vector2(framePos.X + margin.X + iconSize.X + padding.X, framePos.Y + margin.Y));
             children.Add(weapon2);
 
-            ItemHolder necklace = new ItemHolder(new Armor("necklace"), new Vector2(framePos.X + margin.X + (iconSize.X + padding.X)/2, framePos.Y + margin.Y + iconSize.Y + padding.Y));
+            ItemHolder necklace = new ItemHolder(new Armor(0), new Vector2(framePos.X + margin.X + (iconSize.X + padding.X)/2, framePos.Y + margin.Y + iconSize.Y + padding.Y));
             children.Add(necklace);
 
-            ItemHolder belt = new ItemHolder(new Armor("belt"), new Vector2(framePos.X + margin.X + (iconSize.X + padding.X) / 2, framePos.Y + margin.Y + iconSize.Y*2 + padding.Y*2));
+            ItemHolder belt = new ItemHolder(new Armor(0), new Vector2(framePos.X + margin.X + (iconSize.X + padding.X) / 2, framePos.Y + margin.Y + iconSize.Y*2 + padding.Y*2));
             children.Add(belt);
 
-            ItemHolder ring1 = new ItemHolder(new Armor("ring1"), new Vector2(framePos.X + margin.X, framePos.Y + margin.Y + (iconSize.Y + padding.Y) * 3));
+            ItemHolder ring1 = new ItemHolder(new Armor(0), new Vector2(framePos.X + margin.X, framePos.Y + margin.Y + (iconSize.Y + padding.Y) * 3));
             children.Add(ring1);
-            ItemHolder ring2 = new ItemHolder(new Armor("ring2"), new Vector2(framePos.X + margin.X + iconSize.X + padding.X, framePos.Y + margin.Y + (iconSize.Y + padding.Y) * 3));
+            ItemHolder ring2 = new ItemHolder(new Armor(0), new Vector2(framePos.X + margin.X + iconSize.X + padding.X, framePos.Y + margin.Y + (iconSize.Y + padding.Y) * 3));
             children.Add(ring2);
 
 
             //right
-            ItemHolder helmet = new ItemHolder(new Armor("helmet"), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X - (iconSize.X + padding.X)/2, framePos.Y + margin.Y));
+            ItemHolder helmet = new ItemHolder(new Armor(0), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X - (iconSize.X + padding.X)/2, framePos.Y + margin.Y));
             children.Add(helmet);
 
-            ItemHolder cape = new ItemHolder(new Armor("cape"), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X, framePos.Y + margin.Y + iconSize.Y + padding.Y));
+            ItemHolder cape = new ItemHolder(new Armor(0), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X, framePos.Y + margin.Y + iconSize.Y + padding.Y));
             children.Add(cape);
-            ItemHolder chestplate = new ItemHolder(new Armor("chestplate"), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X*2 - padding.X, framePos.Y + margin.Y + iconSize.Y + padding.Y));
+            ItemHolder chestplate = new ItemHolder(new Armor(0), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X*2 - padding.X, framePos.Y + margin.Y + iconSize.Y + padding.Y));
             children.Add(chestplate);
 
 
-            ItemHolder gloves = new ItemHolder(new Armor("gloves"), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X - (iconSize.X + padding.X) / 2, framePos.Y + margin.Y + (iconSize.Y + padding.Y)*2));
+            ItemHolder gloves = new ItemHolder(new Armor(0), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X - (iconSize.X + padding.X) / 2, framePos.Y + margin.Y + (iconSize.Y + padding.Y)*2));
             children.Add(gloves);
 
-            ItemHolder boots = new ItemHolder(new Armor("boots"), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X - (iconSize.X + padding.X) / 2, framePos.Y + margin.Y + (iconSize.Y + padding.Y) * 3));
+            ItemHolder boots = new ItemHolder(new Armor(0), new Vector2(framePos.X + frame.frameSize.X - margin.X - iconSize.X - (iconSize.X + padding.X) / 2, framePos.Y + margin.Y + (iconSize.Y + padding.Y) * 3));
             children.Add(boots);
 
 
@@ -151,6 +154,10 @@ namespace TeamJRPG
 
         public override void Update()
         {
+            if (catBCP.Changed)
+            {
+                inventoryRefreshed = false;
+            }
 
             RefreshInventory();
 
@@ -169,7 +176,7 @@ namespace TeamJRPG
 
             inventoryFrame = new ScrollableFrame(framePos2, frameSize2, 7, itemSize);
 
-            RefreshInventory();
+            inventoryRefreshed = false;
             
             children.Add(inventoryFrame);
         }
@@ -179,55 +186,63 @@ namespace TeamJRPG
 
         public void RefreshInventory() 
         {
-            inventoryFrame.children.Clear();
 
-
-            Vector2 framePos2 = new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + InventoryFrameOffset);
-
-            //inventory items
-            Vector2 itemPadding = new Vector2(12, 12);
-            Vector2 inventoryMargin = new Vector2(12, 12);
-
-            Item.ItemType sortType;
-            int sortIndex = 30;
-
-
-            if (catBCP != null)
+            if (!inventoryRefreshed)
             {
-                sortIndex = catBCP.currentChoice;
-            }
-
-            switch (sortIndex)
-            {
-                case 30: sortType = Item.ItemType.WEAPON; break;
-                case 31: sortType = Item.ItemType.ARMOR; break;
-                case 32: sortType = Item.ItemType.CONSUMABLE; break;
-                case 33: sortType = Item.ItemType.MATERIAL; break;
-                case 34: sortType = Item.ItemType.VALUEABLE; break;
-                case 35: sortType = Item.ItemType.QUEST; break;
-                default: sortType = Item.ItemType.WEAPON; break;
-            }
+                inventoryFrame.children.Clear();
 
 
-            List<Item> itemlist = Globals.player.inventory;
-            List<Item> newList = new List<Item>();
+                Vector2 framePos2 = new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + InventoryFrameOffset);
 
-            for (int i = 0; i < itemlist.Count; i++)
-            {
-                if (itemlist[i].type == sortType)
+                //inventory items
+                Vector2 itemPadding = new Vector2(12, 12);
+                Vector2 inventoryMargin = new Vector2(12, 12);
+
+                Item.ItemType sortType;
+                int sortIndex = 30;
+
+
+                if (catBCP != null)
                 {
-                    newList.Add(itemlist[i]);
+                    sortIndex = catBCP.currentChoice;
                 }
-            }
 
-            for (int i = 0; i < newList.Count; i++)
-            {
-                int cols = i % 7;
-                int rows = i / 7;
-                Vector2 itemPos = new Vector2(framePos2.X + inventoryMargin.X + cols * (itemSize.X + itemPadding.X), framePos2.Y + inventoryMargin.Y + rows * (itemSize.Y + itemPadding.Y));
-                ItemHolder invItem = new ItemHolder(newList[i], itemPos);
-                inventoryFrame.children.Add(invItem);
+                switch (sortIndex)
+                {
+                    case 30: sortType = Item.ItemType.WEAPON; break;
+                    case 31: sortType = Item.ItemType.ARMOR; break;
+                    case 32: sortType = Item.ItemType.CONSUMABLE; break;
+                    case 33: sortType = Item.ItemType.MATERIAL; break;
+                    case 34: sortType = Item.ItemType.VALUEABLE; break;
+                    case 35: sortType = Item.ItemType.QUEST; break;
+                    default: sortType = Item.ItemType.WEAPON; break;
+                }
+
+
+                List<Item> itemlist = Globals.player.inventory;
+                List<Item> newList = new List<Item>();
+
+                for (int i = 0; i < itemlist.Count; i++)
+                {
+                    if (itemlist[i].type == sortType)
+                    {
+                        newList.Add(itemlist[i]);
+                    }
+                }
+
+                for (int i = 0; i < newList.Count; i++)
+                {
+                    int cols = i % 7;
+                    int rows = i / 7;
+                    Vector2 itemPos = new Vector2(framePos2.X + inventoryMargin.X + cols * (itemSize.X + itemPadding.X), framePos2.Y + inventoryMargin.Y + rows * (itemSize.Y + itemPadding.Y));
+                    ItemHolder invItem = new ItemHolder(newList[i], itemPos);
+                    inventoryFrame.children.Add(invItem);
+                }
+
+
+                inventoryRefreshed = true;
             }
+            
         }
     }
 }
