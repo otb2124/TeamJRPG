@@ -9,13 +9,13 @@ namespace TeamJRPG
     public class Valuable : Item
     {
 
-        public int valuableID;
-        public int textureID;
-
-        public Valuable(int valuableID)
+        public Valuable(int itemID, int amount)
         {
-            this.valuableID = valuableID;
+            this.amount = amount;
+            this.itemID = itemID;
             type = ItemType.VALUEABLE;
+            IsStackable = true;
+
             SetValuable();
         }
 
@@ -23,7 +23,7 @@ namespace TeamJRPG
 
         public void SetValuable()
         {
-            switch (valuableID)
+            switch (itemID)
             {
                 case 0:
                     name = "Diamond";
@@ -35,11 +35,6 @@ namespace TeamJRPG
             }
 
             SetTexture();
-        }
-
-        public void SetTexture()
-        {
-            texture = Globals.assetSetter.textures[Globals.assetSetter.ITEMS_VALUABLES][textureID][0];
         }
     }
 }

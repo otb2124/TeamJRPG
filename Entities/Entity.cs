@@ -8,7 +8,6 @@ namespace TeamJRPG
     public class Entity
     {
 
-
         public Vector2 position;
         public Vector2 drawPosition;
 
@@ -44,7 +43,7 @@ namespace TeamJRPG
 
         public List<Item> inventory;
 
-        public Entity(Vector2 position) 
+        public Entity(Vector2 position)
         {
             this.position = position * Globals.tileSize;
             this.direction = Direction.up;
@@ -67,7 +66,7 @@ namespace TeamJRPG
 
         public virtual void Update()
         {
-            
+
         }
 
 
@@ -135,6 +134,36 @@ namespace TeamJRPG
 
 
 
+        public void AddToInventory(Item item)
+        {
+
+            bool hasItem = false;
+
+            if (item.IsStackable)
+            {
+                foreach (var invItem in inventory)
+                {
+                    if (invItem.name == item.name)
+                    {
+                        hasItem = true;
+                        invItem.amount+=item.amount;
+                        break;
+                    }
+                }
+
+            }
+
+
+            if (!item.IsStackable || !hasItem)
+            {
+                inventory.Add(item);
+            }
+
+        }
+
+
+
+
 
 
         public virtual void Draw()
@@ -152,13 +181,13 @@ namespace TeamJRPG
                 }
                 Globals.spriteBatch.Draw(texture[i], drawPosition, null, drawColor, 0f, Vector2.Zero, Globals.gameScale, SpriteEffects.None, 0f);
             }
-            
 
-            if(Globals.currentGameMode == Globals.GameMode.debugmode)
+
+            if (Globals.currentGameMode == Globals.GameMode.debugmode)
             {
                 Globals.spriteBatch.Draw(collisionTexture, new Vector2(collisionBox.X, collisionBox.Y), null, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
             }
-            
+
         }
     }
 }

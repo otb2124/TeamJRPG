@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
 
+
 namespace TeamJRPG
 {
     public class GroupMember : LiveEntity
@@ -28,9 +29,7 @@ namespace TeamJRPG
             name = "BLANK_NAME";
 
             SetTextures();
-
             SetEquipment();
-            SetInventory();
         }
 
         public void SetTextures()
@@ -40,7 +39,7 @@ namespace TeamJRPG
 
             //APPEARANCE SETTINGS
             TextureIDs[0] = 0;
-            TextureIDs[1] = 0;
+            TextureIDs[1] = 1;
             TextureIDs[2] = 0;
             TextureIDs[3] = 0;
             TextureIDs[4] = 0;
@@ -58,31 +57,46 @@ namespace TeamJRPG
         {
             weapon1 = new Weapon(0);
             weapon2 = new Weapon(0);
+
             armor = new Armor[9];
+            armor[HELMET] = new Armor(0);
+            armor[HELMET].slotType = Armor.SlotType.helmet;
+            armor[CHESTPLATE] = new Armor(0);
+            armor[CHESTPLATE].slotType = Armor.SlotType.chestplate;
+            armor[BOOTS] = new Armor(0);
+            armor[BOOTS].slotType = Armor.SlotType.boots;
+            armor[GLOVES] = new Armor(0);
+            armor[GLOVES].slotType = Armor.SlotType.gloves;
+            armor[CAPE] = new Armor(0);
+            armor[CAPE].slotType = Armor.SlotType.cape;
+            armor[BELT] = new Armor(0);
+            armor[BELT].slotType = Armor.SlotType.belt;
+            armor[NECKLACE] = new Armor(0);
+            armor[NECKLACE].slotType = Armor.SlotType.necklace;
+            armor[RING1] = new Armor(0);
+            armor[RING1].slotType = Armor.SlotType.ring;
+            armor[RING2] = new Armor(0);
+            armor[RING2].slotType = Armor.SlotType.ring;
+
             for (int i = 0; i < armor.Length; i++)
             {
-                armor[i] = new Armor(0);
+                armor[i].SetTexture();
             }
-        }
 
 
-        public void SetInventory()
-        {
-            inventory.Add(new Consumable(0));
-            inventory.Add(new QuestItem(0));
-            inventory.Add(new Valuable(0));
-            inventory.Add(new Material(0));
-            inventory.Add(new Weapon(1));
-            inventory.Add(new Consumable(0));
-            inventory.Add(new QuestItem(0));
-            inventory.Add(new Valuable(0));
-            inventory.Add(new Material(0));
-            inventory.Add(new Weapon(1));
-            inventory.Add(new Armor(1));
-            inventory.Add(new Armor(1));
-            inventory.Add(new Armor(1));
+
+            equipment = new Equipment[11];
+            equipment[0] = weapon1;
+            equipment[1] = weapon2;
+            for (int i = 0; i < armor.Length; i++)
+            {
+                equipment[i + 2] = armor[i];
+            }
 
         }
+
+
+        
 
 
         public override void Update()
@@ -109,8 +123,9 @@ namespace TeamJRPG
             this.collisionBox.Location = new System.Drawing.PointF(this.position.X + (Globals.tileSize.X - collisionBox.Width) / 2, this.position.Y + Globals.tileSize.Y / 2);
 
             HandleDirectionTextures();
-            
 
+
+            
             base.Update();
         }
 
@@ -167,7 +182,7 @@ namespace TeamJRPG
                     {
                         if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Enter))
                         {
-                            this.inventory.AddRange(obj.inventory);
+                            Globals.group.inventory.AddRange(obj.inventory);
                             Globals.entities.Remove(interractedEntity);
                         }
                     }
@@ -177,10 +192,10 @@ namespace TeamJRPG
 
         private void FollowPreviousMember()
         {
-            int index = Globals.group.IndexOf(this);
+            int index = Globals.group.members.IndexOf(this);
             if (index > 0)
             {
-                Entity previousMember = Globals.group[index - 1];
+                Entity previousMember = Globals.group.members[index - 1];
                 MaintainDistance(previousMember);
             }
         }
@@ -223,59 +238,68 @@ namespace TeamJRPG
                 case Direction.up:
                     texture[0] = Globals.assetSetter.textures[Globals.assetSetter.CHARACHTER_BODIES][TextureIDs[0]][1];
                     texture[1] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_EYES][TextureIDs[1]][1];
-                    texture[2] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_MOUTHS][TextureIDs[2]][1]; break;
+                    texture[2] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_MOUTHS][TextureIDs[2]][1]; 
+                    break;
                 case Direction.down:
                     texture[0] = Globals.assetSetter.textures[Globals.assetSetter.CHARACHTER_BODIES][TextureIDs[0]][0]; 
                     texture[1] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_EYES][TextureIDs[1]][0];
-                    texture[2] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_MOUTHS][TextureIDs[2]][0]; break;
+                    texture[2] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_MOUTHS][TextureIDs[2]][0]; 
+                    break;
                 case Direction.right:
                     texture[0] = Globals.assetSetter.textures[Globals.assetSetter.CHARACHTER_BODIES][TextureIDs[0]][2];
                     texture[1] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_EYES][TextureIDs[1]][2];
-                    texture[2] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_MOUTHS][TextureIDs[2]][2]; break;
+                    texture[2] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_MOUTHS][TextureIDs[2]][2]; 
+                    break;
                 case Direction.left:
                     texture[0] = Globals.assetSetter.textures[Globals.assetSetter.CHARACHTER_BODIES][TextureIDs[0]][3];
                     texture[1] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_EYES][TextureIDs[1]][3];
-                    texture[2] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_MOUTHS][TextureIDs[2]][3]; break;
+                    texture[2] = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_MOUTHS][TextureIDs[2]][3]; 
+                    break;
             }
         }
 
 
         private void CheckPlayerChange()
         {
+
             // Check for player change input (previous)
             if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Q))
             {
-                int currentIndex = Globals.group.IndexOf(this);
-                int newIndex = (currentIndex - 1 + Globals.group.Count) % Globals.group.Count;
-                SetPlayer(Globals.group[newIndex]);
+                int currentIndex = Globals.group.members.IndexOf(this);
+                int newIndex = (currentIndex - 1 + Globals.group.members.Count) % Globals.group.members.Count;
+                SetPlayer(Globals.group.members[newIndex]);
             }
             // Check for player change input (next)
             else if (Globals.inputManager.IsKeyPressedAndReleased(Keys.E))
             {
-                int currentIndex = Globals.group.IndexOf(this);
-                int newIndex = (currentIndex + 1) % Globals.group.Count;
-                SetPlayer(Globals.group[newIndex]);
+                int currentIndex = Globals.group.members.IndexOf(this);
+                int newIndex = (currentIndex + 1) % Globals.group.members.Count;
+                SetPlayer(Globals.group.members[newIndex]);
             }
         }
 
-        private void SetPlayer(GroupMember newPlayer)
+        public void SetPlayer(GroupMember newPlayer)
         {
             if (newPlayer != this)
             {
                 this.isPlayer = false;
                 newPlayer.isPlayer = true;
+                Globals.playerChanged = true;
                 Globals.player = newPlayer;
 
                 //Globals.uimanager.drawPointer();
 
-                if (Globals.group.Contains(newPlayer))
+                if (Globals.group.members.Contains(newPlayer))
                 {
-                    Globals.group.Remove(newPlayer);
+                    Globals.group.members.Remove(newPlayer);
                 }
 
-                Globals.group.Insert(0, newPlayer);
+                Globals.group.members.Insert(0, newPlayer);
             }
         }
+
+
+        
 
 
         public override void Draw()

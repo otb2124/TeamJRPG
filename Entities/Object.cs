@@ -34,9 +34,17 @@ namespace TeamJRPG
 
             type = ObjectType.pickable;
 
-            this.inventory.Add(new Consumable(0));
             SetTextures();
+            SetInventory();
         }
+
+
+
+        public void SetInventory()
+        {
+            AddToInventory(new Consumable(0, 1));
+        }
+
 
 
         public void SetTextures()

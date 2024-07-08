@@ -24,7 +24,7 @@ namespace TeamJRPG
 
 
             //top label
-            Label characterName = new Label(name, new Vector2(framePos.X + frameSize.X/2, framePos.Y), 2);
+            Label characterName = new Label(name, new Vector2(framePos.X + frameSize.X/2, framePos.Y), 2, Color.White, null);
 
             Vector2 textSize = Globals.assetSetter.fonts[2].MeasureString(name);
             for (int i = 0; i < characterName.components.Count; i++)
@@ -59,12 +59,12 @@ namespace TeamJRPG
 
 
             // Table of labels
-            Vector2 cellSize = new Vector2(160, 16); // Example cell size
+            Vector2 cellSize = new Vector2(160, 16); // Example cell frameSize
 
             //LEFT
             //EXPIRIENCE
             string title = "EXPIRIENCE";
-            Label tableTitle = new Label(title, new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 - cellSize.Y), 1);
+            Label tableTitle = new Label(title, new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 - cellSize.Y), 1, Color.White, null);
             children.Add(tableTitle);
 
             string[][] playerStatTableData = new string[][]
@@ -84,7 +84,7 @@ namespace TeamJRPG
 
             //ATTRIBUTES
             title = "ATTRIBUTES";
-            tableTitle = new Label(title, new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + cellSize.Y * 6), 1);
+            tableTitle = new Label(title, new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + cellSize.Y * 6), 1, Color.White, null);
             children.Add(tableTitle);
 
 
@@ -105,7 +105,7 @@ namespace TeamJRPG
 
             //FIGHTING SKILLS
             title = "FIGHTING SKILLS";
-            tableTitle = new Label(title, new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + cellSize.Y * 14), 1);
+            tableTitle = new Label(title, new Vector2(framePos.X, framePos.Y + frameSize.Y / 2 + cellSize.Y * 14), 1, Color.White, null);
             children.Add(tableTitle);
 
             playerAttributesTableData = new string[][]
@@ -128,7 +128,7 @@ namespace TeamJRPG
 
             //WEAPONS
             title = "ATTACK";
-            tableTitle = new Label(title, new Vector2(framePos.X + XOffset, framePos.Y + frameSize.Y / 2 - cellSize.Y), 1);
+            tableTitle = new Label(title, new Vector2(framePos.X + XOffset, framePos.Y + frameSize.Y / 2 - cellSize.Y), 1, Color.White, null);
             children.Add(tableTitle);
 
             playerAttributesTableData = new string[][]
@@ -146,7 +146,7 @@ namespace TeamJRPG
 
             //WEAPONS
             title = "PROTECTION";
-            tableTitle = new Label(title, new Vector2(framePos.X + XOffset, framePos.Y + frameSize.Y / 2 + cellSize.Y*6), 1);
+            tableTitle = new Label(title, new Vector2(framePos.X + XOffset, framePos.Y + frameSize.Y / 2 + cellSize.Y*6), 1, Color.White, null);
             children.Add(tableTitle);
 
             playerAttributesTableData = new string[][]

@@ -24,7 +24,7 @@ namespace TeamJRPG
             Texture2D HborderTexture = Globals.assetSetter.textures[Globals.assetSetter.UI][1][1];
             Texture2D VborderTexture = Globals.assetSetter.textures[Globals.assetSetter.UI][1][2];
 
-            Vector2 backgroundScale = new Vector2((textSize.X + padding.X) / backgroundTexture.Width, (textSize.Y + padding.Y) / backgroundTexture.Height);
+            Vector2 backgroundScale = new Vector2((textSize.X + padding.X - 8) / backgroundTexture.Width, (textSize.Y + padding.Y) / backgroundTexture.Height);
 
             //BackGround
             UIComponent backGround = new UIComponent
@@ -33,6 +33,7 @@ namespace TeamJRPG
                 texture = backgroundTexture,
                 sourceRectangle = new Rectangle(0, 0, backgroundTexture.Width, backgroundTexture.Height),
                 scale = backgroundScale,
+                color = Color.Black
             };
 
 

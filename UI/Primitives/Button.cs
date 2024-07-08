@@ -12,7 +12,7 @@ namespace TeamJRPG
 
         public Button(Texture2D texture, Vector2 startPosition, float scale, int id)
         {
-
+            this.type = UICompositeType.BUTTON;
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
             this.id = id;
 
@@ -193,20 +193,22 @@ namespace TeamJRPG
                             break;
 
 
+
+                        //inventory character swap
                         case 100:
-                            Debug.WriteLine("100");
+                            Globals.player.SetPlayer(Globals.group.members[id - 100]);
                             break;
                         case 101:
-                            Debug.WriteLine("101");
+                            Globals.player.SetPlayer(Globals.group.members[id - 100]);
                             break;
                         case 102:
-                            Debug.WriteLine("102");
+                            Globals.player.SetPlayer(Globals.group.members[id - 100]);
                             break;
                         case 103:
-                            Debug.WriteLine("103");
+                            Globals.player.SetPlayer(Globals.group.members[id - 100]);
                             break;
                         case 104:
-                            Debug.WriteLine("104");
+                            Globals.player.SetPlayer(Globals.group.members[id - 100]);
                             break;
                     }
                 }

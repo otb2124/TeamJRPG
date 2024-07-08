@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static TeamJRPG.Armor;
+﻿
 
 namespace TeamJRPG
 {
@@ -12,13 +7,13 @@ namespace TeamJRPG
 
         public enum ConsumableType { food, potion, throwable }
         public ConsumableType consumableType;
-        public int consumableID;
-        public int textureID;
 
-        public Consumable(int consumableID)
+        public Consumable(int consumableID, int amount)
         {
-            this.consumableID = consumableID;
+            this.amount = amount;
+            this.itemID = consumableID;
             type = ItemType.CONSUMABLE;
+            IsStackable = true;
 
             SetConsumable();
         }
@@ -28,7 +23,7 @@ namespace TeamJRPG
 
         public void SetConsumable()
         {
-            switch (consumableID)
+            switch (itemID)
             {
                 case 0:
                     name = "Lesser Healing Potion";
@@ -41,11 +36,6 @@ namespace TeamJRPG
             }
 
             SetTexture();
-        }
-
-        public void SetTexture()
-        {
-            texture = Globals.assetSetter.textures[Globals.assetSetter.ITEMS_CONSUMABLES][textureID][0];
         }
     }
 }

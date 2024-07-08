@@ -24,7 +24,7 @@ namespace TeamJRPG
 
 
             //top label
-            Label characterName = new Label(name, new Vector2(framePos.X + frameSize.X / 2, framePos.Y), 2);
+            Label characterName = new Label(name, new Vector2(framePos.X + frameSize.X / 2, framePos.Y), 2, Color.White, null);
 
             Vector2 textSize = Globals.assetSetter.fonts[2].MeasureString(name);
             for (int i = 0; i < characterName.components.Count; i++)
@@ -75,10 +75,10 @@ namespace TeamJRPG
             questFrame = new Frame(framePos, new Vector2(frameSize.X / 3 * 2 - 36, frameSize.Y - textSize.Y - 16));
             children.Add(questFrame);
 
-            Label questTitle = new Label("Quest Name", new Vector2(framePos.X + questFrame.frameSize.X/4, framePos.Y), 1);
+            Label questTitle = new Label("Quest Name", new Vector2(framePos.X + questFrame.frameSize.X/4, framePos.Y), 1, Color.White, null);
             children.Add(questTitle);
 
-            Label questDesr = new Label("This quest is just a regular one to describe\nhow ui kinda works/doesnt.\nI actually like next paragraph.\n\nUh here it  is.", new Vector2(framePos.X, framePos.Y + 64), 0);
+            Label questDesr = new Label("This quest is just a regular one to describe\nhow ui kinda works/doesnt.\nI actually like next paragraph.\n\nUh here it  is.", new Vector2(framePos.X, framePos.Y + 64), 0, Color.White, null);
             children.Add(questDesr);
 
         }

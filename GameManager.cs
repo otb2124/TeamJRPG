@@ -9,8 +9,6 @@ namespace TeamJRPG
     public class GameManager
     {
 
-        
-
 
         public List<Entity> overDraw;
         public List<Entity> underDraw;
@@ -27,7 +25,7 @@ namespace TeamJRPG
         {
             Globals.map = new Map();
             Globals.entities = new List<Entity>();
-            Globals.group = new List<GroupMember>();
+            Globals.group = new Group();
             overDraw = new List<Entity>();
             underDraw = new List<Entity>();
             entitiesToUpdate = new List<Entity>();
@@ -56,12 +54,13 @@ namespace TeamJRPG
 
             member1.name = "Artur";
 
-            Globals.group.Add(Globals.player);
-            Globals.group.Add(member1);
-            Globals.group.Add(member2);
-            Globals.group.Add(member3);
+            Globals.group.members.Add(Globals.player);
+            Globals.group.members.Add(member1);
+            Globals.group.members.Add(member2);
+            Globals.group.members.Add(member3);
+            Globals.group.SetInventory();
 
-            Globals.entities.AddRange(Globals.group);
+            Globals.entities.AddRange(Globals.group.members);
             Globals.entities.Add(new Object(new Vector2(15, 5)));
 
             Globals.camera.Load();
@@ -69,7 +68,6 @@ namespace TeamJRPG
 
         public void Update()
         {
-
             Globals.inputManager.Update();
 
             //Game States
@@ -148,6 +146,13 @@ namespace TeamJRPG
 
             Globals.camera.Update();
             Globals.uiManager.Update();
+
+
+
+            if (Globals.playerChanged)
+            {
+                Globals.playerChanged = false;
+            }
         }
 
         public void Draw()

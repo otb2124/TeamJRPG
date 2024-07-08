@@ -29,7 +29,7 @@ namespace TeamJRPG
                         );
 
                         // Create a new Label with the text from the tableData
-                        Label label = new Label(tableData[row][col], labelPosition, 0);
+                        Label label = new Label(tableData[row][col], labelPosition, 0, Color.White, null);
                         children.Add(label);
                     }
                 }

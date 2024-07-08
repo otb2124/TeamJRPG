@@ -10,13 +10,12 @@ namespace TeamJRPG
     public class QuestItem : Item
     {
 
-        public int questItemID;
-        public int textureID;
 
-        public QuestItem(int questItemID)
+        public QuestItem(int itemID)
         {
-            this.questItemID = questItemID;
+            this.itemID = itemID;
             type = ItemType.QUEST;
+            IsStackable = false;
 
             SetQuestItem();
         }
@@ -26,7 +25,7 @@ namespace TeamJRPG
 
         public void SetQuestItem()
         {
-            switch (questItemID)
+            switch (itemID)
             {
                 case 0:
                     name = "Broken Sword of Astora";
@@ -40,9 +39,5 @@ namespace TeamJRPG
             SetTexture();
         }
 
-        public void SetTexture()
-        {
-            texture = Globals.assetSetter.textures[Globals.assetSetter.ITEMS_QUESTITEMS][textureID][0];
-        }
     }
 }

@@ -14,7 +14,7 @@ namespace TeamJRPG
             this.type = UICompositeType.TEXT_FRAME;
 
 
-            Label label = new Label(text, position, 1);
+            Label label = new Label(text, position, 1, Color.White, null);
             Frame frame = new Frame(position, label.textSize);
             frameSize = frame.frameSize;
 

@@ -43,6 +43,29 @@ namespace TeamJRPG
         }
 
 
+        public bool IsMouseButtonHold(MouseButton button)
+        {
+            return button switch
+            {
+                MouseButton.Left => currentMouseState.LeftButton == ButtonState.Pressed,
+                MouseButton.Right => currentMouseState.RightButton == ButtonState.Pressed,
+                MouseButton.Wheel => currentMouseState.MiddleButton == ButtonState.Pressed,
+                _ => false,
+            };
+        }
+
+        public bool IsMouseButtonReleased(MouseButton button)
+        {
+            return button switch
+            {
+                MouseButton.Left => currentMouseState.LeftButton == ButtonState.Released,
+                MouseButton.Right => currentMouseState.RightButton == ButtonState.Released,
+                MouseButton.Wheel => currentMouseState.MiddleButton == ButtonState.Released,
+                _ => false,
+            };
+        }
+
+
 
         public Vector2 GetCursorPos()
         {
@@ -55,6 +78,14 @@ namespace TeamJRPG
         {
             return previousKeyboardState.IsKeyDown(key) && currentKeyboardState.IsKeyUp(key);
         }
+
+
+        public bool CheckPlayerInput()
+        {
+            bool isInput = IsKeyPressed(Keys.W) || IsKeyPressed(Keys.A) || IsKeyPressed(Keys.S) || IsKeyPressed(Keys.D);
+            return isInput;
+        }
+
 
         public void Update()
         {

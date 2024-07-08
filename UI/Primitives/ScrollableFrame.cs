@@ -20,20 +20,20 @@ namespace TeamJRPG
         private Vector2 scrollPosition; // Scroll position in pixels
         private int scrollCounter = 0;
 
+        public Vector2 childrenSize;
         public Vector2 frameSize;
-        public Vector2 size;
 
         public bool IsTopLimit, IsBottomLimit;
 
 
         public float newPosition = 0, oldPosition = 0;
 
-        public ScrollableFrame(Vector2 startPosition, Vector2 size, int itemsPerRow, Vector2 frameSize)
+        public ScrollableFrame(Vector2 startPosition, Vector2 size, int itemsPerRow, Vector2 childrenSize)
         {
             this.position = startPosition;
-            this.size = size;
+            this.frameSize = size;
             this.itemsPerRow = itemsPerRow;
-            this.rowHeight = frameSize.Y;
+            this.rowHeight = childrenSize.Y;
             this.type = UICompositeType.SCROLLPANE;
 
             // Initialize viewport properties
@@ -41,20 +41,21 @@ namespace TeamJRPG
             endIndex = 0;
             scrollValue = 0;
             scrollPosition = Vector2.Zero;
-            this.frameSize = frameSize;
+            this.childrenSize = childrenSize;
         }
 
         public override void Update()
         {
+
+
+            //scrolling
             oldPosition = scrollPosition.Y;
 
             int mouseWheelDelta = Globals.inputManager.currentMouseState.ScrollWheelValue - Globals.inputManager.previousMouseState.ScrollWheelValue;
 
-
             if (mouseWheelDelta != 0)
             {
-
-                newPosition = MathHelper.Clamp(scrollPosition.Y - mouseWheelDelta / 100, -Math.Max(0, rowHeight * ((children.Count + itemsPerRow - 1) / itemsPerRow) - size.Y), Math.Max(0, rowHeight * ((children.Count + itemsPerRow - 1) / itemsPerRow) - size.Y));
+                newPosition = MathHelper.Clamp(scrollPosition.Y - mouseWheelDelta / 100, -Math.Max(0, rowHeight * ((children.Count + itemsPerRow - 1) / itemsPerRow) - frameSize.Y), Math.Max(0, rowHeight * ((children.Count + itemsPerRow - 1) / itemsPerRow) - frameSize.Y));
 
                 scrollCounter++;
                 if (scrollCounter >= 10)
@@ -62,10 +63,7 @@ namespace TeamJRPG
                     newPosition = 0;
                     scrollCounter = 0;
                 }
-
-                
             }
-
 
             if (IsTopLimit)
             {
@@ -84,11 +82,7 @@ namespace TeamJRPG
                 }
             }
 
-
-
             scrollPosition.Y = newPosition;
-            
-
 
 
             base.Update();
@@ -101,9 +95,9 @@ namespace TeamJRPG
             endIndex = Math.Min(startIndex + children.Count, (children.Count + itemsPerRow - 1) / itemsPerRow);
 
 
-
-                for (int rowIndex = startIndex; rowIndex < endIndex; rowIndex++)
-                {
+            
+            for (int rowIndex = startIndex; rowIndex < endIndex; rowIndex++)
+            {
                 for (int itemIndex = 0; itemIndex < itemsPerRow; itemIndex++)
                 {
                     int childIndex = rowIndex * itemsPerRow + itemIndex;
@@ -120,8 +114,8 @@ namespace TeamJRPG
                         bool isOutOver = false;
                         bool isOutUnder = false;
 
-                        float TopBound = position.Y - Globals.camera.viewport.Height/2 - frameSize.Y,
-                        BottomBound = position.Y - Globals.camera.viewport.Height / 2 + size.Y - frameSize.Y/2;
+                        float TopBound = position.Y - Globals.camera.viewport.Height / 2 - childrenSize.Y,
+                        BottomBound = position.Y - Globals.camera.viewport.Height / 2 + frameSize.Y - childrenSize.Y / 2;
 
                         int originalSrcRectHeight = 32;
 
@@ -143,7 +137,7 @@ namespace TeamJRPG
                             {
                                 isOutOver = false;
 
-                                if (children[children.Count - 1].components[i].position.Y < BottomBound - frameSize.Y)
+                                if (children[children.Count - 1].components[i].position.Y < BottomBound - childrenSize.Y)
                                 {
                                     IsBottomLimit = true;
                                 }
@@ -162,7 +156,7 @@ namespace TeamJRPG
                             {
                                 isOutUnder = false;
 
-                                if (children[0].components[i].position.Y > TopBound + frameSize.Y)
+                                if (children[0].components[i].position.Y > TopBound + childrenSize.Y)
                                 {
                                     IsTopLimit = true;
                                 }
@@ -176,7 +170,8 @@ namespace TeamJRPG
 
 
 
-                            if (isOutOver) {
+                            if (isOutOver)
+                            {
 
                                 offset = (int)(TopBound - children[childIndex].components[i].position.Y);
                                 children[childIndex].components[i].sourceRectangle.Y += offset;
@@ -192,7 +187,7 @@ namespace TeamJRPG
 
 
 
-                            if(!isOutUnder && !isOutOver)
+                            if (!isOutUnder && !isOutOver)
                             {
                                 children[childIndex].components[i].sourceRectangle.Y = 0;
                                 children[childIndex].components[i].sourceRectangle.Height = originalSrcRectHeight;
@@ -202,7 +197,7 @@ namespace TeamJRPG
                         children[childIndex].Draw();
 
 
-                        
+
 
                     }
 

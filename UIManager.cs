@@ -8,14 +8,23 @@ namespace TeamJRPG
     public class UIManager
     {
 
-        public List<UIComposite> composites;
+        public List<UIComposite> children = new List<UIComposite>();
+        private List<UIComposite> elementsToAdd = new List<UIComposite>();
+        private List<UIComposite> elementsToRemove = new List<UIComposite>();
+
+
+
         public enum MenuState { inGameMenu, charachters, inventory, skills, questBook, statistics, map, settings, exit, clean };
         public MenuState currentMenuState;
         public bool MenuStateNeedsChange;
 
+
+
+        public bool IsDraggingItemInInventory = false;
+
         public UIManager()
         {
-            composites = new List<UIComposite>();
+            children = new List<UIComposite>();
         }
 
 
@@ -31,57 +40,48 @@ namespace TeamJRPG
             if (MenuStateNeedsChange)
             {
 
-                RemoveAllCompositesOfTypes(UIComposite.UICompositeType.MOUSE_CURSOR, UIComposite.UICompositeType.INGAME_MENU, UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT);
+                RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT);
 
 
                 switch (currentMenuState)
                 {
                     case MenuState.inGameMenu:
-                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        Add(UIComposite.UICompositeType.INGAME_MENU);
+                        if (!HasCompositesOfType(UIComposite.UICompositeType.INGAME_MENU))
+                        {
+                            Add(UIComposite.UICompositeType.INGAME_MENU);
+                        }
+                        if (!HasCompositesOfType(UIComposite.UICompositeType.MOUSE_CURSOR))
+                        {
+                            Add(UIComposite.UICompositeType.MOUSE_CURSOR);
+                        }
                         break;
                     case MenuState.charachters:
-                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        Add(UIComposite.UICompositeType.INGAME_MENU);
                         Add(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS);
                         break;
                     case MenuState.inventory:
-                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        Add(UIComposite.UICompositeType.INGAME_MENU);
                         Add(UIComposite.UICompositeType.INGAME_MENU_INVENTORY);
                         break;
                     case MenuState.skills:
-                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        Add(UIComposite.UICompositeType.INGAME_MENU);
                         Add(UIComposite.UICompositeType.INGAME_MENU_SKILLS);
                         break;
                     case MenuState.questBook:
-                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        Add(UIComposite.UICompositeType.INGAME_MENU);
                         Add(UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK);
                         break;
                     case MenuState.statistics:
-                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        Add(UIComposite.UICompositeType.INGAME_MENU);
                         Add(UIComposite.UICompositeType.INGAME_MENU_STATS);
                         break;
                     case MenuState.map:
-                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        Add(UIComposite.UICompositeType.INGAME_MENU);
                         Add(UIComposite.UICompositeType.INGAME_MENU_MAP);
                         break;
                     case MenuState.settings:
-                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        Add(UIComposite.UICompositeType.INGAME_MENU);
                         Add(UIComposite.UICompositeType.INGAME_MENU_SETTINGS);
                         break;
                     case MenuState.exit:
-                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        Add(UIComposite.UICompositeType.INGAME_MENU);
                         Add(UIComposite.UICompositeType.INGAME_MENU_EXIT);
                         break;
                     case MenuState.clean:
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU);
+                        RemoveAllCompositesOfTypes(UIComposite.UICompositeType.MOUSE_CURSOR);
                         break;
                 }
 
@@ -99,34 +99,34 @@ namespace TeamJRPG
             switch (compositeType)
             {
                 case UIComposite.UICompositeType.MOUSE_CURSOR:
-                    composites.Add(new MouseCursor());
+                    AddElement(new MouseCursor());
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU:
-                    composites.Add(new InGameMenu());
+                    AddElement(new InGameMenu());
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU_CHARACTERS:
-                    composites.Add(new CharactersInGameMenu());
+                    AddElement(new CharactersInGameMenu());
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU_INVENTORY:
-                    composites.Add(new InventoryInGameMenu());
+                    AddElement(new InventoryInGameMenu());
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU_SKILLS:
-                    composites.Add(new SkilsInGameMenu());
+                    AddElement(new SkilsInGameMenu());
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK:
-                    composites.Add(new QuestBookInGameMenu());
+                    AddElement(new QuestBookInGameMenu());
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU_STATS:
-                    composites.Add(new StatsInGameMenu());
+                    AddElement(new StatsInGameMenu());
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU_MAP:
-                    composites.Add(new MapInGameMenu());
+                    AddElement(new MapInGameMenu());
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU_SETTINGS:
-                    composites.Add(new SettingsInGameMenu());
+                    AddElement(new SettingsInGameMenu());
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU_EXIT:
-                    composites.Add(new ExitInGameMenu());
+                    AddElement(new ExitInGameMenu());
                     break;
 
             }
@@ -137,9 +137,9 @@ namespace TeamJRPG
         {
             foreach (var type in types)
             {
-                foreach (var composite in composites.Where(c => c.type == type).ToList())
+                foreach (var composite in children.Where(c => c.type == type).ToList())
                 {
-                    composites.Remove(composite);
+                    RemoveElement(composite);
                 }
             }
         }
@@ -147,11 +147,11 @@ namespace TeamJRPG
         public void RemoveCompositeWithType(UIComposite.UICompositeType type)
         {
 
-            for (int i = 0; i < composites.Count; i++)
+            for (int i = 0; i < children.Count; i++)
             {
-                if (composites[i].type == type)
+                if (children[i].type == type)
                 {
-                    composites.Remove(composites[i]);
+                    RemoveElement(children[i]);
                     break;
                 }
             }
@@ -159,14 +159,14 @@ namespace TeamJRPG
 
         public bool HasCompositesOfType(UIComposite.UICompositeType type)
         {
-            return composites.Any(c => c.type == type);
+            return children.Any(c => c.type == type);
         }
 
 
         public List<UIComposite> GetAllChildrenOfType(UIComposite.UICompositeType type)
         {
             List<UIComposite> result = new List<UIComposite>();
-            foreach (var composite in composites)
+            foreach (var composite in children)
             {
                 result.AddRange(GetChildrenOfTypeRecursive(composite, type));
             }
@@ -196,16 +196,31 @@ namespace TeamJRPG
 
             CheckState();
 
-            for (int i = 0; i < composites.Count; i++)
+            // Process all current children
+            foreach (var child in children)
             {
-                composites[i].Update();
+                child.Update();
             }
+
+            // Add new elements
+            foreach (var element in elementsToAdd)
+            {
+                children.Add(element);
+            }
+            elementsToAdd.Clear();
+
+            // Remove old elements
+            foreach (var element in elementsToRemove)
+            {
+                children.Remove(element);
+            }
+            elementsToRemove.Clear();
         }
 
         public void Draw()
         {
 
-            foreach (var composite in composites)
+            foreach (var composite in children)
             {
                 if (composite.type != UIComposite.UICompositeType.FLOATING_INFO_BOX && composite.type != UIComposite.UICompositeType.MOUSE_CURSOR)
                 {
@@ -214,7 +229,7 @@ namespace TeamJRPG
             }
 
             // Draw the FloatingInfoBox
-            foreach (var infoBox in composites)
+            foreach (var infoBox in children)
             {
                 if (infoBox.type == UIComposite.UICompositeType.FLOATING_INFO_BOX)
                 {
@@ -223,13 +238,26 @@ namespace TeamJRPG
             }
 
             // Draw the cursor last
-            foreach (var cursor in composites)
+            foreach (var cursor in children)
             {
                 if (cursor.type == UIComposite.UICompositeType.MOUSE_CURSOR)
                 {
                     cursor.Draw();
                 }
             }
+        }
+
+
+
+
+        public void AddElement(UIComposite element)
+        {
+            elementsToAdd.Add(element);
+        }
+
+        public void RemoveElement(UIComposite element)
+        {
+            elementsToRemove.Add(element);
         }
     }
 }

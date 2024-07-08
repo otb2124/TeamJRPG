@@ -32,6 +32,8 @@
     <None Remove="lib\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Content\DirectX\StrokeEffect.xnb" />
+    <None Remove="Content\OpenGL\StrokeEffect.xnb" />
     <None Remove="Content\res\characters\battleSprites\battleSprite0.png" />
     <None Remove="Content\res\characters\bodies\body0.png" />
     <None Remove="Content\res\characters\bodies\body0_1.png" />
@@ -55,6 +57,13 @@
     <None Remove="Content\res\fonts\Roboto_18_Regular.xnb" />
     <None Remove="Content\res\fonts\Roboto_26_Regular.xnb" />
     <None Remove="Content\res\items\armorItems\armorItem0.png" />
+    <None Remove="Content\res\items\armorItems\armorItem1.png" />
+    <None Remove="Content\res\items\armorItems\armorItem2.png" />
+    <None Remove="Content\res\items\armorItems\armorItem3.png" />
+    <None Remove="Content\res\items\armorItems\armorItem4.png" />
+    <None Remove="Content\res\items\armorItems\armorItem5.png" />
+    <None Remove="Content\res\items\armorItems\armorItem6.png" />
+    <None Remove="Content\res\items\armorItems\armorItem7.png" />
     <None Remove="Content\res\items\consumableItems\consumableItem0.png" />
     <None Remove="Content\res\items\currencyItems\currencyItem0.png" />
     <None Remove="Content\res\items\item0.png" />
@@ -64,6 +73,9 @@
     <None Remove="Content\res\items\questItems\questItem0.png" />
     <None Remove="Content\res\items\valuableItems\valuableItem0.png" />
     <None Remove="Content\res\items\weaponItems\weaponItem0.png" />
+    <None Remove="Content\res\items\weaponItems\weaponItem1.png" />
+    <None Remove="Content\res\items\weaponItems\weaponItem2.png" />
+    <None Remove="Content\res\items\weaponItems\weaponItem3.png" />
     <None Remove="Content\res\objects\object0.png" />
     <None Remove="Content\res\objects\object1.png" />
     <None Remove="Content\res\objects\object10.png" />
@@ -94,6 +106,15 @@
     <None Remove="Content\res\objects\object9.png" />
     <None Remove="Content\res\placeholders\placeholder0.png" />
     <None Remove="Content\res\placeholders\placeholder1.png" />
+    <None Remove="Content\res\placeholders\placeholder10.png" />
+    <None Remove="Content\res\placeholders\placeholder2.png" />
+    <None Remove="Content\res\placeholders\placeholder3.png" />
+    <None Remove="Content\res\placeholders\placeholder4.png" />
+    <None Remove="Content\res\placeholders\placeholder5.png" />
+    <None Remove="Content\res\placeholders\placeholder6.png" />
+    <None Remove="Content\res\placeholders\placeholder7.png" />
+    <None Remove="Content\res\placeholders\placeholder8.png" />
+    <None Remove="Content\res\placeholders\placeholder9.png" />
     <None Remove="Content\res\tiles\tile0.png" />
     <None Remove="Content\res\tiles\tile1.png" />
     <None Remove="Content\res\tiles\tile2.png" />
@@ -125,6 +146,17 @@
     <None Remove="Content\res\ui\uielement6_5.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\res\items\weaponItems\weaponItem3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\DirectX\StrokeEffect.xnb">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content\OpenGL\StrokeEffect.xnb">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Content\res\characters\battleSprites\battleSprite0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -191,6 +223,27 @@
     <Content Include="Content\res\items\armorItems\armorItem0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\res\items\armorItems\armorItem1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\items\armorItems\armorItem2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\items\armorItems\armorItem3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\items\armorItems\armorItem4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\items\armorItems\armorItem5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\items\armorItems\armorItem6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\items\armorItems\armorItem7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\res\items\consumableItems\consumableItem0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -207,6 +260,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\items\weaponItems\weaponItem0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\items\weaponItems\weaponItem1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\items\weaponItems\weaponItem2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\objects\object0.png">
@@ -297,6 +356,33 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\placeholders\placeholder1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\placeholders\placeholder10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\placeholders\placeholder2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\placeholders\placeholder3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\placeholders\placeholder4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\placeholders\placeholder5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\placeholders\placeholder6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\placeholders\placeholder7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\placeholders\placeholder8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\placeholders\placeholder9.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\tiles\tile0.png">

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using MonoGame;
+
 
 namespace TeamJRPG
 {
@@ -25,7 +27,11 @@ namespace TeamJRPG
         public string text;
         public int fontID;
 
-
+        //stroke
+        public bool HasStroke;
+        public int strokeSize;
+        public Color strokeColor;
+        public StrokeType strokeType;
 
         //conditions
         //general
@@ -34,9 +40,10 @@ namespace TeamJRPG
         public bool IsStickToMouseCursor;
         public bool IsHalfedOriginX;
         public bool IsHalfedOriginY;
+
         //specific
         public bool DrawHead;
-
+       
 
         //for sorting in list
         public enum UIComponentType { MOUSE_CURSOR, TEXT, FRAME_PART }
@@ -120,13 +127,31 @@ namespace TeamJRPG
         public void Draw()
         {
 
+
+            Texture2D textureToDraw = texture;
+
+
             if (type != UIComponentType.TEXT)
             {
-                Globals.spriteBatch.Draw(texture, adjustedPosition, adjustedSourceRectangle, color, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
+                if (HasStroke)
+                {
+                    textureToDraw = StrokeEffect.CreateStroke(texture, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType);
+                }
+
+                Globals.spriteBatch.Draw(textureToDraw, adjustedPosition, adjustedSourceRectangle, color, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
             }
             else
             {
-                Globals.spriteBatch.DrawString(Globals.assetSetter.fonts[fontID], text, adjustedPosition, color, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
+                if (HasStroke)
+                {
+                    textureToDraw = StrokeEffect.CreateStrokeSpriteFont(Globals.assetSetter.fonts[fontID], text, color, Vector2.One, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType);
+                    Globals.spriteBatch.Draw(textureToDraw, adjustedPosition, adjustedSourceRectangle, strokeColor, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
+                }
+                else
+                {
+                    Globals.spriteBatch.DrawString(Globals.assetSetter.fonts[fontID], text, adjustedPosition, color, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
+                }
+                
             }
 
         }

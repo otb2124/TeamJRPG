@@ -8,13 +8,13 @@ namespace TeamJRPG
         public Vector2 frameSize;
         public List<string> info;
 
-        public FloatingInfoBox(List<string> info)
+        public FloatingInfoBox(List<string> info, List<Color> colors)
         {
             this.info = info;
             this.position = new Vector2(position.X + Globals.camera.viewport.Width / 2, position.Y + Globals.camera.viewport.Height / 2 + Globals.assetSetter.textures[Globals.assetSetter.UI][0][0].Height);
             this.type = UICompositeType.FLOATING_INFO_BOX;
 
-            // Measure the size of the longest string
+            // Measure the frameSize of the longest string
             Vector2 longestTextSize = Vector2.Zero;
 
             foreach (var text in info)
@@ -41,12 +41,16 @@ namespace TeamJRPG
             float currentY = position.Y;
             for (int i = 0; i < info.Count; i++)
             {
-                Vector2 textSize = Globals.assetSetter.fonts[0].MeasureString(info[i]);
-                Vector2 labelPos = new Vector2(position.X, currentY);
-                Label label = new Label(info[i], labelPos, 0);
-                children.Add(label);
+                if (info[i] != "")
+                {
+                    Vector2 textSize = Globals.assetSetter.fonts[0].MeasureString(info[i]);
+                    Vector2 labelPos = new Vector2(position.X, currentY);
+                    Label label = new Label(info[i], labelPos, 0, colors[i], null);
+                    children.Add(label);
 
-                currentY += textSize.Y; // Move down by the height of the current text
+                    currentY += textSize.Y; // Move down by the height of the current text
+                }
+                
             }
 
             foreach (var child in children)

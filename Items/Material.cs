@@ -10,14 +10,12 @@ namespace TeamJRPG
     public class Material : Item
     {
 
-
-        public int materialID;
-        public int textureID;
-
-        public Material(int materialID)
+        public Material(int itemID, int amount)
         {
-            this.materialID = materialID;
+            this.amount = amount;
+            this.itemID = itemID;
             type = ItemType.MATERIAL;
+            IsStackable = true;
 
             SetMaterial();
         }
@@ -25,7 +23,7 @@ namespace TeamJRPG
 
         public void SetMaterial()
         {
-            switch (materialID)
+            switch (itemID)
             {
                 case 0:
                     name = "Green Leaves";
@@ -39,9 +37,5 @@ namespace TeamJRPG
             SetTexture();
         }
 
-        public void SetTexture()
-        {
-            texture = Globals.assetSetter.textures[Globals.assetSetter.ITEMS_MATERIALS][textureID][0];
-        }
     }
 }

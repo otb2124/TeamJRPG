@@ -23,8 +23,9 @@ namespace TeamJRPG
         public static GameManager gameManager {  get; set; }
         public static Map map { get; set; }
         public static GroupMember player { get; set; }
-        public static List<GroupMember> group { get; set; }
+        public static Group group { get; set; }
 
+        public static bool playerChanged = false;
 
         public static AssetSetter assetSetter { get; set; }
         public static InputManager inputManager { get; set; }   

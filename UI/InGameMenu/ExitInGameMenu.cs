@@ -20,7 +20,7 @@ namespace TeamJRPG
 
             //string
             string str = "Are you sure you want to exit?\nAll unsaved data will be lost.";
-            Label label = new Label(str, new Vector2(framePos.X + frameSize.X/2, framePos.Y), 2);
+            Label label = new Label(str, new Vector2(framePos.X + frameSize.X/2, framePos.Y), 2, Color.White, null);
             Vector2 textSize = Globals.assetSetter.fonts[2].MeasureString(str);
             for (int i = 0; i < label.components.Count; i++)
             {

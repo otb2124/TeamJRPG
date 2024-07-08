@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SharpDX.Direct3D9;
+
 
 namespace TeamJRPG
 {
@@ -9,10 +9,13 @@ namespace TeamJRPG
 
 
         public Vector2 textSize;
+        public Color textColor;
+        public Stroke stroke;
 
-        public Label(string text, Vector2 startPosition, int fontID)
+        public Label(string text, Vector2 startPosition, int fontID, Color color, Stroke stroke)
         {
-
+            this.stroke = stroke;
+            this.textColor = color;
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
             this.type = UICompositeType.TEXT_FRAME;
 
@@ -32,7 +35,16 @@ namespace TeamJRPG
                 text = text,
                 fontID = fontID,
                 sourceRectangle = new Rectangle(0, 0, (int)textSize.X, (int)textSize.Y),
+                color = textColor,
             };
+
+            if(stroke != null)
+            {
+                textElement.HasStroke = true;
+                textElement.strokeSize = stroke.size;
+                textElement.strokeColor = stroke.color;
+                textElement.strokeType = stroke.effects;
+            }
 
 
 

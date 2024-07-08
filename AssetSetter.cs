@@ -31,7 +31,7 @@ namespace TeamJRPG
 
             for (int i = 0; i < textures.Length; i++)
             {
-                textures[i] = new Texture2D[10][];
+                textures[i] = new Texture2D[20][];
             }
 
             fonts = new SpriteFont[10];
