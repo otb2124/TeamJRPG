@@ -8,6 +8,9 @@ namespace TeamJRPG
         public List<GroupMember> members;
         public List<Item> inventory;
 
+
+        public int currentPlayerId;
+
         public Group() 
         {
             members = new List<GroupMember>();
@@ -70,6 +73,43 @@ namespace TeamJRPG
             if (!item.IsStackable || !hasItem)
             {
                 inventory.Add(item);
+            }
+
+        }
+
+
+
+        public void RemoveFromInventory(Item item)
+        {
+
+            bool hasItem = false;
+
+            if (item.IsStackable)
+            {
+                foreach (var invItem in inventory)
+                {
+                    if (invItem.name == item.name)
+                    {
+                        hasItem = true;
+                        if(invItem.amount > 1)
+                        {
+                            invItem.amount--;
+                        }
+                        else
+                        {
+                            inventory.Remove(item);
+                        }
+                        
+                        break;
+                    }
+                }
+
+            }
+
+
+            if (!item.IsStackable || !hasItem)
+            {
+                inventory.Remove(item);
             }
 
         }

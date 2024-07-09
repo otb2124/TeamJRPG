@@ -18,7 +18,8 @@ namespace TeamJRPG
             TILES = 0,
             CHARACHTER_BODIES = 1, CHARACTER_BATTLESPRITES = 2, CHARACTER_ICONS = 3,
             CHARACTER_EYES = 10, CHARACTER_MOUTHS = 11,
-            OBJECTS = 20,
+            INTERRACTIVEOBJECTS = 20,
+            DECORATIVEOBJECTS = 21,
             ITEMS_WEAPONS = 40, ITEMS_ARMOR = 41, ITEMS_CONSUMABLES = 42, ITEMS_MATERIALS = 43, ITEMS_VALUABLES = 44, ITEMS_QUESTITEMS = 45, ITEMS_CURRENCY = 46,
             ARMOR_BODIES = 50,
             UI = 60,
@@ -31,7 +32,7 @@ namespace TeamJRPG
 
             for (int i = 0; i < textures.Length; i++)
             {
-                textures[i] = new Texture2D[20][];
+                textures[i] = new Texture2D[30][];
             }
 
             fonts = new SpriteFont[10];
@@ -61,7 +62,8 @@ namespace TeamJRPG
             LoadTextures(11, "Content/res/characters/characterDetails/mouths/mouth"); //Load mouths
 
             //Objects
-            LoadTextures(20, "Content/res/objects/object");// Load object textures
+            LoadTextures(20, "Content/res/objects/interractiveObjects/object");// Load object textures
+            LoadTextures(21, "Content/res/objects/decorativeObjects/object");// Load object textures
 
             //Mobs
             //LoadTextures(30, "Content/res/mobs/bodies/body");// Load mob textures

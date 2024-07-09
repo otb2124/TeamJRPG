@@ -49,10 +49,10 @@ namespace TeamJRPG
             member1.name = "Orest";
             GroupMember member2 = new GroupMember(new Vector2(1, 3));
 
-            member1.name = "Slavic";
+            member2.name = "Slavic";
             GroupMember member3 = new GroupMember(new Vector2(1, 4));
 
-            member1.name = "Artur";
+            member3.name = "Artur";
 
             Globals.group.members.Add(Globals.player);
             Globals.group.members.Add(member1);
@@ -61,7 +61,7 @@ namespace TeamJRPG
             Globals.group.SetInventory();
 
             Globals.entities.AddRange(Globals.group.members);
-            Globals.entities.Add(new Object(new Vector2(15, 5)));
+            Globals.entities.Add(new Object(new Vector2(15, 5), 1));
 
             Globals.camera.Load();
         }

@@ -40,7 +40,6 @@ namespace TeamJRPG
         public Queue<Point> path;
         public Point previousPosition;
 
-
         public List<Item> inventory;
 
         public Entity(Vector2 position)
@@ -188,6 +187,14 @@ namespace TeamJRPG
                 Globals.spriteBatch.Draw(collisionTexture, new Vector2(collisionBox.X, collisionBox.Y), null, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
             }
 
+        }
+
+
+
+
+        public Vector2 GetMapPos()
+        {
+            return position / Globals.tileSize;
         }
     }
 }

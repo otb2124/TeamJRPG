@@ -45,7 +45,7 @@ namespace TeamJRPG
             components.AddRange(frame.components);
             children.Add(frame);
 
-            ImageHolder icon = new ImageHolder(item.texture, new Vector2(position.X + padding.X + 16 / 4, position.Y + padding.Y), new Vector2(scale * 1.5f, scale * 1.5f));
+            ImageHolder icon = new ImageHolder(item.texture, new Vector2(position.X + padding.X + 16 / 4, position.Y + padding.Y), Color.White, new Vector2(scale * 1.5f, scale * 1.5f), null);
             components.AddRange(icon.components);
             children.Add(icon);
 
@@ -84,21 +84,48 @@ namespace TeamJRPG
                     {
                         Vector2 adjustedPos = new Vector2(cursorPos.X + Globals.camera.viewport.Width / 2, cursorPos.Y + Globals.camera.viewport.Height / 2);
 
-                        List<string> textButtonTexts = new List<string>
+                        List<int> buttonIdList = new List<int>();
+                        List<string> textButtonTexts = new List<string>();
+                        if(equipmentSlotId > -1)
                         {
-                            "Equip",
-                            "Drop",
-                            "Destroy",
-                        };
+                            textButtonTexts.Add("Unequip");
+                            buttonIdList.Add(40);
+                        }
+                        else
+                        {
+                            if(item.type == Item.ItemType.WEAPON || item.type == Item.ItemType.ARMOR)
+                            {
+                                textButtonTexts.Add("Equip");
+                                buttonIdList.Add(41);
+                            }
+                            
+                        }
+                        if(item.type == Item.ItemType.CONSUMABLE)
+                        {
+                            textButtonTexts.Add("Consume");
+                            buttonIdList.Add(45);
+                        }
+                        textButtonTexts.Add("Description");
+                        buttonIdList.Add(42);
+                        if (item.value == -3 || item.value >= -1)
+                        {
+                            textButtonTexts.Add("Drop");
+                            buttonIdList.Add(43);
+                        }
+                        if(item.value >= -2)
+                        {
+                            textButtonTexts.Add("Destroy");
+                            buttonIdList.Add(44);
+                        }
 
                         TextButton[] buttons = new TextButton[textButtonTexts.Count];
 
                         for (int i = 0; i < textButtonTexts.Count; i++)
                         {
-                            buttons[i] = new TextButton(textButtonTexts[i], new Vector2(adjustedPos.X, adjustedPos.Y + ((Globals.assetSetter.fonts[1].MeasureString("K").Y + 28) * i)), i + 40);
+                            buttons[i] = new TextButton(textButtonTexts[i], new Vector2(adjustedPos.X, adjustedPos.Y + ((Globals.assetSetter.fonts[0].MeasureString("K").Y + 28) * i)), 0, buttonIdList[i]);
                         }
 
-                        buttonMenu = new FloatingButtonMenu(buttons.ToArray());
+                        buttonMenu = new FloatingButtonMenu(buttons.ToArray(), item);
                         Globals.uiManager.AddElement(buttonMenu);
 
                         // Calculate the frame frameSize based on the total height of all buttons and the width of the longest button
@@ -138,7 +165,7 @@ namespace TeamJRPG
                     if (!dragOn && !Globals.uiManager.IsDraggingItemInInventory)
                     {
                         Vector2 adjustedPos = new Vector2(Globals.camera.viewport.Width / 2, Globals.camera.viewport.Height / 2);
-                        drag = new ImageHolder(item.texture, adjustedPos, new Vector2(2, 2));
+                        drag = new ImageHolder(item.texture, adjustedPos, Color.White, new Vector2(2, 2), null);
                         for (int i = 0; i < drag.components.Count; i++)
                         {
                             drag.components[i].IsStickToMouseCursor = true;

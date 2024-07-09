@@ -39,13 +39,13 @@ namespace TeamJRPG
             Texture2D buttonTexture = Globals.assetSetter.textures[Globals.assetSetter.UI][3][0];
             Vector2 buttonOffset = new Vector2(20, 0);
 
-            Button leftArrow = new Button(buttonTexture, new Vector2(Globals.camera.viewport.Width / 2 + characterName.components[0].position.X - buttonTexture.Width - buttonOffset.X, framePos.Y + textSize.Y / 2 - buttonTexture.Height / 3), 1,15);
-            for (int i = 0; i < leftArrow.components.Count; i++)
+            Button leftArrow = new Button(buttonTexture, new Vector2(Globals.camera.viewport.Width / 2 + characterName.components[0].position.X - buttonTexture.Width - buttonOffset.X, framePos.Y + textSize.Y / 2 - buttonTexture.Height / 3), 1,15, "Previous");
+            for (int i = 0; i < leftArrow.children[0].components.Count; i++)
             {
-                leftArrow.components[i].spriteEffects = SpriteEffects.FlipHorizontally;
+                leftArrow.children[0].components[i].spriteEffects = SpriteEffects.FlipHorizontally;
             }
 
-            Button rightArrow = new Button(buttonTexture, new Vector2(Globals.camera.viewport.Width / 2 + characterName.components[0].position.X + textSize.X + buttonOffset.X, framePos.Y + textSize.Y / 2 - buttonTexture.Height / 3), 1, 16);
+            Button rightArrow = new Button(buttonTexture, new Vector2(Globals.camera.viewport.Width / 2 + characterName.components[0].position.X + textSize.X + buttonOffset.X, framePos.Y + textSize.Y / 2 - buttonTexture.Height / 3), 1, 16, "Next");
 
             children.Add(leftArrow);
             children.Add(rightArrow);
@@ -62,7 +62,7 @@ namespace TeamJRPG
 
             for (int i = 0; i < 7; i++)
             {
-                TextButton txtBtn = new TextButton("Quest Name", new Vector2(framePos.X + Offset.X, framePos.Y + i * Offset.Y), 30 + i);
+                TextButton txtBtn = new TextButton("Quest Name", new Vector2(framePos.X + Offset.X, framePos.Y + i * Offset.Y), 1, 30 + i);
                 buttonArray[i] = txtBtn;
             }
 

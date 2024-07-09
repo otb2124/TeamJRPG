@@ -1,12 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
 
 namespace TeamJRPG
 {
     public class CharactersInGameMenu : UIComposite
     {
 
-        public string name = "Character Name";
+        
         
         public CharactersInGameMenu()
         {
@@ -24,6 +25,7 @@ namespace TeamJRPG
 
 
             //top label
+            string name = Globals.player.name;
             Label characterName = new Label(name, new Vector2(framePos.X + frameSize.X/2, framePos.Y), 2, Color.White, null);
 
             Vector2 textSize = Globals.assetSetter.fonts[2].MeasureString(name);
@@ -39,13 +41,13 @@ namespace TeamJRPG
             Texture2D buttonTexture = Globals.assetSetter.textures[Globals.assetSetter.UI][3][0];
             Vector2 buttonOffset = new Vector2(20, 0);
 
-            Button leftArrow = new Button(buttonTexture, new Vector2(Globals.camera.viewport.Width/2 + characterName.components[0].position.X - buttonTexture.Width - buttonOffset.X, framePos.Y + textSize.Y/2 - buttonTexture.Height/3), 1, 9);
-            for (int i = 0; i < leftArrow.components.Count; i++)
+            Button leftArrow = new Button(buttonTexture, new Vector2(Globals.camera.viewport.Width/2 + characterName.components[0].position.X - buttonTexture.Width - buttonOffset.X, framePos.Y + textSize.Y/2 - buttonTexture.Height/3), 1, 9, "Previous");
+            for (int i = 0; i < leftArrow.children[0].components.Count; i++)
             {
-                leftArrow.components[i].spriteEffects = SpriteEffects.FlipHorizontally;
+                leftArrow.children[0].components[i].spriteEffects = SpriteEffects.FlipHorizontally;
             }
 
-            Button rightArrow = new Button(buttonTexture, new Vector2(Globals.camera.viewport.Width / 2 + characterName.components[0].position.X + textSize.X + buttonOffset.X, framePos.Y + textSize.Y/2 - buttonTexture.Height / 3), 1, 10);
+            Button rightArrow = new Button(buttonTexture, new Vector2(Globals.camera.viewport.Width / 2 + characterName.components[0].position.X + textSize.X + buttonOffset.X, framePos.Y + textSize.Y/2 - buttonTexture.Height / 3), 1, 10, "Next");
 
             children.Add(leftArrow);
             children.Add(rightArrow);
@@ -53,7 +55,7 @@ namespace TeamJRPG
             //Character sprite
             Texture2D texture = Globals.assetSetter.textures[Globals.assetSetter.CHARACTER_BATTLESPRITES][0][0];
             Vector2 spritePos = new Vector2(framePos.X + frameSize.X/2 - texture.Width/2, framePos.Y + frameSize.Y / 3 - texture.Height / 1.5f);
-            ImageHolder character = new ImageHolder(texture, spritePos, new Vector2(1f, 1f));
+            ImageHolder character = new ImageHolder(texture, spritePos, Globals.player.skinColor, new Vector2(1f, 1f), null);
             children.Add(character);
 
 

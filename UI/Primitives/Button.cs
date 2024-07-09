@@ -9,19 +9,24 @@ namespace TeamJRPG
         public bool Active = false;
         public int id;
         public System.Drawing.RectangleF buttonBox;
+        public string floatingHint = "empty";
 
-        public Button(Texture2D texture, Vector2 startPosition, float scale, int id)
+        public Button(Texture2D texture, Vector2 startPosition, float scale, int id, string floatingHint)
         {
             this.type = UICompositeType.BUTTON;
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
             this.id = id;
 
-            ImageHolder img = new ImageHolder(texture, startPosition, new Vector2(scale, scale));
 
+            ImageHolder img = new ImageHolder(texture, startPosition, Color.White, new Vector2(scale, scale), null);
+            if (floatingHint != "emtpy")
+            {
+                img.floatingText = floatingHint;
+            }
 
             buttonBox = new System.Drawing.RectangleF(position.X, position.Y, texture.Width * scale, texture.Height * scale);
 
-            components.AddRange(img.components);
+            children.Add(img);
 
             for (int i = 0; i < components.Count; i++)
             {
@@ -160,12 +165,19 @@ namespace TeamJRPG
                         case 12:
                             Globals.Exit();
                             break;
+
+
+
+                        //skills character switch
                         case 13:
-                            Debug.WriteLine("prev");
+                            Globals.player.SetPrevMemberToPlayer();
                             break;
                         case 14:
-                            Debug.WriteLine("next");
+                            Globals.player.SetNextMemberToPlayer();
                             break;
+
+
+                        //questbook switch
                         case 15:
                             Debug.WriteLine("completed quests");
                             break;
@@ -175,22 +187,8 @@ namespace TeamJRPG
 
 
 
-                        //inventory itemholders
-                        case 40:
-                            Debug.WriteLine(id);
-                            break;
-                        case 41:
-                            Debug.WriteLine(id);
-                            break;
-                        case 42:
-                            Debug.WriteLine(id);
-                            break;
-                        case 43:
-                            Debug.WriteLine(id);
-                            break;
-                        case 44:
-                            Debug.WriteLine(id);
-                            break;
+
+
 
 
 

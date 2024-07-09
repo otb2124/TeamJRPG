@@ -28,7 +28,7 @@ namespace TeamJRPG
                 case 0:
                     name = "Green Leaves";
                     description = "Bunch of green leaves used to cook food.";
-                    value = 2;
+                    value = 0;
 
                     textureID = 0;
                     break;

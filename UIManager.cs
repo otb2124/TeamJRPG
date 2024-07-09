@@ -1,4 +1,5 @@
-﻿using SharpDX.Direct2D1.Effects;
+﻿using Microsoft.Xna.Framework;
+using SharpDX.Direct2D1.Effects;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -54,6 +55,7 @@ namespace TeamJRPG
                         {
                             Add(UIComposite.UICompositeType.MOUSE_CURSOR);
                         }
+
                         break;
                     case MenuState.charachters:
                         Add(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS);
@@ -82,6 +84,11 @@ namespace TeamJRPG
                     case MenuState.clean:
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU);
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.MOUSE_CURSOR);
+                        RemoveAllCompositesOfTypes(UIComposite.UICompositeType.FLOATING_INFO_BOX);
+                        if(GetAllChildrenOfType(UIComposite.UICompositeType.GROUP_BARS).Count == 0)
+                        {
+                            AddElement(new GroupmemberBars(new Vector2(0, 0)));
+                        }
                         break;
                 }
 
@@ -258,6 +265,169 @@ namespace TeamJRPG
         public void RemoveElement(UIComposite element)
         {
             elementsToRemove.Add(element);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        public void DescribeItem(Item item)
+        {
+            AddElement(new DescriptionWindow(item));
+        }
+
+        public void DropItem(Item item)
+        {
+            if (Globals.player.armor.Contains(item))
+            {
+                for (int i = 0; i < Globals.player.armor.Length; i++)
+                {
+                    if (Globals.player.armor[i] == item)
+                    {
+                        Armor newArmor = new Armor(0);
+
+                        switch (i)
+                        {
+                            case 0: newArmor.slotType = Armor.SlotType.helmet; break;
+                            case 1: newArmor.slotType = Armor.SlotType.chestplate; break;
+                            case 2: newArmor.slotType = Armor.SlotType.boots; break;
+                            case 3: newArmor.slotType = Armor.SlotType.gloves; break;
+                            case 4: newArmor.slotType = Armor.SlotType.cape; break;
+                            case 5: newArmor.slotType = Armor.SlotType.belt; break;
+                            case 6: newArmor.slotType = Armor.SlotType.necklace; break;
+                            case 7: newArmor.slotType = Armor.SlotType.ring; break;
+                        }
+
+
+                        Globals.player.armor[i] = newArmor;
+                        break;
+                    }
+                }
+            }
+
+
+
+            else if (Globals.player.weapon1 == item)
+            {
+                Globals.player.weapon1 = new Weapon(0);
+            }
+            else if (Globals.player.weapon2 == item)
+            {
+                Globals.player.weapon2 = new Weapon(0);
+            }
+            else if (Globals.group.inventory.Contains(item))
+            {
+                Globals.group.inventory.Remove(item);
+            }
+
+
+            Object drop = new Object(Globals.player.GetMapPos(), 0);
+            drop.AddToInventory(item);
+            Globals.entities.Add(drop);
+            Globals.group.inventory.Remove(item);
+            if (currentMenuState == MenuState.inventory)
+            {
+                InventoryInGameMenu inventory = (InventoryInGameMenu)GetAllChildrenOfType(UIComposite.UICompositeType.INGAME_MENU_INVENTORY)[0];
+                inventory.RefreshEquipment();
+                inventory.RefreshInventory();
+            }
+        }
+
+
+        public void DestroyItem(Item item)
+        {
+
+            if (Globals.player.armor.Contains(item))
+            {
+                for (int i = 0; i < Globals.player.armor.Length; i++)
+                {
+                    if (Globals.player.armor[i] == item)
+                    {
+                        Armor newArmor = new Armor(0);
+
+                        switch (i)
+                        {
+                            case 0: newArmor.slotType = Armor.SlotType.helmet; break;
+                            case 1: newArmor.slotType = Armor.SlotType.chestplate; break;
+                            case 2: newArmor.slotType = Armor.SlotType.boots; break;
+                            case 3: newArmor.slotType = Armor.SlotType.gloves; break;
+                            case 4: newArmor.slotType = Armor.SlotType.cape; break;
+                            case 5: newArmor.slotType = Armor.SlotType.belt; break;
+                            case 6: newArmor.slotType = Armor.SlotType.necklace; break;
+                            case 7: newArmor.slotType = Armor.SlotType.ring; break;
+                        }
+
+
+                        Globals.player.armor[i] = newArmor;
+                        break;
+                    }
+                }
+            }
+            
+
+
+            else if (Globals.player.weapon1 == item)
+            {
+                Globals.player.weapon1 = new Weapon(0);
+            }
+            else if (Globals.player.weapon2 == item)
+            {
+                Globals.player.weapon2 = new Weapon(0);
+            }
+            else if (Globals.group.inventory.Contains(item))
+            {
+                Globals.group.inventory.Remove(item);
+            }
+
+
+
+
+            if (currentMenuState == MenuState.inventory)
+            {
+                InventoryInGameMenu inventory = (InventoryInGameMenu)GetAllChildrenOfType(UIComposite.UICompositeType.INGAME_MENU_INVENTORY)[0];
+                inventory.RefreshEquipment();
+                inventory.RefreshInventory();
+            }
+        }
+
+
+        public void EquipItem(Item item)
+        {
+            if (currentMenuState == MenuState.inventory)
+            {
+                InventoryInGameMenu inventory = (InventoryInGameMenu)GetAllChildrenOfType(UIComposite.UICompositeType.INGAME_MENU_INVENTORY)[0];
+                inventory.EquipItemByButtonMenu(item);
+            }
+        }
+
+        public void UneqipItem(Item item)
+        {
+            if (currentMenuState == MenuState.inventory)
+            {
+                InventoryInGameMenu inventory = (InventoryInGameMenu)GetAllChildrenOfType(UIComposite.UICompositeType.INGAME_MENU_INVENTORY)[0];
+                inventory.UnEquipByButtonmenu(item);
+            }
+        }
+
+
+
+
+        public void ConsumeItem(Item item)
+        {
+            Globals.group.RemoveFromInventory(item);
+            if (currentMenuState == MenuState.inventory)
+            {
+                InventoryInGameMenu inventory = (InventoryInGameMenu)GetAllChildrenOfType(UIComposite.UICompositeType.INGAME_MENU_INVENTORY)[0];
+                inventory.RefreshEquipment();
+                inventory.RefreshInventory();
+            }
         }
     }
 }

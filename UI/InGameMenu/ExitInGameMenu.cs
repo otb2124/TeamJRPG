@@ -31,8 +31,8 @@ namespace TeamJRPG
 
 
             //buttons
-            TextButton noTextButton = new TextButton("No", new Vector2(framePos.X, framePos.Y + frameSize.Y - 32), 11);
-            TextButton yesTextButton = new TextButton("Yes", new Vector2(framePos.X + frameSize.X - 48, framePos.Y + frameSize.Y - 32), 12);
+            TextButton noTextButton = new TextButton("No", new Vector2(framePos.X, framePos.Y + frameSize.Y - 32), 1, 11);
+            TextButton yesTextButton = new TextButton("Yes", new Vector2(framePos.X + frameSize.X - 48, framePos.Y + frameSize.Y - 32), 1, 12);
 
             children.Add(noTextButton);
             children.Add(yesTextButton);

@@ -20,10 +20,11 @@ namespace TeamJRPG
             Texture2D icontext = Globals.assetSetter.textures[Globals.assetSetter.UI][2][0];
             Vector2 padding = frameMargin + new Vector2(icontext.Width/4, icontext.Height/4);
 
+            string[] hints = new string[] { "Continue", "Characters", "Inventory", "Skills", "QuestBook", "Stats", "Map", "Settings", "Exit"  };
 
             for (int i = 0; i < 9; i++)
             {
-                Button button = new Button(Globals.assetSetter.textures[Globals.assetSetter.UI][2][i], new Vector2(padding.X, padding.Y + ((Globals.camera.viewport.Height-32)/9 *i)), 2, i);
+                Button button = new Button(Globals.assetSetter.textures[Globals.assetSetter.UI][2][i], new Vector2(padding.X, padding.Y + ((Globals.camera.viewport.Height-32)/9 *i)), 2, i, hints[i]);
                 children.Add(button);
             }
 

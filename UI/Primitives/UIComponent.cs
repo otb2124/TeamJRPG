@@ -136,6 +136,7 @@ namespace TeamJRPG
                 if (HasStroke)
                 {
                     textureToDraw = StrokeEffect.CreateStroke(texture, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType);
+                    adjustedSourceRectangle = new Rectangle(0, 0, textureToDraw.Width, textureToDraw.Height);
                 }
 
                 Globals.spriteBatch.Draw(textureToDraw, adjustedPosition, adjustedSourceRectangle, color, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
@@ -145,6 +146,7 @@ namespace TeamJRPG
                 if (HasStroke)
                 {
                     textureToDraw = StrokeEffect.CreateStrokeSpriteFont(Globals.assetSetter.fonts[fontID], text, color, Vector2.One, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType);
+                    adjustedSourceRectangle = new Rectangle(0, 0, textureToDraw.Width, textureToDraw.Height);
                     Globals.spriteBatch.Draw(textureToDraw, adjustedPosition, adjustedSourceRectangle, strokeColor, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
                 }
                 else

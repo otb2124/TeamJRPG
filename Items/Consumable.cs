@@ -33,6 +33,14 @@ namespace TeamJRPG
 
                     textureID = 0;
                     break;
+                case 1:
+                    name = "Shiny Apple";
+                    consumableType = ConsumableType.food;
+                    description = "Looks really tasty.";
+                    value = 1;
+
+                    textureID = 1;
+                    break;
             }
 
             SetTexture();

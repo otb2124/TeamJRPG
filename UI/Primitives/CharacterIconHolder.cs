@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.MediaFoundation;
 
 namespace TeamJRPG
 {
@@ -8,26 +9,46 @@ namespace TeamJRPG
 
         public Texture2D texture;
 
-        public CharacterIconHolder(Entity entity, Vector2 startPosition, Vector2 scale)
+        public CharacterIconHolder(Entity entity, Vector2 startPosition, Vector2 scale, Stroke stroke, string hint, int frameType)
         {
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
             texture = entity.characterIcon;
 
 
             Texture2D backg= Globals.assetSetter.textures[Globals.assetSetter.UI][5][0];
-            ImageHolder backGround = new ImageHolder(backg, new Vector2(startPosition.X, startPosition.Y), scale);
-            components.AddRange(backGround.components);
 
-
-            UIComponent image = new UIComponent
+            Stroke bgStroke = null;
+            if(frameType == 0)
             {
-                position = position,
-                texture = texture,
-                sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height),
-                scale = scale,
-            };
+                bgStroke = stroke;
+            }
+            ImageHolder backGround = new ImageHolder(backg, new Vector2(startPosition.X, startPosition.Y), Color.White, scale, bgStroke);
+            
 
-            components.Add(image);
+            ImageHolder charac = new ImageHolder(texture, new Vector2(startPosition.X, startPosition.Y), entity.skinColor, scale, null);
+            if (hint != null)
+            {
+                charac.floatingText = hint;
+            }
+
+
+            Texture2D frameTexture = Globals.assetSetter.textures[Globals.assetSetter.PLACEHOLDERS][0][0];
+            switch (frameType) 
+            {
+                case 0:
+                    break;
+                case 1:
+                    frameTexture = Globals.assetSetter.textures[Globals.assetSetter.UI][4][0];
+                    break;
+            }
+
+            ImageHolder frame = new ImageHolder(frameTexture, new Vector2(startPosition.X, startPosition.Y), Color.White, scale, stroke);
+
+            
+            children.Add(backGround);
+            children.Add(charac);
+            children.Add(frame);
+            
 
 
 

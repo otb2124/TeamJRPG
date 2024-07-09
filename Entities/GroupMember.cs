@@ -146,6 +146,10 @@ namespace TeamJRPG
                 {
                     if (obj.type == Object.ObjectType.autoPickable)
                     {
+                        for (global::System.Int32 i = 0; i < obj.inventory.Count; i++)
+                        {
+                            Globals.group.AddToInventory(obj.inventory[i]);
+                        }
                         Globals.entities.Remove(collidedEntity);
                     }
                 }
@@ -155,7 +159,7 @@ namespace TeamJRPG
             {
                 if (collidedEntity is Mob || collidedEntity is GroupMember)
                 {
-                    //return;
+                    //skip collision
                 }
                 else
                 {
@@ -182,7 +186,10 @@ namespace TeamJRPG
                     {
                         if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Enter))
                         {
-                            Globals.group.inventory.AddRange(obj.inventory);
+                            for (global::System.Int32 i = 0; i < obj.inventory.Count; i++)
+                            {
+                                Globals.group.AddToInventory(obj.inventory[i]);
+                            }
                             Globals.entities.Remove(interractedEntity);
                         }
                     }
@@ -193,11 +200,9 @@ namespace TeamJRPG
         private void FollowPreviousMember()
         {
             int index = Globals.group.members.IndexOf(this);
-            if (index > 0)
-            {
-                Entity previousMember = Globals.group.members[index - 1];
-                MaintainDistance(previousMember);
-            }
+            int newIndex = (index - 1 + Globals.group.members.Count) % Globals.group.members.Count;
+            Entity previousMember = Globals.group.members[newIndex];
+            MaintainDistance(previousMember);
         }
 
         private void MaintainDistance(Entity previousMember)
@@ -261,21 +266,31 @@ namespace TeamJRPG
 
         private void CheckPlayerChange()
         {
-
-            // Check for player change input (previous)
             if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Q))
             {
-                int currentIndex = Globals.group.members.IndexOf(this);
-                int newIndex = (currentIndex - 1 + Globals.group.members.Count) % Globals.group.members.Count;
-                SetPlayer(Globals.group.members[newIndex]);
+                SetPrevMemberToPlayer();
             }
-            // Check for player change input (next)
             else if (Globals.inputManager.IsKeyPressedAndReleased(Keys.E))
             {
-                int currentIndex = Globals.group.members.IndexOf(this);
-                int newIndex = (currentIndex + 1) % Globals.group.members.Count;
-                SetPlayer(Globals.group.members[newIndex]);
+                SetNextMemberToPlayer();
             }
+        }
+
+        public void SetPrevMemberToPlayer()
+        {
+            ChangePlayer(-1);
+        }
+
+        public void SetNextMemberToPlayer()
+        {
+            ChangePlayer(1);
+        }
+
+        private void ChangePlayer(int direction)
+        {
+            int currentIndex = Globals.group.members.IndexOf(this);
+            int newIndex = (currentIndex + direction + Globals.group.members.Count) % Globals.group.members.Count;
+            SetPlayer(Globals.group.members[newIndex]);
         }
 
         public void SetPlayer(GroupMember newPlayer)
@@ -287,19 +302,19 @@ namespace TeamJRPG
                 Globals.playerChanged = true;
                 Globals.player = newPlayer;
 
-                //Globals.uimanager.drawPointer();
-
-                if (Globals.group.members.Contains(newPlayer))
-                {
-                    Globals.group.members.Remove(newPlayer);
-                }
-
-                Globals.group.members.Insert(0, newPlayer);
+                // Uncomment the following line if needed
+                // Globals.uimanager.drawPointer();
             }
+
+            for (int i = 0; i < Globals.group.members.Count; i++)
+            {
+                Globals.group.members[i].path = new Queue<Point>();
+            }
+
         }
 
 
-        
+
 
 
         public override void Draw()
