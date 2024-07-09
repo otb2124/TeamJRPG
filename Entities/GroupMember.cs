@@ -85,14 +85,6 @@ namespace TeamJRPG
 
 
 
-            equipment = new Equipment[11];
-            equipment[0] = weapon1;
-            equipment[1] = weapon2;
-            for (int i = 0; i < armor.Length; i++)
-            {
-                equipment[i + 2] = armor[i];
-            }
-
         }
 
 
@@ -299,7 +291,6 @@ namespace TeamJRPG
             {
                 this.isPlayer = false;
                 newPlayer.isPlayer = true;
-                Globals.playerChanged = true;
                 Globals.player = newPlayer;
 
                 // Uncomment the following line if needed

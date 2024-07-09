@@ -153,10 +153,10 @@ namespace TeamJRPG
                             }
                             break;
                         case 9:
-                            Debug.WriteLine("left");
+                            Globals.player.SetPrevMemberToPlayer();
                             break;
                         case 10:
-                            Debug.WriteLine("right");
+                            Globals.player.SetNextMemberToPlayer();
                             break;
                         case 11:
                             Globals.uiManager.currentMenuState = UIManager.MenuState.inGameMenu;

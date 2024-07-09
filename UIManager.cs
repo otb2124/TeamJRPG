@@ -17,11 +17,18 @@ namespace TeamJRPG
 
         public enum MenuState { inGameMenu, charachters, inventory, skills, questBook, statistics, map, settings, exit, clean };
         public MenuState currentMenuState;
+        public MenuState previousMenuState;
         public bool MenuStateNeedsChange;
 
 
 
         public bool IsDraggingItemInInventory = false;
+
+
+
+        
+
+
 
         public UIManager()
         {
@@ -91,8 +98,6 @@ namespace TeamJRPG
                         }
                         break;
                 }
-
-
 
                 MenuStateNeedsChange = false;
             }
@@ -195,6 +200,17 @@ namespace TeamJRPG
         }
 
 
+
+        public bool CheckMenuStateChange()
+        {
+            if(currentMenuState != previousMenuState)
+            {
+                previousMenuState = currentMenuState;
+                return true;
+            }
+
+            return false;
+        }
 
 
 

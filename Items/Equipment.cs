@@ -13,6 +13,9 @@ namespace TeamJRPG
         //damage
         public float PhysicalDMG = 0;
         public float MagicalDMG = 0;
+        public float FireDMG = 0;
+        public float ColdDMG = 0;
+        public float LightningDMG = 0;
         public float SkinDMGMULTIPLIER = 1;
         public float ArmorDMGMULTIPLIER = 1;
 
@@ -23,6 +26,7 @@ namespace TeamJRPG
         public float ColdDEF = 0;
         public float LightningDEF = 0;
 
-
+        //Crit
+        public float critChance = 0;
     }
 }

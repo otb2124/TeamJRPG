@@ -69,6 +69,8 @@ namespace TeamJRPG
         public void Update()
         {
             Globals.inputManager.Update();
+            Globals.group.CheckPlayerChange();
+
 
             //Game States
             if (Globals.currentGameState == Globals.GameState.playstate)
@@ -148,11 +150,8 @@ namespace TeamJRPG
             Globals.uiManager.Update();
 
 
+            
 
-            if (Globals.playerChanged)
-            {
-                Globals.playerChanged = false;
-            }
         }
 
         public void Draw()

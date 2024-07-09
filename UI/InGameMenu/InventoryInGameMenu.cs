@@ -119,21 +119,23 @@ namespace TeamJRPG
         public override void Update()
         {
 
-            if (catBCP.Changed || Globals.playerChanged)
+            
+
+            if (catBCP.Changed || Globals.group.PlayerChanged)
             {
                 RefreshInventory();
             }
 
             CheckEquipmentChange();
 
-            if (Globals.inputManager.CheckPlayerInput() || Globals.playerChanged)
+            if (Globals.inputManager.CheckPlayerInput() || Globals.group.PlayerChanged)
             {
                 Globals.uiManager.RemoveAllCompositesOfTypes(UICompositeType.FLOATING_INFO_BOX);
                 RefreshCharFrame();
             }
 
 
-            if (Globals.playerChanged)
+            if (Globals.group.PlayerChanged)
             {
                 RefreshEquipment();
             }

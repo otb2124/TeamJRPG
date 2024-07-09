@@ -39,7 +39,9 @@ namespace TeamJRPG
         public override void Update()
         {
 
-            if (Globals.inputManager.CheckPlayerInput() || Globals.playerChanged)
+            bool refreshCondition = Globals.group.PlayerChanged || Globals.uiManager.CheckMenuStateChange();
+
+            if (refreshCondition)
             {
                 RefreshIcons();
             }
@@ -47,11 +49,6 @@ namespace TeamJRPG
             base.Update();
         }
 
-        public void MovePosition(Vector2 position)
-        {
-            this.position += position;
-            RefreshIcons();
-        }
 
 
         public void RefreshIcons()
@@ -121,5 +118,9 @@ namespace TeamJRPG
 
             Globals.uiManager.RemoveAllCompositesOfTypes(UICompositeType.FLOATING_INFO_BOX);
         }
+
+
+
+        
     }
 }

@@ -52,7 +52,9 @@ namespace TeamJRPG
 
         public override void Update()
         {
-            if (Globals.inputManager.CheckPlayerInput() || Globals.playerChanged)
+            bool playerChanged = Globals.group.PlayerChanged;
+
+            if (Globals.inputManager.CheckPlayerInput() || playerChanged)
             {
                 RefreshCharacter();
             }

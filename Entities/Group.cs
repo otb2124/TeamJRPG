@@ -11,6 +11,10 @@ namespace TeamJRPG
 
         public int currentPlayerId;
 
+        public GroupMember previousPlayer;
+        public GroupMember currentPlayer;
+        public bool PlayerChanged = false;
+
         public Group() 
         {
             members = new List<GroupMember>();
@@ -48,6 +52,20 @@ namespace TeamJRPG
         }
 
 
+        public void CheckPlayerChange()
+        {
+            currentPlayer = Globals.player;
+
+            if(currentPlayer != previousPlayer)
+            {
+                PlayerChanged = true;
+                previousPlayer = currentPlayer;
+            }
+            else
+            {
+                PlayerChanged = false;
+            }
+        }
 
 
         public void AddToInventory(Item item)
