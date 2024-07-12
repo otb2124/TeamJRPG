@@ -37,10 +37,10 @@ namespace MonoGame
                     graphics.Clear(Color.Transparent);
 
                     var spriteBatch = GetSpriteBatch(graphics);
-                    // Create a new texture with the new frameSize
+                    // Create a new charSprite with the new frameSize
                     spriteBatch.Begin();
 
-                    // draw the texture with the margin
+                    // draw the charSprite with the margin
                     spriteBatch.Draw(src, new Vector2(size), Color.White);
 
                     spriteBatch.End();

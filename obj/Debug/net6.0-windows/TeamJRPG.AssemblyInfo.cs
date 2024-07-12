@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TeamJRPG")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df0605d7c74e810e0323d41e747c4276c897bbfc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+039d5ca5893bce1a8615c7d6f8b7137383fdf4ec")]
 [assembly: System.Reflection.AssemblyProductAttribute("TeamJRPG")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TeamJRPG")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
