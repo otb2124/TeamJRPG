@@ -7,7 +7,7 @@ namespace TeamJRPG
     {
         public Vector2 frameSize;
         public string text;
-        public TextButton(string text, Vector2 startPosition, int fontId, int id, Color color) : base(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), startPosition, 1, id, "empty")
+        public TextButton(string text, Vector2 startPosition, int fontId, int id, Color color) : base(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), startPosition, 1, id, null)
         {
             this.position = startPosition;
             this.text = text;

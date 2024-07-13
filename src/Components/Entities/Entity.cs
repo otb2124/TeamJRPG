@@ -1,33 +1,53 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace TeamJRPG
 {
+
+
+    [Serializable]
     public class Entity
     {
 
         public Vector2 position;
+
+        [JsonIgnore]
         public Vector2 drawPosition;
 
+        [JsonIgnore]
         public Sprite[] sprites;
+
+        [JsonIgnore]
         public AnimationManager anims;
 
+        [JsonIgnore]
         public Color drawColor;
 
-        
 
 
 
-        
 
 
+
+        [JsonIgnore]
         public System.Drawing.RectangleF collisionBox;
+
+        [JsonIgnore]
         public Texture2D collisionTexture;
+
+  
+
         public bool entityCollision;
         public bool tileCollision;
 
         public List<Item> inventory;
+
+
+
+
 
         public Entity(Vector2 position)
         {

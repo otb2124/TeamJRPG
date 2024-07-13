@@ -1,13 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Text.Json.Serialization;
 
 namespace TeamJRPG
 {
+
+    [Serializable]
     public class Item
     {
         public int value;
         public string name;
         public string description;
+
+        [JsonIgnore]
         public Sprite sprite;
         public int textureID;
 

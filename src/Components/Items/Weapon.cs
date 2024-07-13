@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TeamJRPG
 {
+    [Serializable]
     public class Weapon : Equipment
     {
         public enum SlotType { oneHanded, twoHanded }

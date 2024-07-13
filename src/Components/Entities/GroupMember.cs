@@ -16,8 +16,8 @@ namespace TeamJRPG
 
         public GroupMember(Vector2 position) : base(position)
         {
-            defaultSpeed = 2.5f;
-            defaultSprintSpeed = 4f;
+            defaultSpeed = 3.5f;
+            defaultSprintSpeed = 5f;
             defaultSprintDuration = 5 * 60;
 
             currentSpeed = defaultSpeed;
@@ -50,8 +50,20 @@ namespace TeamJRPG
         {
             anims = new AnimationManager();
 
-            AddAnimationForAllDirections(AnimationState.idle, new Vector2(6, 8), 0.1f, 0);
-            AddAnimationForAllDirections(AnimationState.walking, new Vector2(6, 8), 0.1f, 4);
+            AddAnimation(Direction.down, AnimationState.idle, 4, new Vector2(0, 0), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+            AddAnimation(Direction.left, AnimationState.idle, 4, new Vector2(0, 64), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+            AddAnimation(Direction.right, AnimationState.idle, 4, new Vector2(0, 64*2), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+            AddAnimation(Direction.up, AnimationState.idle, 4, new Vector2(0, 64*3), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+
+            AddAnimation(Direction.down, AnimationState.walking, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+            AddAnimation(Direction.left, AnimationState.walking, 4, new Vector2(0, 64 * 5), new Vector2(32+16, 64), 0.1f);
+            AddAnimation(Direction.right, AnimationState.walking, 4, new Vector2(0, 64 * 6), new Vector2(32+16, 64), 0.1f);
+            AddAnimation(Direction.up, AnimationState.walking, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+
+            AddAnimation(Direction.down, AnimationState.sprinting, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+            AddAnimation(Direction.left, AnimationState.sprinting, 4, new Vector2(0, 64 * 5), new Vector2(32 + 16, 64), 0.1f);
+            AddAnimation(Direction.right, AnimationState.sprinting, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), 0.1f);
+            AddAnimation(Direction.up, AnimationState.sprinting, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
 
             this.currentStatus = Status.idle;
             this.direction = Direction.down;
@@ -126,7 +138,7 @@ namespace TeamJRPG
 
         public override void Update()
         {
-
+           
             anims.Update(new Tuple<LiveEntity.Direction, LiveEntity.AnimationState>(direction, animationState));
 
             HandleCollisions();
@@ -139,10 +151,15 @@ namespace TeamJRPG
             {
                 if (Globals.inputManager.IsKeyPressed(Keys.W)) { Move(new Vector2(0, -currentSpeed), Direction.up); }
                 else if (Globals.inputManager.IsKeyPressed(Keys.S)) { Move(new Vector2(0, currentSpeed), Direction.down); }
-                else if (Globals.inputManager.IsKeyPressed(Keys.A)) { Move(new Vector2(-currentSpeed, 0), Direction.left);}
+                else if (Globals.inputManager.IsKeyPressed(Keys.A)) { Move(new Vector2(-currentSpeed, 0), Direction.left); }
                 else if (Globals.inputManager.IsKeyPressed(Keys.D)) { Move(new Vector2(currentSpeed, 0), Direction.right); }
 
-                if (Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { Sprint(); } else { UnSprint();  }
+                if (currentStatus == Status.walking)
+                {
+                    if (Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { Sprint(); } 
+                }
+
+                if (!Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { UnSprint(); }
 
                 HandleInterractions();
             }
@@ -154,10 +171,9 @@ namespace TeamJRPG
             this.collisionBox.Location = new System.Drawing.PointF(this.position.X + (Globals.tileSize.X - collisionBox.Width) / 2, this.position.Y + Globals.tileSize.Y / 2);
 
 
+            base.Update();
 
             animationState = SwitchStatusToAnimation();
-            
-            base.Update();
         }
 
         

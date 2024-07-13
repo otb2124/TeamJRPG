@@ -1,18 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace TeamJRPG
 {
+    [Serializable]
     public class LiveEntity : Entity
     {
         // sprites
+        [JsonIgnore]
         public SpriteSheet bodySpriteSheet;
-        public int characterIconID;
+        public readonly Vector2 DEFAULT_HUMANOID_BODY_SPRITE_SIZE = new Vector2(32, 64);
+        [JsonIgnore]
         public Sprite characterIcon;
-        public int characterIconBackGroundID;
+        [JsonIgnore]
         public Sprite backGroundIcon;
+
+        public int bodySpriteSheetID;
+        public int characterIconID;
+        public int characterIconBackGroundID;
+
+
 
         // colors
         public Color skinColor;
@@ -21,10 +30,11 @@ namespace TeamJRPG
 
         // states
         public enum Status { idle, walking, sprinting };
+
         public Status currentStatus;
 
         // animations
-        public enum AnimationState { idle, walking, dodging };
+        public enum AnimationState { idle, walking, sprinting };
         public AnimationState animationState;
 
         // body movement
@@ -37,6 +47,8 @@ namespace TeamJRPG
         public bool IsSprinting = false;
         public float defaultSprintDuration;
         public float currentSprintDuration;
+
+        [JsonIgnore]
         public float dodgeTimer;
 
 
@@ -45,13 +57,19 @@ namespace TeamJRPG
 
         // pathfinding
         public Direction direction;
+
+        [JsonIgnore]
         public Queue<Point> path;
+        [JsonIgnore]
         public Point previousPosition;
 
         // equipment
         public Weapon weapon1;
         public Weapon weapon2;
         public Armor[] armor;
+
+
+        [JsonIgnore]
         public static readonly int CHESTPLATE = 1, HELMET = 0, BOOTS = 2, GLOVES = 3, CAPE = 4, NECKLACE = 6, BELT = 5, RING1 = 7, RING2 = 8;
 
         // exp stats
@@ -120,18 +138,9 @@ namespace TeamJRPG
         }
 
         // Animations
-        public void AddAnimationForAllDirections(AnimationState animationState, Vector2 sheetGridSize, float eachFrameDuration, int rowIDstart)
+        public void AddAnimation(Direction direction, AnimationState animationState, int framesCount, Vector2 startPos, Vector2 frameSize, float eachFrameDuration)
         {
-            AddAnimation(Direction.down, animationState, sheetGridSize, eachFrameDuration, rowIDstart);
-            AddAnimation(Direction.left, animationState, sheetGridSize, eachFrameDuration, rowIDstart + 1);
-            AddAnimation(Direction.right, animationState, sheetGridSize, eachFrameDuration, rowIDstart + 2);
-            AddAnimation(Direction.up, animationState, sheetGridSize, eachFrameDuration, rowIDstart + 3);
-        }
-
-        public void AddAnimation(Direction direction, AnimationState animationState, Vector2 sheetGridSize, float eachFrameDuration, int rowID)
-        {
-            rowID++;
-            anims.AddAnimation(new Tuple<Direction, AnimationState>(direction, animationState), new Animation(bodySpriteSheet.texture, (int)sheetGridSize.X, (int)sheetGridSize.Y, eachFrameDuration, rowID));
+            anims.AddAnimation(new Tuple<Direction, AnimationState>(direction, animationState), new Animation(bodySpriteSheet.texture, framesCount, startPos, frameSize, eachFrameDuration));
         }
 
         public AnimationState SwitchStatusToAnimation()
@@ -140,7 +149,7 @@ namespace TeamJRPG
             {
                 case Status.idle: return AnimationState.idle;
                 case Status.walking: return AnimationState.walking;
-                case Status.sprinting: return AnimationState.walking;
+                case Status.sprinting: return AnimationState.sprinting;
             }
             return AnimationState.idle;
         }
@@ -151,6 +160,7 @@ namespace TeamJRPG
             position += delta;
             this.direction = direction;
             this.currentStatus = Status.walking;
+            
         }
 
         public void Sprint()

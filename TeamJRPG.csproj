@@ -46,6 +46,7 @@
     <None Remove="Content\res\characters\bodies\body0_2.png" />
     <None Remove="Content\res\characters\bodies\body0_3.png" />
     <None Remove="Content\res\characters\bodies\body_male_spritesheet.png" />
+    <None Remove="Content\res\characters\bodies\body_male_spritesheet0.png" />
     <None Remove="Content\res\characters\icons\icon0.png" />
     <None Remove="Content\res\characters\icons\iconbackgrounds.png" />
     <None Remove="Content\res\effects\CircularMask.fx" />
@@ -113,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\res\characters\bodies\body_male_spritesheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\characters\bodies\body_male_spritesheet0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\characters\icons\iconbackgrounds.png">

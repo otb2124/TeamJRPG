@@ -52,7 +52,7 @@ namespace TeamJRPG
             AddSheet(SheetCategory.tiles, 0, "tiles/tilemap_forest");
 
             //characterBodies
-            AddSheet(SheetCategory.character_bodies, 0, "characters/bodies/body_male_spritesheet");
+            AddSheet(SheetCategory.character_bodies, 0, "characters/bodies/body_male_spritesheet0");
 
             //characterDetails
 

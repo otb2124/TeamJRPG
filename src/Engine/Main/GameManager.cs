@@ -39,7 +39,7 @@ namespace TeamJRPG
         public void Load()
         {
             Globals.assetSetter.SetAssets();
-            Globals.map.Load();
+            Globals.mapReader.ReadMap("save.json");
             Globals.aStarPathfinding.Init();
             Globals.uiManager.Init();
 
@@ -51,8 +51,13 @@ namespace TeamJRPG
 
             Globals.camera.Load();
 
+            //Globals.mapReader.WriteMap("save.json");
+
+
             commandThread = new Thread(CommandHandler);
             commandThread.Start();
+
+            
         }
 
         public void Update()

@@ -14,7 +14,7 @@ namespace TeamJRPG
         public float frameTimeLeft;
         public bool active;
 
-        public Animation(Texture2D texture, int framesCountX, int framesCountY, float frameTime, int row = 1)
+        public Animation(Texture2D texture, int framesCountX, Vector2 startPos, Vector2 frameSize, float frameTime)
         {
             this.texture = texture;
             this.frames = framesCountX;
@@ -23,12 +23,10 @@ namespace TeamJRPG
             currentFrame = 0;
             active = true;
 
-            int frameWidth = texture.Width / framesCountX;
-            int frameHeight = texture.Height / framesCountY;
 
             for (int i = 0; i < frames; i++)
             {
-                sourceRectangles.Add(new Rectangle(i * frameWidth, (row - 1) * frameHeight, frameWidth, frameHeight));
+                sourceRectangles.Add(new Rectangle(i * (int)frameSize.X + (int)startPos.X, (int)startPos.Y, (int)frameSize.X, (int)frameSize.Y));
             }
         }
 

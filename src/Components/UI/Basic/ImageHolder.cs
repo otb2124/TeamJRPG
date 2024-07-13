@@ -7,7 +7,8 @@ namespace TeamJRPG
 {
     public class ImageHolder : UIComposite
     {
-        public string floatingText = "empty";
+        public List<string> floatingText;
+        public List<Color> floatingTextColors;
         public FloatingInfoBox fib;
         public System.Drawing.RectangleF hintBox;
         public bool hintOn = false;
@@ -16,6 +17,9 @@ namespace TeamJRPG
         public ImageHolder(Sprite sprite, Vector2 startPosition, Color color, Vector2 scale, Stroke stroke)
         {
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
+
+            floatingText = new List<string>();
+            floatingTextColors = new List<Color>();
 
             UIComponent image = new UIComponent
             {
@@ -50,30 +54,42 @@ namespace TeamJRPG
 
         public override void Update()
         {
-            if (floatingText != "empty")
+            if(Globals.currentGameState == Globals.GameState.ingamemenustate)
             {
-                Vector2 cursorPos = Globals.inputManager.GetCursorPos();
-                System.Drawing.PointF cursorPointF = new System.Drawing.PointF(cursorPos.X, cursorPos.Y);
-
-                if (hintBox.Contains(cursorPointF))
+                if (floatingText != null)
                 {
-                    if (!hintOn)
+                    Vector2 cursorPos = Globals.inputManager.GetCursorPos();
+                    System.Drawing.PointF cursorPointF = new System.Drawing.PointF(cursorPos.X, cursorPos.Y);
+
+                    if (hintBox.Contains(cursorPointF))
                     {
-                        if(floatingText != null)
+                        if (!hintOn)
                         {
-                            fib = new FloatingInfoBox(new List<string>() { floatingText }, new List<Color>() { Color.White });
-                            Globals.uiManager.AddElement(fib);
-                            hintOn = true;
+                            if (floatingText.Count > 0)
+                            {
+                                if (floatingTextColors.Count <= 0)
+                                {
+                                    floatingTextColors = new List<Color>();
+                                    for (global::System.Int32 i = 0; i < floatingText.Count; i++)
+                                    {
+                                        floatingTextColors.Add(Color.White);
+                                    }
+                                }
+                                fib = new FloatingInfoBox(floatingText, floatingTextColors);
+                                Globals.uiManager.AddElement(fib);
+                                hintOn = true;
+                            }
+
                         }
-                        
+                    }
+                    else
+                    {
+                        Globals.uiManager.RemoveElement(fib);
+                        hintOn = false;
                     }
                 }
-                else
-                {
-                    Globals.uiManager.RemoveElement(fib);
-                    hintOn = false;
-                }
             }
+            
 
 
             base.Update();

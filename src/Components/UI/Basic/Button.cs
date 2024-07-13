@@ -9,7 +9,7 @@ namespace TeamJRPG
         public bool Active = false;
         public int id;
         public System.Drawing.RectangleF buttonBox;
-        public string floatingHint = "empty";
+        public string floatingHint;
 
         public Vector2 frameSize;
 
@@ -21,9 +21,9 @@ namespace TeamJRPG
 
 
             ImageHolder img = new ImageHolder(sprite, startPosition, Color.White, new Vector2(scale, scale), null);
-            if (floatingHint != "emtpy")
+            if (floatingHint != null)
             {
-                img.floatingText = floatingHint;
+                img.floatingText.Add(floatingHint);
             }
 
             frameSize = new Vector2(sprite.srcRect.Width *scale, sprite.srcRect.Height *scale);

@@ -23,7 +23,7 @@ namespace TeamJRPG
 
             RegisterCommand("setpos", new UpdatePositionCommand());
             RegisterCommand("gameMode", new DebugModeOnCommand());
-            RegisterCommand("sethp", new UpdateHPCommand());
+            RegisterCommand("set", new SetCommand());
         }
 
         public void RegisterCommand(string name, ICommand command)

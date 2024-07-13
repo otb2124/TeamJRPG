@@ -26,7 +26,11 @@ namespace TeamJRPG
             this.scale = scale;
 
             ImageHolder backGround = new ImageHolder(entity.backGroundIcon, adjustedPosition, Color.White, scale * 2, frameType == 0 ? stroke : null);
-            ImageHolder charac = new ImageHolder(charSprite, adjustedPosition, entity.skinColor, scale, null) { floatingText = hint };
+            ImageHolder charac = new ImageHolder(charSprite, adjustedPosition, entity.skinColor, scale, null);
+            charac.floatingText.Clear();
+            charac.floatingText.Add(hint);
+            charac.floatingTextColors.Clear();
+            charac.floatingTextColors.Add(Color.White);
 
             Sprite frameTexture = frameType switch
             {
@@ -43,6 +47,10 @@ namespace TeamJRPG
             if (frameType == 1)
             {
                 bars = new List<UIComposite>();
+                charac.floatingText.Add(entity.currentHP + "/" + entity.maxHP);
+                charac.floatingTextColors.Add(Color.Red);
+                charac.floatingText.Add(entity.currentMana + "/" + entity.maxMana);
+                charac.floatingTextColors.Add(Color.Blue);
                 RefreshBars();
             }
 
@@ -57,9 +65,11 @@ namespace TeamJRPG
         public override void Update()
         {
 
+            if (bars != null)
+            {
 
-            RefreshBars();
-
+                RefreshBars();
+            }
 
 
             base.Update();

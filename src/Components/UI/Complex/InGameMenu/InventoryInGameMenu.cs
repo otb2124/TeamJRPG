@@ -115,7 +115,7 @@ namespace TeamJRPG
 
             CheckEquipmentChange();
 
-            if (Globals.inputManager.CheckPlayerInput() || Globals.group.PlayerChanged)
+            if (Globals.group.PlayerChanged)
             {
                 Globals.uiManager.RemoveAllCompositesOfTypes(UICompositeType.FLOATING_INFO_BOX);
                 RefreshCharFrame();
@@ -472,7 +472,7 @@ namespace TeamJRPG
             Frame charFrame = new Frame(new Vector2(spritePos.X - charTexture.srcRect.Width / 2, spritePos.Y - margin.Y * 0.5f), charTexture.srcRect.Size.ToVector2() * scale);
             characterComposites.Add(charFrame);
             ImageHolder character = new ImageHolder(charTexture, spritePos, Globals.player.skinColor, new Vector2(scale, scale), null);
-            character.floatingText = Globals.player.name;
+            character.floatingText.Add(Globals.player.name);
             for (int i = 0; i < character.components.Count; i++)
             {
                 character.components[i].color = Globals.player.skinColor;
@@ -505,11 +505,11 @@ namespace TeamJRPG
                     stroke = new Stroke(1 * 2, Color.Yellow, MonoGame.StrokeType.OutlineAndTexture);
                 }
 
-                CharacterIconHolder icon = new CharacterIconHolder(Globals.group.members[i], iconPos, new Vector2(iconScale, iconScale), stroke, null, 0);
+                CharacterIconHolder icon = new CharacterIconHolder(Globals.group.members[i], iconPos, new Vector2(iconScale, iconScale), stroke, Globals.group.members[i].name, 0);
                 characterComposites.Add(icon);
 
 
-                buttonArray[i] = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), iconPos, 1, 100 + i, Globals.group.members[i].name);
+                buttonArray[i] = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), iconPos, 1, 100 + i, null);
             }
 
             characterBCP = new ButtonChoicePanel(buttonArray);
