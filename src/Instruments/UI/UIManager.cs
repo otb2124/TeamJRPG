@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace TeamJRPG
@@ -131,7 +132,6 @@ namespace TeamJRPG
                 case UIComposite.UICompositeType.INGAME_MENU_EXIT:
                     AddElement(new ExitInGameMenu());
                     break;
-
             }
         }
 
@@ -205,9 +205,27 @@ namespace TeamJRPG
 
 
 
-        public void Update()
+        public void CheckForPointer()
         {
 
+
+            if (Globals.group.PlayerChanged)
+            {
+                if (HasCompositesOfType(UIComposite.UICompositeType.CURRENT_CHARACTER_POINTER))
+                {
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.CURRENT_CHARACTER_POINTER);
+                }
+                AddElement(new CurrentCharacterPointer(Globals.player, 10));
+            }
+
+
+        }
+
+
+
+        public void Update()
+        {
+            CheckForPointer();
             CheckState();
 
             // Process all current children

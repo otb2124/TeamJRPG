@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
 namespace TeamJRPG
@@ -33,18 +34,29 @@ namespace TeamJRPG
 
         public void SetGroup()
         {
-            Globals.player = new GroupMember(new Vector2(1, 1));
+            Globals.player = new GroupMember(new Vector2(20, 50));
             Globals.player.isPlayer = true;
             Globals.player.name = "Vika";
+            Globals.player.SetIcons(0, 0);
+            Globals.player.currentHP = 10;
 
-            GroupMember member1 = new GroupMember(new Vector2(1, 2));
+            GroupMember member1 = new GroupMember(new Vector2(20, 51));
             member1.name = "Orest";
-            GroupMember member2 = new GroupMember(new Vector2(1, 3));
+            member1.skinColor = Color.White;
+            member1.SetIcons(0, 1);
+            member1.currentHP = 100;
+            member1.currentMana = 50;
 
-            member2.name = "Slavic";
-            GroupMember member3 = new GroupMember(new Vector2(1, 4));
+            GroupMember member2 = new GroupMember(new Vector2(20, 52));
+            member2.name = "Kirjusha";
+            member2.SetIcons(0, 2);
+            member2.currentHP = 50;
 
+            GroupMember member3 = new GroupMember(new Vector2(20, 53));
             member3.name = "Artur";
+            member3.skinColor = Color.DarkOrange;
+            member3.SetIcons(0, 3);
+            member3.currentHP = 75;
 
             members.Add(Globals.player);
             members.Add(member1);
@@ -118,6 +130,27 @@ namespace TeamJRPG
             actualQuests.Add(new Quest(1));
             actualQuests.Add(new Quest(2));
         }
+
+
+        public void Update()
+        {
+            CheckChangeInput();
+        }
+
+        private void CheckChangeInput()
+        {
+            if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Q))
+            {
+                Globals.player.SetPrevMemberToPlayer();
+            }
+            else if (Globals.inputManager.IsKeyPressedAndReleased(Keys.E))
+            {
+                Globals.player.SetNextMemberToPlayer();
+            }
+
+            CheckPlayerChange();
+        }
+
 
 
         public void CheckPlayerChange()

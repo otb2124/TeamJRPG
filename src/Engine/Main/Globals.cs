@@ -37,6 +37,8 @@ namespace TeamJRPG
 
         public static TextureManager TextureManager { get; set; }
 
+        public static CommandManager commandManager { get; set; }
+
 
         public static void Init()
         {
@@ -49,6 +51,7 @@ namespace TeamJRPG
             aStarPathfinding = new AStarPathfinding();
             uiManager = new UIManager();
             inventoryHandler = new InventoryHandler();
+            commandManager = new CommandManager();
 
             camera = new Camera(graphics.GraphicsDevice.Viewport);
         }

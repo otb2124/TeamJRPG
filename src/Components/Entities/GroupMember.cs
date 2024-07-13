@@ -16,7 +16,14 @@ namespace TeamJRPG
 
         public GroupMember(Vector2 position) : base(position)
         {
-            speed = 3.5f;
+            defaultSpeed = 2.5f;
+            defaultSprintSpeed = 4f;
+            defaultSprintDuration = 5 * 60;
+
+            currentSpeed = defaultSpeed;
+            currentSprintSpeed = defaultSprintSpeed;
+            currentSprintDuration = defaultSprintDuration;
+
             tileCollision = true;
 
             float collisionBoxWidth = Globals.tileSize.X / 2;
@@ -46,7 +53,7 @@ namespace TeamJRPG
             AddAnimationForAllDirections(AnimationState.idle, new Vector2(6, 8), 0.1f, 0);
             AddAnimationForAllDirections(AnimationState.walking, new Vector2(6, 8), 0.1f, 4);
 
-            this.animationState = AnimationState.idle;
+            this.currentStatus = Status.idle;
             this.direction = Direction.down;
         }
 
@@ -67,8 +74,16 @@ namespace TeamJRPG
             sprites = new Sprite[1];
             sprites[0] = bodySpriteSheet.GetSprite(Vector2.Zero, new Vector2(32, 64));
 
-            characterIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icons, 0, new Vector2(0, 0), new Vector2(64, 64));
-            backGroundIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icon_backgrounds, 0, new Vector2(32, 0), new Vector2(32, 32));
+            SetIcons(0, 0);
+        }
+
+
+        public void SetIcons(int charIconId, int charIconBGId)
+        {
+            this.characterIconID = charIconId;
+            this.characterIconBackGroundID = charIconBGId;
+            characterIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icons, 0, new Vector2(32*this.characterIconID, 0), new Vector2(64, 64));
+            backGroundIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icon_backgrounds, 0, new Vector2(32 * this.characterIconBackGroundID, 0), new Vector2(32, 32));
         }
 
         public void SetEquipment()
@@ -118,17 +133,18 @@ namespace TeamJRPG
 
             previousPosition = new Point((int)(position.X / Globals.tileSize.X), (int)(position.Y / Globals.tileSize.X));
 
-            this.animationState = AnimationState.idle;
+            this.currentStatus = Status.idle;
 
             if (isPlayer)
             {
-                if (Globals.inputManager.IsKeyPressed(Keys.W)) { Move(new Vector2(0, -speed), Direction.up); }
-                else if (Globals.inputManager.IsKeyPressed(Keys.S)) { Move(new Vector2(0, speed), Direction.down); }
-                else if (Globals.inputManager.IsKeyPressed(Keys.A)) { Move(new Vector2(-speed, 0), Direction.left);}
-                else if (Globals.inputManager.IsKeyPressed(Keys.D)) { Move(new Vector2(speed, 0), Direction.right); }
+                if (Globals.inputManager.IsKeyPressed(Keys.W)) { Move(new Vector2(0, -currentSpeed), Direction.up); }
+                else if (Globals.inputManager.IsKeyPressed(Keys.S)) { Move(new Vector2(0, currentSpeed), Direction.down); }
+                else if (Globals.inputManager.IsKeyPressed(Keys.A)) { Move(new Vector2(-currentSpeed, 0), Direction.left);}
+                else if (Globals.inputManager.IsKeyPressed(Keys.D)) { Move(new Vector2(currentSpeed, 0), Direction.right); }
+
+                if (Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { Sprint(); } else { UnSprint();  }
 
                 HandleInterractions();
-                CheckPlayerChange();
             }
             else
             {
@@ -138,6 +154,8 @@ namespace TeamJRPG
             this.collisionBox.Location = new System.Drawing.PointF(this.position.X + (Globals.tileSize.X - collisionBox.Width) / 2, this.position.Y + Globals.tileSize.Y / 2);
 
 
+
+            animationState = SwitchStatusToAnimation();
             
             base.Update();
         }
@@ -227,7 +245,7 @@ namespace TeamJRPG
             {
                 // Follow the previous member
                 Follow(previousMember);
-                this.animationState = AnimationState.walking;
+                this.currentStatus = Status.walking;
             }
         }
 
@@ -236,28 +254,18 @@ namespace TeamJRPG
             switch (direction)
             {
                 case Direction.up:
-                    position.Y += speed; break;
+                    position.Y += currentSpeed; break;
                 case Direction.down:
-                    position.Y -= speed; break;
+                    position.Y -= currentSpeed; break;
                 case Direction.right:
-                    position.X -= speed; break;
+                    position.X -= currentSpeed; break;
                 case Direction.left:
-                    position.X += speed; break;
+                    position.X += currentSpeed; break;
             }
         }
 
 
-        private void CheckPlayerChange()
-        {
-            if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Q))
-            {
-                SetPrevMemberToPlayer();
-            }
-            else if (Globals.inputManager.IsKeyPressedAndReleased(Keys.E))
-            {
-                SetNextMemberToPlayer();
-            }
-        }
+        
 
         public void SetPrevMemberToPlayer()
         {

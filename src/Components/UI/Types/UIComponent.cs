@@ -127,11 +127,11 @@ namespace TeamJRPG
         public void Draw()
         {
 
-            Texture2D textureToDraw;
+            Sprite spriteToDraw = null;
 
             if (sprite != null)
             {
-                textureToDraw = sprite.texture;
+                spriteToDraw = sprite;
             } 
             
 
@@ -140,10 +140,10 @@ namespace TeamJRPG
             {
                 if (HasStroke)
                 {
-                    textureToDraw = StrokeEffect.CreateStroke(sprite.texture, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType);
+                    spriteToDraw = new Sprite(StrokeEffect.CreateStroke(sprite.texture, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType), sprite.sheetPosition, sprite.size);
                 }
 
-                sprite.Draw(adjustedPosition, color, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
+                spriteToDraw.Draw(adjustedPosition, color, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
 
 
             }
@@ -151,8 +151,9 @@ namespace TeamJRPG
             {
                 if (HasStroke)
                 {
-                    textureToDraw = StrokeEffect.CreateStrokeSpriteFont(Globals.assetSetter.fonts[fontID], text, color, Vector2.One, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType);
-                    Globals.sprites.Draw(textureToDraw, adjustedPosition, adjustedSourceRectangle, strokeColor, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
+                    Texture2D texture = StrokeEffect.CreateStrokeSpriteFont(Globals.assetSetter.fonts[fontID], text, color, Vector2.One, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType);
+                    spriteToDraw = new Sprite(texture, new Vector2(0, 0), texture.Bounds.Size.ToVector2());
+                    spriteToDraw.Draw(adjustedPosition, Color.White, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
                 }
                 else
                 {

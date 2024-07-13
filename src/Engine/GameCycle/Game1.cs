@@ -18,6 +18,7 @@ namespace TeamJRPG
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 720;
             _graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            //_graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
             Globals.graphics = _graphics;
@@ -48,7 +49,7 @@ namespace TeamJRPG
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             Globals.sprites.Begin(
                 SpriteSortMode.Deferred,

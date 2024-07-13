@@ -59,9 +59,13 @@ namespace TeamJRPG
                 {
                     if (!hintOn)
                     {
-                        fib = new FloatingInfoBox(new List<string>() { floatingText }, new List<Color>() { Color.White });
-                        Globals.uiManager.AddElement(fib);
-                        hintOn = true;
+                        if(floatingText != null)
+                        {
+                            fib = new FloatingInfoBox(new List<string>() { floatingText }, new List<Color>() { Color.White });
+                            Globals.uiManager.AddElement(fib);
+                            hintOn = true;
+                        }
+                        
                     }
                 }
                 else

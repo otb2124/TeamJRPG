@@ -108,7 +108,7 @@ namespace TeamJRPG
 
 
             //Character sprite
-            Sprite texture = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.character_bodies, 0, new Vector2(0, 0), new Vector2(32, 32));
+            Sprite texture = Globals.player.sprites[0];
             Vector2 spritePos = new Vector2(framePos.X + frameSize.X / 2 - texture.srcRect.Width / 2, framePos.Y + frameSize.Y / 3 - texture.srcRect.Height / 1.5f);
             ImageHolder character = new ImageHolder(texture, spritePos, Globals.player.skinColor, new Vector2(1f, 1f), null);
             nameAndArrows.Add(character);

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SharpDX.Direct3D9;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,9 @@ namespace TeamJRPG
 
         public void SetSheets()
         {
+
+            Console.WriteLine("Setting Up Spritesheets...");
+
             //tiles
             AddSheet(SheetCategory.tiles, 0, "tiles/tilemap_forest");
 
@@ -89,6 +93,9 @@ namespace TeamJRPG
 
             //placeholders
             AddSheet(SheetCategory.placeholders, 0, "placeholders/placeholder_spritesheet");
+
+
+            Console.WriteLine("Spritesheets Have Been Set Up");
         }
 
 

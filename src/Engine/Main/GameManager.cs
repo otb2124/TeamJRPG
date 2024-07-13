@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 
 namespace TeamJRPG
 {
@@ -14,7 +16,7 @@ namespace TeamJRPG
         public List<Entity> underDraw;
         private List<Entity> entitiesToUpdate;
 
-
+        private Thread commandThread;
 
         public GameManager()
         {
@@ -48,12 +50,15 @@ namespace TeamJRPG
             Globals.entities.Add(new Object(new Vector2(15, 5), 1));
 
             Globals.camera.Load();
+
+            commandThread = new Thread(CommandHandler);
+            commandThread.Start();
         }
 
         public void Update()
         {
             Globals.inputManager.Update();
-            Globals.group.CheckPlayerChange();
+            Globals.group.Update();
 
 
             //Game States
@@ -184,6 +189,16 @@ namespace TeamJRPG
         }
 
 
-        
+
+        private void CommandHandler()
+        {
+            while (true)
+            {
+                Console.Write("> ");
+                string input = Console.ReadLine();
+                Globals.commandManager.ExecuteCommand(input);
+            }
+        }
+
     }
 }

@@ -19,6 +19,7 @@ namespace TeamJRPG
 
             foreach (var text in info)
             {
+
                 Vector2 textSize = Globals.assetSetter.fonts[0].MeasureString(text);
                 if (textSize.X > longestTextSize.X)
                 {

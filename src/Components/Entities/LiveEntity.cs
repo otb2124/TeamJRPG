@@ -1,116 +1,125 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-
-
+using System.Diagnostics;
 
 namespace TeamJRPG
 {
     public class LiveEntity : Entity
     {
-        //sprites
+        // sprites
         public SpriteSheet bodySpriteSheet;
         public int characterIconID;
         public Sprite characterIcon;
         public int characterIconBackGroundID;
         public Sprite backGroundIcon;
 
-        //colors
+        // colors
         public Color skinColor;
         public Color hairColor;
         public Color eyeColor;
 
-        //animations
-        public enum AnimationState { idle, walking };
+        // states
+        public enum Status { idle, walking, sprinting };
+        public Status currentStatus;
+
+        // animations
+        public enum AnimationState { idle, walking, dodging };
         public AnimationState animationState;
 
+        // body movement
+        public float currentSpeed;
+        public float defaultSpeed;
 
-        //body movement
-        public float speed;
-        public enum Direction
-        { up, down, left, right }
+        // dodge attributes
+        public float currentSprintSpeed;
+        public float defaultSprintSpeed;
+        public bool IsSprinting = false;
+        public float defaultSprintDuration;
+        public float currentSprintDuration;
+        public float dodgeTimer;
 
 
-        //pathfinding
+
+        public enum Direction { up, down, left, right }
+
+        // pathfinding
         public Direction direction;
         public Queue<Point> path;
         public Point previousPosition;
 
-
-        //equipment
+        // equipment
         public Weapon weapon1;
         public Weapon weapon2;
         public Armor[] armor;
         public static readonly int CHESTPLATE = 1, HELMET = 0, BOOTS = 2, GLOVES = 3, CAPE = 4, NECKLACE = 6, BELT = 5, RING1 = 7, RING2 = 8;
 
-
-
-
-        //exp stats
+        // exp stats
         public int level = 0;
         public int currentExp = 0;
         public int skillPoints = 0;
 
-        //battle attributes
+        // battle attributes
         public int strength = 0;
         public int dexterity = 0;
         public int wisdom = 0;
-        public int currentMana = 0;
-        public int maxMana = 100;
-        public int currentHP = 0;
-        public int maxHP = 100;
+        public float currentMana = 100;
+        public float maxMana = 100;
+        public float currentHP = 100;
+        public float maxHP = 100;
 
-        //fightingSkills
+        // fighting skills
         public float onehandedSkill = 0;
         public float twohandedSkill = 0;
         public float bowSkill = 0;
         public float crossbowSkill = 0;
         public float magicSkill = 0;
 
+        
+
+        public LiveEntity(Vector2 position) : base(position)
+        {
+            
+        }
 
 
+        public override void Update()
+        {
+            if (IsSprinting)
+            {
+                currentStatus = Status.sprinting;
+                currentSpeed = currentSprintSpeed;   
+            }
+            else
+            {
+                currentSpeed = defaultSpeed;
+            }
 
-
-        public LiveEntity(Vector2 position) : base(position) { }
-
-
+            base.Update();
+        }
 
 
         public override void Draw()
         {
-
             for (int i = 0; i < sprites.Length; i++)
             {
-                if(i == 0)
+                if (i == 0)
                 {
                     drawColor = skinColor;
                 }
-                else if(i == 1)
+                else if (i == 1)
                 {
                     drawColor = eyeColor;
                 }
-                else if(i == 2)
+                else if (i == 2)
                 {
                     drawColor = hairColor;
                 }
             }
-
-
             base.Draw();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-        //AMIMATIONS
+        // Animations
         public void AddAnimationForAllDirections(AnimationState animationState, Vector2 sheetGridSize, float eachFrameDuration, int rowIDstart)
         {
             AddAnimation(Direction.down, animationState, sheetGridSize, eachFrameDuration, rowIDstart);
@@ -125,14 +134,35 @@ namespace TeamJRPG
             anims.AddAnimation(new Tuple<Direction, AnimationState>(direction, animationState), new Animation(bodySpriteSheet.texture, (int)sheetGridSize.X, (int)sheetGridSize.Y, eachFrameDuration, rowID));
         }
 
+        public AnimationState SwitchStatusToAnimation()
+        {
+            switch (currentStatus)
+            {
+                case Status.idle: return AnimationState.idle;
+                case Status.walking: return AnimationState.walking;
+                case Status.sprinting: return AnimationState.walking;
+            }
+            return AnimationState.idle;
+        }
 
-        //AI
+        // AI
         public void Move(Vector2 delta, Direction direction)
         {
             position += delta;
             this.direction = direction;
-            this.animationState = AnimationState.walking;
+            this.currentStatus = Status.walking;
         }
+
+        public void Sprint()
+        {
+            IsSprinting = true;
+        }
+
+        public void UnSprint()
+        {
+            IsSprinting = false;
+        }
+
 
 
         public void Follow(LiveEntity entity)
@@ -151,7 +181,7 @@ namespace TeamJRPG
                 var nextTile = path.Peek();
                 var targetPosition = new Vector2(nextTile.X * Globals.tileSize.X, nextTile.Y * Globals.tileSize.Y);
 
-                if (Vector2.Distance(position, targetPosition) < speed)
+                if (Vector2.Distance(position, targetPosition) < currentSpeed)
                 {
                     // Move the mob to the next tile
                     position = targetPosition;
@@ -161,7 +191,10 @@ namespace TeamJRPG
                 {
                     // Move the mob towards the next tile
                     var movementDirection = Vector2.Normalize(targetPosition - position);
-                    position += movementDirection * speed;
+
+                    IsSprinting = entity.IsSprinting;
+
+                    position += movementDirection * currentSpeed;
 
                     // Set the direction attribute based on the movement direction
                     if (Math.Abs(movementDirection.X) > Math.Abs(movementDirection.Y))
@@ -196,166 +229,122 @@ namespace TeamJRPG
             }
         }
 
-
-
-
-
-
-        //CALCULATIONS
-
+        // Calculations
         public int GetExpToNextLevel()
         {
             return (level + 1) * 1000;
         }
 
-
         public float GetTotalPhysicalDamage()
         {
             float totalArmorDMG = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDMG += armor[i].PhysicalDMG;
             }
-
             return weapon1.PhysicalDMG + weapon2.PhysicalDMG + totalArmorDMG;
         }
-
 
         public float GetTotalMagicalDamage()
         {
             float totalArmorDMG = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDMG += armor[i].MagicalDMG;
             }
-
             return weapon1.MagicalDMG + weapon2.MagicalDMG + totalArmorDMG;
         }
-
 
         public float GetTotalFireDamage()
         {
             float totalArmorDMG = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDMG += armor[i].FireDMG;
             }
-
             return weapon1.FireDMG + weapon2.FireDMG + totalArmorDMG;
         }
-
-
 
         public float GetTotalColdDamage()
         {
             float totalArmorDMG = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDMG += armor[i].ColdDMG;
             }
-
             return weapon1.ColdDMG + weapon2.ColdDMG + totalArmorDMG;
-
         }
-
 
         public float GetTotalLightningDamage()
         {
             float totalArmorDMG = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDMG += armor[i].LightningDMG;
             }
-
             return weapon1.LightningDMG + weapon2.LightningDMG + totalArmorDMG;
         }
-
-
 
         public float GetTotalPhysicalDefense()
         {
             float totalArmorDEF = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDEF += armor[i].PhysicalDEF;
             }
-
             return weapon1.PhysicalDEF + weapon2.PhysicalDEF + totalArmorDEF;
         }
-
 
         public float GetTotalMagicalDefense()
         {
             float totalArmorDEF = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDEF += armor[i].MagicalDEF;
             }
-
             return weapon1.MagicalDEF + weapon2.MagicalDEF + totalArmorDEF;
         }
-
 
         public float GetTotalFireDefense()
         {
             float totalArmorDEF = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDEF += armor[i].FireDEF;
             }
-
             return weapon1.FireDEF + weapon2.FireDEF + totalArmorDEF;
         }
-
-
 
         public float GetTotalColdDefense()
         {
             float totalArmorDEF = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDEF += armor[i].ColdDEF;
             }
-
             return weapon1.ColdDEF + weapon2.ColdDEF + totalArmorDEF;
-
         }
-
 
         public float GetTotalLightningDefense()
         {
             float totalArmorDEF = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorDEF += armor[i].LightningDEF;
             }
-
             return weapon1.LightningDEF + weapon2.LightningDEF + totalArmorDEF;
         }
-
-
 
         public float GetAvgCritChance()
         {
             float totalArmorCrit = 0;
-
             for (int i = 0; i < armor.Length; i++)
             {
                 totalArmorCrit += armor[i].critChance;
             }
-
             return (weapon1.critChance + weapon2.critChance + totalArmorCrit) / (armor.Length + 2);
         }
 
+        
     }
 }

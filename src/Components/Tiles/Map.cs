@@ -11,7 +11,7 @@ namespace TeamJRPG
     {
 
         public Tile[,] tiles;
-        public Point mapSize = new Point(100, 50);
+        public Point mapSize = new Point(100, 100);
 
 
         public Map()
@@ -22,10 +22,16 @@ namespace TeamJRPG
 
         public void Load()
         {
+
+            Console.WriteLine("Generating Map...");
+
+
             for (int x = 0; x < tiles.GetLength(0); x++)
             {
                 for (int y = 0; y < tiles.GetLength(1); y++)
                 {
+
+                    
 
                     int tileKinds = Globals.TextureManager.GetSheet(TextureManager.SheetCategory.tiles, 0).GetTotalNumberOfSpritesInCol(0, new Vector2(32, 32));
 
@@ -43,6 +49,8 @@ namespace TeamJRPG
 
                 }
             }
+
+            Console.WriteLine("Map Has Been Generated");
         }
 
 

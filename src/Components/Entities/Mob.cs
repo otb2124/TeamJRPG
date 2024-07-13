@@ -12,7 +12,7 @@ namespace TeamJRPG
 
         public Mob(Vector2 position, Texture2D texture) : base(position)
         {
-            speed = 1f;
+            currentSpeed = 1f;
 
             tileCollision = false;
 

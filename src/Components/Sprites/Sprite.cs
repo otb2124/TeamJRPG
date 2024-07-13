@@ -33,6 +33,23 @@ namespace TeamJRPG
         }
 
 
+        public Sprite(Texture2D tex, Vector2 sheetPosition, Vector2 size)
+        {
+            this.texture = tex;
+            this.sheetPosition = sheetPosition;
+            this.sheetSize = size;
+            this.srcRect = new Rectangle(sheetPosition.ToPoint(), sheetSize.ToPoint());
+            this.size = sheetSize;
+            this.Width = sheetSize.ToPoint().X;
+            this.Height = sheetSize.ToPoint().Y;
+        }
+
+
+        public void ResetSrcRect(Vector2 pos, Vector2 size)
+        {
+            this.srcRect = new Rectangle(pos.ToPoint(), size.ToPoint());
+        }
+
 
         public void Draw(Vector2 position, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effect, float layerDepth)
         {

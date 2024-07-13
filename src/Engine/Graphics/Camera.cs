@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using System;
 
 namespace TeamJRPG
 {
@@ -14,13 +14,18 @@ namespace TeamJRPG
         public Viewport viewport;
         public readonly float DEFAULT_ZOOM = 1.0f;
         public readonly float MIN_ZOOM = 0.85f, MAX_ZOOM = 5f;
-        public readonly Vector2 MAX_DISTANCE_FROM_PLAYER = new Vector2(Globals.graphics.PreferredBackBufferWidth /2, Globals.graphics.PreferredBackBufferHeight/2);
+        public readonly Vector2 MAX_DISTANCE_FROM_PLAYER = new Vector2(Globals.graphics.PreferredBackBufferWidth / 2, Globals.graphics.PreferredBackBufferHeight / 2);
+        private readonly Vector2 maxDistanceFromCenter;
+        private Vector2 targetPosition;
+        private Vector2 playerOffset;
 
         public bool FollowPlayer = false;
+        private readonly float transitionSpeed = 0.1f; // Adjust the currentSpeed of the transition as necessary
 
         public Camera(Viewport viewport)
         {
             this.viewport = viewport;
+            maxDistanceFromCenter = Globals.tileSize * 3; // 3 tiles threshold
             Init();
         }
 
@@ -28,47 +33,74 @@ namespace TeamJRPG
         {
             zoom = DEFAULT_ZOOM;
             rotation = 0f;
+            playerOffset = Vector2.Zero;
+            targetPosition = Vector2.Zero;
         }
 
         public void Load()
         {
             position = Globals.player.position;
-            ClampCameraPosition();
+            targetPosition = position;
+            ClampTargetPosition();
             UpdateTransform();
         }
 
         public void Update()
         {
-            if (Globals.inputManager.IsKeyPressed(Keys.Left)) Move(new Vector2(-5, 0));
-            if (Globals.inputManager.IsKeyPressed(Keys.Right)) Move(new Vector2(5, 0));
-            if (Globals.inputManager.IsKeyPressed(Keys.Up)) Move(new Vector2(0, -5));
-            if (Globals.inputManager.IsKeyPressed(Keys.Down)) Move(new Vector2(0, 5));
+            bool manualMove = false;
+
+            if (Globals.inputManager.IsKeyPressed(Keys.Left)) { targetPosition += new Vector2(-5, 0); manualMove = true; }
+            if (Globals.inputManager.IsKeyPressed(Keys.Right)) { targetPosition += new Vector2(5, 0); manualMove = true; }
+            if (Globals.inputManager.IsKeyPressed(Keys.Up)) { targetPosition += new Vector2(0, -5); manualMove = true; }
+            if (Globals.inputManager.IsKeyPressed(Keys.Down)) { targetPosition += new Vector2(0, 5); manualMove = true; }
+
+            if (manualMove)
+            {
+                FollowPlayer = false;
+            }
 
             if (Globals.inputManager.IsKeyPressed(Keys.OemPlus)) Zoom(0.05f);
             if (Globals.inputManager.IsKeyPressed(Keys.OemMinus)) Zoom(-0.05f);
 
-
             if (Globals.inputManager.IsKeyPressedAndReleased(Keys.OemTilde))
             {
                 FollowPlayer = !FollowPlayer;
+                if (FollowPlayer)
+                {
+                    targetPosition = Globals.player.position;
+                }
             }
-
 
             if (FollowPlayer)
             {
-                position = Globals.player.position;
+                FollowPlayerWithThreshold();
             }
 
-
-            ClampCameraPosition();
+            
+            ClampTargetPosition();
+            SmoothMoveToTarget();
             UpdateTransform();
-
         }
 
-
-        public void Move(Vector2 delta)
+        private void FollowPlayerWithThreshold()
         {
-            position += delta;
+            // Calculate the offset from the player's position to the camera's position
+            playerOffset = Globals.player.position - position;
+
+            // If the player moves beyond the threshold, update the camera position
+            if (Math.Abs(playerOffset.X) > maxDistanceFromCenter.X)
+            {
+                targetPosition.X = Globals.player.position.X - Math.Sign(playerOffset.X) * maxDistanceFromCenter.X;
+            }
+            if (Math.Abs(playerOffset.Y) > maxDistanceFromCenter.Y)
+            {
+                targetPosition.Y = Globals.player.position.Y - Math.Sign(playerOffset.Y) * maxDistanceFromCenter.Y;
+            }
+        }
+
+        private void SmoothMoveToTarget()
+        {
+            position = Vector2.Lerp(position, targetPosition, transitionSpeed); // Adjust the lerp factor as needed
         }
 
         public void Zoom(float delta)
@@ -79,24 +111,20 @@ namespace TeamJRPG
 
         public Matrix Transform => transform;
 
-        private void ClampCameraPosition()
+        private void ClampTargetPosition()
         {
             float cameraWidth = viewport.Width / zoom;
             float cameraHeight = viewport.Height / zoom;
 
+            targetPosition.X = MathHelper.Clamp(targetPosition.X, cameraWidth / 2, Globals.map.mapSize.X * Globals.tileSize.X - cameraWidth / 2);
+            targetPosition.Y = MathHelper.Clamp(targetPosition.Y, cameraHeight / 2, Globals.map.mapSize.Y * Globals.tileSize.Y - cameraHeight / 2);
 
             if (!FollowPlayer)
             {
                 Vector2 playerPosition = Globals.player.position;
-                position.X = MathHelper.Clamp(position.X, playerPosition.X - MAX_DISTANCE_FROM_PLAYER.X, playerPosition.X + MAX_DISTANCE_FROM_PLAYER.X);
-                position.Y = MathHelper.Clamp(position.Y, playerPosition.Y - MAX_DISTANCE_FROM_PLAYER.Y, playerPosition.Y + MAX_DISTANCE_FROM_PLAYER.Y);
+                targetPosition.X = MathHelper.Clamp(targetPosition.X, playerPosition.X - MAX_DISTANCE_FROM_PLAYER.X, playerPosition.X + MAX_DISTANCE_FROM_PLAYER.X);
+                targetPosition.Y = MathHelper.Clamp(targetPosition.Y, playerPosition.Y - MAX_DISTANCE_FROM_PLAYER.Y, playerPosition.Y + MAX_DISTANCE_FROM_PLAYER.Y);
             }
-
-
-            position.X = MathHelper.Clamp(position.X, cameraWidth / 2, Globals.map.mapSize.X * Globals.tileSize.X - cameraWidth / 2);
-            position.Y = MathHelper.Clamp(position.Y, cameraHeight / 2, Globals.map.mapSize.Y * Globals.tileSize.Y - cameraHeight / 2);
-
-            
         }
 
         private void UpdateTransform()
