@@ -6,11 +6,13 @@ using System.Collections.Generic;
 namespace TeamJRPG
 {
     [Serializable]
+    [JsonObject(IsReference = true)]
     public class LiveEntity : Entity
     {
         // sprites
         [JsonIgnore]
         public SpriteSheet bodySpriteSheet;
+        [JsonIgnore]
         public readonly Vector2 DEFAULT_HUMANOID_BODY_SPRITE_SIZE = new Vector2(32, 64);
         [JsonIgnore]
         public Sprite characterIcon;
@@ -64,8 +66,11 @@ namespace TeamJRPG
         public Point previousPosition;
 
         // equipment
+        [JsonIgnore]
         public Weapon weapon1;
+        [JsonIgnore]
         public Weapon weapon2;
+        [JsonIgnore]
         public Armor[] armor;
 
 

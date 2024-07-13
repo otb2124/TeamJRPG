@@ -21,52 +21,14 @@ namespace TeamJRPG
         public Group() 
         {
             members = new List<GroupMember>();
+            inventory = new List<Item>();
+            actualQuests = new List<Quest>();
         }
 
-
-        public void Load()
-        {
-            SetGroup();
-            SetInventory();
-            SetQuests();
-        }
-
-
-        public void SetGroup()
-        {
-            Globals.player = new GroupMember(new Vector2(20, 50));
-            Globals.player.isPlayer = true;
-            Globals.player.name = "Vika";
-            Globals.player.SetIcons(0, 0);
-            Globals.player.currentHP = 10;
-
-            GroupMember member1 = new GroupMember(new Vector2(20, 51));
-            member1.name = "Orest";
-            member1.skinColor = Color.White;
-            member1.SetIcons(0, 1);
-            member1.currentHP = 100;
-            member1.currentMana = 50;
-
-            GroupMember member2 = new GroupMember(new Vector2(20, 52));
-            member2.name = "Kirjusha";
-            member2.SetIcons(0, 2);
-            member2.currentHP = 50;
-
-            GroupMember member3 = new GroupMember(new Vector2(20, 53));
-            member3.name = "Artur";
-            member3.skinColor = Color.DarkOrange;
-            member3.SetIcons(0, 3);
-            member3.currentHP = 75;
-
-            members.Add(Globals.player);
-            members.Add(member1);
-            members.Add(member2);
-            members.Add(member3);
-        }
 
         public void SetInventory()
         {
-            inventory = new List<Item>();
+            
 
             AddToInventory(new Consumable(0, 2));
             AddToInventory(new Consumable(0, 2));
@@ -124,7 +86,7 @@ namespace TeamJRPG
 
         public void SetQuests()
         {
-            actualQuests = new List<Quest>();
+            
 
             actualQuests.Add(new Quest(0));
             actualQuests.Add(new Quest(1));

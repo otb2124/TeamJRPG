@@ -1,30 +1,39 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json;
+using System;
 
 
 namespace TeamJRPG
 {
+    [Serializable]
+    [JsonObject(IsReference = true)]
     public class Object : Entity
     {
-
+        
         public enum ObjectType { pickable, unPickable, autoPickable}
+        [JsonIgnore]
         public ObjectType type;
-
+        [JsonIgnore]
         public System.Drawing.RectangleF interractionBox;
+        [JsonIgnore]
         public Texture2D interractionBoxTexture;
 
 
         public int objectId;
+
+        [JsonIgnore]
         public int textureId;
 
         public Object(Vector2 position, int objectId) : base(position)
         {
+            this.entityType = EntityType.obj;
             this.tileCollision = true;
 
             this.collisionBox.Height = Globals.tileSize.Y / 4;
             this.collisionBox.Width = Globals.tileSize.X / 3;
-            this.collisionBox.Y = position.Y * Globals.tileSize.Y + this.collisionBox.Height;
-            this.collisionBox.X = position.X * Globals.tileSize.X + this.collisionBox.Width;
+            this.collisionBox.Y = position.Y + this.collisionBox.Height;
+            this.collisionBox.X = position.X + this.collisionBox.Width;
             this.collisionTexture = Globals.assetSetter.CreateSolidColorTexture((int)this.collisionBox.Width, (int)this.collisionBox.Height, new Color(0.5f, 0, 0, 0.01f));
 
 
@@ -47,7 +56,6 @@ namespace TeamJRPG
 
         public void SetObject()
         {
-            
             //bag
             if (objectId == 0)
             {
@@ -93,8 +101,7 @@ namespace TeamJRPG
         {
             
             sprites = new Sprite[1];
-
-            sprites[0] = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.objects_interractive, 0, new Vector2(0, 32), new Vector2(32, 32));
+            sprites[0] = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.objects_interractive, 0, new Vector2(0, 32 * textureId), new Vector2(32, 32));
         }
 
 

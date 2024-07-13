@@ -40,24 +40,27 @@ namespace TeamJRPG
         {
             Globals.assetSetter.SetAssets();
             Globals.mapReader.ReadMap("save.json");
+            Globals.mapReader.ReadEntities("entities.json");
+
             Globals.aStarPathfinding.Init();
             Globals.uiManager.Init();
 
+            
 
-            Globals.group.Load();
-
-            Globals.entities.AddRange(Globals.group.members);
-            Globals.entities.Add(new Object(new Vector2(15, 5), 1));
+            Globals.group.SetInventory();
+            Globals.group.SetQuests();
 
             Globals.camera.Load();
 
-            //Globals.mapReader.WriteMap("save.json");
+            
 
 
             commandThread = new Thread(CommandHandler);
             commandThread.Start();
 
-            
+
+            //Globals.mapReader.WriteMap("save.json");
+            //Globals.mapReader.WriteEntities("entities.json");
         }
 
         public void Update()

@@ -1,11 +1,19 @@
 ﻿
 
+using Newtonsoft.Json;
+using System;
+
 namespace TeamJRPG
 {
+
+    [Serializable]
     public class Consumable : Item
     {
 
         public enum ConsumableType { food, potion, throwable }
+
+
+        [JsonIgnore]
         public ConsumableType consumableType;
 
         public Consumable(int consumableID, int amount)

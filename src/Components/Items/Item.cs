@@ -8,8 +8,11 @@ namespace TeamJRPG
     [Serializable]
     public class Item
     {
+        [JsonIgnore]
         public int value;
+        [JsonIgnore]
         public string name;
+        [JsonIgnore]
         public string description;
 
         [JsonIgnore]
@@ -19,12 +22,14 @@ namespace TeamJRPG
         public enum ItemType { WEAPON, ARMOR, CONSUMABLE, MATERIAL, VALUEABLE, QUEST, CURRENCY}
         public ItemType type;
 
-
+        [JsonIgnore]
         public bool IsStackable;
         public int amount = 1;
 
 
         public int itemID;
+
+        [JsonIgnore]
         public bool IsSlot;
 
         public Item() 

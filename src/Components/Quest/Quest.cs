@@ -1,21 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System;
+
 
 namespace TeamJRPG
 {
+    [Serializable]
     public class Quest
     {
 
-
+        [JsonIgnore]
         public string name;
+        [JsonIgnore]
         public string description;
+        [JsonIgnore]
         public Item reward;
-        public int id;
 
+        
+        public int id;
         public bool isCompleted;
+
         public enum QuestType { primary, secondary, additional };
         public QuestType type;
 

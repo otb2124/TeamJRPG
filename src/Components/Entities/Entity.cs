@@ -1,16 +1,23 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+
 
 namespace TeamJRPG
 {
 
 
     [Serializable]
+    [JsonObject(IsReference = true)]
     public class Entity
     {
+
+        public enum EntityType { groupMember, obj, mob, npc }
+        public EntityType entityType;
+
+
 
         public Vector2 position;
 
@@ -43,6 +50,8 @@ namespace TeamJRPG
         public bool entityCollision;
         public bool tileCollision;
 
+
+        [JsonIgnore]
         public List<Item> inventory;
 
 
@@ -51,7 +60,7 @@ namespace TeamJRPG
 
         public Entity(Vector2 position)
         {
-            this.position = position * Globals.tileSize;
+            this.position = position;
 
             this.tileCollision = false;
             this.entityCollision = true;

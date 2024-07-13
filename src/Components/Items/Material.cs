@@ -7,6 +7,8 @@ using static TeamJRPG.Consumable;
 
 namespace TeamJRPG
 {
+
+    [Serializable]
     public class Material : Item
     {
 

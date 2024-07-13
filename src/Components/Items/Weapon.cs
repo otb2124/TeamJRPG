@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TeamJRPG
@@ -10,8 +11,12 @@ namespace TeamJRPG
     public class Weapon : Equipment
     {
         public enum SlotType { oneHanded, twoHanded }
+
+        [JsonIgnore]
         public SlotType slotType;
         public enum WeaponType { sword, mace, axe, staff, shield, bow, crossbow, magicStaff }
+
+        [JsonIgnore]
         public WeaponType weaponType;
         
 

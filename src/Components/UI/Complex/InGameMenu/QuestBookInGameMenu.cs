@@ -60,8 +60,6 @@ namespace TeamJRPG
 
 
             questList = new List<UIComposite>();
-            RefreshQuestList();
-
 
 
             //quest descript frame
@@ -71,6 +69,8 @@ namespace TeamJRPG
 
 
             questDesc = new List<UIComposite>();
+
+            RefreshQuestList();
             RefreshQuestContent();
 
         }
@@ -81,12 +81,18 @@ namespace TeamJRPG
         public override void Update()
         {
 
-            if (questBCP.Changed)
+            if (Globals.group.actualQuests.Count > 0)
             {
-                RefreshPageName();
-                RefreshQuestList();
-                RefreshQuestContent();
+
+
+                if (questBCP.Changed)
+                {
+                    RefreshPageName();
+                    RefreshQuestList();
+                    RefreshQuestContent();
+                }
             }
+            
 
 
             base.Update();
@@ -198,14 +204,19 @@ namespace TeamJRPG
             }
 
 
-            ScrollableFrame questScroll = new ScrollableFrame(new Vector2(questListPos.X + Offset.X, questListPos.Y + 20), new Vector2(questListSize.X / 3, questListSize.Y - 20 * 3), 1, buttonArray[0].frameSize);
-            questScroll.children.AddRange(buttonArray);
-            questList.Add(questScroll);
+
+                ScrollableFrame questScroll = new ScrollableFrame(new Vector2(questListPos.X + Offset.X, questListPos.Y + 20), new Vector2(questListSize.X / 3, questListSize.Y - 20 * 3), 1, buttonArray[0].frameSize);
+                questScroll.children.AddRange(buttonArray);
+                questList.Add(questScroll);
+
+                questBCP = new ButtonChoicePanel(buttonArray);
+                questList.Add(questBCP);
+            
+            
 
 
 
-            questBCP = new ButtonChoicePanel(buttonArray);
-            questList.Add(questBCP);
+            
 
 
             children.AddRange(questList);

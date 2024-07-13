@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace TeamJRPG
 {
+
+    [Serializable]
     public class Armor : Equipment
     {
 
         public enum SlotType { helmet, chestplate, boots, gloves, cape, belt, necklace, ring }
+        [JsonIgnore]
         public SlotType slotType;
 
         public Armor(int itemID)

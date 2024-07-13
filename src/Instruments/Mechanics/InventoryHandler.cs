@@ -66,7 +66,7 @@ namespace TeamJRPG
             }
 
 
-            Object drop = new Object(Globals.player.GetMapPos(), 0);
+            Object drop = new Object(Globals.player.position, 0);
             drop.AddToInventory(item);
             Globals.entities.Add(drop);
             Globals.group.inventory.Remove(item);

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -7,6 +8,8 @@ using System.Collections.Generic;
 
 namespace TeamJRPG
 {
+    [Serializable]
+    [JsonObject(IsReference = true)]
     public class GroupMember : LiveEntity
     {
         public bool isPlayer;
@@ -16,6 +19,7 @@ namespace TeamJRPG
 
         public GroupMember(Vector2 position) : base(position)
         {
+            this.entityType = EntityType.groupMember;
             defaultSpeed = 3.5f;
             defaultSprintSpeed = 5f;
             defaultSprintDuration = 5 * 60;
@@ -156,7 +160,11 @@ namespace TeamJRPG
 
                 if (currentStatus == Status.walking)
                 {
-                    if (Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { Sprint(); } 
+                    if (Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { Sprint(); } else { UnSprint(); }
+                }
+                else
+                {
+                    UnSprint();
                 }
 
                 if (!Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { UnSprint(); }
