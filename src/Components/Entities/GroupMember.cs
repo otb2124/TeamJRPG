@@ -201,7 +201,7 @@ namespace TeamJRPG
                         {
                             Globals.group.AddToInventory(obj.inventory[i]);
                         }
-                        Globals.entities.Remove(collidedEntity);
+                        Globals.currentEntities.Remove(collidedEntity);
                     }
                 }
             }
@@ -241,7 +241,7 @@ namespace TeamJRPG
                             {
                                 Globals.group.AddToInventory(obj.inventory[i]);
                             }
-                            Globals.entities.Remove(interractedEntity);
+                            Globals.currentEntities.Remove(interractedEntity);
                         }
                     }
                 }

@@ -68,7 +68,7 @@ namespace TeamJRPG
 
             Object drop = new Object(Globals.player.position, 0);
             drop.AddToInventory(item);
-            Globals.entities.Add(drop);
+            Globals.currentEntities.Add(drop);
             Globals.group.inventory.Remove(item);
             if (Globals.uiManager.currentMenuState == MenuState.inventory)
             {

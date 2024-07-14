@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace TeamJRPG
@@ -20,7 +21,7 @@ namespace TeamJRPG
         public enum GameState { playstate, ingamemenustate }
         public static GameState currentGameState;
 
-        public static List<Entity> entities;
+        public static List<Entity> currentEntities;
 
         public static Game1 game;
         public static GameManager gameManager {  get; set; }
@@ -72,6 +73,10 @@ namespace TeamJRPG
         public static GraphicsDeviceManager graphics { get; set; }
         public static ContentManager Content { get; set; }
         public static Camera camera { get; set; }
+
+
+
+
 
 
     }

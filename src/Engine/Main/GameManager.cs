@@ -23,25 +23,35 @@ namespace TeamJRPG
         public void Init()
         {
             Globals.maps = new Map[5];
-            Globals.entities = new List<Entity>();
+            
             Globals.group = new Group();
+
+
+
             overDraw = new List<Entity>();
             underDraw = new List<Entity>();
             entitiesToUpdate = new List<Entity>();
 
             Globals.currentGameMode = Globals.GameMode.playmode;
             Globals.currentGameState = Globals.GameState.playstate;
+            
         }
 
         public void Load()
         {
             Globals.assetSetter.SetAssets();
-            Globals.mapReader.ReadMaps("maps");
-            Globals.currentMap = Globals.maps[0];
+
+
+            Globals.mapReader.ReadMaps("tiles");
+
+
+
+            Globals.currentEntities = Globals.currentMap.entities;
+
 
             Globals.collisionManager.Load();
 
-            Globals.mapReader.ReadEntities("entities.json");
+            
 
             Globals.aStarPathfinding.Init();
             Globals.uiManager.Init();
@@ -59,9 +69,7 @@ namespace TeamJRPG
             commandThread = new Thread(CommandHandler);
             commandThread.Start();
 
-
-            //Globals.mapReader.WriteMap("save.json");
-            //Globals.mapReader.WriteEntities("entities.json");
+            Globals.mapReader.WriteMaps("currentEntities.json");
         }
 
         public void Update()
@@ -85,6 +93,7 @@ namespace TeamJRPG
                     if (Globals.currentGameMode == Globals.GameMode.playmode)
                     {
                         Globals.currentGameMode = Globals.GameMode.debugmode;
+                        Console.WriteLine(Globals.currentEntities.Count);
                     }
                     else
                     {
@@ -147,9 +156,9 @@ namespace TeamJRPG
             
 
 
-            // Copy the entities that need to be updated to a separate list
+            // Copy the currentEntities that need to be updated to a separate list
             entitiesToUpdate.Clear();
-            foreach (var entity in Globals.entities)
+            foreach (var entity in Globals.currentEntities)
             {
                 if (entity is Mob || entity is GroupMember)
                 {
@@ -157,17 +166,17 @@ namespace TeamJRPG
                 }
             }
 
-            // Update entities from the separate list
+            // Update currentEntities from the separate list
             foreach (var entity in entitiesToUpdate)
             {
                 entity.Update();
             }
 
-            // Sort entities for drawing
-            Globals.entities.Sort((e1, e2) => (e1.drawPosition.Y + e1.sprites[0].texture.Height * Globals.gameScale).CompareTo(e2.drawPosition.Y + e2.sprites[0].texture.Height * Globals.gameScale));
+            // Sort currentEntities for drawing
+            Globals.currentEntities.Sort((e1, e2) => (e1.drawPosition.Y + e1.sprites[0].texture.Height * Globals.gameScale).CompareTo(e2.drawPosition.Y + e2.sprites[0].texture.Height * Globals.gameScale));
 
-            // Split entities into overDraw and underDraw lists
-            foreach (Entity entity in Globals.entities)
+            // Split currentEntities into overDraw and underDraw lists
+            foreach (Entity entity in Globals.currentEntities)
             {
                 if (entity.drawPosition.Y + (entity.sprites[0].texture.Height * Globals.gameScale) <= Globals.player.drawPosition.Y + (Globals.player.sprites[0].texture.Height * Globals.gameScale) && !(entity is GroupMember))
                 {

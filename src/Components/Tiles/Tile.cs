@@ -44,7 +44,7 @@ namespace TeamJRPG
             // grass
             if (id >= 0 && id < 5)
             {
-                sheetPos = new Vector2(0 + (id * 32), 0);
+                sheetPos = new Vector2(id * 32, 0);
             }
             // water
             else if (id == 5)
@@ -52,6 +52,12 @@ namespace TeamJRPG
                 sheetPos = new Vector2(0, 32);
                 collision = true;
             }
+            //examples
+            if(id == 6 || id == 7)
+            {
+                sheetPos = new Vector2((id-6)*32, 64);
+            }
+
 
             this.sprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.tiles, 0, sheetPos, new Vector2(32, 32));
         }

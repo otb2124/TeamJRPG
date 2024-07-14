@@ -9,6 +9,7 @@ namespace TeamJRPG
 {
 
     [Serializable]
+    [JsonObject(IsReference = true)]
     public class Armor : Equipment
     {
 

@@ -59,11 +59,11 @@ namespace TeamJRPG
 
 
 
-            for (int i = 0; i < Globals.entities.Count; i++)
+            for (int i = 0; i < Globals.currentEntities.Count; i++)
             {
-                if (entity.collisionBox.IntersectsWith(Globals.entities[i].collisionBox) && entity != Globals.entities[i])
+                if (entity.collisionBox.IntersectsWith(Globals.currentEntities[i].collisionBox) && entity != Globals.currentEntities[i])
                 {
-                    return Globals.entities[i];
+                    return Globals.currentEntities[i];
                 }
             }
 
@@ -74,11 +74,11 @@ namespace TeamJRPG
 
         public Entity CheckEntityInterraction(Entity entity)
         {
-            for (int i = 0; i < Globals.entities.Count; i++)
+            for (int i = 0; i < Globals.currentEntities.Count; i++)
             {
-                if (Globals.entities[i] != entity)
+                if (Globals.currentEntities[i] != entity)
                 {
-                    if (Globals.entities[i] is Object obj)
+                    if (Globals.currentEntities[i] is Object obj)
                     {
                         if (entity.collisionBox.IntersectsWith(obj.interractionBox))
                         {
@@ -86,7 +86,7 @@ namespace TeamJRPG
                         }
                     }
 
-                    /*if (Globals.entities[i] is NPC npc)
+                    /*if (Globals.currentEntities[i] is NPC npc)
                     {
                         if (entity.collisionBox.IntersectsWith(npc.interractionBox))
                         {

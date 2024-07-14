@@ -2283,17 +2283,17 @@
       ],
       [
         {
-          "id": 1,
+          "id": 6,
           "position": "840, 0",
           "collision": false
         },
         {
-          "id": 1,
+          "id": 6,
           "position": "840, 56",
           "collision": false
         },
         {
-          "id": 1,
+          "id": 6,
           "position": "840, 112",
           "collision": false
         },
@@ -4566,6 +4566,255 @@
       "x": 30,
       "y": 30
     },
+    "entities": [
+      {
+        "$id": "1",
+        "$type": "TeamJRPG.GroupMember, TeamJRPG",
+        "isPlayer": true,
+        "name": "Vika",
+        "bodySpriteSheetID": 0,
+        "characterIconID": 0,
+        "characterIconBackGroundID": 0,
+        "skinColor": {
+          "b": 167,
+          "g": 183,
+          "r": 229,
+          "a": 255
+        },
+        "hairColor": {
+          "b": 61,
+          "g": 139,
+          "r": 167,
+          "a": 255
+        },
+        "eyeColor": {
+          "b": 192,
+          "g": 170,
+          "r": 236,
+          "a": 255
+        },
+        "currentStatus": 0,
+        "animationState": 0,
+        "currentSpeed": 3.5,
+        "defaultSpeed": 3.5,
+        "currentSprintSpeed": 5.0,
+        "defaultSprintSpeed": 5.0,
+        "isSprinting": false,
+        "defaultSprintDuration": 300.0,
+        "currentSprintDuration": 300.0,
+        "direction": 1,
+        "level": 0,
+        "currentExp": 0,
+        "skillPoints": 0,
+        "strength": 0,
+        "dexterity": 0,
+        "wisdom": 0,
+        "currentMana": 100.0,
+        "maxMana": 100.0,
+        "currentHP": 10.0,
+        "maxHP": 100.0,
+        "onehandedSkill": 0.0,
+        "twohandedSkill": 0.0,
+        "bowSkill": 0.0,
+        "crossbowSkill": 0.0,
+        "magicSkill": 0.0,
+        "entityType": 0,
+        "position": "100, 100",
+        "entityCollision": true,
+        "tileCollision": true,
+        "inventory": []
+      },
+      {
+        "$id": "2",
+        "$type": "TeamJRPG.GroupMember, TeamJRPG",
+        "isPlayer": false,
+        "name": "Orest",
+        "bodySpriteSheetID": 0,
+        "characterIconID": 0,
+        "characterIconBackGroundID": 1,
+        "skinColor": {
+          "b": 255,
+          "g": 255,
+          "r": 255,
+          "a": 255
+        },
+        "hairColor": {
+          "b": 171,
+          "g": 49,
+          "r": 9,
+          "a": 255
+        },
+        "eyeColor": {
+          "b": 155,
+          "g": 238,
+          "r": 4,
+          "a": 255
+        },
+        "currentStatus": 0,
+        "animationState": 0,
+        "currentSpeed": 3.5,
+        "defaultSpeed": 3.5,
+        "currentSprintSpeed": 5.0,
+        "defaultSprintSpeed": 5.0,
+        "isSprinting": false,
+        "defaultSprintDuration": 300.0,
+        "currentSprintDuration": 300.0,
+        "direction": 1,
+        "level": 0,
+        "currentExp": 0,
+        "skillPoints": 0,
+        "strength": 0,
+        "dexterity": 0,
+        "wisdom": 0,
+        "currentMana": 50.0,
+        "maxMana": 100.0,
+        "currentHP": 100.0,
+        "maxHP": 100.0,
+        "onehandedSkill": 0.0,
+        "twohandedSkill": 0.0,
+        "bowSkill": 0.0,
+        "crossbowSkill": 0.0,
+        "magicSkill": 0.0,
+        "entityType": 0,
+        "position": "1120, 2856",
+        "entityCollision": true,
+        "tileCollision": true,
+        "inventory": []
+      },
+      {
+        "$id": "3",
+        "$type": "TeamJRPG.GroupMember, TeamJRPG",
+        "isPlayer": false,
+        "name": "Kirjusha",
+        "bodySpriteSheetID": 0,
+        "characterIconID": 0,
+        "characterIconBackGroundID": 2,
+        "skinColor": {
+          "b": 97,
+          "g": 32,
+          "r": 249,
+          "a": 255
+        },
+        "hairColor": {
+          "b": 78,
+          "g": 184,
+          "r": 9,
+          "a": 255
+        },
+        "eyeColor": {
+          "b": 249,
+          "g": 144,
+          "r": 195,
+          "a": 255
+        },
+        "currentStatus": 0,
+        "animationState": 0,
+        "currentSpeed": 3.5,
+        "defaultSpeed": 3.5,
+        "currentSprintSpeed": 5.0,
+        "defaultSprintSpeed": 5.0,
+        "isSprinting": false,
+        "defaultSprintDuration": 300.0,
+        "currentSprintDuration": 300.0,
+        "direction": 1,
+        "level": 0,
+        "currentExp": 0,
+        "skillPoints": 0,
+        "strength": 0,
+        "dexterity": 0,
+        "wisdom": 0,
+        "currentMana": 100.0,
+        "maxMana": 100.0,
+        "currentHP": 50.0,
+        "maxHP": 100.0,
+        "onehandedSkill": 0.0,
+        "twohandedSkill": 0.0,
+        "bowSkill": 0.0,
+        "crossbowSkill": 0.0,
+        "magicSkill": 0.0,
+        "entityType": 0,
+        "position": "1120, 2912",
+        "entityCollision": true,
+        "tileCollision": true,
+        "inventory": []
+      },
+      {
+        "$id": "4",
+        "$type": "TeamJRPG.GroupMember, TeamJRPG",
+        "isPlayer": false,
+        "name": "Artur",
+        "bodySpriteSheetID": 0,
+        "characterIconID": 0,
+        "characterIconBackGroundID": 3,
+        "skinColor": {
+          "b": 0,
+          "g": 140,
+          "r": 255,
+          "a": 255
+        },
+        "hairColor": {
+          "b": 184,
+          "g": 95,
+          "r": 63,
+          "a": 255
+        },
+        "eyeColor": {
+          "b": 40,
+          "g": 211,
+          "r": 238,
+          "a": 255
+        },
+        "currentStatus": 0,
+        "animationState": 0,
+        "currentSpeed": 3.5,
+        "defaultSpeed": 3.5,
+        "currentSprintSpeed": 5.0,
+        "defaultSprintSpeed": 5.0,
+        "isSprinting": false,
+        "defaultSprintDuration": 300.0,
+        "currentSprintDuration": 300.0,
+        "direction": 1,
+        "level": 0,
+        "currentExp": 0,
+        "skillPoints": 0,
+        "strength": 0,
+        "dexterity": 0,
+        "wisdom": 0,
+        "currentMana": 100.0,
+        "maxMana": 100.0,
+        "currentHP": 75.0,
+        "maxHP": 100.0,
+        "onehandedSkill": 0.0,
+        "twohandedSkill": 0.0,
+        "bowSkill": 0.0,
+        "crossbowSkill": 0.0,
+        "magicSkill": 0.0,
+        "entityType": 0,
+        "position": "100, 100",
+        "entityCollision": true,
+        "tileCollision": true,
+        "inventory": []
+      },
+      {
+        "$id": "5",
+        "$type": "TeamJRPG.Object, TeamJRPG",
+        "objectId": 1,
+        "entityType": 1,
+        "position": "840, 280",
+        "entityCollision": true,
+        "tileCollision": true,
+        "inventory": [
+          {
+            "$id": "6",
+            "$type": "TeamJRPG.Consumable, TeamJRPG",
+            "textureID": 1,
+            "type": 2,
+            "amount": 1,
+            "itemID": 1
+          }
+        ]
+      }
+    ],
     "name": "Location0"
   },
   {
@@ -6987,17 +7236,17 @@
           "collision": false
         },
         {
-          "id": 1,
+          "id": 6,
           "position": "840, 1512",
           "collision": false
         },
         {
-          "id": 5,
+          "id": 6,
           "position": "840, 1568",
-          "collision": true
+          "collision": false
         },
         {
-          "id": 1,
+          "id": 6,
           "position": "840, 1624",
           "collision": false
         }
@@ -8088,7 +8337,7 @@
           "collision": false
         },
         {
-          "id": 1,
+          "id": 7,
           "position": "1288, 224",
           "collision": false
         },
@@ -9135,6 +9384,27 @@
       "x": 30,
       "y": 30
     },
+    "entities": [
+      {
+        "$id": "7",
+        "$type": "TeamJRPG.Object, TeamJRPG",
+        "objectId": 1,
+        "entityType": 1,
+        "position": "840, 280",
+        "entityCollision": true,
+        "tileCollision": true,
+        "inventory": [
+          {
+            "$id": "8",
+            "$type": "TeamJRPG.Consumable, TeamJRPG",
+            "textureID": 1,
+            "type": 2,
+            "amount": 1,
+            "itemID": 1
+          }
+        ]
+      }
+    ],
     "name": "Location1"
   },
   {
@@ -13704,6 +13974,27 @@
       "x": 30,
       "y": 30
     },
+    "entities": [
+      {
+        "$id": "9",
+        "$type": "TeamJRPG.Object, TeamJRPG",
+        "objectId": 1,
+        "entityType": 1,
+        "position": "840, 280",
+        "entityCollision": true,
+        "tileCollision": true,
+        "inventory": [
+          {
+            "$id": "10",
+            "$type": "TeamJRPG.Consumable, TeamJRPG",
+            "textureID": 1,
+            "type": 2,
+            "amount": 1,
+            "itemID": 1
+          }
+        ]
+      }
+    ],
     "name": "Location2"
   },
   {
@@ -18273,6 +18564,27 @@
       "x": 30,
       "y": 30
     },
+    "entities": [
+      {
+        "$id": "11",
+        "$type": "TeamJRPG.Object, TeamJRPG",
+        "objectId": 1,
+        "entityType": 1,
+        "position": "840, 280",
+        "entityCollision": true,
+        "tileCollision": true,
+        "inventory": [
+          {
+            "$id": "12",
+            "$type": "TeamJRPG.Consumable, TeamJRPG",
+            "textureID": 1,
+            "type": 2,
+            "amount": 1,
+            "itemID": 1
+          }
+        ]
+      }
+    ],
     "name": "Location3"
   },
   {
@@ -22842,6 +23154,27 @@
       "x": 30,
       "y": 30
     },
+    "entities": [
+      {
+        "$id": "13",
+        "$type": "TeamJRPG.Object, TeamJRPG",
+        "objectId": 1,
+        "entityType": 1,
+        "position": "840, 280",
+        "entityCollision": true,
+        "tileCollision": true,
+        "inventory": [
+          {
+            "$id": "14",
+            "$type": "TeamJRPG.Consumable, TeamJRPG",
+            "textureID": 1,
+            "type": 2,
+            "amount": 1,
+            "itemID": 1
+          }
+        ]
+      }
+    ],
     "name": "Location4"
   }
 ]

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace TeamJRPG
 {
@@ -12,14 +13,15 @@ namespace TeamJRPG
         [JsonConverter(typeof(TileArrayConverter))]
         public Tile[,] tiles;
 
-
-
         public Point mapSize = new Point(30, 30);
+
+        public List<Entity> entities;
         public string name { get; set; }
 
         public Map(string name)
         {
             this.name = name;
+            this.entities = new List<Entity>();
             tiles = new Tile[mapSize.X, mapSize.Y];
         }
 

@@ -91,109 +91,31 @@ namespace TeamJRPG
                         Converters = new List<JsonConverter> { new TileArrayConverter() }
                     };
 
-                    Globals.maps = JsonConvert.DeserializeObject<Map[]>(json, settings);
+                    var maps = JsonConvert.DeserializeObject<Map[]>(json, settings);
 
-                    Console.WriteLine($"Maps data successfully read from {jsonDirectory}");
-                }
-                else
-                {
-                    Console.WriteLine($"File not found: {filePath}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error reading maps data from {filePath}: {ex.Message}");
-            }
-        }
-
-
-
-        
-
-
-
-        public void WriteEntities(string fileName)
-        {
-            string jsonDirectory = GetJsonDirectory();
-            string filePath = Path.Combine(jsonDirectory, fileName);
-            Console.WriteLine($"Writing entities data to {jsonDirectory}");
-
-            try
-            {
-                var entitiesToSerialize = Globals.entities.ToList();
-
-                var settings = new JsonSerializerSettings
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                    Formatting = Formatting.Indented,
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                };
-
-                string json = JsonConvert.SerializeObject(entitiesToSerialize, settings);
-                File.WriteAllText(filePath, json);
-
-                Console.WriteLine($"Entities data successfully written to {jsonDirectory}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error writing entities data to {filePath}: {ex.Message}");
-            }
-        }
-
-
-
-        public void ReadEntities(string fileName)
-        {
-            string jsonDirectory = GetJsonDirectory();
-            string filePath = Path.Combine(jsonDirectory, fileName);
-            Console.WriteLine($"Reading entities data from {fileName}");
-
-            try
-            {
-                if (File.Exists(filePath))
-                {
-                    string json = File.ReadAllText(filePath);
-                    var settings = new JsonSerializerSettings
+                    foreach (var map in maps)
                     {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                        ContractResolver = new CamelCasePropertyNamesContractResolver()
-                    };
 
-                    var entities = JsonConvert.DeserializeObject<List<dynamic>>(json, settings);
-
-                    foreach (var entity in entities)
-                    {
-                        if (entity.entityType == Entity.EntityType.groupMember)
+                        foreach (var entity in map.entities) // ToList() creates a copy to avoid modification during iteration
                         {
-                            // Deserialize as GroupMember
-                            var groupMember = JsonConvert.DeserializeObject<GroupMember>(entity.ToString(), settings);
-                            Globals.group.members.Add(groupMember);
-
-                            if (groupMember.isPlayer)
+                            if (entity.entityType == Entity.EntityType.groupMember)
                             {
-                                Globals.player = groupMember;
-                            }
 
-                            Globals.entities.Add(groupMember);
-                        }
-                        else if (entity.entityType == Entity.EntityType.obj)
-                        {
-                            // Deserialize as Object
-                            var obj = JsonConvert.DeserializeObject<Object>(entity.ToString(), settings);
-                            // Handle objects if needed
-                            Globals.entities.Add(obj);
-                        }
-                        else
-                        {
-                            // Default case: Deserialize as Entity
-                            var baseEntity = JsonConvert.DeserializeObject<Entity>(entity.ToString(), settings);
-                            // Handle other entities if needed
+                                if (((GroupMember)entity).isPlayer)
+                                {
+                                    Globals.player = ((GroupMember)entity);
+                                    Globals.currentMap = map; // Consider whether this assignment is needed here
+                                }
+
+                                Globals.group.members.Add(((GroupMember)entity));
+                            }
                         }
                     }
 
-                    Console.WriteLine($"Entities data successfully read from {jsonDirectory}");
+                    Globals.maps = maps;
 
-                    // Ensure Globals.player is set
+                    Console.WriteLine($"Maps data successfully read from {jsonDirectory}");
+
                     if (Globals.player == null)
                     {
                         Console.WriteLine("Player not found in entities data.");
@@ -206,7 +128,7 @@ namespace TeamJRPG
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error reading entities data from {filePath}: {ex.Message}");
+                Console.WriteLine($"Error reading maps data from {filePath}: {ex.Message}");
             }
         }
 

@@ -51,7 +51,6 @@ namespace TeamJRPG
         public bool tileCollision;
 
 
-        [JsonIgnore]
         public List<Item> inventory;
 
 

@@ -7,6 +7,7 @@ namespace TeamJRPG
 {
 
     [Serializable]
+    [JsonObject(IsReference = true)]
     public class Consumable : Item
     {
 

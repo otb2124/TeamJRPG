@@ -1,4 +1,5 @@
-﻿using SharpDX.Direct3D9;
+﻿using Newtonsoft.Json;
+using SharpDX.Direct3D9;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace TeamJRPG
 {
 
     [Serializable]
+    [JsonObject(IsReference = true)]
     public class QuestItem : Item
     {
 

@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 using System;
-using System.Text.Json.Serialization;
+
 
 namespace TeamJRPG
 {
 
     [Serializable]
+    [JsonObject(IsReference = true)]
     public class Item
     {
         [JsonIgnore]
