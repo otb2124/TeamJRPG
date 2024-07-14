@@ -1,9 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Threading;
 
 namespace TeamJRPG
@@ -25,7 +22,7 @@ namespace TeamJRPG
 
         public void Init()
         {
-            Globals.map = new Map();
+            Globals.maps = new Map[5];
             Globals.entities = new List<Entity>();
             Globals.group = new Group();
             overDraw = new List<Entity>();
@@ -39,7 +36,11 @@ namespace TeamJRPG
         public void Load()
         {
             Globals.assetSetter.SetAssets();
-            Globals.mapReader.ReadMap("save.json");
+            Globals.mapReader.ReadMaps("maps");
+            Globals.currentMap = Globals.maps[0];
+
+            Globals.collisionManager.Load();
+
             Globals.mapReader.ReadEntities("entities.json");
 
             Globals.aStarPathfinding.Init();
@@ -52,7 +53,7 @@ namespace TeamJRPG
 
             Globals.camera.Load();
 
-            
+            Globals.eventManager.SetEvents();
 
 
             commandThread = new Thread(CommandHandler);
@@ -67,12 +68,12 @@ namespace TeamJRPG
         {
             Globals.inputManager.Update();
             Globals.group.Update();
-
+            Globals.eventManager.CheckEvents();
 
             //Game States
             if (Globals.currentGameState == Globals.GameState.playstate)
             {
-                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape))
+                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape) || Globals.inputManager.IsKeyPressedAndReleased(Keys.Tab))
                 {
                     Globals.currentGameState = Globals.GameState.ingamemenustate;
                     Globals.uiManager.currentMenuState = UIManager.MenuState.inGameMenu;
@@ -90,14 +91,25 @@ namespace TeamJRPG
                         Globals.currentGameMode = Globals.GameMode.playmode;
                     }
                 }
+
+
+                //DEBUG MODE
+                if(Globals.currentGameMode == Globals.GameMode.debugmode)
+                {
+                    Console.SetCursorPosition(0, 0); // Set cursor position to top-left corner of console
+                    Console.WriteLine($"Player Position: {Globals.player.GetMapPos()}");
+                }
             }
+
+
+
 
             //UI STATES
             else if(Globals.currentGameState == Globals.GameState.ingamemenustate)
             {
 
-                //IF ESC
-                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape))
+                //IF ESC or TAB
+                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape) || Globals.inputManager.IsKeyPressedAndReleased(Keys.Tab))
                 {
 
                     if (Globals.uiManager.HasCompositesOfType(UIComposite.UICompositeType.DESCRIPTION_WINDOW))
@@ -178,7 +190,7 @@ namespace TeamJRPG
 
         public void Draw()
         {
-            Globals.map.Draw();
+            Globals.currentMap.Draw();
 
             foreach (var entity in underDraw)
             {
@@ -198,6 +210,15 @@ namespace TeamJRPG
 
 
 
+        public void OnExit()
+        {
+            Console.WriteLine("Program Exited");
+        }
+
+
+
+
+
         private void CommandHandler()
         {
             while (true)
@@ -207,6 +228,10 @@ namespace TeamJRPG
                 Globals.commandManager.ExecuteCommand(input);
             }
         }
+
+
+
+
 
     }
 }

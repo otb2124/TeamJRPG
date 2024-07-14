@@ -9,6 +9,7 @@ namespace TeamJRPG
     {
 
         public static readonly float gameScale = 1.75f;
+
         public static readonly Vector2 tileSize = new Vector2(32 * gameScale, 32 * gameScale);
 
 
@@ -23,7 +24,9 @@ namespace TeamJRPG
 
         public static Game1 game;
         public static GameManager gameManager {  get; set; }
-        public static Map map { get; set; }
+
+        public static Map[] maps;
+        public static Map currentMap { get; set; }
         public static GroupMember player { get; set; }
         public static Group group { get; set; }
 
@@ -37,7 +40,11 @@ namespace TeamJRPG
 
         public static TextureManager TextureManager { get; set; }
 
+        public static EventManager eventManager { get; set; }
+
         public static CommandManager commandManager { get; set; }
+
+
 
 
         public static void Init()
@@ -52,6 +59,7 @@ namespace TeamJRPG
             uiManager = new UIManager();
             inventoryHandler = new InventoryHandler();
             commandManager = new CommandManager();
+            eventManager = new EventManager();
 
             camera = new Camera(graphics.GraphicsDevice.Viewport);
         }

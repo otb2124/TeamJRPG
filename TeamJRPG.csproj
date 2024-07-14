@@ -189,6 +189,7 @@
     <Folder Include="Content\res\characters\battleSprites\" />
     <Folder Include="Content\res\characters\characterDetails\" />
     <Folder Include="Content\res\maps\" />
+    <Folder Include="Content\res\consoleoutput\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\res\effects\CircularMask.fx">
@@ -199,4 +200,5 @@
     <Message Text="Restoring dotnet tools" Importance="High" />
     <Exec Command="dotnet tool restore" />
   </Target>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 </Project>

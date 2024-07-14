@@ -25,15 +25,15 @@ namespace TeamJRPG
 
         public void Init()
         {
-            int width = Globals.map.tiles.GetLength(0);
-            int height = Globals.map.tiles.GetLength(1);
+            int width = Globals.currentMap.tiles.GetLength(0);
+            int height = Globals.currentMap.tiles.GetLength(1);
             int[,] grid = new int[width, height];
 
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
-                    grid[x, y] = Globals.map.tiles[x, y].collision ? 1 : 0;
+                    grid[x, y] = Globals.currentMap.tiles[x, y].collision ? 1 : 0;
                 }
             }
 

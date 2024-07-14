@@ -50,7 +50,7 @@
     "crossbowSkill": 0.0,
     "magicSkill": 0.0,
     "entityType": 0,
-    "position": "1120, 2800",
+    "position": "100, 100",
     "entityCollision": true,
     "tileCollision": true
   },
@@ -215,7 +215,7 @@
     "crossbowSkill": 0.0,
     "magicSkill": 0.0,
     "entityType": 0,
-    "position": "1120, 2968",
+    "position": "100, 100",
     "entityCollision": true,
     "tileCollision": true
   },

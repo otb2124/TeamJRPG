@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 using System;
 
 namespace TeamJRPG
@@ -6,15 +7,23 @@ namespace TeamJRPG
     [Serializable]
     public class Map
     {
-        public Tile[,] tiles;
-        public Point mapSize = new Point(100, 100);
 
-        public Map()
+
+        [JsonConverter(typeof(TileArrayConverter))]
+        public Tile[,] tiles;
+
+
+
+        public Point mapSize = new Point(30, 30);
+        public string name { get; set; }
+
+        public Map(string name)
         {
+            this.name = name;
             tiles = new Tile[mapSize.X, mapSize.Y];
         }
 
-        public void Load()
+        public void Generate()
         {
             Console.WriteLine("Generating Map...");
 

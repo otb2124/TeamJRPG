@@ -9,7 +9,19 @@ namespace TeamJRPG
     {
 
 
-        public RectangleF worldBounds = new RectangleF(0, 0, Globals.map.mapSize.X * Globals.tileSize.X, Globals.map.mapSize.Y * Globals.tileSize.Y);
+        public RectangleF worldBounds;
+
+
+
+
+        public void Load()
+        {
+            worldBounds = new RectangleF(0, 0, Globals.currentMap.mapSize.X * Globals.tileSize.X, Globals.currentMap.mapSize.Y * Globals.tileSize.Y);
+        }
+
+
+
+
 
         public bool CheckTileCollision(Entity entity)
         {
@@ -21,15 +33,15 @@ namespace TeamJRPG
             }
 
             // Loop through all tiles in the current room
-            for (int x = 0; x < Globals.map.tiles.GetLength(0); x++)
+            for (int x = 0; x < Globals.currentMap.tiles.GetLength(0); x++)
             {
-                for (int y = 0; y < Globals.map.tiles.GetLength(1); y++)
+                for (int y = 0; y < Globals.currentMap.tiles.GetLength(1); y++)
                 {
                     // Check if the current tile is collidable
-                    if (Globals.map.tiles[x, y].collision)
+                    if (Globals.currentMap.tiles[x, y].collision)
                     {
                         // Check for intersection with the entity's tileCollision box
-                        if (entity.collisionBox.IntersectsWith(Globals.map.tiles[x, y].collisionBox))
+                        if (entity.collisionBox.IntersectsWith(Globals.currentMap.tiles[x, y].collisionBox))
                         {
                             return true;
                         }
@@ -91,11 +103,11 @@ namespace TeamJRPG
 
         public void ConstrainEntityToMap(Entity entity)
         {
-            // Get map boundaries
-            float mapWidth = Globals.map.mapSize.X * Globals.tileSize.X;
-            float mapHeight = Globals.map.mapSize.Y * Globals.tileSize.Y;
+            // Get currentMap boundaries
+            float mapWidth = Globals.currentMap.mapSize.X * Globals.tileSize.X;
+            float mapHeight = Globals.currentMap.mapSize.Y * Globals.tileSize.Y;
 
-            // Constrain entity's position within the map boundaries
+            // Constrain entity's position within the currentMap boundaries
             entity.position.X = MathHelper.Clamp(entity.position.X, 0, mapWidth - entity.collisionBox.Width);
             entity.position.Y = MathHelper.Clamp(entity.position.Y, 0, mapHeight - entity.collisionBox.Height);
 

@@ -116,8 +116,8 @@ namespace TeamJRPG
             float cameraWidth = viewport.Width / zoom;
             float cameraHeight = viewport.Height / zoom;
 
-            targetPosition.X = MathHelper.Clamp(targetPosition.X, cameraWidth / 2, Globals.map.mapSize.X * Globals.tileSize.X - cameraWidth / 2);
-            targetPosition.Y = MathHelper.Clamp(targetPosition.Y, cameraHeight / 2, Globals.map.mapSize.Y * Globals.tileSize.Y - cameraHeight / 2);
+            targetPosition.X = MathHelper.Clamp(targetPosition.X, cameraWidth / 2, Globals.currentMap.mapSize.X * Globals.tileSize.X - cameraWidth / 2);
+            targetPosition.Y = MathHelper.Clamp(targetPosition.Y, cameraHeight / 2, Globals.currentMap.mapSize.Y * Globals.tileSize.Y - cameraHeight / 2);
 
             if (!FollowPlayer)
             {

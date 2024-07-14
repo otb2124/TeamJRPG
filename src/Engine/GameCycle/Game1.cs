@@ -79,6 +79,7 @@ namespace TeamJRPG
         protected override void OnExiting(object sender, EventArgs args)
         {
             PythonTranslator.ShutdownPythonEngine();
+            Globals.gameManager.OnExit();
             base.OnExiting(sender, args);
         }
     }

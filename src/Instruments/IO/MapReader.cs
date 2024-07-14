@@ -9,55 +9,74 @@ namespace TeamJRPG
 {
     public class MapReader
     {
-        private string GetJsonDirectory()
+
+
+        private string GetResDirectory()
         {
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string[] directories = baseDirectory.TrimEnd('\\').Split('\\');
             int startIndex = Math.Max(0, directories.Length - 3);
             string remainingPath = string.Join("\\", directories.Take(startIndex));
-            string jsonDirectory = Path.Combine(remainingPath, "Content", "res", "json");
+            string resDirectory = Path.Combine(remainingPath, "Content", "res");
 
-            if (!Directory.Exists(jsonDirectory))
+            if (!Directory.Exists(resDirectory))
             {
-                Directory.CreateDirectory(jsonDirectory);
+                Directory.CreateDirectory(resDirectory);
             }
 
-            return jsonDirectory;
+            return resDirectory;
         }
 
-        public void WriteMap(string fileName)
+
+        private string GetJsonDirectory()
+        {
+            return Path.Combine(GetResDirectory(), "json");
+        }
+
+        private string GetOutputDirectory()
+        {
+            return Path.Combine(GetResDirectory(), "consoleoutput");
+        }
+
+
+
+
+
+
+
+        public void WriteMaps(string fileName)
         {
             string jsonDirectory = GetJsonDirectory();
             string filePath = Path.Combine(jsonDirectory, fileName);
-            Console.WriteLine($"Writing map to {jsonDirectory}");
+            Console.WriteLine($"Writing maps to {jsonDirectory}");
 
             try
             {
-
-
                 var settings = new JsonSerializerSettings
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
                     Formatting = Formatting.Indented,
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                    TypeNameHandling = TypeNameHandling.Auto,
+                    Converters = new List<JsonConverter> { new TileArrayConverter() }
                 };
 
-                string json = JsonConvert.SerializeObject(Globals.map, settings);
+                string json = JsonConvert.SerializeObject(Globals.maps, settings);
                 File.WriteAllText(filePath, json);
 
-                Console.WriteLine($"Map data successfully written to {jsonDirectory}");
+                Console.WriteLine($"Maps data successfully written to {jsonDirectory}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error writing map data to {filePath}: {ex.Message}");
+                Console.WriteLine($"Error writing maps data to {filePath}: {ex.Message}");
             }
         }
 
-        public void ReadMap(string fileName)
+        public void ReadMaps(string fileName)
         {
             string jsonDirectory = GetJsonDirectory();
             string filePath = Path.Combine(jsonDirectory, fileName);
-            Console.WriteLine($"Reading map from {fileName}");
+            Console.WriteLine($"Reading maps data from {fileName}");
 
             try
             {
@@ -67,12 +86,14 @@ namespace TeamJRPG
                     var settings = new JsonSerializerSettings
                     {
                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                        ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                        TypeNameHandling = TypeNameHandling.Auto,
+                        Converters = new List<JsonConverter> { new TileArrayConverter() }
                     };
 
-                    Globals.map = JsonConvert.DeserializeObject<Map>(json, settings);
+                    Globals.maps = JsonConvert.DeserializeObject<Map[]>(json, settings);
 
-                    Console.WriteLine($"Map data successfully read from {jsonDirectory}");
+                    Console.WriteLine($"Maps data successfully read from {jsonDirectory}");
                 }
                 else
                 {
@@ -81,12 +102,13 @@ namespace TeamJRPG
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error reading map data from {filePath}: {ex.Message}");
+                Console.WriteLine($"Error reading maps data from {filePath}: {ex.Message}");
             }
         }
 
 
 
+        
 
 
 

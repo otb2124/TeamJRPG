@@ -143,9 +143,10 @@ namespace TeamJRPG
 
 
 
-        public Vector2 GetMapPos()
+        public Point GetMapPos()
         {
-            return position / Globals.tileSize;
+            Vector2 mapPos = position / Globals.tileSize;
+            return mapPos.ToPoint();
         }
     }
 }

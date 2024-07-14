@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +20,16 @@ namespace TeamJRPG
 
         public CommandManager()
         {
+            
+
+
             commands = new Dictionary<string, ICommand>();
 
             RegisterCommand("setpos", new UpdatePositionCommand());
             RegisterCommand("gameMode", new DebugModeOnCommand());
             RegisterCommand("set", new SetCommand());
+
+
         }
 
         public void RegisterCommand(string name, ICommand command)

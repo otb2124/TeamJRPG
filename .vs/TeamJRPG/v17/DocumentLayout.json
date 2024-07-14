@@ -3,6 +3,58 @@
   "WorkspaceRootPath": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\engine\\main\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\engine\\main\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\console\\icommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\console\\icommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\io\\mapreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\io\\mapreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\content\\res\\json\\entities.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:content\\res\\json\\entities.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\mechanics\\collisionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\mechanics\\collisionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\engine\\gamecycle\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\engine\\gamecycle\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\engine\\main\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\engine\\main\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\events\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\events\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\events\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\events\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\content\\res\\json\\maps||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:content\\res\\json\\maps||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\io\\tilearrayconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\io\\tilearrayconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\tiles\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\tiles\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\entities\\object.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\entities\\object.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,16 +63,8 @@
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\mechanics\\inventoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\content\\res\\json\\entities.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:content\\res\\json\\entities.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\engine\\gamecycle\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\engine\\gamecycle\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\entities\\liveentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,14 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\entities\\groupmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\entities\\groupmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\engine\\main\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\engine\\main\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\io\\mapreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\io\\mapreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\engine\\graphics\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,14 +93,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\ui\\complex\\ingamemenu\\inventoryingamemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\ui\\complex\\ingamemenu\\inventoryingamemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\content\\res\\json\\save.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:content\\res\\json\\save.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\engine\\main\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\engine\\main\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\items\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -127,16 +155,8 @@
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\tiles\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\tiles\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\tiles\\map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\utils\\astarpathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\utils\\astarpathfinding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\mechanics\\collisionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\mechanics\\collisionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\ui\\complex\\ingamemenu\\ingamemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -187,10 +207,6 @@
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\consolecommands\\updatepositioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\instruments\\console\\icommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\instruments\\console\\icommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\consolecommands\\debugmodeoncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\consolecommands\\debugmodeoncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -201,10 +217,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\components\\sprites\\sprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\components\\sprites\\sprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\src\\engine\\gamecycle\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:src\\engine\\gamecycle\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\teamjrpg.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -337,50 +349,167 @@
       "DocumentGroups": [
         {
           "DockedWidth": 160,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "QuestBookInGameMenu.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\QuestBookInGameMenu.cs",
-              "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\QuestBookInGameMenu.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\QuestBookInGameMenu.cs",
-              "RelativeToolTip": "src\\Components\\UI\\Complex\\InGameMenu\\QuestBookInGameMenu.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAADwvzoAAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "CollisionManager.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Mechanics\\CollisionManager.cs",
+              "RelativeDocumentMoniker": "src\\Instruments\\Mechanics\\CollisionManager.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Mechanics\\CollisionManager.cs",
+              "RelativeToolTip": "src\\Instruments\\Mechanics\\CollisionManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T10:21:48.194Z",
+              "WhenOpened": "2024-06-25T20:03:29.337Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\GameManager.cs",
+              "RelativeDocumentMoniker": "src\\Engine\\Main\\GameManager.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\GameManager.cs",
+              "RelativeToolTip": "src\\Engine\\Main\\GameManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T10:30:36.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TileArrayConverter.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\IO\\TileArrayConverter.cs",
+              "RelativeDocumentMoniker": "src\\Instruments\\IO\\TileArrayConverter.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\IO\\TileArrayConverter.cs",
+              "RelativeToolTip": "src\\Instruments\\IO\\TileArrayConverter.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwCIAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T22:26:59.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "entities.json",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\json\\entities.json",
               "RelativeDocumentMoniker": "Content\\res\\json\\entities.json",
               "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\json\\entities.json",
               "RelativeToolTip": "Content\\res\\json\\entities.json",
-              "ViewState": "AQIAACAAAAAAAAAAAAAkwDUAAAAcAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAADQAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-07-13T16:57:44.697Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "save.json",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\json\\save.json",
-              "RelativeDocumentMoniker": "Content\\res\\json\\save.json",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\json\\save.json",
-              "RelativeToolTip": "Content\\res\\json\\save.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-13T17:06:50.217Z",
+              "DocumentIndex": 1,
+              "Title": "ICommand.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Console\\ICommand.cs",
+              "RelativeDocumentMoniker": "src\\Instruments\\Console\\ICommand.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Console\\ICommand.cs",
+              "RelativeToolTip": "src\\Instruments\\Console\\ICommand.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAlwDUAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T01:17:46.782Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 2,
+              "Title": "MapReader.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\IO\\MapReader.cs",
+              "RelativeDocumentMoniker": "src\\Instruments\\IO\\MapReader.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\IO\\MapReader.cs",
+              "RelativeToolTip": "src\\Instruments\\IO\\MapReader.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAqwCYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T16:07:09.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\Entity.cs",
+              "RelativeDocumentMoniker": "src\\Components\\Entities\\Entity.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\Entity.cs",
+              "RelativeToolTip": "src\\Components\\Entities\\Entity.cs",
+              "ViewState": "AQIAAHwAAAAAAAAAAAAAwJQAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T19:12:53.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "maps",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\json\\maps",
+              "RelativeDocumentMoniker": "Content\\res\\json\\maps",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\json\\maps",
+              "RelativeToolTip": "Content\\res\\json\\maps",
+              "ViewState": "AQIAACdZAAAAAAAAAAD4vzxZAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-07-13T22:35:41.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Event.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Events\\Event.cs",
+              "RelativeDocumentMoniker": "src\\Instruments\\Events\\Event.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Events\\Event.cs",
+              "RelativeToolTip": "src\\Instruments\\Events\\Event.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAqwCgAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T22:44:51.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Game1.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\GameCycle\\Game1.cs",
+              "RelativeDocumentMoniker": "src\\Engine\\GameCycle\\Game1.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\GameCycle\\Game1.cs",
+              "RelativeToolTip": "src\\Engine\\GameCycle\\Game1.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAowFEAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-21T13:14:52.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Globals.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\Globals.cs",
+              "RelativeDocumentMoniker": "src\\Engine\\Main\\Globals.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\Globals.cs",
+              "RelativeToolTip": "src\\Engine\\Main\\Globals.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAIwCMAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T10:30:28.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EventManager.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Events\\EventManager.cs",
+              "RelativeDocumentMoniker": "src\\Instruments\\Events\\EventManager.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Events\\EventManager.cs",
+              "RelativeToolTip": "src\\Instruments\\Events\\EventManager.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T22:46:12.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
               "Title": "Currency.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Items\\Currency.cs",
               "RelativeDocumentMoniker": "src\\Components\\Items\\Currency.cs",
@@ -388,12 +517,11 @@
               "RelativeToolTip": "src\\Components\\Items\\Currency.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T12:16:36.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T12:16:36.136Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 15,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\GameCycle\\Program.cs",
               "RelativeDocumentMoniker": "src\\Engine\\GameCycle\\Program.cs",
@@ -401,25 +529,23 @@
               "RelativeToolTip": "src\\Engine\\GameCycle\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-23T10:06:23.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-23T10:06:23.871Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 13,
               "Title": "Object.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\Object.cs",
               "RelativeDocumentMoniker": "src\\Components\\Entities\\Object.cs",
               "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\Object.cs",
               "RelativeToolTip": "src\\Components\\Entities\\Object.cs",
-              "ViewState": "AQIAAE8AAAAAAAAAAAAAAGgAAACNAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T12:45:30.107Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-26T12:45:30.107Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
               "Title": "InventoryHandler.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Mechanics\\InventoryHandler.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Mechanics\\InventoryHandler.cs",
@@ -427,25 +553,36 @@
               "RelativeToolTip": "src\\Instruments\\Mechanics\\InventoryHandler.cs",
               "ViewState": "AQIAADAAAAAAAAAAAAAYwEQAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T00:34:58.611Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-10T00:34:58.611Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Entity.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\Entity.cs",
-              "RelativeDocumentMoniker": "src\\Components\\Entities\\Entity.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\Entity.cs",
-              "RelativeToolTip": "src\\Components\\Entities\\Entity.cs",
-              "ViewState": "AQIAACgAAAAAAAAAAAAAAD4AAAAkAAAA",
+              "DocumentIndex": 12,
+              "Title": "Map.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Tiles\\Map.cs",
+              "RelativeDocumentMoniker": "src\\Components\\Tiles\\Map.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Tiles\\Map.cs",
+              "RelativeToolTip": "src\\Components\\Tiles\\Map.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwBIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T19:12:53.298Z",
+              "WhenOpened": "2024-06-24T16:56:49.381Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 20,
+              "Title": "QuestBookInGameMenu.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\QuestBookInGameMenu.cs",
+              "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\QuestBookInGameMenu.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\QuestBookInGameMenu.cs",
+              "RelativeToolTip": "src\\Components\\UI\\Complex\\InGameMenu\\QuestBookInGameMenu.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAADwvzoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T10:21:48.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "LiveEntity.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\LiveEntity.cs",
               "RelativeDocumentMoniker": "src\\Components\\Entities\\LiveEntity.cs",
@@ -453,25 +590,11 @@
               "RelativeToolTip": "src\\Components\\Entities\\LiveEntity.cs",
               "ViewState": "AQIAAFIAAAAAAAAAAAAAAGYAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-04T21:05:34.202Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-04T21:05:34.202Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MapReader.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\IO\\MapReader.cs",
-              "RelativeDocumentMoniker": "src\\Instruments\\IO\\MapReader.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\IO\\MapReader.cs",
-              "RelativeToolTip": "src\\Instruments\\IO\\MapReader.cs",
-              "ViewState": "AQIAAGgAAAAAAAAAAAAAwJkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T16:07:09.755Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 18,
               "Title": "Camera.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Graphics\\Camera.cs",
               "RelativeDocumentMoniker": "src\\Engine\\Graphics\\Camera.cs",
@@ -484,20 +607,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\GameManager.cs",
-              "RelativeDocumentMoniker": "src\\Engine\\Main\\GameManager.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\GameManager.cs",
-              "RelativeToolTip": "src\\Engine\\Main\\GameManager.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAAwCgAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T10:30:36.777Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 17,
               "Title": "GroupMember.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\GroupMember.cs",
               "RelativeDocumentMoniker": "src\\Components\\Entities\\GroupMember.cs",
@@ -505,25 +615,11 @@
               "RelativeToolTip": "src\\Components\\Entities\\GroupMember.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T21:25:31.265Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-27T21:25:31.265Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Globals.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\Globals.cs",
-              "RelativeDocumentMoniker": "src\\Engine\\Main\\Globals.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\Globals.cs",
-              "RelativeToolTip": "src\\Engine\\Main\\Globals.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAuwBgAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T10:30:28.43Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 19,
               "Title": "Group.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\Group.cs",
               "RelativeDocumentMoniker": "src\\Components\\Entities\\Group.cs",
@@ -531,12 +627,11 @@
               "RelativeToolTip": "src\\Components\\Entities\\Group.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAABgAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T19:58:51.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-07T19:58:51.356Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 22,
               "Title": "InventoryInGameMenu.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\InventoryInGameMenu.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\InventoryInGameMenu.cs",
@@ -544,12 +639,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\InGameMenu\\InventoryInGameMenu.cs",
               "ViewState": "AQIAAIQAAAAAAAAAAAAowJwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T10:08:04.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T10:08:04.039Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 30,
               "Title": "Armor.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Items\\Armor.cs",
               "RelativeDocumentMoniker": "src\\Components\\Items\\Armor.cs",
@@ -557,12 +651,11 @@
               "RelativeToolTip": "src\\Components\\Items\\Armor.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T12:15:43.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T12:15:43.247Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 21,
               "Title": "Item.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Items\\Item.cs",
               "RelativeDocumentMoniker": "src\\Components\\Items\\Item.cs",
@@ -570,12 +663,11 @@
               "RelativeToolTip": "src\\Components\\Items\\Item.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T11:07:51.14Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-28T11:07:51.14Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 29,
               "Title": "Consumable.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Items\\Consumable.cs",
               "RelativeDocumentMoniker": "src\\Components\\Items\\Consumable.cs",
@@ -583,12 +675,11 @@
               "RelativeToolTip": "src\\Components\\Items\\Consumable.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-04T21:15:01.932Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-04T21:15:01.932Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 23,
               "Title": "Weapon.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Items\\Weapon.cs",
               "RelativeDocumentMoniker": "src\\Components\\Items\\Weapon.cs",
@@ -596,12 +687,11 @@
               "RelativeToolTip": "src\\Components\\Items\\Weapon.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T12:13:56.875Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T12:13:56.875Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 24,
               "Title": "Valuable.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Items\\Valuable.cs",
               "RelativeDocumentMoniker": "src\\Components\\Items\\Valuable.cs",
@@ -609,12 +699,11 @@
               "RelativeToolTip": "src\\Components\\Items\\Valuable.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-04T22:29:50.585Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-04T22:29:50.585Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 25,
               "Title": "QuestItem.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Items\\QuestItem.cs",
               "RelativeDocumentMoniker": "src\\Components\\Items\\QuestItem.cs",
@@ -622,12 +711,11 @@
               "RelativeToolTip": "src\\Components\\Items\\QuestItem.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-04T22:30:31.748Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-04T22:30:31.748Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 26,
               "Title": "Material.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Items\\Material.cs",
               "RelativeDocumentMoniker": "src\\Components\\Items\\Material.cs",
@@ -635,12 +723,11 @@
               "RelativeToolTip": "src\\Components\\Items\\Material.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-04T22:29:19.663Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-04T22:29:19.663Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 27,
               "Title": "Equipment.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Items\\Equipment.cs",
               "RelativeDocumentMoniker": "src\\Components\\Items\\Equipment.cs",
@@ -648,12 +735,11 @@
               "RelativeToolTip": "src\\Components\\Items\\Equipment.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T18:10:21.778Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-07T18:10:21.778Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 31,
               "Title": "Mob.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\Mob.cs",
               "RelativeDocumentMoniker": "src\\Components\\Entities\\Mob.cs",
@@ -661,12 +747,11 @@
               "RelativeToolTip": "src\\Components\\Entities\\Mob.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T20:14:33.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-27T20:14:33.868Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 32,
               "Title": "Quest.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Quest\\Quest.cs",
               "RelativeDocumentMoniker": "src\\Components\\Quest\\Quest.cs",
@@ -674,12 +759,11 @@
               "RelativeToolTip": "src\\Components\\Quest\\Quest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T17:36:32.714Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-10T17:36:32.714Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 36,
               "Title": "TextureManager.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Assets\\TextureManager.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Assets\\TextureManager.cs",
@@ -687,12 +771,11 @@
               "RelativeToolTip": "src\\Instruments\\Assets\\TextureManager.cs",
               "ViewState": "AQIAACYAAAAAAAAAAAAQwDcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T15:42:34.555Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T15:42:34.555Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 34,
               "Title": "AssetSetter.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Assets\\AssetSetter.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Assets\\AssetSetter.cs",
@@ -700,12 +783,11 @@
               "RelativeToolTip": "src\\Instruments\\Assets\\AssetSetter.cs",
               "ViewState": "AQIAABQAAAAAAAAAAAAAwCgAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T10:55:23.399Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T10:55:23.399Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 35,
               "Title": "Animation.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Animation\\Animation.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Animation\\Animation.cs",
@@ -713,12 +795,11 @@
               "RelativeToolTip": "src\\Instruments\\Animation\\Animation.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T22:58:09.859Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-10T22:58:09.859Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 33,
               "Title": "AnimationManager.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Animation\\AnimationManager.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Animation\\AnimationManager.cs",
@@ -726,12 +807,11 @@
               "RelativeToolTip": "src\\Instruments\\Animation\\AnimationManager.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwBcAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T23:34:24.058Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-10T23:34:24.058Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 37,
               "Title": "Tile.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Tiles\\Tile.cs",
               "RelativeDocumentMoniker": "src\\Components\\Tiles\\Tile.cs",
@@ -739,38 +819,11 @@
               "RelativeToolTip": "src\\Components\\Tiles\\Tile.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-24T16:56:08.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-24T16:56:08.691Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "Map.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Tiles\\Map.cs",
-              "RelativeDocumentMoniker": "src\\Components\\Tiles\\Map.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Tiles\\Map.cs",
-              "RelativeToolTip": "src\\Components\\Tiles\\Map.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-24T16:56:49.381Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "CollisionManager.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Mechanics\\CollisionManager.cs",
-              "RelativeDocumentMoniker": "src\\Instruments\\Mechanics\\CollisionManager.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Mechanics\\CollisionManager.cs",
-              "RelativeToolTip": "src\\Instruments\\Mechanics\\CollisionManager.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAIA3wBwAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T20:03:29.337Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 38,
               "Title": "AStarPathFinding.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Utils\\AStarPathFinding.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Utils\\AStarPathFinding.cs",
@@ -783,7 +836,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 39,
               "Title": "InGameMenu.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\InGameMenu.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\InGameMenu.cs",
@@ -791,12 +844,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\InGameMenu\\InGameMenu.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-30T13:14:47.044Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-30T13:14:47.044Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 40,
               "Title": "TextButton.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\TextHolders\\TextButton.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\TextHolders\\TextButton.cs",
@@ -804,12 +856,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\TextHolders\\TextButton.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAACPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T11:26:02.182Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T11:26:02.182Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 43,
               "Title": "Button.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Basic\\Button.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Basic\\Button.cs",
@@ -817,12 +868,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Basic\\Button.cs",
               "ViewState": "AQIAAAIAAAAAAAAAAAAawBcAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-30T12:37:21.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-30T12:37:21.924Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 41,
               "Title": "SkillsInGameMenu.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\SkillsInGameMenu.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\SkillsInGameMenu.cs",
@@ -830,12 +880,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\InGameMenu\\SkillsInGameMenu.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAQwBsAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T10:21:13.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T10:21:13.378Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 46,
               "Title": "GroupmemberBars.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\GameplayPointers\\GroupmemberBars.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\GameplayPointers\\GroupmemberBars.cs",
@@ -843,12 +892,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\GameplayPointers\\GroupmemberBars.cs",
               "ViewState": "AQIAAFsAAAAAAAAAAAAlwHEAAAB5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T16:32:43.221Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-09T16:32:43.221Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 42,
               "Title": "FloatingInfoBox.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\TextHolders\\FloatingInfoBox.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\TextHolders\\FloatingInfoBox.cs",
@@ -856,12 +904,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\TextHolders\\FloatingInfoBox.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAwBQAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-05T10:27:44.63Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-05T10:27:44.63Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 44,
               "Title": "ImageHolder.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Basic\\ImageHolder.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Basic\\ImageHolder.cs",
@@ -869,12 +916,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Basic\\ImageHolder.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-30T12:18:14.342Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-30T12:18:14.342Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 45,
               "Title": "CharacterIconHolder.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\Icons\\CharacterIconHolder.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\Icons\\CharacterIconHolder.cs",
@@ -882,12 +928,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\Icons\\CharacterIconHolder.cs",
               "ViewState": "AQIAACwAAAAAAAAAAAAwwEcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T13:10:09.751Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T13:10:09.751Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 49,
               "Title": "SetCommand.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\ConsoleCommands\\SetCommand.cs",
               "RelativeDocumentMoniker": "src\\Components\\ConsoleCommands\\SetCommand.cs",
@@ -895,12 +940,11 @@
               "RelativeToolTip": "src\\Components\\ConsoleCommands\\SetCommand.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAQwB8AAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T01:45:23.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-13T01:45:23.072Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 48,
               "Title": "CurrentCharacterPointer.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\GameplayPointers\\CurrentCharacterPointer.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\GameplayPointers\\CurrentCharacterPointer.cs",
@@ -908,12 +952,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\GameplayPointers\\CurrentCharacterPointer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-12T15:23:57.278Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-12T15:23:57.278Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 47,
               "Title": "ItemHolder.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\ItemHolders\\ItemHolder.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\ItemHolders\\ItemHolder.cs",
@@ -921,12 +964,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\ItemHolders\\ItemHolder.cs",
               "ViewState": "AQIAADEAAAAAAAAAAAAQwEcAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T12:19:52.995Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T12:19:52.995Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 51,
               "Title": "DebugmodeOnCommand.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\ConsoleCommands\\DebugmodeOnCommand.cs",
               "RelativeDocumentMoniker": "src\\Components\\ConsoleCommands\\DebugmodeOnCommand.cs",
@@ -934,25 +976,11 @@
               "RelativeToolTip": "src\\Components\\ConsoleCommands\\DebugmodeOnCommand.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T01:40:05.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-13T01:40:05.192Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "ICommand.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Console\\ICommand.cs",
-              "RelativeDocumentMoniker": "src\\Instruments\\Console\\ICommand.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Console\\ICommand.cs",
-              "RelativeToolTip": "src\\Instruments\\Console\\ICommand.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAqwBYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T01:17:46.782Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 50,
               "Title": "UpdatePositionCommand.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\ConsoleCommands\\UpdatePositionCommand.cs",
               "RelativeDocumentMoniker": "src\\Components\\ConsoleCommands\\UpdatePositionCommand.cs",
@@ -960,12 +988,11 @@
               "RelativeToolTip": "src\\Components\\ConsoleCommands\\UpdatePositionCommand.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAwAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T01:19:47.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-13T01:19:47.052Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 52,
               "Title": "UIManager.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\UI\\UIManager.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\UI\\UIManager.cs",
@@ -973,25 +1000,11 @@
               "RelativeToolTip": "src\\Instruments\\UI\\UIManager.cs",
               "ViewState": "AQIAAGgAAAAAAAAAAAAkwIAAAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T21:46:15.913Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-28T21:46:15.913Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "Game1.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\GameCycle\\Game1.cs",
-              "RelativeDocumentMoniker": "src\\Engine\\GameCycle\\Game1.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\GameCycle\\Game1.cs",
-              "RelativeToolTip": "src\\Engine\\GameCycle\\Game1.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAgwBIAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-21T13:14:52.913Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 53,
               "Title": "Sprite.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Sprites\\Sprite.cs",
               "RelativeDocumentMoniker": "src\\Components\\Sprites\\Sprite.cs",
@@ -999,12 +1012,11 @@
               "RelativeToolTip": "src\\Components\\Sprites\\Sprite.cs",
               "ViewState": "AQIAABkAAAAAAAAAAAAQwDIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T15:50:35.405Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-11T15:50:35.405Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 54,
               "Title": "TeamJRPG.csproj",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\TeamJRPG.csproj",
               "RelativeDocumentMoniker": "TeamJRPG.csproj",
@@ -1012,12 +1024,11 @@
               "RelativeToolTip": "TeamJRPG.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-23T09:46:21.61Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-23T09:46:21.61Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 55,
               "Title": "CharactersInGameMenu.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\CharactersInGameMenu.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\CharactersInGameMenu.cs",
@@ -1025,12 +1036,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Complex\\InGameMenu\\CharactersInGameMenu.cs",
               "ViewState": "AQIAAGYAAAAAAAAAAAAlwG4AAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-30T13:59:08.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-30T13:59:08.72Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 56,
               "Title": "UIComponent.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Types\\UIComponent.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Types\\UIComponent.cs",
@@ -1038,12 +1048,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Types\\UIComponent.cs",
               "ViewState": "AQIAAIAAAAAAAAAAAAAkwJcAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T21:49:27.064Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-28T21:49:27.064Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 57,
               "Title": "UIComposite.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Types\\UIComposite.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Types\\UIComposite.cs",
@@ -1051,12 +1060,11 @@
               "RelativeToolTip": "src\\Components\\UI\\Types\\UIComposite.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAACuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T21:47:33.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-28T21:47:33.458Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 59,
               "Title": "ButtonChoicePanel.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\ButtonPanels\\ButtonChoicePanel.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\ButtonPanels\\ButtonChoicePanel.cs",
@@ -1068,7 +1076,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 58,
               "Title": "FloatingButtonMenu.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\ButtonPanels\\FloatingButtonMenu.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\ButtonPanels\\FloatingButtonMenu.cs",
@@ -1080,7 +1088,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 60,
               "Title": "ScrollableFrame.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\Scroll\\ScrollableFrame.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\Scroll\\ScrollableFrame.cs",
@@ -1092,7 +1100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 61,
               "Title": "InputManager.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Input\\InputManager.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Input\\InputManager.cs",
@@ -1104,7 +1112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 62,
               "Title": "Tuple.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Utils\\Tuple.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Utils\\Tuple.cs",
@@ -1116,7 +1124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 63,
               "Title": "SpriteSheet.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Sprites\\SpriteSheet.cs",
               "RelativeDocumentMoniker": "src\\Components\\Sprites\\SpriteSheet.cs",
@@ -1128,7 +1136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 65,
               "Title": "MouseCursor.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Basic\\MouseCursor.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Basic\\MouseCursor.cs",
@@ -1140,7 +1148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 64,
               "Title": "Frame.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Basic\\Frame.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Basic\\Frame.cs",
@@ -1152,7 +1160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 66,
               "Title": "DescriptionWindow.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\TextHolders\\DescriptionWindow.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\TextHolders\\DescriptionWindow.cs",
@@ -1164,7 +1172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 67,
               "Title": "TextArea.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Basic\\TextArea.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Basic\\TextArea.cs",
@@ -1176,7 +1184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 68,
               "Title": "Label.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Basic\\Label.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Basic\\Label.cs",
@@ -1188,7 +1196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 69,
               "Title": "ExitInGameMenu.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\ExitInGameMenu.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\ExitInGameMenu.cs",
@@ -1200,7 +1208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 70,
               "Title": "TextFrame.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\TextHolders\\TextFrame.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\TextHolders\\TextFrame.cs",
@@ -1212,7 +1220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 71,
               "Title": "MapInGameMenu.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\MapInGameMenu.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\MapInGameMenu.cs",
@@ -1224,7 +1232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 72,
               "Title": "Stroke.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Types\\Stroke.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Types\\Stroke.cs",
@@ -1236,7 +1244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 73,
               "Title": "LabelTable.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\TextHolders\\LabelTable.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\TextHolders\\LabelTable.cs",
@@ -1248,7 +1256,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 75,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -1260,7 +1268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 74,
               "Title": "StrokeEffect.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\lib\\Stroke\\StrokeEffect.cs",
               "RelativeDocumentMoniker": "Content\\lib\\Stroke\\StrokeEffect.cs",
@@ -1272,7 +1280,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 76,
               "Title": "RandomHelper.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Utils\\RandomHelper.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Utils\\RandomHelper.cs",
@@ -1284,7 +1292,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 77,
               "Title": "StatsInGameMenu.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\StatsInGameMenu.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\StatsInGameMenu.cs",
@@ -1296,7 +1304,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 78,
               "Title": "SettingsInGameMenu.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\UI\\Complex\\InGameMenu\\SettingsInGameMenu.cs",
               "RelativeDocumentMoniker": "src\\Components\\UI\\Complex\\InGameMenu\\SettingsInGameMenu.cs",
@@ -1308,7 +1316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 79,
               "Title": "CircularMask.fx",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\effects\\CircularMask.fx",
               "RelativeDocumentMoniker": "Content\\res\\effects\\CircularMask.fx",
@@ -1320,7 +1328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 80,
               "Title": "PythonTranslator.cs",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Instruments\\Utils\\PythonTranslator.cs",
               "RelativeDocumentMoniker": "src\\Instruments\\Utils\\PythonTranslator.cs",
@@ -1332,7 +1340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 81,
               "Title": "Icon.ico - Icon [256x256, 32 bit, PNG]",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Icon.ico",
               "RelativeDocumentMoniker": "Icon.ico",
@@ -1344,7 +1352,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 82,
               "Title": "map0.json",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\maps\\map0.json",
               "RelativeDocumentMoniker": "Content\\res\\maps\\map0.json",
@@ -1356,7 +1364,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 83,
               "Title": "TestScript.py",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\lib\\python\\TestScript.py",
               "RelativeDocumentMoniker": "Content\\lib\\python\\TestScript.py",
@@ -1368,7 +1376,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 84,
               "Title": ".gitattributes",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\.gitattributes",
               "RelativeDocumentMoniker": ".gitattributes",
