@@ -13,7 +13,7 @@ namespace TeamJRPG
         [JsonIgnore]
         public SpriteSheet bodySpriteSheet;
         [JsonIgnore]
-        public readonly Vector2 DEFAULT_HUMANOID_BODY_SPRITE_SIZE = new Vector2(32, 64);
+        public readonly static Vector2 DEFAULT_HUMANOID_BODY_SPRITE_SIZE = new Vector2(32, 64);
         [JsonIgnore]
         public Sprite characterIcon;
         [JsonIgnore]
@@ -293,10 +293,8 @@ namespace TeamJRPG
 
 
         // UI
-        public void SetIcons(int charIconId, int charIconBGId)
+        public void SetIcons()
         {
-            this.characterIconID = charIconId;
-            this.characterIconBackGroundID = charIconBGId;
             characterIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icons, 0, new Vector2(32 * this.characterIconID, 0), new Vector2(64, 64));
             backGroundIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icon_backgrounds, 0, new Vector2(32 * this.characterIconBackGroundID, 0), new Vector2(32, 32));
         }
@@ -305,16 +303,7 @@ namespace TeamJRPG
 
 
 
-        // DIALOGUES
-        public void EndDialouge()
-        {
-            Globals.currentGameState = Globals.GameState.playstate;
-            Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
-            Globals.uiManager.MenuStateNeedsChange = true;
-
-            Globals.camera.focusEntity = Globals.player;
-            Globals.camera.FocusOnEntity();
-        }
+        
 
 
 

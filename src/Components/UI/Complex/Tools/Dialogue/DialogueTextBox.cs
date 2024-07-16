@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 
 namespace TeamJRPG
@@ -14,6 +15,7 @@ namespace TeamJRPG
         public Vector2 textOffset;
 
         public Dialogue currentDialogue;
+        public DialogueResponses drs;
 
         public DialogueTextBox() 
         {
@@ -57,25 +59,71 @@ namespace TeamJRPG
         }
         public override void Update()
         {
-            if (mouseBox.Contains(new System.Drawing.PointF(Globals.inputManager.GetCursorPos().X, Globals.inputManager.GetCursorPos().Y)))
+
+
+            if(currentDialogue.Responses == null)
             {
-                if (Globals.inputManager.IsMouseButtonClick(InputManager.MouseButton.Left))
+                if (mouseBox.Contains(new System.Drawing.PointF(Globals.inputManager.GetCursorPos().X, Globals.inputManager.GetCursorPos().Y)))
                 {
-                    var nextDialogue = Globals.dialogueData.GetDialogue(lent.name, lent.currentDialogueId+1);
-                    if (nextDialogue != null)
+                    if (Globals.inputManager.IsMouseButtonClick(InputManager.MouseButton.Left))
                     {
-                        currentDialogue = nextDialogue;
-                        lent.currentDialogueId = nextDialogue.Id;
-                        RefreshTextArea();
+
+                        int? nextDialogueId = currentDialogue.NextDialogueId;
+                        if (nextDialogueId != null)
+                        {
+                            var nextDialogue = Globals.dialogueData.GetDialogue(lent.name, (int)nextDialogueId);
+                            if (nextDialogue != null)
+                            {
+                                currentDialogue = nextDialogue;
+                                lent.currentDialogueId = nextDialogue.Id;
+                                RefreshTextArea();
+
+
+                            }
+                            else
+                            {
+                                Globals.dialogueData.CloseDialogue();
+                            }
+                        }
+                        else
+                        {
+                            Globals.dialogueData.CloseDialogue();
+                        }
+                        
+                    }
+
+
+                }
+            }
+            else
+            {
+                if(drs.Choice != -1)
+                {
+                    int? nextDialogueID = currentDialogue.Responses[drs.Choice].NextDialogueId;
+
+                    if(nextDialogueID != null)
+                    {
+                        var nextDialogue = Globals.dialogueData.GetDialogue(lent.name, (int)nextDialogueID);
+                        if (nextDialogue != null)
+                        {
+                            currentDialogue = nextDialogue;
+                            lent.currentDialogueId = nextDialogue.Id;
+                            RefreshTextArea();
+                        }
+                        else
+                        {
+                            Globals.dialogueData.CloseDialogue();
+                        }
                     }
                     else
                     {
-                        lent.EndDialouge();
+                        Globals.dialogueData.CloseDialogue(); 
                     }
+
+                    
                 }
-
-
             }
+
             base.Update();
         }
 
@@ -86,6 +134,18 @@ namespace TeamJRPG
             children.Remove(label);
             label = new TextArea(currentDialogue.Text, textOffset, 0, Color.White, null, (int)mouseBox.Width, (int)mouseBox.Height);
             children.Add(label);
+
+
+            children.Remove(drs);
+            if (currentDialogue.Responses != null)
+            {
+                drs = new DialogueResponses(currentDialogue);
+                children.Add(drs);
+            }
+            else
+            {
+                children.Remove(drs);
+            }
         }
     }
 }

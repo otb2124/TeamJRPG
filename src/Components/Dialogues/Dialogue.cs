@@ -47,20 +47,6 @@ namespace TeamJRPG
             return null;
         }
 
-        public Dialogue GetNextDialogue(string npcName, int currentDialogueId)
-        {
-            if (NpcDialogues.TryGetValue(npcName, out var npcDialogues))
-            {
-                var currentDialogue = npcDialogues.Dialogues.FirstOrDefault(d => d.Id == currentDialogueId);
-                if (currentDialogue != null && currentDialogue.NextDialogueId.HasValue)
-                {
-                    return npcDialogues.Dialogues.FirstOrDefault(d => d.Id == currentDialogue.NextDialogueId);
-                }
-            }
-
-            return null;
-        }
-
         public Response GetResponse(string npcName, int dialogueId, int responseIndex)
         {
             var dialogue = GetDialogue(npcName, dialogueId);
@@ -70,6 +56,19 @@ namespace TeamJRPG
             }
 
             return null;
+        }
+
+
+
+        // DIALOGUES
+        public void CloseDialogue()
+        {
+            Globals.currentGameState = Globals.GameState.playstate;
+            Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
+            Globals.uiManager.MenuStateNeedsChange = true;
+
+            Globals.camera.focusEntity = Globals.player;
+            Globals.camera.FocusOnEntity();
         }
     }
 }

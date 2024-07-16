@@ -8,18 +8,18 @@
           "responses": [
             {
               "text": "Hello!",
-              "nextDialogueId": 2
+              "nextDialogueId": 1
             },
             {
               "text": "Who are you?",
-              "nextDialogueId": 3
+              "nextDialogueId": 2
             }
           ]
         },
         {
           "id": 1,
           "text": "It's a nice day, isn't it?",
-          "nextDialogueId": 4
+          "nextDialogueId":  3
         },
         {
           "id": 2,
@@ -27,7 +27,7 @@
           "responses": [
             {
               "text": "Nice to meet you.",
-              "nextDialogueId": null
+              "nextDialogueId": 1
             }
           ]
         },

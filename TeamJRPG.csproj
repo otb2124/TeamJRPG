@@ -17,6 +17,7 @@
     <Compile Remove="Content\res\characterDetails\**" />
     <Compile Remove="Content\res\characters\characterDetails\eyes\**" />
     <Compile Remove="Content\res\characters\characterDetails\mouths\**" />
+    <Compile Remove="Content\res\consoleoutput\**" />
     <Compile Remove="Content\res\player\**" />
     <Compile Remove="Content\tiles\**" />
     <Compile Remove="lib\**" />
@@ -25,6 +26,7 @@
     <EmbeddedResource Remove="Content\res\characterDetails\**" />
     <EmbeddedResource Remove="Content\res\characters\characterDetails\eyes\**" />
     <EmbeddedResource Remove="Content\res\characters\characterDetails\mouths\**" />
+    <EmbeddedResource Remove="Content\res\consoleoutput\**" />
     <EmbeddedResource Remove="Content\res\player\**" />
     <EmbeddedResource Remove="Content\tiles\**" />
     <EmbeddedResource Remove="lib\**" />
@@ -33,6 +35,7 @@
     <None Remove="Content\res\characterDetails\**" />
     <None Remove="Content\res\characters\characterDetails\eyes\**" />
     <None Remove="Content\res\characters\characterDetails\mouths\**" />
+    <None Remove="Content\res\consoleoutput\**" />
     <None Remove="Content\res\player\**" />
     <None Remove="Content\tiles\**" />
     <None Remove="lib\**" />
@@ -193,7 +196,6 @@
     <Folder Include="Content\res\characters\battleSprites\" />
     <Folder Include="Content\res\characters\characterDetails\" />
     <Folder Include="Content\res\maps\" />
-    <Folder Include="Content\res\consoleoutput\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\res\effects\CircularMask.fx">

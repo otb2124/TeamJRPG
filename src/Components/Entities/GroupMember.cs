@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Input;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 
 
@@ -17,16 +18,11 @@ namespace TeamJRPG
         [JsonIgnore]
         public Entity interractedEntity;
 
+
+
         public GroupMember(Point mapPosition) : base(mapPosition)
         {
             this.entityType = EntityType.groupMember;
-            defaultSpeed = 3.5f;
-            defaultSprintSpeed = 5f;
-            defaultSprintDuration = 5 * 60;
-
-            currentSpeed = defaultSpeed;
-            currentSprintSpeed = defaultSprintSpeed;
-            currentSprintDuration = defaultSprintDuration;
 
             tileCollision = true;
 
@@ -47,27 +43,56 @@ namespace TeamJRPG
             SetTextures();
             SetAnimations();
             SetEquipment();
+
+
         }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+            // Run initialization logic
+            this.entityType = EntityType.groupMember;
+
+            tileCollision = true;
+
+            float collisionBoxWidth = Globals.tileSize.X / 2;
+            float collisionBoxHeight = Globals.tileSize.Y / 2;
+            float collisionBoxX = this.position.X + (Globals.tileSize.X - collisionBoxWidth) / 2;
+            float collisionBoxY = this.position.Y;
+            this.collisionBox = new System.Drawing.RectangleF(collisionBoxX, collisionBoxY, collisionBoxWidth, collisionBoxHeight);
+            this.collisionTexture = Globals.assetSetter.CreateSolidColorTexture((int)collisionBoxWidth, (int)collisionBoxHeight, new Color(0, 0.5f, 0, 0.01f));
+
+            SetTextures();
+            SetAnimations();
+            SetEquipment();
+        }
+
 
 
         public void SetAnimations()
         {
             anims = new AnimationManager();
 
-            AddAnimation(Direction.down, AnimationState.idle, 4, new Vector2(0, 0), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-            AddAnimation(Direction.left, AnimationState.idle, 4, new Vector2(0, 64), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-            AddAnimation(Direction.right, AnimationState.idle, 4, new Vector2(0, 64*2), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-            AddAnimation(Direction.up, AnimationState.idle, 4, new Vector2(0, 64*3), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+            //idle
+            float frameSpeed = 0.175f;
+            AddAnimation(Direction.down, AnimationState.idle, 4, new Vector2(0, 0), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+            AddAnimation(Direction.left, AnimationState.idle, 4, new Vector2(0, 64), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+            AddAnimation(Direction.right, AnimationState.idle, 4, new Vector2(0, 64*2), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+            AddAnimation(Direction.up, AnimationState.idle, 4, new Vector2(0, 64*3), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
 
-            AddAnimation(Direction.down, AnimationState.walking, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-            AddAnimation(Direction.left, AnimationState.walking, 4, new Vector2(0, 64 * 5), new Vector2(32+16, 64), 0.1f);
-            AddAnimation(Direction.right, AnimationState.walking, 4, new Vector2(0, 64 * 6), new Vector2(32+16, 64), 0.1f);
-            AddAnimation(Direction.up, AnimationState.walking, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+            //walking
+            frameSpeed = 0.1f;
+            AddAnimation(Direction.down, AnimationState.walking, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+            AddAnimation(Direction.left, AnimationState.walking, 4, new Vector2(0, 64 * 5), new Vector2(32+16, 64), frameSpeed);
+            AddAnimation(Direction.right, AnimationState.walking, 4, new Vector2(0, 64 * 6), new Vector2(32+16, 64), frameSpeed);
+            AddAnimation(Direction.up, AnimationState.walking, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
 
-            AddAnimation(Direction.down, AnimationState.sprinting, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-            AddAnimation(Direction.left, AnimationState.sprinting, 4, new Vector2(0, 64 * 5), new Vector2(32 + 16, 64), 0.1f);
-            AddAnimation(Direction.right, AnimationState.sprinting, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), 0.1f);
-            AddAnimation(Direction.up, AnimationState.sprinting, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+            //sprint
+            frameSpeed = 0.075f;
+            AddAnimation(Direction.down, AnimationState.sprinting, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+            AddAnimation(Direction.left, AnimationState.sprinting, 4, new Vector2(0, 64 * 5), new Vector2(32 + 16, 64), frameSpeed);
+            AddAnimation(Direction.right, AnimationState.sprinting, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), frameSpeed);
+            AddAnimation(Direction.up, AnimationState.sprinting, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
 
             this.currentStatus = Status.idle;
             this.direction = Direction.down;
@@ -90,7 +115,7 @@ namespace TeamJRPG
             sprites = new Sprite[1];
             sprites[0] = bodySpriteSheet.GetSprite(Vector2.Zero, new Vector2(32, 64));
 
-            SetIcons(0, 0);
+            SetIcons();
         }
 
 

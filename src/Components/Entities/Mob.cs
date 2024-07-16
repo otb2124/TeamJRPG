@@ -73,6 +73,10 @@ namespace TeamJRPG
 
 
                     aggroDistance = new Vector2(3, 10);
+
+
+                    characterIconBackGroundID = 0;
+                    characterIconID = 0;
                     break;
             }
 
@@ -81,7 +85,7 @@ namespace TeamJRPG
             
             
 
-            SetIcons(0, 0);
+            SetIcons();
 
 
         }
@@ -95,20 +99,26 @@ namespace TeamJRPG
             switch (mobID)
             {
                 case 0:
-                    AddAnimation(Direction.down, AnimationState.idle, 4, new Vector2(0, 0), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-                    AddAnimation(Direction.left, AnimationState.idle, 4, new Vector2(0, 64), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-                    AddAnimation(Direction.right, AnimationState.idle, 4, new Vector2(0, 64 * 2), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-                    AddAnimation(Direction.up, AnimationState.idle, 4, new Vector2(0, 64 * 3), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+                    //idle
+                    float frameSpeed = 0.175f;
+                    AddAnimation(Direction.down, AnimationState.idle, 4, new Vector2(0, 0), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+                    AddAnimation(Direction.left, AnimationState.idle, 4, new Vector2(0, 64), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+                    AddAnimation(Direction.right, AnimationState.idle, 4, new Vector2(0, 64 * 2), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+                    AddAnimation(Direction.up, AnimationState.idle, 4, new Vector2(0, 64 * 3), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
 
-                    AddAnimation(Direction.down, AnimationState.walking, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-                    AddAnimation(Direction.left, AnimationState.walking, 4, new Vector2(0, 64 * 5), new Vector2(32 + 16, 64), 0.1f);
-                    AddAnimation(Direction.right, AnimationState.walking, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), 0.1f);
-                    AddAnimation(Direction.up, AnimationState.walking, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+                    //walking
+                    frameSpeed = 0.1f;
+                    AddAnimation(Direction.down, AnimationState.walking, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+                    AddAnimation(Direction.left, AnimationState.walking, 4, new Vector2(0, 64 * 5), new Vector2(32 + 16, 64), frameSpeed);
+                    AddAnimation(Direction.right, AnimationState.walking, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), frameSpeed);
+                    AddAnimation(Direction.up, AnimationState.walking, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
 
-                    AddAnimation(Direction.down, AnimationState.sprinting, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
-                    AddAnimation(Direction.left, AnimationState.sprinting, 4, new Vector2(0, 64 * 5), new Vector2(32 + 16, 64), 0.1f);
-                    AddAnimation(Direction.right, AnimationState.sprinting, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), 0.1f);
-                    AddAnimation(Direction.up, AnimationState.sprinting, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, 0.1f);
+                    //sprint
+                    frameSpeed = 0.075f;
+                    AddAnimation(Direction.down, AnimationState.sprinting, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+                    AddAnimation(Direction.left, AnimationState.sprinting, 4, new Vector2(0, 64 * 5), new Vector2(32 + 16, 64), frameSpeed);
+                    AddAnimation(Direction.right, AnimationState.sprinting, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), frameSpeed);
+                    AddAnimation(Direction.up, AnimationState.sprinting, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
                     break;
             }
 

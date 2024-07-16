@@ -212,7 +212,7 @@ namespace TeamJRPG
                             Debug.WriteLine("Extras");
                             break;
                         case 55:
-                            Debug.WriteLine("Exit");
+                            Globals.Exit();
                             break;
 
 

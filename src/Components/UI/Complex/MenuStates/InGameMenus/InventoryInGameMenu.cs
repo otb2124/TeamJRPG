@@ -467,9 +467,10 @@ namespace TeamJRPG
 
             float scale = 2.5f;
             Sprite charTexture = Globals.player.sprites[0];
-            Vector2 spritePos = new Vector2(framePos.X + frameSize.X / 2 + 32 - (charTexture.srcRect.Width / 2 * scale), framePos.Y + margin.Y * 1.5f);
+            Vector2 size = LiveEntity.DEFAULT_HUMANOID_BODY_SPRITE_SIZE;
+            Vector2 spritePos = new Vector2(framePos.X + frameSize.X / 2 + 32 - (size.X / 2 * scale), framePos.Y + margin.Y * 1.5f);
 
-            Frame charFrame = new Frame(new Vector2(spritePos.X - charTexture.srcRect.Width / 2, spritePos.Y - margin.Y * 0.5f), charTexture.srcRect.Size.ToVector2() * scale);
+            Frame charFrame = new Frame(new Vector2(spritePos.X - size.X / 2, spritePos.Y - margin.Y * 0.5f), size * scale);
             characterComposites.Add(charFrame);
             ImageHolder character = new ImageHolder(charTexture, spritePos, Globals.player.skinColor, new Vector2(scale, scale), null);
             character.floatingText.Add(Globals.player.name);

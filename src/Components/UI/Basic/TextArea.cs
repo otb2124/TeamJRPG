@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.Direct3D9;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,16 +10,19 @@ namespace TeamJRPG
     {
         public Vector2 textSize;
         public Color textColor;
+        public Color defautColor;
         public Stroke stroke;
         public int maxWidth;
         public int maxHeight;
         public List<string> lines;
         public int fontID;
 
+
         public TextArea(string text, Vector2 startPosition, int fontID, Color color, Stroke stroke, int maxWidth, int maxHeight)
         {
             this.stroke = stroke;
             this.textColor = color;
+            this.defautColor = color;
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
             this.type = UICompositeType.TEXT_FRAME;
             this.maxWidth = maxWidth;
@@ -70,7 +74,10 @@ namespace TeamJRPG
             }
 
             textSize = new Vector2(maxWidth, currentPosition.Y - textPosition.Y);
+
         }
+
+
 
         private List<string> WrapText(string text, SpriteFont font, int maxWidth)
         {

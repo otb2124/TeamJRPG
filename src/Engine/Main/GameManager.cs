@@ -163,7 +163,10 @@ namespace TeamJRPG
                 }
                 else if(Globals.currentGameState == Globals.GameState.dialoguestate)
                 {
-                    
+                    if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape))
+                    {
+                        Globals.dialogueData.CloseDialogue();
+                    }
                 }
 
 

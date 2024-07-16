@@ -166,8 +166,6 @@ namespace TeamJRPG
                 MenuStateNeedsChange = false;
             }
 
-
-
         }
 
 
