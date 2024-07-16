@@ -1,0 +1,42 @@
+{
+  "npcDialogues": {
+    "Carl": {
+      "dialogues": [
+        {
+          "id": 0,
+          "text": "Hello, traveler!",
+          "responses": [
+            {
+              "text": "Hello!",
+              "nextDialogueId": 2
+            },
+            {
+              "text": "Who are you?",
+              "nextDialogueId": 3
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "text": "It's a nice day, isn't it?",
+          "nextDialogueId": 4
+        },
+        {
+          "id": 2,
+          "text": "I'm Carl, the village blacksmith.",
+          "responses": [
+            {
+              "text": "Nice to meet you.",
+              "nextDialogueId": null
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "text": "I hope you have a great journey!",
+          "nextDialogueId": null
+        }
+      ]
+    }
+  }
+}

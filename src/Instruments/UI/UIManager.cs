@@ -18,6 +18,7 @@ namespace TeamJRPG
         public enum MenuState { 
             inGameMenu, charachters, inventory, skills, questBook, statistics, map, settings, exit, clean,
             mainmenu, titlemenu,
+            dialogueText, dialogueChoice
         };
         public MenuState currentMenuState;
         public MenuState previousMenuState;
@@ -50,6 +51,7 @@ namespace TeamJRPG
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.MOUSE_CURSOR);
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.FLOATING_INFO_BOX);
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DESCRIPTION_WINDOW);
+                        RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DIALOGUE_TEXT_BOX);
                         if (GetAllChildrenOfType(UIComposite.UICompositeType.GROUP_BARS).Count == 0)
                         {
                             AddElement(new GroupmemberBars(new Vector2(0, 0)));
@@ -141,6 +143,26 @@ namespace TeamJRPG
                 }
 
 
+
+                else if(Globals.currentGameState == Globals.GameState.dialoguestate) 
+                {
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU, UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT, UIComposite.UICompositeType.GROUP_BARS, UIComposite.UICompositeType.FLOATING_INFO_BOX, UIComposite.UICompositeType.CURRENT_CHARACTER_POINTER, UIComposite.UICompositeType.DIALOGUE_TEXT_BOX);
+                    if (!HasCompositesOfType(UIComposite.UICompositeType.MOUSE_CURSOR))
+                    {
+                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
+                    }
+
+
+
+                    switch (currentMenuState)
+                    {
+                        case MenuState.dialogueText:
+                            Add(UIComposite.UICompositeType.DIALOGUE_TEXT_BOX);
+                            break;
+                    }
+                }
+
+
                 MenuStateNeedsChange = false;
             }
 
@@ -194,6 +216,10 @@ namespace TeamJRPG
                     break;
                 case UIComposite.UICompositeType.MAIN_MENU_CONTENT:
                     AddElement(new MainMenuContent());
+                    break;
+
+                case UIComposite.UICompositeType.DIALOGUE_TEXT_BOX:
+                    AddElement(new DialogueTextBox());
                     break;
             }
         }
@@ -308,6 +334,7 @@ namespace TeamJRPG
                     }
                 }
             }
+
             
             
         }

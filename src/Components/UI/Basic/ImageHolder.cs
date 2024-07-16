@@ -62,9 +62,9 @@ namespace TeamJRPG
 
         public override void Update()
         {
-            if(Globals.currentGameState == Globals.GameState.ingamemenustate)
+            if(Globals.currentGameState == Globals.GameState.ingamemenustate || Globals.currentGameState == Globals.GameState.dialoguestate)
             {
-                if (floatingText != null)
+                if (floatingText.Count > 0)
                 {
                     Vector2 cursorPos = Globals.inputManager.GetCursorPos();
                     System.Drawing.PointF cursorPointF = new System.Drawing.PointF(cursorPos.X, cursorPos.Y);

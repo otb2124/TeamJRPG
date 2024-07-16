@@ -22,6 +22,8 @@ namespace TeamJRPG
         public bool FollowPlayer = false;
         private readonly float transitionSpeed = 0.1f; // Adjust the currentSpeed of the transition as necessary
 
+        public Entity focusEntity;
+
         public Camera(Viewport viewport)
         {
             this.viewport = viewport;
@@ -110,6 +112,23 @@ namespace TeamJRPG
         {
             position = Vector2.Lerp(position, targetPosition, transitionSpeed); // Adjust the lerp factor as needed
         }
+
+
+
+        public void FocusOn(Vector2 targetPosition)
+        {
+            this.targetPosition = targetPosition;
+            ClampTargetPosition();
+            SmoothMoveToTarget();
+            UpdateTransform();
+        }
+
+        public void FocusOnEntity()
+        {
+            FocusOn(focusEntity.position);
+        }
+
+
 
         public void Zoom(float delta)
         {

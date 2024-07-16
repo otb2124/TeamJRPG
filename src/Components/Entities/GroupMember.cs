@@ -13,8 +13,9 @@ namespace TeamJRPG
     public class GroupMember : LiveEntity
     {
         public bool isPlayer;
-        public string name;
 
+        [JsonIgnore]
+        public Entity interractedEntity;
 
         public GroupMember(Point mapPosition) : base(mapPosition)
         {
@@ -145,16 +146,22 @@ namespace TeamJRPG
 
             if (isPlayer)
             {
-                if (Globals.inputManager.IsKeyPressed(Keys.W)) { Move(new Vector2(0, -currentSpeed), Direction.up); }
-                else if (Globals.inputManager.IsKeyPressed(Keys.S)) { Move(new Vector2(0, currentSpeed), Direction.down); }
-                else if (Globals.inputManager.IsKeyPressed(Keys.A)) { Move(new Vector2(-currentSpeed, 0), Direction.left); }
-                else if (Globals.inputManager.IsKeyPressed(Keys.D)) { Move(new Vector2(currentSpeed, 0), Direction.right); }
-
-                if (currentStatus == Status.walking)
+                if(Globals.currentGameState != Globals.GameState.dialoguestate)
                 {
-                    if (Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { Sprint(); } else { UnSprint(); }
+                    if (Globals.inputManager.IsKeyPressed(Keys.W)) { Move(new Vector2(0, -currentSpeed), Direction.up); }
+                    else if (Globals.inputManager.IsKeyPressed(Keys.S)) { Move(new Vector2(0, currentSpeed), Direction.down); }
+                    else if (Globals.inputManager.IsKeyPressed(Keys.A)) { Move(new Vector2(-currentSpeed, 0), Direction.left); }
+                    else if (Globals.inputManager.IsKeyPressed(Keys.D)) { Move(new Vector2(currentSpeed, 0), Direction.right); }
+
+                    if (currentStatus == Status.walking)
+                    {
+                        if (Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { Sprint(); } else { UnSprint(); }
+                    }
                 }
-                else
+                
+
+                
+                if(currentStatus != Status.walking)
                 {
                     UnSprint();
                 }
@@ -218,7 +225,7 @@ namespace TeamJRPG
 
         public void HandleInterractions()
         {
-            Entity interractedEntity = Globals.collisionManager.CheckEntityInterraction(this);
+            interractedEntity = Globals.collisionManager.CheckEntityInterraction(this);
 
             if (interractedEntity != null)
             {
@@ -239,10 +246,7 @@ namespace TeamJRPG
                 }
                 else if(interractedEntity is NPC npc)
                 {
-                    if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Enter))
-                    {
-                        Console.WriteLine("Talk");
-                    }
+                    npc.Interract();
                 }
             }
         }

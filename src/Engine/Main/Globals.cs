@@ -22,7 +22,7 @@ namespace TeamJRPG
         public enum GameMode { playmode, debugmode }
         public static GameMode currentGameMode;
 
-        public enum GameState { playstate, ingamemenustate, mainmenustate }
+        public enum GameState { playstate, ingamemenustate, mainmenustate, dialoguestate }
         public static GameState currentGameState;
 
         public static List<Entity> currentEntities;
@@ -51,6 +51,7 @@ namespace TeamJRPG
 
         public static Configuration config { get; set; }
         
+        public static DialogueData dialogueData { get; set; }
 
 
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Newtonsoft.Json;
 using System;
 
@@ -15,10 +16,7 @@ namespace TeamJRPG
 
         public int npcID;
 
-        [JsonIgnore]
-        public string name;
-
-
+        
         [JsonIgnore]
         public System.Drawing.RectangleF interractionBox;
         [JsonIgnore]
@@ -89,6 +87,9 @@ namespace TeamJRPG
 
 
                     aggroDistance = new Vector2(3, 10);
+
+                    currentDialogueId = 0;
+
                     break;
             }
 
@@ -135,6 +136,37 @@ namespace TeamJRPG
         }
 
 
+
+        public void Interract()
+        {
+            if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Enter))
+            {
+
+                
+
+                if (Globals.currentGameState == Globals.GameState.playstate)
+                {
+
+                    Entity focusEntity = this;
+
+                    Globals.player.interractedEntity = focusEntity;
+                    Globals.currentGameState = Globals.GameState.dialoguestate;
+                    Globals.uiManager.currentMenuState = UIManager.MenuState.dialogueText;
+                    Globals.uiManager.MenuStateNeedsChange = true;
+
+                    Globals.camera.focusEntity = this;
+                    Globals.camera.FocusOnEntity();
+                }
+                else if (Globals.currentGameState == Globals.GameState.dialoguestate)
+                {
+                    EndDialouge();
+                }
+
+            }
+        }
+        
+
+        
 
 
 

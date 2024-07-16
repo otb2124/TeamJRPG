@@ -21,6 +21,7 @@ namespace TeamJRPG
             Globals.mapReader.ReadConfig();
             Globals.config.ApplyAll();
 
+            Globals.mapReader.ReadDialogues();
             Globals.assetSetter.SetAllAssets();
 
             Globals.currentGameMode = Globals.GameMode.playmode;
@@ -88,7 +89,7 @@ namespace TeamJRPG
 
 
 
-            if (Globals.currentGameState == Globals.GameState.playstate || Globals.currentGameState == Globals.GameState.ingamemenustate)
+            if (Globals.currentGameState == Globals.GameState.playstate || Globals.currentGameState == Globals.GameState.ingamemenustate || Globals.currentGameState == Globals.GameState.dialoguestate)
             {
 
 
@@ -122,15 +123,15 @@ namespace TeamJRPG
                     //DEBUG MODE
                     if (Globals.currentGameMode == Globals.GameMode.debugmode)
                     {
-                        Console.SetCursorPosition(0, 0); // Set cursor position to top-left corner of console
+                        Console.SetCursorPosition(50, 0); // Set cursor position to top-left corner of console
                         Console.WriteLine($"Player Position: {Globals.player.GetMapPos()}");
                     }
                 }
+                
 
 
 
-
-                //UI STATES
+                //IN_GAME_MENU STATES
                 else if (Globals.currentGameState == Globals.GameState.ingamemenustate)
                 {
 
@@ -159,9 +160,10 @@ namespace TeamJRPG
 
 
                     }
-
-
-
+                }
+                else if(Globals.currentGameState == Globals.GameState.dialoguestate)
+                {
+                    
                 }
 
 
@@ -225,7 +227,7 @@ namespace TeamJRPG
         {
 
 
-            if(Globals.currentGameState == Globals.GameState.playstate || Globals.currentGameState == Globals.GameState.ingamemenustate)
+            if (Globals.currentGameState == Globals.GameState.playstate || Globals.currentGameState == Globals.GameState.ingamemenustate || Globals.currentGameState == Globals.GameState.dialoguestate)
             {
                 Globals.currentMap.Draw();
 

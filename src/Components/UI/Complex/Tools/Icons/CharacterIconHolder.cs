@@ -28,9 +28,13 @@ namespace TeamJRPG
             ImageHolder backGround = new ImageHolder(entity.backGroundIcon, adjustedPosition, Color.White, scale * 2, frameType == 0 ? stroke : null);
             ImageHolder charac = new ImageHolder(charSprite, adjustedPosition, entity.skinColor, scale, null);
             charac.floatingText.Clear();
-            charac.floatingText.Add(hint);
-            charac.floatingTextColors.Clear();
-            charac.floatingTextColors.Add(Color.White);
+            if (hint != null)
+            {
+                charac.floatingText.Add(hint);
+                charac.floatingTextColors.Clear();
+                charac.floatingTextColors.Add(Color.White);
+            }
+            
 
             Sprite frameTexture = frameType switch
             {

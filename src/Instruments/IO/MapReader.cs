@@ -217,5 +217,44 @@ namespace TeamJRPG
             }
 
         }
+
+
+
+
+
+
+        public void ReadDialogues()
+        {
+            string fileName = "dialogues.json";
+            string jsonDirectory = GetJsonDirectory();
+            string filePath = Path.Combine(jsonDirectory, fileName);
+            Console.WriteLine($"Reading dialogues from {fileName}");
+
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    string json = File.ReadAllText(filePath);
+                    var settings = new JsonSerializerSettings
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                        ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                        TypeNameHandling = TypeNameHandling.Auto
+                    };
+
+                    Globals.dialogueData = JsonConvert.DeserializeObject<DialogueData>(json, settings);
+
+                    Console.WriteLine($"Dialogues successfully read from {filePath}");
+                }
+                else
+                {
+                    Console.WriteLine($"File not found: {filePath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading dialogues from {filePath}: {ex.Message}");
+            }
+        }
     }
 }

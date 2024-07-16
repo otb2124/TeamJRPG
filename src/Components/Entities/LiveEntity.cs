@@ -108,6 +108,9 @@ namespace TeamJRPG
         public float magicSkill = 0;
 
 
+        public string name;
+
+        public int currentDialogueId;
 
         public LiveEntity(Point mapPosition) : base(mapPosition)
         {
@@ -302,7 +305,16 @@ namespace TeamJRPG
 
 
 
+        // DIALOGUES
+        public void EndDialouge()
+        {
+            Globals.currentGameState = Globals.GameState.playstate;
+            Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
+            Globals.uiManager.MenuStateNeedsChange = true;
 
+            Globals.camera.focusEntity = Globals.player;
+            Globals.camera.FocusOnEntity();
+        }
 
 
 
