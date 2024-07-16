@@ -17,6 +17,9 @@ namespace TeamJRPG
         [JsonIgnore]
         public SlotType slotType;
 
+
+
+        [JsonConstructor]
         public Armor(int itemID)
         {
             this.itemID = itemID;
@@ -25,6 +28,8 @@ namespace TeamJRPG
 
             SetArmor();
         }
+
+
 
 
         public void SetArmor()

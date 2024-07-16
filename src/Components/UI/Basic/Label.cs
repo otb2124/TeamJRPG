@@ -12,10 +12,17 @@ namespace TeamJRPG
         public Color textColor;
         public Stroke stroke;
 
+
+        public string text;
+        public int fontID;
+
+
         public Label(string text, Vector2 startPosition, int fontID, Color color, Stroke stroke)
         {
             this.stroke = stroke;
             this.textColor = color;
+            this.text = text;
+            this.fontID = fontID;
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
             this.type = UICompositeType.TEXT_FRAME;
 

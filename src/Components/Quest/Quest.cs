@@ -20,12 +20,15 @@ namespace TeamJRPG
         public bool isCompleted;
 
         public enum QuestType { primary, secondary, additional };
+        [JsonIgnore]
         public QuestType type;
 
-        public Quest(int id)
+
+        [JsonConstructor]
+        public Quest(int id, bool isCompleted)
         {
             this.id = id;
-            isCompleted = false;
+            this.isCompleted = isCompleted;
             SetQuest();
         }
 

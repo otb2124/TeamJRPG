@@ -13,12 +13,16 @@ namespace TeamJRPG
 
         public static readonly Vector2 tileSize = new Vector2(32 * gameScale, 32 * gameScale);
 
+        public static string currentSaveName { get; set; }
+
+
+
 
         public static float TotalSeconds { get; set; }
         public enum GameMode { playmode, debugmode }
         public static GameMode currentGameMode;
 
-        public enum GameState { playstate, ingamemenustate }
+        public enum GameState { playstate, ingamemenustate, mainmenustate }
         public static GameState currentGameState;
 
         public static List<Entity> currentEntities;
@@ -44,6 +48,9 @@ namespace TeamJRPG
         public static EventManager eventManager { get; set; }
 
         public static CommandManager commandManager { get; set; }
+
+        public static Configuration config { get; set; }
+        
 
 
 

@@ -38,7 +38,7 @@ namespace TeamJRPG
                     int tileSubKinds = Globals.TextureManager.GetSheet(TextureManager.SheetCategory.tiles, 0).GetTotalNumberOfSpritesInRow(tileKindIndex, new Vector2(32, 32));
                     int tileSubKindIndex = RandomHelper.RandomInteger(0, tileSubKinds);
 
-                    tiles[x, y] = new Tile(new Vector2(x * Globals.tileSize.X, y * Globals.tileSize.Y), tileKindIndex + tileSubKindIndex);
+                    tiles[x, y] = new Tile(new Point(x, y), tileKindIndex + tileSubKindIndex);
                 }
             }
 

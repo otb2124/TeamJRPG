@@ -110,6 +110,7 @@
     <None Remove="Content\res\objects\object9.png" />
     <None Remove="Content\res\placeholders\placeholder_spritesheet.png" />
     <None Remove="Content\res\tiles\tilemap_forest.png" />
+    <None Remove="Content\res\ui\menu_title.png" />
     <None Remove="Content\res\ui\ui_spritesheet.png" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +142,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\tiles\tilemap_forest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\ui\menu_title.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\ui\ui_spritesheet.png">

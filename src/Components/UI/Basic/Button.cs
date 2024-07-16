@@ -1,12 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
 namespace TeamJRPG
 {
     public class Button : UIComposite
     {
-        public bool Active = false;
+        public bool Activated = false;
         public int id;
         public System.Drawing.RectangleF buttonBox;
         public string floatingHint;
@@ -42,7 +41,7 @@ namespace TeamJRPG
 
         public override void Update()
         {
-            Active = false;
+            Activated = false;
 
             if (buttonBox.Contains(new System.Drawing.PointF(Globals.inputManager.GetCursorPos().X, Globals.inputManager.GetCursorPos().Y)))
             {
@@ -50,7 +49,7 @@ namespace TeamJRPG
                 if (Globals.inputManager.IsMouseButtonClick(InputManager.MouseButton.Left))
                 {
 
-                    Active = true;
+                    Activated = true;
 
                     switch (id)
                     {
@@ -166,7 +165,9 @@ namespace TeamJRPG
                             Globals.uiManager.MenuStateNeedsChange = true;
                             break;
                         case 12:
-                            Globals.Exit();
+                            Globals.currentGameState = Globals.GameState.mainmenustate;
+                            Globals.uiManager.currentMenuState = UIManager.MenuState.titlemenu;
+                            Globals.uiManager.MenuStateNeedsChange = true;
                             break;
 
 
@@ -189,8 +190,30 @@ namespace TeamJRPG
                             break;
 
 
+                        //20-49 ingamemenus
 
 
+
+                        //mainmenu
+                        case 50:
+                            Debug.WriteLine("Continue");
+                            Globals.gameManager.LoadGame();
+                            break;
+                        case 51:
+                            Debug.WriteLine("Reload");
+                            break;
+                        case 52:
+                            Debug.WriteLine("New");
+                            break;
+                        case 53:
+                            Debug.WriteLine("Options");
+                            break;
+                        case 54:
+                            Debug.WriteLine("Extras");
+                            break;
+                        case 55:
+                            Debug.WriteLine("Exit");
+                            break;
 
 
 

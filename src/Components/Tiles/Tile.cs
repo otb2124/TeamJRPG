@@ -9,33 +9,40 @@ namespace TeamJRPG
     public class Tile
     {
         public int id;
+
+        [JsonIgnore]
         public Vector2 position;
+
+
+        public Point mapPosition;
+
 
         [JsonIgnore]
         public Sprite sprite;
 
+        [JsonIgnore]
         public bool collision;
 
         [JsonIgnore]
         public System.Drawing.RectangleF collisionBox;
 
-        [JsonIgnore]
-        public Texture2D collisionTexture;
 
 
 
 
 
-
-
-        public Tile(Vector2 position, int id)
+        [JsonConstructor]
+        public Tile(Point mapPosition, int id)
         {
             this.id = id;
-            this.position = position;
+            this.mapPosition = mapPosition;
+            this.position = mapPosition.ToVector2()*Globals.tileSize;
             SetTileData();
             this.collisionBox = new System.Drawing.RectangleF(position.X, position.Y, Globals.tileSize.X, Globals.tileSize.Y);
-            this.collisionTexture = Globals.assetSetter.CreateSolidColorTexture((int)Globals.tileSize.X, (int)Globals.tileSize.Y, new Color(0, 0, 0.5f, 0.01f));
         }
+
+
+
 
         public void SetTileData()
         {

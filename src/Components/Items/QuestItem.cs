@@ -14,7 +14,7 @@ namespace TeamJRPG
     public class QuestItem : Item
     {
 
-
+        [JsonConstructor]
         public QuestItem(int itemID)
         {
             this.itemID = itemID;

@@ -54,7 +54,7 @@ namespace TeamJRPG
         {
             bool playerChanged = Globals.group.PlayerChanged;
 
-            if (Globals.inputManager.CheckPlayerInput() || playerChanged)
+            if (Globals.inputManager.CheckPlayerInGameInput() || playerChanged)
             {
                 RefreshCharacter();
             }

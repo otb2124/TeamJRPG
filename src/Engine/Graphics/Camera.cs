@@ -37,11 +37,19 @@ namespace TeamJRPG
             targetPosition = Vector2.Zero;
         }
 
-        public void Load()
+        public void Reload()
         {
-            position = Globals.player.position;
-            targetPosition = position;
-            ClampTargetPosition();
+            if(Globals.currentGameState == Globals.GameState.playstate)
+            {
+                position = Globals.player.position;
+                targetPosition = position;
+                ClampTargetPosition();
+            }
+            else
+            {
+                position = Vector2.Zero;
+            }
+            
             UpdateTransform();
         }
 

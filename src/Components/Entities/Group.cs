@@ -1,23 +1,33 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+
 
 namespace TeamJRPG
 {
+
+    [Serializable]
     public class Group
     {
 
+        [JsonIgnore]
         public List<GroupMember> members;
         public List<Item> inventory;
 
 
-        public int currentPlayerId;
 
+        [JsonIgnore]
         public GroupMember previousPlayer;
+        [JsonIgnore]
         public GroupMember currentPlayer;
+        [JsonIgnore]
         public bool PlayerChanged = false;
 
         public List<Quest> actualQuests;
+
+
         public Group() 
         {
             members = new List<GroupMember>();
@@ -25,73 +35,6 @@ namespace TeamJRPG
             actualQuests = new List<Quest>();
         }
 
-
-        public void SetInventory()
-        {
-            
-
-            AddToInventory(new Consumable(0, 2));
-            AddToInventory(new Consumable(0, 2));
-            AddToInventory(new Weapon(1));
-            AddToInventory(new Weapon(1));
-            AddToInventory(new Weapon(2));
-            AddToInventory(new Weapon(3));
-            AddToInventory(new Weapon(4));
-
-            AddToInventory(new Armor(1));
-            AddToInventory(new Armor(2));
-            AddToInventory(new Armor(3));
-            AddToInventory(new Armor(4));
-            AddToInventory(new Armor(5));
-            AddToInventory(new Armor(6));
-            AddToInventory(new Armor(7));
-            AddToInventory(new Armor(8));
-            AddToInventory(new Armor(9));
-            AddToInventory(new Armor(1));
-            AddToInventory(new Armor(2));
-            AddToInventory(new Armor(3));
-            AddToInventory(new Armor(4));
-            AddToInventory(new Armor(5));
-            AddToInventory(new Armor(6));
-            AddToInventory(new Armor(7));
-            AddToInventory(new Armor(8));
-            AddToInventory(new Armor(9));
-            AddToInventory(new Armor(1));
-            AddToInventory(new Armor(2));
-            AddToInventory(new Armor(3));
-            AddToInventory(new Armor(4));
-            AddToInventory(new Armor(5));
-            AddToInventory(new Armor(6));
-            AddToInventory(new Armor(7));
-            AddToInventory(new Armor(8));
-            AddToInventory(new Armor(9));
-            AddToInventory(new Armor(1));
-            AddToInventory(new Armor(2));
-            AddToInventory(new Armor(3));
-            AddToInventory(new Armor(4));
-            AddToInventory(new Armor(5));
-            AddToInventory(new Armor(6));
-            AddToInventory(new Armor(7));
-            AddToInventory(new Armor(8));
-            AddToInventory(new Armor(9));
-
-            AddToInventory(new QuestItem(0));
-            AddToInventory(new QuestItem(0));
-            AddToInventory(new QuestItem(0));
-            AddToInventory(new Valuable(0, 3));
-            AddToInventory(new Valuable(0, 4));
-            AddToInventory(new Material(0, 1));
-        }
-
-
-        public void SetQuests()
-        {
-            
-
-            actualQuests.Add(new Quest(0));
-            actualQuests.Add(new Quest(1));
-            actualQuests.Add(new Quest(2));
-        }
 
 
         public void Update()

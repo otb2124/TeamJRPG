@@ -16,8 +16,7 @@ namespace TeamJRPG
         public string name;
 
 
-
-        public GroupMember(Vector2 position) : base(position)
+        public GroupMember(Point mapPosition) : base(mapPosition)
         {
             this.entityType = EntityType.groupMember;
             defaultSpeed = 3.5f;
@@ -94,13 +93,6 @@ namespace TeamJRPG
         }
 
 
-        public void SetIcons(int charIconId, int charIconBGId)
-        {
-            this.characterIconID = charIconId;
-            this.characterIconBackGroundID = charIconBGId;
-            characterIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icons, 0, new Vector2(32*this.characterIconID, 0), new Vector2(64, 64));
-            backGroundIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icon_backgrounds, 0, new Vector2(32 * this.characterIconBackGroundID, 0), new Vector2(32, 32));
-        }
 
         public void SetEquipment()
         {
@@ -245,6 +237,13 @@ namespace TeamJRPG
                         }
                     }
                 }
+                else if(interractedEntity is NPC npc)
+                {
+                    if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Enter))
+                    {
+                        Console.WriteLine("Talk");
+                    }
+                }
             }
         }
 
@@ -269,7 +268,7 @@ namespace TeamJRPG
             {
                 // Follow the previous member
                 Follow(previousMember);
-                this.currentStatus = Status.walking;
+                
             }
         }
 

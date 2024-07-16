@@ -86,13 +86,13 @@ namespace TeamJRPG
                         }
                     }
 
-                    /*if (Globals.currentEntities[i] is NPC npc)
+                    if (Globals.currentEntities[i] is NPC npc)
                     {
                         if (entity.collisionBox.IntersectsWith(npc.interractionBox))
                         {
                             return npc;
                         }
-                    }*/
+                    }
                 }
             }
 

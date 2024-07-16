@@ -17,8 +17,9 @@ namespace TeamJRPG
         public enum EntityType { groupMember, obj, mob, npc }
         public EntityType entityType;
 
+        public Point mapPosition;
 
-
+        [JsonIgnore]
         public Vector2 position;
 
         [JsonIgnore]
@@ -55,11 +56,10 @@ namespace TeamJRPG
 
 
 
-
-
-        public Entity(Vector2 position)
+        public Entity(Point mapPosition)
         {
-            this.position = position;
+            this.mapPosition = mapPosition;
+            this.position = mapPosition.ToVector2() * Globals.tileSize;
 
             this.tileCollision = false;
             this.entityCollision = true;
@@ -79,7 +79,7 @@ namespace TeamJRPG
 
         public virtual void Update()
         {
-
+            
         }
 
 
@@ -122,6 +122,9 @@ namespace TeamJRPG
 
         public virtual void Draw()
         {
+            mapPosition = GetMapPos();
+
+
 
             for (int i = 0; i < sprites.Length; i++)
             {

@@ -1,13 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SharpDX.Direct3D9;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace TeamJRPG
 {
@@ -33,17 +28,8 @@ namespace TeamJRPG
         }
 
 
-        public void Load()
-        {
-            SetSheets();
-        }
 
-
-
-
-
-
-        public void SetSheets()
+        public void SetAllSheets()
         {
 
             Console.WriteLine("Setting Up Spritesheets...");
@@ -90,6 +76,7 @@ namespace TeamJRPG
 
             //ui
             AddSheet(SheetCategory.ui, 0, "ui/ui_spritesheet");
+            AddSheet(SheetCategory.ui, 1, "ui/menu_title");
 
             //placeholders
             AddSheet(SheetCategory.placeholders, 0, "placeholders/placeholder_spritesheet");

@@ -48,7 +48,7 @@ namespace TeamJRPG
         {
             string jsonDirectory = GetJsonDirectory();
             string filePath = Path.Combine(jsonDirectory, fileName);
-            Console.WriteLine($"Writing maps to {jsonDirectory}");
+            Console.WriteLine($"Writing maps to {filePath}");
 
             try
             {
@@ -61,22 +61,31 @@ namespace TeamJRPG
                     Converters = new List<JsonConverter> { new TileArrayConverter() }
                 };
 
-                string json = JsonConvert.SerializeObject(Globals.maps, settings);
+                // Create the wrapper object containing both maps and group
+                var gameData = new GameData
+                {
+                    Maps = Globals.maps,
+                    Group = Globals.group
+                };
+
+                // Serialize the wrapper object
+                string json = JsonConvert.SerializeObject(gameData, settings);
                 File.WriteAllText(filePath, json);
 
-                Console.WriteLine($"Maps data successfully written to {jsonDirectory}");
+                Console.WriteLine($"Maps and group data successfully written to {fileName}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error writing maps data to {filePath}: {ex.Message}");
+                Console.WriteLine($"Error writing maps and group data to {filePath}: {ex.Message}");
             }
         }
+
 
         public void ReadMaps(string fileName)
         {
             string jsonDirectory = GetJsonDirectory();
             string filePath = Path.Combine(jsonDirectory, fileName);
-            Console.WriteLine($"Reading maps data from {fileName}");
+            Console.WriteLine($"Reading maps and group data from {fileName}");
 
             try
             {
@@ -91,30 +100,35 @@ namespace TeamJRPG
                         Converters = new List<JsonConverter> { new TileArrayConverter() }
                     };
 
-                    var maps = JsonConvert.DeserializeObject<Map[]>(json, settings);
+                    // Deserialize the wrapper object
+                    var gameData = JsonConvert.DeserializeObject<GameData>(json, settings);
+
+                    var maps = gameData.Maps;
 
                     foreach (var map in maps)
                     {
-
-                        foreach (var entity in map.entities) // ToList() creates a copy to avoid modification during iteration
+                        foreach (var entity in map.entities)
                         {
                             if (entity.entityType == Entity.EntityType.groupMember)
                             {
-
                                 if (((GroupMember)entity).isPlayer)
                                 {
-                                    Globals.player = ((GroupMember)entity);
+                                    Globals.player = (GroupMember)entity;
                                     Globals.currentMap = map; // Consider whether this assignment is needed here
                                 }
 
-                                Globals.group.members.Add(((GroupMember)entity));
+                                Globals.group.members.Add((GroupMember)entity);
                             }
                         }
                     }
 
                     Globals.maps = maps;
 
-                    Console.WriteLine($"Maps data successfully read from {jsonDirectory}");
+
+                    Globals.group.inventory = gameData.Group.inventory;
+                    Globals.group.actualQuests = gameData.Group.actualQuests;
+
+                    Console.WriteLine($"Maps and group data successfully read from {filePath}");
 
                     if (Globals.player == null)
                     {
@@ -128,11 +142,80 @@ namespace TeamJRPG
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error reading maps data from {filePath}: {ex.Message}");
+                Console.WriteLine($"Error reading maps and group data from {filePath}: {ex.Message}");
             }
         }
 
 
 
+
+
+
+
+        public void WriteConfig()
+        {
+            string fileName = "config";
+            string jsonDirectory = GetJsonDirectory();
+            string filePath = Path.Combine(jsonDirectory, fileName);
+            Console.WriteLine($"Writing config to {jsonDirectory}");
+
+            try
+            {
+                var settings = new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    Formatting = Formatting.Indented,
+                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                    TypeNameHandling = TypeNameHandling.Auto
+                };
+
+                // Serialize the Globals.config object
+                string json = JsonConvert.SerializeObject(Globals.config, settings);
+                File.WriteAllText(filePath, json);
+
+                Console.WriteLine($"Config successfully written to {jsonDirectory}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error writing config to {filePath}: {ex.Message}");
+            }
+        }
+
+
+        public void ReadConfig()
+        {
+            string fileName = "config";
+            string jsonDirectory = GetJsonDirectory();
+            string filePath = Path.Combine(jsonDirectory, fileName);
+            Console.WriteLine($"Reading config from {fileName}");
+
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    string json = File.ReadAllText(filePath);
+                    var settings = new JsonSerializerSettings
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                        ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                        TypeNameHandling = TypeNameHandling.Auto
+                    };
+
+                    // Deserialize the Globals.config object
+                    Globals.config = JsonConvert.DeserializeObject<Configuration>(json, settings);
+
+                    Console.WriteLine($"Config successfully read from {filePath}");
+                }
+                else
+                {
+                    Console.WriteLine($"File not found: {filePath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading config from {filePath}: {ex.Message}");
+            }
+
+        }
     }
 }

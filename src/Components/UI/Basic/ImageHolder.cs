@@ -13,13 +13,20 @@ namespace TeamJRPG
         public System.Drawing.RectangleF hintBox;
         public bool hintOn = false;
 
-
-        public ImageHolder(Sprite sprite, Vector2 startPosition, Color color, Vector2 scale, Stroke stroke)
+        public ImageHolder(Sprite sprite, Vector2 startPosition, Color color, Vector2 scale, Stroke stroke, bool HorFlip = false)
         {
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
 
             floatingText = new List<string>();
             floatingTextColors = new List<Color>();
+
+
+
+            SpriteEffects effects = SpriteEffects.None;
+            if (HorFlip)
+            {
+                effects = SpriteEffects.FlipHorizontally;
+            }
 
             UIComponent image = new UIComponent
             {
@@ -28,6 +35,7 @@ namespace TeamJRPG
                 sprite = sprite,
                 scale = scale,
                 sourceRectangle = new Rectangle(0, 0, sprite.srcRect.Width, sprite.srcRect.Height),
+                spriteEffects = effects,
             };
 
             hintBox = new System.Drawing.RectangleF(position.X, position.Y, image.sprite.srcRect.Width * scale.X, image.sprite.srcRect.Height * scale.Y);

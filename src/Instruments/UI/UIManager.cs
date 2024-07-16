@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,7 +15,10 @@ namespace TeamJRPG
 
 
 
-        public enum MenuState { inGameMenu, charachters, inventory, skills, questBook, statistics, map, settings, exit, clean };
+        public enum MenuState { 
+            inGameMenu, charachters, inventory, skills, questBook, statistics, map, settings, exit, clean,
+            mainmenu, titlemenu,
+        };
         public MenuState currentMenuState;
         public MenuState previousMenuState;
         public bool MenuStateNeedsChange;
@@ -27,59 +31,21 @@ namespace TeamJRPG
         }
 
 
-        public void Init()
-        {
-            currentMenuState = MenuState.clean;
-            MenuStateNeedsChange = true;
-        }
 
 
         public void CheckState()
         {
+
             if (MenuStateNeedsChange)
             {
 
-                RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT);
-
-
-                switch (currentMenuState)
+                //PLAYSTATE
+                if(Globals.currentGameState == Globals.GameState.playstate)
                 {
-                    case MenuState.inGameMenu:
-                        if (!HasCompositesOfType(UIComposite.UICompositeType.INGAME_MENU))
-                        {
-                            Add(UIComposite.UICompositeType.INGAME_MENU);
-                        }
-                        if (!HasCompositesOfType(UIComposite.UICompositeType.MOUSE_CURSOR))
-                        {
-                            Add(UIComposite.UICompositeType.MOUSE_CURSOR);
-                        }
-
-                        break;
-                    case MenuState.charachters:
-                        Add(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS);
-                        break;
-                    case MenuState.inventory:
-                        Add(UIComposite.UICompositeType.INGAME_MENU_INVENTORY);
-                        break;
-                    case MenuState.skills:
-                        Add(UIComposite.UICompositeType.INGAME_MENU_SKILLS);
-                        break;
-                    case MenuState.questBook:
-                        Add(UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK);
-                        break;
-                    case MenuState.statistics:
-                        Add(UIComposite.UICompositeType.INGAME_MENU_STATS);
-                        break;
-                    case MenuState.map:
-                        Add(UIComposite.UICompositeType.INGAME_MENU_MAP);
-                        break;
-                    case MenuState.settings:
-                        Add(UIComposite.UICompositeType.INGAME_MENU_SETTINGS);
-                        break;
-                    case MenuState.exit:
-                        Add(UIComposite.UICompositeType.INGAME_MENU_EXIT);
-                        break;
-                    case MenuState.clean:
+                    if(currentMenuState == MenuState.clean)
+                    {
+                        RemoveAllCompositesOfTypes(UIComposite.UICompositeType.MAIN_MENU, UIComposite.UICompositeType.MAIN_MENU_CONTENT, UIComposite.UICompositeType.PRESS_ANY_KEY);
+                        RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT);
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU);
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.MOUSE_CURSOR);
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.FLOATING_INFO_BOX);
@@ -88,11 +54,97 @@ namespace TeamJRPG
                         {
                             AddElement(new GroupmemberBars(new Vector2(0, 0)));
                         }
-                        break;
+                    }
                 }
+                //INGAMEMENU
+                else if (Globals.currentGameState == Globals.GameState.ingamemenustate)
+                {
+
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT);
+
+
+                    switch (currentMenuState)
+                    {
+                        case MenuState.inGameMenu:
+                            if (!HasCompositesOfType(UIComposite.UICompositeType.INGAME_MENU))
+                            {
+                                Add(UIComposite.UICompositeType.INGAME_MENU);
+                            }
+                            if (!HasCompositesOfType(UIComposite.UICompositeType.MOUSE_CURSOR))
+                            {
+                                Add(UIComposite.UICompositeType.MOUSE_CURSOR);
+                            }
+
+                            break;
+                        case MenuState.charachters:
+                            Add(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS);
+                            break;
+                        case MenuState.inventory:
+                            Add(UIComposite.UICompositeType.INGAME_MENU_INVENTORY);
+                            break;
+                        case MenuState.skills:
+                            Add(UIComposite.UICompositeType.INGAME_MENU_SKILLS);
+                            break;
+                        case MenuState.questBook:
+                            Add(UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK);
+                            break;
+                        case MenuState.statistics:
+                            Add(UIComposite.UICompositeType.INGAME_MENU_STATS);
+                            break;
+                        case MenuState.map:
+                            Add(UIComposite.UICompositeType.INGAME_MENU_MAP);
+                            break;
+                        case MenuState.settings:
+                            Add(UIComposite.UICompositeType.INGAME_MENU_SETTINGS);
+                            break;
+                        case MenuState.exit:
+                            Add(UIComposite.UICompositeType.INGAME_MENU_EXIT);
+                            break;
+                        case MenuState.clean:
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU);
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.MOUSE_CURSOR);
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.FLOATING_INFO_BOX);
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DESCRIPTION_WINDOW);
+                            if (GetAllChildrenOfType(UIComposite.UICompositeType.GROUP_BARS).Count == 0)
+                            {
+                                AddElement(new GroupmemberBars(new Vector2(0, 0)));
+                            }
+                            break;
+                    }
+
+                }
+
+                //MAIN MENU
+                else if(Globals.currentGameState == Globals.GameState.mainmenustate)
+                {
+
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU, UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT, UIComposite.UICompositeType.GROUP_BARS, UIComposite.UICompositeType.FLOATING_INFO_BOX, UIComposite.UICompositeType.CURRENT_CHARACTER_POINTER);
+                    
+
+                    switch (currentMenuState)
+                    {
+
+                        case MenuState.titlemenu:
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.MOUSE_CURSOR);
+                            Add(UIComposite.UICompositeType.MAIN_MENU);
+                            Add(UIComposite.UICompositeType.PRESS_ANY_KEY);
+                            break;
+                        case MenuState.mainmenu:
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.PRESS_ANY_KEY);
+                            Add(UIComposite.UICompositeType.MAIN_MENU_CONTENT);
+                            if (!HasCompositesOfType(UIComposite.UICompositeType.MOUSE_CURSOR))
+                            {
+                                Add(UIComposite.UICompositeType.MOUSE_CURSOR);
+                            }
+                            break;
+                    }
+                }
+
 
                 MenuStateNeedsChange = false;
             }
+
+
 
         }
 
@@ -131,6 +183,17 @@ namespace TeamJRPG
                     break;
                 case UIComposite.UICompositeType.INGAME_MENU_EXIT:
                     AddElement(new ExitInGameMenu());
+                    break;
+
+
+                case UIComposite.UICompositeType.MAIN_MENU:
+                    AddElement(new MainMenuTitle());
+                    break;
+                case UIComposite.UICompositeType.PRESS_ANY_KEY:
+                    AddElement(new PressAnyKeyCheckerLabel());
+                    break;
+                case UIComposite.UICompositeType.MAIN_MENU_CONTENT:
+                    AddElement(new MainMenuContent());
                     break;
             }
         }
@@ -194,7 +257,7 @@ namespace TeamJRPG
 
         public bool CheckMenuStateChange()
         {
-            if(currentMenuState != previousMenuState)
+            if (currentMenuState != previousMenuState)
             {
                 previousMenuState = currentMenuState;
                 return true;
@@ -222,11 +285,38 @@ namespace TeamJRPG
         }
 
 
+        public void CheckConditions()
+        {
+            CheckState();
+
+            if(Globals.currentGameState == Globals.GameState.playstate)
+            {
+                CheckForPointer();
+            }
+            else if (Globals.currentGameState == Globals.GameState.ingamemenustate)
+            {
+                CheckForPointer();
+            }
+            else if(Globals.currentGameState == Globals.GameState.mainmenustate)
+            {
+                if(currentMenuState == MenuState.titlemenu)
+                {
+                    if (Globals.inputManager.CheckPlayerInput())
+                    {
+                        currentMenuState = MenuState.mainmenu;
+                        MenuStateNeedsChange = true;
+                    }
+                }
+            }
+            
+            
+        }
+
+
 
         public void Update()
         {
-            CheckForPointer();
-            CheckState();
+            CheckConditions();
 
             // Process all current children
             foreach (var child in children)
@@ -303,6 +393,6 @@ namespace TeamJRPG
 
 
 
-        
+
     }
 }

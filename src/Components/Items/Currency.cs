@@ -13,7 +13,7 @@ namespace TeamJRPG
     public class Currency : Item
     {
 
-
+        [JsonConstructor]
         public Currency()
         {
             sprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.items, 0, new Microsoft.Xna.Framework.Vector2(0, 0), new Microsoft.Xna.Framework.Vector2(32, 32));

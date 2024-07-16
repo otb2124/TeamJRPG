@@ -28,7 +28,10 @@ namespace TeamJRPG
             RegisterCommand("setpos", new UpdatePositionCommand());
             RegisterCommand("gameMode", new DebugModeOnCommand());
             RegisterCommand("set", new SetCommand());
-
+            RegisterCommand("save", new SaveCommand());
+            RegisterCommand("add", new AddCommand());
+            RegisterCommand("exit", new SystemExitCommand());
+            RegisterCommand("info", new InfoCommand());
 
         }
 

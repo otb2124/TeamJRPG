@@ -15,181 +15,205 @@ namespace TeamJRPG
 
         private Thread commandThread;
 
-        public GameManager()
+
+        public void Load()
         {
-            Init();
+            Globals.mapReader.ReadConfig();
+            Globals.config.ApplyAll();
+
+            Globals.assetSetter.SetAllAssets();
+
+            Globals.currentGameMode = Globals.GameMode.playmode;
+
+            Globals.currentGameState = Globals.GameState.mainmenustate;
+            Globals.uiManager.currentMenuState = UIManager.MenuState.titlemenu;
+            Globals.uiManager.MenuStateNeedsChange = true;
+
+            Globals.camera.Reload();
+
+            Console.WriteLine("Program Loaded Successfully");
+
+            commandThread = new Thread(CommandHandler);
+            commandThread.Start();
         }
 
-        public void Init()
+
+        public void LoadGame()
         {
+
             Globals.maps = new Map[5];
-            
             Globals.group = new Group();
-
-
 
             overDraw = new List<Entity>();
             underDraw = new List<Entity>();
             entitiesToUpdate = new List<Entity>();
 
+
             Globals.currentGameMode = Globals.GameMode.playmode;
+
             Globals.currentGameState = Globals.GameState.playstate;
-            
-        }
-
-        public void Load()
-        {
-            Globals.assetSetter.SetAssets();
+            Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
+            Globals.uiManager.MenuStateNeedsChange = true;
 
 
-            Globals.mapReader.ReadMaps("tiles");
 
+            Globals.currentSaveName = "save7.json";
 
+            Globals.mapReader.ReadMaps(Globals.currentSaveName);
 
             Globals.currentEntities = Globals.currentMap.entities;
 
 
+            Globals.camera.Reload();
+
             Globals.collisionManager.Load();
 
-            
+
 
             Globals.aStarPathfinding.Init();
-            Globals.uiManager.Init();
-
-            
-
-            Globals.group.SetInventory();
-            Globals.group.SetQuests();
-
-            Globals.camera.Load();
 
             Globals.eventManager.SetEvents();
 
 
-            commandThread = new Thread(CommandHandler);
-            commandThread.Start();
-
-            Globals.mapReader.WriteMaps("currentEntities.json");
+            
         }
 
         public void Update()
         {
+
+
+
             Globals.inputManager.Update();
-            Globals.group.Update();
-            Globals.eventManager.CheckEvents();
-
-            //Game States
-            if (Globals.currentGameState == Globals.GameState.playstate)
-            {
-                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape) || Globals.inputManager.IsKeyPressedAndReleased(Keys.Tab))
-                {
-                    Globals.currentGameState = Globals.GameState.ingamemenustate;
-                    Globals.uiManager.currentMenuState = UIManager.MenuState.inGameMenu;
-                    Globals.uiManager.MenuStateNeedsChange = true;
-                }
-                // Game modes
-                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.H))
-                {
-                    if (Globals.currentGameMode == Globals.GameMode.playmode)
-                    {
-                        Globals.currentGameMode = Globals.GameMode.debugmode;
-                        Console.WriteLine(Globals.currentEntities.Count);
-                    }
-                    else
-                    {
-                        Globals.currentGameMode = Globals.GameMode.playmode;
-                    }
-                }
-
-
-                //DEBUG MODE
-                if(Globals.currentGameMode == Globals.GameMode.debugmode)
-                {
-                    Console.SetCursorPosition(0, 0); // Set cursor position to top-left corner of console
-                    Console.WriteLine($"Player Position: {Globals.player.GetMapPos()}");
-                }
-            }
 
 
 
 
-            //UI STATES
-            else if(Globals.currentGameState == Globals.GameState.ingamemenustate)
+            if (Globals.currentGameState == Globals.GameState.playstate || Globals.currentGameState == Globals.GameState.ingamemenustate)
             {
 
-                //IF ESC or TAB
-                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape) || Globals.inputManager.IsKeyPressedAndReleased(Keys.Tab))
-                {
 
-                    if (Globals.uiManager.HasCompositesOfType(UIComposite.UICompositeType.DESCRIPTION_WINDOW))
+                Globals.group.Update();
+                Globals.eventManager.CheckEvents();
+
+                //Game States
+                if (Globals.currentGameState == Globals.GameState.playstate)
+                {
+                    if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape) || Globals.inputManager.IsKeyPressedAndReleased(Keys.Tab))
                     {
-                        Globals.uiManager.RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DESCRIPTION_WINDOW);
+                        Globals.currentGameState = Globals.GameState.ingamemenustate;
+                        Globals.uiManager.currentMenuState = UIManager.MenuState.inGameMenu;
+                        Globals.uiManager.MenuStateNeedsChange = true;
                     }
-                    else
+                    // Game modes
+                    if (Globals.inputManager.IsKeyPressedAndReleased(Keys.H))
                     {
-                        if (Globals.uiManager.currentMenuState == UIManager.MenuState.inGameMenu)
+                        if (Globals.currentGameMode == Globals.GameMode.playmode)
                         {
-                            Globals.currentGameState = Globals.GameState.playstate;
-                            Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
-                            Globals.uiManager.MenuStateNeedsChange = true;
+                            Globals.currentGameMode = Globals.GameMode.debugmode;
+                            Console.WriteLine(Globals.currentEntities.Count);
                         }
-                        else if (Globals.uiManager.currentMenuState != UIManager.MenuState.inGameMenu && Globals.uiManager.currentMenuState != UIManager.MenuState.clean)
+                        else
                         {
-                            Globals.uiManager.currentMenuState = UIManager.MenuState.inGameMenu;
-                            Globals.uiManager.MenuStateNeedsChange = true;
+                            Globals.currentGameMode = Globals.GameMode.playmode;
                         }
                     }
 
-                    
+
+                    //DEBUG MODE
+                    if (Globals.currentGameMode == Globals.GameMode.debugmode)
+                    {
+                        Console.SetCursorPosition(0, 0); // Set cursor position to top-left corner of console
+                        Console.WriteLine($"Player Position: {Globals.player.GetMapPos()}");
+                    }
                 }
-                    
 
 
-            }
-            
-
-            
 
 
-            
-
-            
-
-
-            // Copy the currentEntities that need to be updated to a separate list
-            entitiesToUpdate.Clear();
-            foreach (var entity in Globals.currentEntities)
-            {
-                if (entity is Mob || entity is GroupMember)
+                //UI STATES
+                else if (Globals.currentGameState == Globals.GameState.ingamemenustate)
                 {
-                    entitiesToUpdate.Add(entity);
+
+                    //IF ESC or TAB
+                    if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape) || Globals.inputManager.IsKeyPressedAndReleased(Keys.Tab))
+                    {
+
+                        if (Globals.uiManager.HasCompositesOfType(UIComposite.UICompositeType.DESCRIPTION_WINDOW))
+                        {
+                            Globals.uiManager.RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DESCRIPTION_WINDOW);
+                        }
+                        else
+                        {
+                            if (Globals.uiManager.currentMenuState == UIManager.MenuState.inGameMenu)
+                            {
+                                Globals.currentGameState = Globals.GameState.playstate;
+                                Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
+                                Globals.uiManager.MenuStateNeedsChange = true;
+                            }
+                            else if (Globals.uiManager.currentMenuState != UIManager.MenuState.inGameMenu && Globals.uiManager.currentMenuState != UIManager.MenuState.clean)
+                            {
+                                Globals.uiManager.currentMenuState = UIManager.MenuState.inGameMenu;
+                                Globals.uiManager.MenuStateNeedsChange = true;
+                            }
+                        }
+
+
+                    }
+
+
+
                 }
-            }
 
-            // Update currentEntities from the separate list
-            foreach (var entity in entitiesToUpdate)
-            {
-                entity.Update();
-            }
 
-            // Sort currentEntities for drawing
-            Globals.currentEntities.Sort((e1, e2) => (e1.drawPosition.Y + e1.sprites[0].texture.Height * Globals.gameScale).CompareTo(e2.drawPosition.Y + e2.sprites[0].texture.Height * Globals.gameScale));
 
-            // Split currentEntities into overDraw and underDraw lists
-            foreach (Entity entity in Globals.currentEntities)
-            {
-                if (entity.drawPosition.Y + (entity.sprites[0].texture.Height * Globals.gameScale) <= Globals.player.drawPosition.Y + (Globals.player.sprites[0].texture.Height * Globals.gameScale) && !(entity is GroupMember))
+
+
+
+
+
+
+
+                // Copy the currentEntities that need to be updated to a separate list
+                entitiesToUpdate.Clear();
+                foreach (var entity in Globals.currentEntities)
                 {
-                    underDraw.Add(entity);
+                    if (entity.entityType != Entity.EntityType.obj)
+                    {
+                        entitiesToUpdate.Add(entity);
+                    }
                 }
-                else
+
+                // Update currentEntities from the separate list
+                foreach (var entity in entitiesToUpdate)
                 {
-                    overDraw.Add(entity);
+                    entity.Update();
                 }
+
+                // Sort currentEntities for drawing
+                Globals.currentEntities.Sort((e1, e2) => (e1.drawPosition.Y + e1.sprites[0].texture.Height * Globals.gameScale).CompareTo(e2.drawPosition.Y + e2.sprites[0].texture.Height * Globals.gameScale));
+
+                // Split currentEntities into overDraw and underDraw lists
+                foreach (Entity entity in Globals.currentEntities)
+                {
+                    if (entity.drawPosition.Y + (entity.sprites[0].texture.Height * Globals.gameScale) <= Globals.player.drawPosition.Y + (Globals.player.sprites[0].texture.Height * Globals.gameScale) && !(entity is GroupMember))
+                    {
+                        underDraw.Add(entity);
+                    }
+                    else
+                    {
+                        overDraw.Add(entity);
+                    }
+                }
+
+
+                Globals.camera.Update();
+
+
             }
 
 
-            Globals.camera.Update();
+
+
             Globals.uiManager.Update();
 
 
@@ -199,20 +223,26 @@ namespace TeamJRPG
 
         public void Draw()
         {
-            Globals.currentMap.Draw();
 
-            foreach (var entity in underDraw)
+
+            if(Globals.currentGameState == Globals.GameState.playstate || Globals.currentGameState == Globals.GameState.ingamemenustate)
             {
-                entity.Draw();
-            }
+                Globals.currentMap.Draw();
 
-            foreach (var entity in overDraw)
-            {
-                entity.Draw();
-            }
+                foreach (var entity in underDraw)
+                {
+                    entity.Draw();
+                }
 
-            underDraw.Clear();
-            overDraw.Clear();
+                foreach (var entity in overDraw)
+                {
+                    entity.Draw();
+                }
+
+                underDraw.Clear();
+                overDraw.Clear();
+            }
+            
 
             Globals.uiManager.Draw();
         }

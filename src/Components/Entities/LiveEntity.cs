@@ -65,6 +65,15 @@ namespace TeamJRPG
         [JsonIgnore]
         public Point previousPosition;
 
+
+        //aggro
+        [JsonIgnore]
+        public Vector2 aggroDistance;
+
+        public bool isAggroed = false;
+
+
+
         // equipment
         [JsonIgnore]
         public Weapon weapon1;
@@ -98,9 +107,9 @@ namespace TeamJRPG
         public float crossbowSkill = 0;
         public float magicSkill = 0;
 
-        
 
-        public LiveEntity(Vector2 position) : base(position)
+
+        public LiveEntity(Point mapPosition) : base(mapPosition)
         {
             
         }
@@ -179,9 +188,42 @@ namespace TeamJRPG
         }
 
 
+        public void FollowInRange(LiveEntity entity, float minRange, float maxRange)
+        {
+            float distanceToEntity = Vector2.Distance(position, entity.position);
+
+            if (distanceToEntity >= minRange * Globals.tileSize.X && distanceToEntity <= maxRange * Globals.tileSize.X)
+            {
+                Follow(entity);
+            }
+
+        }
+
+
+        public void FollowInAggroRange(LiveEntity entity, float minRange, float maxRange)
+        {
+            float distanceToEntity = Vector2.Distance(position, entity.position);
+
+            if (!isAggroed && distanceToEntity < minRange * Globals.tileSize.X)
+            {
+                isAggroed = true;
+            }
+
+            if (isAggroed)
+            {
+                Follow(entity);
+
+                if (distanceToEntity > maxRange * Globals.tileSize.X)
+                {
+                    isAggroed = false;
+                }
+            }
+        }
+
 
         public void Follow(LiveEntity entity)
         {
+            this.currentStatus = Status.walking;
             Point mobTile = new Point((int)(position.X / Globals.tileSize.X), (int)(position.Y / Globals.tileSize.Y));
             Point playerTile = new Point((int)(entity.position.X / Globals.tileSize.X), (int)(entity.position.Y / Globals.tileSize.Y));
             Point playerPreviousTile = entity.previousPosition;
@@ -243,6 +285,30 @@ namespace TeamJRPG
                 }
             }
         }
+
+
+
+
+        // UI
+        public void SetIcons(int charIconId, int charIconBGId)
+        {
+            this.characterIconID = charIconId;
+            this.characterIconBackGroundID = charIconBGId;
+            characterIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icons, 0, new Vector2(32 * this.characterIconID, 0), new Vector2(64, 64));
+            backGroundIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icon_backgrounds, 0, new Vector2(32 * this.characterIconBackGroundID, 0), new Vector2(32, 32));
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Calculations
         public int GetExpToNextLevel()

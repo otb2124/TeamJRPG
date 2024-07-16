@@ -1,6 +1,4 @@
-﻿
-
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 
 namespace TeamJRPG
@@ -17,12 +15,16 @@ namespace TeamJRPG
         [JsonIgnore]
         public ConsumableType consumableType;
 
-        public Consumable(int consumableID, int amount)
+
+
+
+        [JsonConstructor]
+        public Consumable(int amount, int itemID)
         {
             this.amount = amount;
-            this.itemID = consumableID;
-            type = ItemType.CONSUMABLE;
-            IsStackable = true;
+            this.itemID = itemID;
+            this.type = ItemType.CONSUMABLE;
+            this.IsStackable = true;
 
             SetConsumable();
         }

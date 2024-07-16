@@ -25,7 +25,8 @@ namespace TeamJRPG
         [JsonIgnore]
         public int textureId;
 
-        public Object(Vector2 position, int objectId) : base(position)
+
+        public Object(Point mapPosition, int objectId) : base(mapPosition)
         {
             this.entityType = EntityType.obj;
             this.tileCollision = true;

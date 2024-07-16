@@ -14,6 +14,8 @@ namespace TeamJRPG
     public class Material : Item
     {
 
+
+        [JsonConstructor]
         public Material(int itemID, int amount)
         {
             this.amount = amount;

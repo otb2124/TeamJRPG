@@ -13,7 +13,7 @@ namespace TeamJRPG
         public Effect[] effects;
 
 
-
+        public bool AllAssetsLoaded = false;
 
 
 
@@ -28,10 +28,11 @@ namespace TeamJRPG
         }
 
 
-        public void SetAssets()
+        public void SetAllAssets()
         {
-            Globals.TextureManager.SetSheets();
+            Globals.TextureManager.SetAllSheets();
             SetFonts();
+            AllAssetsLoaded = true;
         }
 
 

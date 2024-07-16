@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
+
 
 namespace TeamJRPG
 {
@@ -19,8 +18,10 @@ namespace TeamJRPG
 
         [JsonIgnore]
         public WeaponType weaponType;
-        
 
+
+
+        [JsonConstructor]
         public Weapon(int itemID)
         {
             this.itemID = itemID;

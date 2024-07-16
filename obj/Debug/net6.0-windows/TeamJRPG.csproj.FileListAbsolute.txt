@@ -58,3 +58,4 @@ C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\i
 C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\characters\icons\iconbackgrounds.png
 C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\characters\bodies\body_male_spritesheet.png
 C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\characters\bodies\body_male_spritesheet0.png
+C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\ui\menu_title.png

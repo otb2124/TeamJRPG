@@ -13,7 +13,7 @@ namespace TeamJRPG
     [JsonObject(IsReference = true)]
     public class Valuable : Item
     {
-
+        [JsonConstructor]
         public Valuable(int itemID, int amount)
         {
             this.amount = amount;

@@ -31,7 +31,7 @@ namespace TeamJRPG
 
             for (int i = 0; i < buttons.Length; i++)
             {
-                if (buttons[i].Active)
+                if (buttons[i].Activated)
                 {
                     currentChoice = buttons[i].id;
 

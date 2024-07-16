@@ -19,9 +19,11 @@ namespace TeamJRPG
 
         [JsonIgnore]
         public Sprite sprite;
+        [JsonIgnore]
         public int textureID;
 
         public enum ItemType { WEAPON, ARMOR, CONSUMABLE, MATERIAL, VALUEABLE, QUEST, CURRENCY}
+        [JsonIgnore]
         public ItemType type;
 
         [JsonIgnore]

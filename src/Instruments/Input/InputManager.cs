@@ -80,10 +80,28 @@ namespace TeamJRPG
         }
 
 
-        public bool CheckPlayerInput()
+        public bool CheckPlayerInGameInput()
         {
             bool isInput = IsKeyPressed(Keys.W) || IsKeyPressed(Keys.A) || IsKeyPressed(Keys.S) || IsKeyPressed(Keys.D);
             return isInput;
+        }
+
+
+        public bool CheckPlayerActivity()
+        {
+            bool mouseMoved = currentMouseState.X != previousMouseState.X || currentMouseState.Y != previousMouseState.Y;
+            bool mouseClicked = IsMouseButtonClick(MouseButton.Left) || IsMouseButtonClick(MouseButton.Right) || IsMouseButtonClick(MouseButton.Wheel);
+            bool keyPressed = currentKeyboardState.GetPressedKeys().Length > 0;
+
+            return mouseMoved || mouseClicked || keyPressed;
+        }
+
+
+        public bool CheckPlayerInput() 
+        {
+            bool mouseClicked = IsMouseButtonClick(MouseButton.Left) || IsMouseButtonClick(MouseButton.Right) || IsMouseButtonClick(MouseButton.Wheel);
+            bool keyPressed = currentKeyboardState.GetPressedKeys().Length > 0;
+            return mouseClicked || keyPressed;
         }
 
 
