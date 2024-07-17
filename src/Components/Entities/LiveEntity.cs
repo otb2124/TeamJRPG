@@ -23,7 +23,8 @@ namespace TeamJRPG
         public int characterIconID;
         public int characterIconBackGroundID;
 
-
+        [JsonIgnore]
+        public Vector2 battleScreenPosition;
 
         // colors
         public Color skinColor;
@@ -151,6 +152,13 @@ namespace TeamJRPG
                     drawColor = hairColor;
                 }
             }
+
+
+            if(Globals.currentGameState == Globals.GameState.battle)
+            {
+                drawPosition = battleScreenPosition;
+            }
+            
             base.Draw();
         }
 

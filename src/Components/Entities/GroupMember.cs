@@ -105,9 +105,6 @@ namespace TeamJRPG
 
         public void SetTextures()
         {
-            skinColor = RandomHelper.RandomColor();
-            hairColor = RandomHelper.RandomColor();
-            eyeColor = RandomHelper.RandomColor();
 
             this.bodySpriteSheet = Globals.TextureManager.GetSheet(TextureManager.SheetCategory.character_bodies, 0);
 
@@ -161,51 +158,64 @@ namespace TeamJRPG
         public override void Update()
         {
            
-            anims.Update(new Tuple<LiveEntity.Direction, LiveEntity.AnimationState>(direction, animationState));
-
-            HandleCollisions();
-
-            previousPosition = new Point((int)(position.X / Globals.tileSize.X), (int)(position.Y / Globals.tileSize.X));
-
-            this.currentStatus = Status.idle;
-
-            if (isPlayer)
+            if(Globals.currentGameState == Globals.GameState.battle)
             {
-                if(Globals.currentGameState != Globals.GameState.dialoguestate)
-                {
-                    if (Globals.inputManager.IsKeyPressed(Keys.W)) { Move(new Vector2(0, -currentSpeed), Direction.up); }
-                    else if (Globals.inputManager.IsKeyPressed(Keys.S)) { Move(new Vector2(0, currentSpeed), Direction.down); }
-                    else if (Globals.inputManager.IsKeyPressed(Keys.A)) { Move(new Vector2(-currentSpeed, 0), Direction.left); }
-                    else if (Globals.inputManager.IsKeyPressed(Keys.D)) { Move(new Vector2(currentSpeed, 0), Direction.right); }
+                anims.Update(new Tuple<LiveEntity.Direction, LiveEntity.AnimationState>(direction, animationState));
 
-                    if (currentStatus == Status.walking)
-                    {
-                        if (Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { Sprint(); } else { UnSprint(); }
-                    }
-                }
-                
 
-                
-                if(currentStatus != Status.walking)
-                {
-                    UnSprint();
-                }
+                this.currentStatus = Status.idle;
 
-                if (!Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { UnSprint(); }
-
-                HandleInterractions();
+                animationState = SwitchStatusToAnimation();
             }
             else
             {
-                FollowPreviousMember();
+                anims.Update(new Tuple<LiveEntity.Direction, LiveEntity.AnimationState>(direction, animationState));
+
+                HandleCollisions();
+
+                previousPosition = new Point((int)(position.X / Globals.tileSize.X), (int)(position.Y / Globals.tileSize.X));
+
+                this.currentStatus = Status.idle;
+
+                if (isPlayer)
+                {
+                    if (Globals.currentGameState != Globals.GameState.dialoguestate)
+                    {
+                        if (Globals.inputManager.IsKeyPressed(Keys.W)) { Move(new Vector2(0, -currentSpeed), Direction.up); }
+                        else if (Globals.inputManager.IsKeyPressed(Keys.S)) { Move(new Vector2(0, currentSpeed), Direction.down); }
+                        else if (Globals.inputManager.IsKeyPressed(Keys.A)) { Move(new Vector2(-currentSpeed, 0), Direction.left); }
+                        else if (Globals.inputManager.IsKeyPressed(Keys.D)) { Move(new Vector2(currentSpeed, 0), Direction.right); }
+
+                        if (currentStatus == Status.walking)
+                        {
+                            if (Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { Sprint(); } else { UnSprint(); }
+                        }
+                    }
+
+
+
+                    if (currentStatus != Status.walking)
+                    {
+                        UnSprint();
+                    }
+
+                    if (!Globals.inputManager.IsKeyPressed(Keys.LeftShift)) { UnSprint(); }
+
+                    HandleInterractions();
+                }
+                else
+                {
+                    FollowPreviousMember();
+                }
+
+                this.collisionBox.Location = new System.Drawing.PointF(this.position.X + (Globals.tileSize.X - collisionBox.Width) / 2, this.position.Y + Globals.tileSize.Y / 2);
+
+
+                base.Update();
+
+                animationState = SwitchStatusToAnimation();
             }
-
-            this.collisionBox.Location = new System.Drawing.PointF(this.position.X + (Globals.tileSize.X - collisionBox.Width) / 2, this.position.Y + Globals.tileSize.Y / 2);
-
-
-            base.Update();
-
-            animationState = SwitchStatusToAnimation();
+            
         }
 
         
@@ -228,13 +238,19 @@ namespace TeamJRPG
                         Globals.currentEntities.Remove(collidedEntity);
                     }
                 }
+                else if(collidedEntity is Mob mob)
+                {
+                    Globals.currentGameState = Globals.GameState.battle;
+                    direction = Direction.right;
+                    Globals.battleManager.StartBatlle(mob);
+                }
             }
 
             if ((collidedEntity != null && collidedEntity.entityCollision) && entityCollision)
             {
                 if (collidedEntity is Mob || collidedEntity is GroupMember)
                 {
-                    //skip collision
+                    //no movement stop
                 }
                 else
                 {

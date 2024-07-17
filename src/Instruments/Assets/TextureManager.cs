@@ -13,7 +13,7 @@ namespace TeamJRPG
 
 
         public SpriteSheet[][] spriteSheets;
-        public enum SheetCategory { tiles, character_bodies, character_details, mob_bodies, entity_icons, entity_icon_backgrounds, objects_decorative, objects_interractive, items, armor_bodies, ui, placeholders };
+        public enum SheetCategory { tiles, character_bodies, character_details, mob_bodies, entity_icons, entity_icon_backgrounds, objects_decorative, objects_interractive, items, armor_bodies, ui, placeholders, battle_backgrounds };
 
 
 
@@ -81,6 +81,11 @@ namespace TeamJRPG
             //placeholders
             AddSheet(SheetCategory.placeholders, 0, "placeholders/placeholder_spritesheet");
 
+            //battleBackGrounds
+            AddSheet(SheetCategory.battle_backgrounds, 0, "backgrounds/backgrounds_backgroundLayer");
+            AddSheet(SheetCategory.battle_backgrounds, 1, "backgrounds/backgrounds_midgroundLayer");
+            AddSheet(SheetCategory.battle_backgrounds, 2, "backgrounds/backgrounds_foregroundLayer");
+
 
             Console.WriteLine("Spritesheets Have Been Set Up");
         }
@@ -146,6 +151,8 @@ namespace TeamJRPG
                     return 11;
                 case SheetCategory.entity_icon_backgrounds:
                     return 12;
+                case SheetCategory.battle_backgrounds:
+                    return 13;
             }
             return -1;
         }

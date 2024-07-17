@@ -210,13 +210,18 @@ namespace TeamJRPG
                     }
                 }
 
-
                 Globals.camera.Update();
 
 
             }
 
 
+
+            if (Globals.currentGameState == Globals.GameState.battle)
+            {
+                Globals.battleManager.Update();
+                Globals.camera.Update();
+            }
 
 
             Globals.uiManager.Update();
@@ -246,6 +251,12 @@ namespace TeamJRPG
 
                 underDraw.Clear();
                 overDraw.Clear();
+            }
+
+
+            if(Globals.currentGameState == Globals.GameState.battle)
+            {
+                Globals.battleManager.Draw();
             }
             
 

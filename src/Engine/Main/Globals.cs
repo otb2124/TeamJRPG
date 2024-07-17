@@ -22,7 +22,7 @@ namespace TeamJRPG
         public enum GameMode { playmode, debugmode }
         public static GameMode currentGameMode;
 
-        public enum GameState { playstate, ingamemenustate, mainmenustate, dialoguestate }
+        public enum GameState { playstate, ingamemenustate, mainmenustate, dialoguestate, battle }
         public static GameState currentGameState;
 
         public static List<Entity> currentEntities;
@@ -53,7 +53,7 @@ namespace TeamJRPG
         
         public static DialogueData dialogueData { get; set; }
 
-
+        public static BattleManager battleManager { get; set; }
 
 
         public static void Init()
@@ -69,6 +69,7 @@ namespace TeamJRPG
             inventoryHandler = new InventoryHandler();
             commandManager = new CommandManager();
             eventManager = new EventManager();
+            battleManager = new BattleManager();
 
             camera = new Camera(graphics.GraphicsDevice.Viewport);
         }

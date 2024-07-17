@@ -44,6 +44,9 @@ namespace TeamJRPG
 
 
 
+
+
+
         public void SetTextures()
         {
 
@@ -53,7 +56,7 @@ namespace TeamJRPG
             switch (mobID)
             {
                 case 0:
-                    skinColor = Color.Black;
+                    skinColor = Color.Green;
                     hairColor = RandomHelper.RandomColor();
                     eyeColor = RandomHelper.RandomColor();
 
@@ -134,20 +137,32 @@ namespace TeamJRPG
 
         public override void Update()
         {
-            anims.Update(new Tuple<LiveEntity.Direction, LiveEntity.AnimationState>(direction, animationState));
-            this.currentStatus = Status.idle;
+            if (Globals.currentGameState == Globals.GameState.battle)
+            {
+                anims.Update(new Tuple<LiveEntity.Direction, LiveEntity.AnimationState>(direction, animationState));
 
 
-            FollowInAggroRange(Globals.player, aggroDistance.X, aggroDistance.Y);
+                this.currentStatus = Status.idle;
 
-            HandleCollisions();
+                animationState = SwitchStatusToAnimation();
+            }
+            else
+            {
 
-            this.collisionBox.Location = new System.Drawing.PointF(this.position.X + (Globals.tileSize.X - collisionBox.Width) / 2, this.position.Y + Globals.tileSize.Y / 2);
+                anims.Update(new Tuple<LiveEntity.Direction, LiveEntity.AnimationState>(direction, animationState));
+                this.currentStatus = Status.idle;
 
-            base.Update();
 
-            animationState = SwitchStatusToAnimation();
+                FollowInAggroRange(Globals.player, aggroDistance.X, aggroDistance.Y);
 
+                HandleCollisions();
+
+                this.collisionBox.Location = new System.Drawing.PointF(this.position.X + (Globals.tileSize.X - collisionBox.Width) / 2, this.position.Y + Globals.tileSize.Y / 2);
+
+                base.Update();
+
+                animationState = SwitchStatusToAnimation();
+            }
 
         }
 

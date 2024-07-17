@@ -20,7 +20,7 @@ namespace TeamJRPG
         private Vector2 playerOffset;
 
         public bool FollowPlayer = false;
-        private readonly float transitionSpeed = 0.1f; // Adjust the currentSpeed of the transition as necessary
+        private readonly float transitionSpeed = 0.1f; // Adjust the speed of the transition as necessary
 
         public Entity focusEntity;
 
@@ -41,21 +41,64 @@ namespace TeamJRPG
 
         public void Reload()
         {
-            if(Globals.currentGameState == Globals.GameState.playstate)
+            if (Globals.currentGameState == Globals.GameState.playstate)
             {
                 position = Globals.player.position;
-                targetPosition = position;
                 ClampTargetPosition();
             }
-            else
+            else if(Globals.currentGameState == Globals.GameState.mainmenustate)
             {
                 position = Vector2.Zero;
             }
-            
+            else if(Globals.currentGameState == Globals.GameState.battle)
+            {
+                position.X = Globals.battleManager.background.foreGroundWidth/2;
+                position.Y = viewport.Height / 2;
+                ClampBattlePosition();
+            }
+
+            targetPosition = position;
+
             UpdateTransform();
         }
 
         public void Update()
+        {
+            if (Globals.currentGameState == Globals.GameState.battle)
+            {
+                if (Globals.inputManager.IsKeyPressed(Keys.Left)) { position += new Vector2(-5, 0); }
+                if (Globals.inputManager.IsKeyPressed(Keys.Right)) { position += new Vector2(5, 0); }
+                ClampBattlePosition();
+            }
+            else
+            {
+                HandleManualMovement();
+
+                if (Globals.inputManager.IsKeyPressed(Keys.OemPlus)) Zoom(0.05f);
+                if (Globals.inputManager.IsKeyPressed(Keys.OemMinus)) Zoom(-0.05f);
+
+                if (Globals.inputManager.IsKeyPressedAndReleased(Keys.OemTilde))
+                {
+                    FollowPlayer = !FollowPlayer;
+                    if (FollowPlayer)
+                    {
+                        targetPosition = Globals.player.position;
+                    }
+                }
+
+                if (FollowPlayer)
+                {
+                    FollowPlayerWithThreshold();
+                }
+
+                ClampTargetPosition();
+                SmoothMoveToTarget();
+            }
+
+            UpdateTransform();
+        }
+
+        private void HandleManualMovement()
         {
             bool manualMove = false;
 
@@ -68,28 +111,6 @@ namespace TeamJRPG
             {
                 FollowPlayer = false;
             }
-
-            if (Globals.inputManager.IsKeyPressed(Keys.OemPlus)) Zoom(0.05f);
-            if (Globals.inputManager.IsKeyPressed(Keys.OemMinus)) Zoom(-0.05f);
-
-            if (Globals.inputManager.IsKeyPressedAndReleased(Keys.OemTilde))
-            {
-                FollowPlayer = !FollowPlayer;
-                if (FollowPlayer)
-                {
-                    targetPosition = Globals.player.position;
-                }
-            }
-
-            if (FollowPlayer)
-            {
-                FollowPlayerWithThreshold();
-            }
-
-            
-            ClampTargetPosition();
-            SmoothMoveToTarget();
-            UpdateTransform();
         }
 
         private void FollowPlayerWithThreshold()
@@ -113,8 +134,6 @@ namespace TeamJRPG
             position = Vector2.Lerp(position, targetPosition, transitionSpeed); // Adjust the lerp factor as needed
         }
 
-
-
         public void FocusOn(Vector2 targetPosition)
         {
             this.targetPosition = targetPosition;
@@ -127,8 +146,6 @@ namespace TeamJRPG
         {
             FocusOn(focusEntity.position);
         }
-
-
 
         public void Zoom(float delta)
         {
@@ -146,12 +163,28 @@ namespace TeamJRPG
             targetPosition.X = MathHelper.Clamp(targetPosition.X, cameraWidth / 2, Globals.currentMap.mapSize.X * Globals.tileSize.X - cameraWidth / 2);
             targetPosition.Y = MathHelper.Clamp(targetPosition.Y, cameraHeight / 2, Globals.currentMap.mapSize.Y * Globals.tileSize.Y - cameraHeight / 2);
 
-            if (!FollowPlayer)
+            if (!FollowPlayer && Globals.currentGameState != Globals.GameState.battle)
             {
                 Vector2 playerPosition = Globals.player.position;
                 targetPosition.X = MathHelper.Clamp(targetPosition.X, playerPosition.X - MAX_DISTANCE_FROM_PLAYER.X, playerPosition.X + MAX_DISTANCE_FROM_PLAYER.X);
                 targetPosition.Y = MathHelper.Clamp(targetPosition.Y, playerPosition.Y - MAX_DISTANCE_FROM_PLAYER.Y, playerPosition.Y + MAX_DISTANCE_FROM_PLAYER.Y);
             }
+        }
+
+
+        private void ClampBattlePosition()
+        {
+            float cameraWidth = viewport.Width / zoom;
+            float cameraHeight = viewport.Height / zoom;
+
+            // Ensure camera stays within the bounds defined by the background and foreground layers
+            float minX = viewport.Width/2;
+            float maxX = Globals.battleManager.background.foreGroundWidth - viewport.Width/2;
+            float minY = cameraHeight / 2;
+            float maxY = Globals.currentMap.mapSize.Y * Globals.tileSize.Y - cameraHeight / 2;
+
+            position.X = MathHelper.Clamp(position.X, minX, maxX);
+            position.Y = MathHelper.Clamp(position.Y, minY, maxY);
         }
 
         private void UpdateTransform()

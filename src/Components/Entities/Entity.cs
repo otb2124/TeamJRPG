@@ -124,7 +124,7 @@ namespace TeamJRPG
         {
             mapPosition = GetMapPos();
 
-
+            Vector2 scale = new Vector2(Globals.gameScale, Globals.gameScale);
 
             for (int i = 0; i < sprites.Length; i++)
             {
@@ -134,7 +134,7 @@ namespace TeamJRPG
                     drawColor = Color.Red;
                 }
 
-                sprites[i].Draw(drawPosition, drawColor, 0, Vector2.Zero, new Vector2(Globals.gameScale, Globals.gameScale), SpriteEffects.None, 0);
+                sprites[i].Draw(drawPosition, drawColor, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
             }
 
 
