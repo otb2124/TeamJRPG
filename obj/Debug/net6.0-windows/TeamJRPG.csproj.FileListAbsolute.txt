@@ -62,3 +62,6 @@ C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\u
 C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\backgrounds\backgrounds_backgroundLayer.png
 C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\backgrounds\backgrounds_foregroundLayer.png
 C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\backgrounds\backgrounds_midgroundLayer.png
+C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\ui\battle_sprites.png
+C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\backgrounds\backgrounds_midbackgroundLayer.png
+C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\ui\skills_ui.png

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace TeamJRPG
@@ -12,7 +13,7 @@ namespace TeamJRPG
 
         public Vector2 frameSize;
 
-        public Button(Sprite sprite, Vector2 startPosition, float scale, int id, string floatingHint)
+        public Button(Sprite sprite, Vector2 startPosition, float scale, int id, List<string> floatingHint)
         {
             this.type = UICompositeType.BUTTON;
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
@@ -22,7 +23,7 @@ namespace TeamJRPG
             ImageHolder img = new ImageHolder(sprite, startPosition, Color.White, new Vector2(scale, scale), null);
             if (floatingHint != null)
             {
-                img.floatingText.Add(floatingHint);
+                img.floatingText.AddRange(floatingHint);
             }
 
             frameSize = new Vector2(sprite.srcRect.Width *scale, sprite.srcRect.Height *scale);
@@ -53,6 +54,8 @@ namespace TeamJRPG
 
                     switch (id)
                     {
+                        case -1:
+                            break;
                         case 0:
                             Globals.currentGameState = Globals.GameState.playstate;
                             Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
@@ -213,6 +216,12 @@ namespace TeamJRPG
                             break;
                         case 55:
                             Globals.Exit();
+                            break;
+
+
+                        //battle
+                        case 60:
+                            Debug.WriteLine("Escape");
                             break;
 
 

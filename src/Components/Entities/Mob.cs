@@ -40,6 +40,7 @@ namespace TeamJRPG
 
             SetTextures();
             SetAnimations();
+            SetSkills();
         }
 
 
@@ -56,7 +57,11 @@ namespace TeamJRPG
             switch (mobID)
             {
                 case 0:
-                    skinColor = Color.Green;
+
+
+                    name = "Bandit";
+
+                    skinColor = Color.Red;
                     hairColor = RandomHelper.RandomColor();
                     eyeColor = RandomHelper.RandomColor();
 
@@ -132,7 +137,18 @@ namespace TeamJRPG
         }
 
 
-        
+        public override void SetSkills()
+        {
+
+            base.SetSkills();
+
+            switch (mobID)
+            {
+                case 0:
+                    
+                    break;
+            }
+        }
 
 
         public override void Update()

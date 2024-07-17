@@ -23,17 +23,20 @@ namespace TeamJRPG
 
             // Load background, midground, and foreground sprites
             Sprite background = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 0, new Vector2(0, setID * 720), new Vector2(1280, 720));
+            Sprite midbackground = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 2, new Vector2(0, setID * 720), new Vector2(1280 * 1.1f, 720));
             Sprite midground = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 1, new Vector2(0, setID * 720), new Vector2(1600, 720));
-            Sprite foreground = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 2, new Vector2(0, setID * 720), new Vector2(1920, 720));
+            Sprite foreground = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 3, new Vector2(0, setID * 720), new Vector2(1920, 720));
 
             foreGroundWidth = foreground.Width;
 
             layers.Add(background);
+            layers.Add(midbackground);
             layers.Add(midground);
             layers.Add(foreground);
 
             // Set speeds for parallax scrolling effect (adjust these values as needed)
             layerSpeeds.Add(1.0f);  // background moves slower
+            layerSpeeds.Add(0.8f);
             layerSpeeds.Add(0.6f);  // midground moves at medium speed
             layerSpeeds.Add(0.1f);  // foreground moves faster
 

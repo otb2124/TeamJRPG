@@ -62,7 +62,7 @@ namespace TeamJRPG
 
         public override void Update()
         {
-            if(Globals.currentGameState == Globals.GameState.ingamemenustate || Globals.currentGameState == Globals.GameState.dialoguestate)
+            if(Globals.currentGameState == Globals.GameState.ingamemenustate || Globals.currentGameState == Globals.GameState.dialoguestate || Globals.currentGameState == Globals.GameState.battle)
             {
                 if (floatingText.Count > 0)
                 {

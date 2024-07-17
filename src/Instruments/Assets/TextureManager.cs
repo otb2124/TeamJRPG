@@ -77,6 +77,8 @@ namespace TeamJRPG
             //ui
             AddSheet(SheetCategory.ui, 0, "ui/ui_spritesheet");
             AddSheet(SheetCategory.ui, 1, "ui/menu_title");
+            AddSheet(SheetCategory.ui, 2, "ui/battle_sprites");
+            AddSheet(SheetCategory.ui, 3, "ui/skills_ui");
 
             //placeholders
             AddSheet(SheetCategory.placeholders, 0, "placeholders/placeholder_spritesheet");
@@ -84,7 +86,8 @@ namespace TeamJRPG
             //battleBackGrounds
             AddSheet(SheetCategory.battle_backgrounds, 0, "backgrounds/backgrounds_backgroundLayer");
             AddSheet(SheetCategory.battle_backgrounds, 1, "backgrounds/backgrounds_midgroundLayer");
-            AddSheet(SheetCategory.battle_backgrounds, 2, "backgrounds/backgrounds_foregroundLayer");
+            AddSheet(SheetCategory.battle_backgrounds, 2, "backgrounds/backgrounds_midbackgroundLayer");
+            AddSheet(SheetCategory.battle_backgrounds, 3, "backgrounds/backgrounds_foregroundLayer");
 
 
             Console.WriteLine("Spritesheets Have Been Set Up");

@@ -6625,8 +6625,8 @@
           "characterIconBackGroundID": 0,
           "skinColor": {
             "b": 0,
-            "g": 255,
-            "r": 0,
+            "g": 0,
+            "r": 255,
             "a": 255
           },
           "hairColor": {
@@ -6667,7 +6667,7 @@
           "bowSkill": 0.0,
           "crossbowSkill": 0.0,
           "magicSkill": 0.0,
-          "name": null,
+          "name": "Bandit",
           "currentDialogueId": 0,
           "entityType": 2,
           "mapPosition": {

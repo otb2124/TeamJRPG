@@ -7,6 +7,7 @@ namespace TeamJRPG
     {
 
         public float alpha;
+        private float duration;
         public Entity entity;
         public ImageHolder pointer;
         public Sprite pointerSprite;
@@ -14,13 +15,18 @@ namespace TeamJRPG
         public Vector2 reposition;
         public Vector2 scale;
 
-        public CurrentCharacterPointer(Entity entity, float duration) 
+        public CurrentCharacterPointer(Entity entity, float duration = -1) 
         {
             type = UICompositeType.CURRENT_CHARACTER_POINTER;
 
+            this.duration = duration;
             this.alpha = duration;
             this.entity = entity;
             pointerSprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32, 0), new Vector2(32, 32));
+            if(duration == -1)
+            {
+                pointerSprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 2, new Vector2(32, 0), new Vector2(32, 32));
+            }
             Sprite entitySprite = entity.sprites[0];
             scale = new Vector2(2, 2);
             float xOffset = (entitySprite.Width*Globals.gameScale - pointerSprite.Width * scale.X) / 2;
@@ -32,8 +38,16 @@ namespace TeamJRPG
 
         public override void Update()
         {
-            alpha-=0.05f;
-
+            if(duration != -1)
+            {
+                alpha -= 0.05f;
+            }
+            else
+            {
+                alpha = 1;
+            }
+            
+            
 
 
             RefreshPointer();
@@ -53,7 +67,16 @@ namespace TeamJRPG
         {
             children.Clear();
 
-            position = entity.position;
+            if(Globals.currentGameState == Globals.GameState.battle)
+            {
+                LiveEntity lent = (LiveEntity)entity;
+                position = lent.battleScreenPosition;
+            }
+            else
+            {
+                position = entity.position;
+            }
+            
             reposition = new Vector2(position.X - Globals.camera.position.X + Globals.camera.viewport.Width / 2, position.Y - Globals.camera.position.Y + Globals.camera.viewport.Height / 2);
             pointer = new ImageHolder(pointerSprite, reposition + offset, Color.White * alpha, scale, null);
 

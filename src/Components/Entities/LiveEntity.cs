@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace TeamJRPG
 {
@@ -113,9 +114,12 @@ namespace TeamJRPG
 
         public int currentDialogueId;
 
+
+        public List<Skill> skills;
+
         public LiveEntity(Point mapPosition) : base(mapPosition)
         {
-            
+            skills = new List<Skill>();
         }
 
 
@@ -311,7 +315,17 @@ namespace TeamJRPG
 
 
 
-        
+        // BATTLE
+
+        public virtual void SetSkills()
+        {
+            if (skills.Count == 0)
+            {
+                skills.Add(new Skill(0));
+                skills.Add(new Skill(1));
+                skills.Add(new Skill(2));
+            }
+        }
 
 
 

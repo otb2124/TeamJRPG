@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
 
 
 
@@ -65,6 +66,7 @@ namespace TeamJRPG
             SetTextures();
             SetAnimations();
             SetEquipment();
+            SetSkills();
         }
 
 
@@ -152,7 +154,11 @@ namespace TeamJRPG
         }
 
 
-        
+        public override void SetSkills()
+        {
+            base.SetSkills();
+        }
+
 
 
         public override void Update()
@@ -164,6 +170,7 @@ namespace TeamJRPG
 
 
                 this.currentStatus = Status.idle;
+                this.direction = Direction.right;
 
                 animationState = SwitchStatusToAnimation();
             }
@@ -240,8 +247,6 @@ namespace TeamJRPG
                 }
                 else if(collidedEntity is Mob mob)
                 {
-                    Globals.currentGameState = Globals.GameState.battle;
-                    direction = Direction.right;
                     Globals.battleManager.StartBatlle(mob);
                 }
             }

@@ -1,8 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SharpDX.Direct2D1.Effects;
-using SharpDX.MediaFoundation;
-using System;
 using System.Collections.Generic;
 
 namespace TeamJRPG
@@ -40,6 +36,7 @@ namespace TeamJRPG
             {
                 0 => Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, Vector2.Zero, new Vector2(32, 32)),
                 1 => Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0, 32 * 5), new Vector2(64, 64)),
+                2 => Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, Vector2.Zero, new Vector2(32, 32)),
                 _ => null
             };
             ImageHolder frame = new ImageHolder(frameTexture, adjustedPosition, Color.White, scale, stroke);
@@ -48,14 +45,20 @@ namespace TeamJRPG
             children.Add(charac);
             children.Add(frame);
 
-            if (frameType == 1)
+            if (frameType == 1 || frameType == 2)
             {
-                bars = new List<UIComposite>();
+                
                 charac.floatingText.Add(entity.currentHP + "/" + entity.maxHP);
                 charac.floatingTextColors.Add(Color.Red);
                 charac.floatingText.Add(entity.currentMana + "/" + entity.maxMana);
                 charac.floatingTextColors.Add(Color.Blue);
-                RefreshBars();
+
+                if(frameType == 1)
+                {
+                    bars = new List<UIComposite>();
+                    RefreshBars();
+                }
+                
             }
 
             foreach (var component in components)

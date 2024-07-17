@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 
 namespace TeamJRPG
@@ -23,7 +24,7 @@ namespace TeamJRPG
 
             for (int i = 0; i < 9; i++)
             {
-                Button button = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(i * 32, 32*2), new Vector2(32, 32)), new Vector2(padding.X, padding.Y + ((Globals.camera.viewport.Height-32)/9 *i)), 2, i, hints[i]);
+                Button button = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(i * 32, 32*2), new Vector2(32, 32)), new Vector2(padding.X, padding.Y + ((Globals.camera.viewport.Height-32)/9 *i)), 2, i, new List<string> { hints[i] });
                 children.Add(button);
             }
 

@@ -173,7 +173,7 @@ namespace TeamJRPG
 
                     Globals.player.interractedEntity = talkingEntity;
                     Globals.currentGameState = Globals.GameState.dialoguestate;
-                    Globals.uiManager.currentMenuState = UIManager.MenuState.dialogueText;
+                    Globals.uiManager.currentMenuState = UIManager.MenuState.dialogue;
                     Globals.uiManager.MenuStateNeedsChange = true;
                     Globals.camera.FocusOnEntity();
 
