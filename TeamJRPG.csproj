@@ -207,7 +207,6 @@
   <ItemGroup>
     <Folder Include="Content\res\characters\battleSprites\" />
     <Folder Include="Content\res\characters\characterDetails\" />
-    <Folder Include="Content\res\maps\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\res\effects\CircularMask.fx">

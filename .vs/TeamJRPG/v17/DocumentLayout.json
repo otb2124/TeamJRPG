@@ -407,10 +407,6 @@
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:icon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\content\\res\\maps\\map0.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:content\\res\\maps\\map0.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|c:\\users\\orest\\downloads\\pojects\\teamjrpg\\content\\lib\\python\\testscript.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{33FFF8CA-0FE9-4B1D-85E2-DB86CBD823FF}|TeamJRPG.csproj|solutionrelative:content\\lib\\python\\testscript.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
@@ -422,21 +418,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 160,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\GameManager.cs",
-              "RelativeDocumentMoniker": "src\\Engine\\Main\\GameManager.cs",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\GameManager.cs",
-              "RelativeToolTip": "src\\Engine\\Main\\GameManager.cs",
-              "ViewState": "AQIAAL8AAAAAAAAAAAAgwN0AAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T10:30:36.777Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 7,
@@ -471,7 +454,7 @@
               "RelativeDocumentMoniker": "src\\Components\\Entities\\GroupMember.cs",
               "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Components\\Entities\\GroupMember.cs",
               "RelativeToolTip": "src\\Components\\Entities\\GroupMember.cs",
-              "ViewState": "AQIAANwAAAAAAAAAAAAIwPMAAAAwAAAA",
+              "ViewState": "AQIAANwAAAAAAAAAAAAIwO0AAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-27T21:25:31.265Z",
               "EditorCaption": ""
@@ -513,6 +496,19 @@
               "ViewState": "AQIAAAUAAAAAAAAAAAAxwB0AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-17T09:30:19.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\GameManager.cs",
+              "RelativeDocumentMoniker": "src\\Engine\\Main\\GameManager.cs",
+              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\src\\Engine\\Main\\GameManager.cs",
+              "RelativeToolTip": "src\\Engine\\Main\\GameManager.cs",
+              "ViewState": "AQIAAL8AAAAAAAAAAAAgwN0AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T10:30:36.777Z",
               "EditorCaption": ""
             },
             {
@@ -1663,18 +1659,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 101,
-              "Title": "map0.json",
-              "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\maps\\map0.json",
-              "RelativeDocumentMoniker": "Content\\res\\maps\\map0.json",
-              "ToolTip": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\res\\maps\\map0.json",
-              "RelativeToolTip": "Content\\res\\maps\\map0.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-26T16:10:48.765Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 102,
               "Title": "TestScript.py",
               "DocumentMoniker": "C:\\Users\\orest\\Downloads\\pojects\\TeamJRPG\\Content\\lib\\python\\TestScript.py",
               "RelativeDocumentMoniker": "Content\\lib\\python\\TestScript.py",
