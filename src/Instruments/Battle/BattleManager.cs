@@ -106,6 +106,26 @@ namespace TeamJRPG
         public void InitEnemyTurn()
         {
 
+            GenerateEnemyTurn();
+
+
+            InitializeTargetList();
+            for (int i = 0; i < targetIDList.Length; i++)
+            {
+                targetIDList[i] = RandomHelper.RandomInteger(0, leftSide.Count);
+            }
+            InitCast();
+
+
+
+
+
+        }
+
+
+
+        public void GenerateEnemyTurn()
+        {
             int usableTypeChoice = RandomHelper.RandomInteger(0, 1);
 
             //skill
@@ -144,19 +164,6 @@ namespace TeamJRPG
                     InitEnemyTurn();
                 }
             }
-
-
-            InitializeTargetList();
-            for (int i = 0; i < targetIDList.Length; i++)
-            {
-                targetIDList[i] = RandomHelper.RandomInteger(0, leftSide.Count);
-            }
-            InitCast();
-
-
-
-
-
         }
 
 

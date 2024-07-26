@@ -53,7 +53,7 @@ namespace TeamJRPG
                 {
                     if (!LabelUpdated)
                     {
-                        RepaintLabel(Color.Orange);
+                        RepaintLabel(labelOriginalColor*0.75f);
 
                         LabelUpdated = true;
                     }

@@ -6374,7 +6374,7 @@
           "isPlayer": false,
           "bodySpriteSheetID": 0,
           "characterIconID": 0,
-          "characterIconBackGroundID": 3,
+          "characterIconBackGroundID": 5,
           "skinColor": {
             "b": 166,
             "g": 112,
@@ -6461,7 +6461,7 @@
           "isPlayer": false,
           "bodySpriteSheetID": 0,
           "characterIconID": 0,
-          "characterIconBackGroundID": 0,
+          "characterIconBackGroundID": 4,
           "skinColor": {
             "b": 64,
             "g": 182,
@@ -6548,7 +6548,7 @@
           "isPlayer": false,
           "bodySpriteSheetID": 0,
           "characterIconID": 0,
-          "characterIconBackGroundID": 1,
+          "characterIconBackGroundID": 6,
           "skinColor": {
             "b": 64,
             "g": 224,
@@ -6635,7 +6635,7 @@
           "isPlayer": true,
           "bodySpriteSheetID": 0,
           "characterIconID": 0,
-          "characterIconBackGroundID": 2,
+          "characterIconBackGroundID": 7,
           "skinColor": {
             "b": 26,
             "g": 151,
