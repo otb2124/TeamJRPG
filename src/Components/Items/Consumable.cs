@@ -15,7 +15,8 @@ namespace TeamJRPG
         [JsonIgnore]
         public ConsumableType consumableType;
 
-
+        [JsonIgnore]
+        public Cast[] casts;
 
 
         [JsonConstructor]
@@ -39,16 +40,23 @@ namespace TeamJRPG
                 case 0:
                     name = "Lesser Healing Potion";
                     consumableType = ConsumableType.potion;
-                    description = "Looks tasty.";
+                    description = "Restores 100 health points.";
                     value = 25;
+
+                    casts = new Cast[1];
+                    casts[0] = new Cast(Cast.CastTargetType.allySelf, 1, Cast.CastType.hp, 100);
+
 
                     textureID = 0;
                     break;
                 case 1:
                     name = "Shiny Apple";
                     consumableType = ConsumableType.food;
-                    description = "Looks really tasty.";
+                    description = "Restores 5 health points.";
                     value = 1;
+
+                    casts = new Cast[1];
+                    casts[0] = new Cast(Cast.CastTargetType.allySelf, 1, Cast.CastType.hp, 100);
 
                     textureID = 1;
                     break;

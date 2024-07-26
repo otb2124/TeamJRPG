@@ -33,13 +33,13 @@ namespace TeamJRPG
             Sprite buttonTexture = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0, 32*3), new Vector2(32, 32));
             Vector2 buttonOffset = new Vector2(20, 0);
 
-            Button leftArrow = new Button(buttonTexture, new Vector2(framePos.X + frameSize.X/2 + currentCharacter.position.X - buttonTexture.srcRect.Width - buttonOffset.X, framePos.Y + currentCharacter.charSprite.srcRect.Height / 2 - buttonTexture.srcRect.Height / 3), 1, 13, new List<string> { "Previous" });
+            Button leftArrow = new Button(buttonTexture, new Vector2(framePos.X + frameSize.X/2 + currentCharacter.position.X - buttonTexture.srcRect.Width - buttonOffset.X, framePos.Y + currentCharacter.charSprite.srcRect.Height / 2 - buttonTexture.srcRect.Height / 3), Vector2.One, 13, new List<string> { "Previous" });
             for (int i = 0; i < leftArrow.children[0].components.Count; i++)
             {
                 leftArrow.children[0].components[i].spriteEffects = SpriteEffects.FlipHorizontally;
             }
 
-            Button rightArrow = new Button(buttonTexture, new Vector2(framePos.X + frameSize.X / 2 + currentCharacter.position.X + currentCharacter.charSprite.srcRect.Width + buttonOffset.X, framePos.Y + currentCharacter.charSprite.srcRect.Height / 2 - buttonTexture.srcRect.Height / 3), 1, 14, new List<string> { "Next" });
+            Button rightArrow = new Button(buttonTexture, new Vector2(framePos.X + frameSize.X / 2 + currentCharacter.position.X + currentCharacter.charSprite.srcRect.Width + buttonOffset.X, framePos.Y + currentCharacter.charSprite.srcRect.Height / 2 - buttonTexture.srcRect.Height / 3), Vector2.One, 14, new List<string> { "Next" });
 
             children.Add(leftArrow);
             children.Add(rightArrow);

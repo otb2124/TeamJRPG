@@ -45,7 +45,6 @@ namespace TeamJRPG
             SetAnimations();
             SetEquipment();
 
-
         }
 
         [OnDeserialized]
@@ -66,7 +65,7 @@ namespace TeamJRPG
             SetTextures();
             SetAnimations();
             SetEquipment();
-            SetSkills();
+
         }
 
 
@@ -153,11 +152,6 @@ namespace TeamJRPG
 
         }
 
-
-        public override void SetSkills()
-        {
-            base.SetSkills();
-        }
 
 
 
@@ -247,7 +241,7 @@ namespace TeamJRPG
                 }
                 else if(collidedEntity is Mob mob)
                 {
-                    Globals.battleManager.StartBatlle(mob);
+                    Globals.battleManager.StartBattle(mob);
                 }
             }
 
@@ -382,7 +376,7 @@ namespace TeamJRPG
 
         public override void Draw()
         {
-            drawPosition = new Vector2(position.X, position.Y-Globals.tileSize.Y);
+            drawPosition = new Vector2(position.X + (LiveEntity.DEFAULT_HUMANOID_BODY_SPRITE_SIZE.X - anims.GetCurrentFrame().Width), position.Y-Globals.tileSize.Y);
             sprites[0].srcRect = anims.GetCurrentFrame();
 
             base.Draw();

@@ -9,7 +9,7 @@ namespace TeamJRPG
         {
             if (args.Length < 2)
             {
-                Console.WriteLine("Usage: info <type of info> <attribute>");
+                Console.WriteLine("Usage: info <type of info> <castType>");
                 return;
             }
             else

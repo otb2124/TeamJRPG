@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
+
 
 namespace TeamJRPG
 {
@@ -93,7 +93,7 @@ namespace TeamJRPG
         public int currentExp = 0;
         public int skillPoints = 0;
 
-        // battle attributes
+        // battle_menu attributes
         public int strength = 0;
         public int dexterity = 0;
         public int wisdom = 0;
@@ -116,10 +116,12 @@ namespace TeamJRPG
 
 
         public List<Skill> skills;
+        public List<Action> actions;
 
         public LiveEntity(Point mapPosition) : base(mapPosition)
         {
             skills = new List<Skill>();
+            actions = new List<Action>();
         }
 
 
@@ -160,7 +162,7 @@ namespace TeamJRPG
 
             if(Globals.currentGameState == Globals.GameState.battle)
             {
-                drawPosition = battleScreenPosition;
+                drawPosition = new Vector2(battleScreenPosition.X + (LiveEntity.DEFAULT_HUMANOID_BODY_SPRITE_SIZE.X - anims.GetCurrentFrame().Width), battleScreenPosition.Y);
             }
             
             base.Draw();
@@ -268,7 +270,7 @@ namespace TeamJRPG
 
                     position += movementDirection * currentSpeed;
 
-                    // Set the direction attribute based on the movement direction
+                    // Set the direction castType based on the movement direction
                     if (Math.Abs(movementDirection.X) > Math.Abs(movementDirection.Y))
                     {
                         if (movementDirection.X > 0)
@@ -309,22 +311,6 @@ namespace TeamJRPG
         {
             characterIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icons, 0, new Vector2(32 * this.characterIconID, 0), new Vector2(64, 64));
             backGroundIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icon_backgrounds, 0, new Vector2(32 * this.characterIconBackGroundID, 0), new Vector2(32, 32));
-        }
-
-
-
-
-
-        // BATTLE
-
-        public virtual void SetSkills()
-        {
-            if (skills.Count == 0)
-            {
-                skills.Add(new Skill(0));
-                skills.Add(new Skill(1));
-                skills.Add(new Skill(2));
-            }
         }
 
 

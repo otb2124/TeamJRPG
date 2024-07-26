@@ -10,20 +10,15 @@ namespace TeamJRPG
     public class Skill
     {
 
-        public enum SkillType { attacking, defending, boosting }
-        [JsonIgnore]
-        public SkillType type { get; set; }
-        public enum CastType { self, singleTarget, groupTarget, allEnemy, allAlly, all }
-        [JsonIgnore]
-        public CastType castType { get; set; }
-
-
         public int skillId;
 
         [JsonIgnore]
         public string name;
         [JsonIgnore]
         public string description;
+
+        [JsonIgnore]
+        public Cast[] casts;
 
         public int skillLevel;
 
@@ -32,7 +27,6 @@ namespace TeamJRPG
         public Skill(int skillId)
         {
             this.skillId = skillId;
-            this.skillLevel = 1;
             SetSkill();
         }
 
@@ -44,23 +38,27 @@ namespace TeamJRPG
             {
                 case 0:
                     name = "Common Hit";
-                    description = "Character hits a chosen enemy with his might and strength.";
-                    type = SkillType.attacking;
-                    castType = CastType.singleTarget;
+                    description = "Character hits a chosen enemy with their might and strength.";
+
+                    casts = new Cast[1];
+                    casts[0] = new Cast(Cast.CastTargetType.anySelf, 1, Cast.CastType.hp, -1);
 
                     break;
                 case 1:
                     name = "Block";
-                    description = "Character gethers his all power and endurance to block the next incomming hit completely or partly.";
-                    type = SkillType.defending;
-                    castType = CastType.self;
+                    description = "Character gethers their all power and endurance to block the next incomming hit completely or partly.";
+
+                    casts = new Cast[1];
+                    casts[0] = new Cast(Cast.CastTargetType.self, 1, Cast.CastType.block, 10);
+
 
                     break;
                 case 2:
                     name = "Heal";
-                    description = "Character restores a part of health for chosen ally or enemy.";
-                    type = SkillType.boosting;
-                    castType = CastType.singleTarget;
+                    description = "Character restores 10 health points for two characters.";
+
+                    casts = new Cast[1];
+                    casts[0] = new Cast(Cast.CastTargetType.allySelf, 2, Cast.CastType.hp, 1);
 
                     break;
             }

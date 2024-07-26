@@ -58,7 +58,7 @@ namespace TeamJRPG
 
 
 
-            Globals.currentSaveName = "save7.json";
+            Globals.currentSaveName = "save10.json";
 
             Globals.mapReader.ReadMaps(Globals.currentSaveName);
 

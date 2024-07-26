@@ -7,27 +7,28 @@ namespace TeamJRPG
     public class Button : UIComposite
     {
         public bool Activated = false;
+        public bool OnHover = false;
         public int id;
         public System.Drawing.RectangleF buttonBox;
         public string floatingHint;
 
         public Vector2 frameSize;
 
-        public Button(Sprite sprite, Vector2 startPosition, float scale, int id, List<string> floatingHint)
+        public Button(Sprite sprite, Vector2 startPosition, Vector2 scale, int id, List<string> floatingHint)
         {
             this.type = UICompositeType.BUTTON;
             this.position = new Vector2(startPosition.X - Globals.camera.viewport.Width / 2, startPosition.Y - Globals.camera.viewport.Height / 2);
             this.id = id;
 
 
-            ImageHolder img = new ImageHolder(sprite, startPosition, Color.White, new Vector2(scale, scale), null);
+            ImageHolder img = new ImageHolder(sprite, startPosition, Color.White, scale, null);
             if (floatingHint != null)
             {
                 img.floatingText.AddRange(floatingHint);
             }
 
-            frameSize = new Vector2(sprite.srcRect.Width *scale, sprite.srcRect.Height *scale);
-            buttonBox = new System.Drawing.RectangleF(position.X, position.Y, sprite.srcRect.Width * scale, sprite.srcRect.Height * scale);
+            frameSize = new Vector2(sprite.srcRect.Width *scale.X, sprite.srcRect.Height *scale.Y);
+            buttonBox = new System.Drawing.RectangleF(position.X, position.Y, sprite.srcRect.Width * scale.X, sprite.srcRect.Height * scale.Y);
 
             children.Add(img);
 
@@ -43,9 +44,11 @@ namespace TeamJRPG
         public override void Update()
         {
             Activated = false;
+            
 
             if (buttonBox.Contains(new System.Drawing.PointF(Globals.inputManager.GetCursorPos().X, Globals.inputManager.GetCursorPos().Y)))
             {
+                OnHover = true;
 
                 if (Globals.inputManager.IsMouseButtonClick(InputManager.MouseButton.Left))
                 {
@@ -219,12 +222,28 @@ namespace TeamJRPG
                             break;
 
 
-                        //battle
+                        //battle_menu
                         case 60:
                             Debug.WriteLine("Escape");
                             break;
+                        case 61:
+                            Globals.uiManager.currentMenuState = UIManager.MenuState.battle_skills_menu;
+                            Globals.uiManager.MenuStateNeedsChange = true;
+                            break;
+                        case 62:
+                            Globals.uiManager.currentMenuState = UIManager.MenuState.battle_consumable_menu;
+                            Globals.uiManager.MenuStateNeedsChange = true;
+                            break;
+                        case 63:
+                            Globals.uiManager.currentMenuState = UIManager.MenuState.battle_interraction_menu;
+                            Globals.uiManager.MenuStateNeedsChange = true;
+                            break;
 
 
+                        case 65:
+                            Globals.uiManager.currentMenuState = UIManager.MenuState.battle_menu;
+                            Globals.uiManager.MenuStateNeedsChange = true;
+                            break;
 
 
                         //inventory character swap
@@ -246,6 +265,12 @@ namespace TeamJRPG
                     }
                 }
             }
+            else
+            {
+                OnHover = false;
+            }
+
+            
 
             base.Update();
 

@@ -19,7 +19,7 @@ namespace TeamJRPG
             inGameMenu, charachters, inventory, skills, questBook, statistics, map, settings, exit, clean,
             mainmenu, titlemenu,
             dialogue,
-            battle,  
+            battle_menu, battle_clear, battle_skills_menu, battle_consumable_menu, battle_interraction_menu, battle_target_menu,
         };
         public MenuState currentMenuState;
         public MenuState previousMenuState;
@@ -171,9 +171,59 @@ namespace TeamJRPG
                     }
                     switch (currentMenuState)
                     {
-                        case MenuState.battle:
+                        case MenuState.battle_clear:
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_TURN_BAR, UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU, UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU, UIComposite.UICompositeType.BATTLE_MENU);
                             Add(UIComposite.UICompositeType.BATTLE_TURN_BAR);
-                            Add(UIComposite.UICompositeType.BATTLE_MENU);
+                            
+                            break;
+                        case MenuState.battle_menu:
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_TURN_BAR, UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU, UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU);
+                            Add(UIComposite.UICompositeType.BATTLE_TURN_BAR);
+                            
+                            if (!HasCompositesOfType(UIComposite.UICompositeType.BATTLE_MENU))
+                            {
+                                Add(UIComposite.UICompositeType.BATTLE_MENU);
+                            }
+                            break;
+                        case MenuState.battle_skills_menu:
+                            if (!HasCompositesOfType(UIComposite.UICompositeType.BATTLE_SKILL_MENU))
+                            {
+                                Add(UIComposite.UICompositeType.BATTLE_SKILL_MENU);
+                            }
+                            else
+                            {
+                                RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_SKILL_MENU);
+                            }
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU);
+                            break;
+                        case MenuState.battle_consumable_menu:
+                            if (!HasCompositesOfType(UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU))
+                            {
+                                Add(UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU);
+                            }
+                            else
+                            {
+                                RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU);
+                            }
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU);
+                            break;
+                        case MenuState.battle_interraction_menu:
+                            if (!HasCompositesOfType(UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU))
+                            {
+                                Add(UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU);
+                            }
+                            else
+                            {
+                                RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU);
+                            }
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU, UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU);
+                            break;
+
+                        case MenuState.battle_target_menu:
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_TARGET_MENU);
+                            Add(UIComposite.UICompositeType.BATTLE_TARGET_MENU);
+                            
+                            Globals.camera.Reload();
                             break;
                     }
                 }
@@ -241,7 +291,20 @@ namespace TeamJRPG
                     break;
 
                 case UIComposite.UICompositeType.BATTLE_MENU:
-                    AddElement(new BattleMenu());
+                    AddElement(new BattleActionMenu());
+                    break;
+
+                case UIComposite.UICompositeType.BATTLE_SKILL_MENU:
+                    AddElement(new SkillMenu());
+                    break;
+                case UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU:
+                    AddElement(new ConsumableMenu());
+                    break;
+                case UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU:
+                    AddElement(new InterractionMenu());
+                    break;
+                case UIComposite.UICompositeType.BATTLE_TARGET_MENU:
+                    AddElement(new BattleTargetMenu());
                     break;
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 
@@ -39,15 +40,17 @@ namespace TeamJRPG
                     positionOffset,
                     currentColor,
                     new Vector2(2, 2),
-                    null);
-
+                    null
+                    );
+                
                 CharacterIconHolder cih = new CharacterIconHolder(
                     entity,
                     positionOffset,
                     Vector2.One,
                     null,
                     entity.name,
-                    2);
+                    2
+                    );
 
                 children.Add(frame);
                 children.Add(cih);
@@ -56,6 +59,15 @@ namespace TeamJRPG
 
             CurrentCharacterPointer turnPointer = new CurrentCharacterPointer(Globals.battleManager.all[Globals.battleManager.turnQueue.ElementAt(0)]);
             children.Add(turnPointer);
+
+
+
+            Vector2 escapeMargin = new Vector2(20, 20);
+
+
+
+            Button escapeButton = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 2, new Vector2(0, 32), new Vector2(32, 32)), escapeMargin, new Vector2(2, 2), 60, new List<string> { "Escape", Globals.battleManager.EscapeChance * 100 + "%" });
+            children.Add(escapeButton);
         }
     }
 }

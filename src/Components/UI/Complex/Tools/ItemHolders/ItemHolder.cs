@@ -49,7 +49,7 @@ namespace TeamJRPG
 
             children.Add(icon);
 
-            Label amountLabel = new Label(item.amount.ToString(), position + frameSize / 2, 1, Color.Black, new Stroke(2, Color.White, MonoGame.StrokeType.OutlineAndTexture));
+            Label amountLabel = new Label(item.amount.ToString(), position + frameSize / 2, 1, Color.White, new Stroke(2, Color.Black, MonoGame.StrokeType.OutlineAndTexture));
             if (item.IsStackable && item.amount > 1)
             {
                 children.Add(amountLabel);

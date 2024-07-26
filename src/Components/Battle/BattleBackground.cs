@@ -38,7 +38,7 @@ namespace TeamJRPG
             layerSpeeds.Add(1.0f);  // background moves slower
             layerSpeeds.Add(0.8f);
             layerSpeeds.Add(0.6f);  // midground moves at medium speed
-            layerSpeeds.Add(0.1f);  // foreground moves faster
+            layerSpeeds.Add(0.05f);  // foreground moves faster
 
             // Initialize positions based on initial camera position
             camerapos = new Vector2(Globals.camera.position.X, Globals.camera.position.Y / 2);

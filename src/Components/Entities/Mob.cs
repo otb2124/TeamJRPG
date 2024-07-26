@@ -40,7 +40,6 @@ namespace TeamJRPG
 
             SetTextures();
             SetAnimations();
-            SetSkills();
         }
 
 
@@ -69,7 +68,6 @@ namespace TeamJRPG
 
 
                     sprites[0] = bodySpriteSheet.GetSprite(Vector2.Zero, new Vector2(32, 64));
-
 
                     defaultSpeed = 1.5f;
                     defaultSprintSpeed = 5f;
@@ -137,18 +135,7 @@ namespace TeamJRPG
         }
 
 
-        public override void SetSkills()
-        {
-
-            base.SetSkills();
-
-            switch (mobID)
-            {
-                case 0:
-                    
-                    break;
-            }
-        }
+        
 
 
         public override void Update()
