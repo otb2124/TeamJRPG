@@ -16,7 +16,7 @@ namespace TeamJRPG
         [JsonConstructor]
         public Currency()
         {
-            sprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.items, 0, new Microsoft.Xna.Framework.Vector2(0, 0), new Microsoft.Xna.Framework.Vector2(32, 32));
+            sprite = Globals.textureManager.GetSprite(TextureManager.SheetCategory.items, 0, new Microsoft.Xna.Framework.Vector2(0, 0), new Microsoft.Xna.Framework.Vector2(32, 32));
             type = ItemType.CURRENCY;
             IsStackable = true;
             value = 1;

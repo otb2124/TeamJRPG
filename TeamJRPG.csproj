@@ -118,6 +118,7 @@
     <None Remove="Content\res\placeholders\placeholder_spritesheet.png" />
     <None Remove="Content\res\tiles\tilemap_forest.png" />
     <None Remove="Content\res\ui\battle_sprites.png" />
+    <None Remove="Content\res\ui\gameover_title.png" />
     <None Remove="Content\res\ui\menu_title.png" />
     <None Remove="Content\res\ui\skills_ui.png" />
     <None Remove="Content\res\ui\ui_spritesheet.png" />
@@ -166,6 +167,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\ui\battle_sprites.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\res\ui\gameover_title.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\res\ui\menu_title.png">

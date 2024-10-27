@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -33,12 +34,14 @@ namespace TeamJRPG
         public Color eyeColor;
 
         // states
-        public enum Status { idle, walking, sprinting };
-
+        public enum Status { idle, walking, sprinting, attacking, takingDamage, dead };
         public Status currentStatus;
 
+        public enum BattleStatus { live, dead }
+        public BattleStatus currentBattleStatus;
+
         // animations
-        public enum AnimationState { idle, walking, sprinting };
+        public enum AnimationState { idle, walking, sprinting, attacking, takingDamage, dead };
         public AnimationState animationState;
 
         // body movement
@@ -118,6 +121,17 @@ namespace TeamJRPG
         public List<Skill> skills;
         public List<Action> actions;
 
+        [JsonIgnore]
+        public int attackAnimationDuration;
+        [JsonIgnore]
+        public int attackCounter = 0;
+        [JsonIgnore]
+        public int tdamageAnimationDuration;
+        [JsonIgnore]
+        public int tdamageCounter = 0;
+
+
+
         public LiveEntity(Point mapPosition) : base(mapPosition)
         {
             skills = new List<Skill>();
@@ -130,12 +144,13 @@ namespace TeamJRPG
             if (IsSprinting)
             {
                 currentStatus = Status.sprinting;
-                currentSpeed = currentSprintSpeed;   
+                currentSpeed = currentSprintSpeed;
             }
             else
             {
                 currentSpeed = defaultSpeed;
             }
+
 
             base.Update();
         }
@@ -160,18 +175,18 @@ namespace TeamJRPG
             }
 
 
-            if(Globals.currentGameState == Globals.GameState.battle)
+            if (Globals.currentGameState == Globals.GameState.battleState)
             {
-                drawPosition = new Vector2(battleScreenPosition.X + (LiveEntity.DEFAULT_HUMANOID_BODY_SPRITE_SIZE.X - anims.GetCurrentFrame().Width), battleScreenPosition.Y);
+                drawPosition = new Vector2(battleScreenPosition.X + (LiveEntity.DEFAULT_HUMANOID_BODY_SPRITE_SIZE.X - anims.GetCurrent().GetCurrentFrame().Width), battleScreenPosition.Y);
             }
-            
+
             base.Draw();
         }
 
         // Animations
-        public void AddAnimation(Direction direction, AnimationState animationState, int framesCount, Vector2 startPos, Vector2 frameSize, float eachFrameDuration)
+        public void AddAnimation(Direction direction, AnimationState animationState, int framesCount, Vector2 startPos, Vector2 frameSize, float eachFrameDuration, SpriteEffects effect)
         {
-            anims.AddAnimation(new Tuple<Direction, AnimationState>(direction, animationState), new Animation(bodySpriteSheet.texture, framesCount, startPos, frameSize, eachFrameDuration));
+            anims.AddAnimation(new Tuple<Direction, AnimationState>(direction, animationState), new Animation(bodySpriteSheet.texture, framesCount, startPos, frameSize, eachFrameDuration, effect));
         }
 
         public AnimationState SwitchStatusToAnimation()
@@ -181,8 +196,57 @@ namespace TeamJRPG
                 case Status.idle: return AnimationState.idle;
                 case Status.walking: return AnimationState.walking;
                 case Status.sprinting: return AnimationState.sprinting;
+                case Status.attacking: return AnimationState.attacking;
+                case Status.takingDamage: return AnimationState.takingDamage;
+                case Status.dead: return AnimationState.dead;
             }
             return AnimationState.idle;
+        }
+
+        public void PerformAttackAnimation()
+        {
+
+            attackCounter++;
+
+            if (attackCounter > attackAnimationDuration)
+            {
+                attackCounter = 0;
+
+
+                if (currentBattleStatus == BattleStatus.live)
+                {
+                    currentStatus = Status.idle;
+                }
+                else if (currentBattleStatus == BattleStatus.dead)
+                {
+                    currentStatus = Status.dead;
+                }
+
+
+
+            }
+
+
+        }
+
+        public void PerformTakingDamageAnimation()
+        {
+
+            tdamageCounter++;
+
+            if (tdamageCounter > tdamageAnimationDuration)
+            {
+                tdamageCounter = 0;
+
+                if (currentBattleStatus == BattleStatus.live)
+                {
+                    currentStatus = Status.idle;
+                }
+                else if (currentBattleStatus == BattleStatus.dead)
+                {
+                    currentStatus = Status.dead;
+                }
+            }
         }
 
         // AI
@@ -191,7 +255,7 @@ namespace TeamJRPG
             position += delta;
             this.direction = direction;
             this.currentStatus = Status.walking;
-            
+
         }
 
         public void Sprint()
@@ -309,8 +373,8 @@ namespace TeamJRPG
         // UI
         public void SetIcons()
         {
-            characterIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icons, 0, new Vector2(32 * this.characterIconID, 0), new Vector2(64, 64));
-            backGroundIcon = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.entity_icon_backgrounds, 0, new Vector2(32 * this.characterIconBackGroundID, 0), new Vector2(32, 32));
+            characterIcon = Globals.textureManager.GetSprite(TextureManager.SheetCategory.entity_icons, 0, new Vector2(32 * this.characterIconID, 0), new Vector2(64, 64));
+            backGroundIcon = Globals.textureManager.GetSprite(TextureManager.SheetCategory.entity_icon_backgrounds, 0, new Vector2(32 * this.characterIconBackGroundID, 0), new Vector2(32, 32));
         }
 
 
@@ -435,6 +499,6 @@ namespace TeamJRPG
             return (weapon1.critChance + weapon2.critChance + totalArmorCrit) / (armor.Length + 2);
         }
 
-        
+
     }
 }

@@ -24,9 +24,9 @@ namespace TeamJRPG
             Globals.mapReader.ReadDialogues();
             Globals.assetSetter.SetAllAssets();
 
-            Globals.currentGameMode = Globals.GameMode.playmode;
+            Globals.currentGameMode = Globals.GameMode.playMode;
 
-            Globals.currentGameState = Globals.GameState.mainmenustate;
+            Globals.currentGameState = Globals.GameState.mainMenuState;
             Globals.uiManager.currentMenuState = UIManager.MenuState.titlemenu;
             Globals.uiManager.MenuStateNeedsChange = true;
 
@@ -50,9 +50,9 @@ namespace TeamJRPG
             entitiesToUpdate = new List<Entity>();
 
 
-            Globals.currentGameMode = Globals.GameMode.playmode;
+            Globals.currentGameMode = Globals.GameMode.playMode;
 
-            Globals.currentGameState = Globals.GameState.playstate;
+            Globals.currentGameState = Globals.GameState.playState;
             Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
             Globals.uiManager.MenuStateNeedsChange = true;
 
@@ -89,7 +89,7 @@ namespace TeamJRPG
 
 
 
-            if (Globals.currentGameState == Globals.GameState.playstate || Globals.currentGameState == Globals.GameState.ingamemenustate || Globals.currentGameState == Globals.GameState.dialoguestate)
+            if (Globals.currentGameState == Globals.GameState.playState || Globals.currentGameState == Globals.GameState.inGameMenuState || Globals.currentGameState == Globals.GameState.dialogueState || Globals.currentGameState == Globals.GameState.gameOverState)
             {
 
 
@@ -97,31 +97,31 @@ namespace TeamJRPG
                 Globals.eventManager.CheckEvents();
 
                 //Game States
-                if (Globals.currentGameState == Globals.GameState.playstate)
+                if (Globals.currentGameState == Globals.GameState.playState)
                 {
                     if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape) || Globals.inputManager.IsKeyPressedAndReleased(Keys.Tab))
                     {
-                        Globals.currentGameState = Globals.GameState.ingamemenustate;
+                        Globals.currentGameState = Globals.GameState.inGameMenuState;
                         Globals.uiManager.currentMenuState = UIManager.MenuState.inGameMenu;
                         Globals.uiManager.MenuStateNeedsChange = true;
                     }
                     // Game modes
                     if (Globals.inputManager.IsKeyPressedAndReleased(Keys.H))
                     {
-                        if (Globals.currentGameMode == Globals.GameMode.playmode)
+                        if (Globals.currentGameMode == Globals.GameMode.playMode)
                         {
-                            Globals.currentGameMode = Globals.GameMode.debugmode;
+                            Globals.currentGameMode = Globals.GameMode.debugMode;
                             Console.WriteLine(Globals.currentEntities.Count);
                         }
                         else
                         {
-                            Globals.currentGameMode = Globals.GameMode.playmode;
+                            Globals.currentGameMode = Globals.GameMode.playMode;
                         }
                     }
 
 
                     //DEBUG MODE
-                    if (Globals.currentGameMode == Globals.GameMode.debugmode)
+                    if (Globals.currentGameMode == Globals.GameMode.debugMode)
                     {
                         Console.SetCursorPosition(50, 0); // Set cursor position to top-left corner of console
                         Console.WriteLine($"Player Position: {Globals.player.GetMapPos()}");
@@ -132,7 +132,7 @@ namespace TeamJRPG
 
 
                 //IN_GAME_MENU STATES
-                else if (Globals.currentGameState == Globals.GameState.ingamemenustate)
+                else if (Globals.currentGameState == Globals.GameState.inGameMenuState)
                 {
 
                     //IF ESC or TAB
@@ -147,7 +147,7 @@ namespace TeamJRPG
                         {
                             if (Globals.uiManager.currentMenuState == UIManager.MenuState.inGameMenu)
                             {
-                                Globals.currentGameState = Globals.GameState.playstate;
+                                Globals.currentGameState = Globals.GameState.playState;
                                 Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
                                 Globals.uiManager.MenuStateNeedsChange = true;
                             }
@@ -161,7 +161,7 @@ namespace TeamJRPG
 
                     }
                 }
-                else if(Globals.currentGameState == Globals.GameState.dialoguestate)
+                else if(Globals.currentGameState == Globals.GameState.dialogueState)
                 {
                     if (Globals.inputManager.IsKeyPressedAndReleased(Keys.Escape))
                     {
@@ -217,7 +217,7 @@ namespace TeamJRPG
 
 
 
-            if (Globals.currentGameState == Globals.GameState.battle)
+            if (Globals.currentGameState == Globals.GameState.battleState)
             {
                 Globals.battleManager.Update();
                 Globals.camera.Update();
@@ -234,8 +234,7 @@ namespace TeamJRPG
         public void Draw()
         {
 
-
-            if (Globals.currentGameState == Globals.GameState.playstate || Globals.currentGameState == Globals.GameState.ingamemenustate || Globals.currentGameState == Globals.GameState.dialoguestate)
+            if (Globals.currentGameState == Globals.GameState.playState || Globals.currentGameState == Globals.GameState.inGameMenuState || Globals.currentGameState == Globals.GameState.dialogueState || Globals.currentGameState == Globals.GameState.gameOverState)
             {
                 Globals.currentMap.Draw();
 
@@ -254,7 +253,7 @@ namespace TeamJRPG
             }
 
 
-            if(Globals.currentGameState == Globals.GameState.battle)
+            if(Globals.currentGameState == Globals.GameState.battleState)
             {
                 Globals.battleManager.Draw();
             }

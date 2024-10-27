@@ -39,7 +39,11 @@ namespace TeamJRPG
 
         public void Update()
         {
-            CheckChangeInput();
+            if(Globals.currentGameState != Globals.GameState.gameOverState)
+            {
+                CheckChangeInput();
+            }
+            
         }
 
         private void CheckChangeInput()

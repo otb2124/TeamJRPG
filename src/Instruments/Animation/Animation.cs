@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace TeamJRPG
@@ -13,8 +14,9 @@ namespace TeamJRPG
         public float frameTime;
         public float frameTimeLeft;
         public bool active;
+        public SpriteEffects effect;
 
-        public Animation(Texture2D texture, int framesCountX, Vector2 startPos, Vector2 frameSize, float frameTime)
+        public Animation(Texture2D texture, int framesCountX, Vector2 startPos, Vector2 frameSize, float frameTime, SpriteEffects effect)
         {
             this.texture = texture;
             this.frames = framesCountX;
@@ -22,7 +24,7 @@ namespace TeamJRPG
             this.frameTimeLeft = frameTime;
             currentFrame = 0;
             active = true;
-
+            this.effect = effect;
 
             for (int i = 0; i < frames; i++)
             {
@@ -62,7 +64,8 @@ namespace TeamJRPG
 
         public void Draw(Vector2 position)
         {
-            Globals.sprites.Draw(texture, position, GetCurrentFrame(), Color.White, 0f, Vector2.Zero, Globals.gameScale, SpriteEffects.None, 0f);
+            Console.WriteLine(effect.ToString());
+            Globals.sprites.Draw(texture, position, GetCurrentFrame(), Color.White, 0f, Vector2.Zero, Globals.gameScale, effect, 0f);
         }
 
         public Rectangle GetCurrentFrame()

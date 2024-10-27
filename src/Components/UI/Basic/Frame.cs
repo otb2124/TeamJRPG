@@ -19,10 +19,10 @@ namespace TeamJRPG
             Vector2 padding = new Vector2(40, 20);
 
 
-            Sprite backgroundTexture = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32*3, 32), new Vector2(32, 32));
-            Sprite cornerTexture = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 0, 32), new Vector2(32, 32));
-            Sprite HborderTexture = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 1, 32), new Vector2(32, 32));
-            Sprite VborderTexture = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 2, 32), new Vector2(32, 32));
+            Sprite backgroundTexture = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32*3, 32), new Vector2(32, 32));
+            Sprite cornerTexture = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 0, 32), new Vector2(32, 32));
+            Sprite HborderTexture = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 1, 32), new Vector2(32, 32));
+            Sprite VborderTexture = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 2, 32), new Vector2(32, 32));
 
 
             Vector2 backgroundScale = new Vector2((textSize.X + padding.X - 8) / backgroundTexture.srcRect.Width, (textSize.Y + padding.Y) / backgroundTexture.srcRect.Height);

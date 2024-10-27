@@ -36,7 +36,7 @@ namespace TeamJRPG
                 LiveEntity entity = Globals.battleManager.all[entityId];
 
                 ImageHolder frame = new ImageHolder(
-                    Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 2, new Vector2(0, 0), new Vector2(32, 32)),
+                    Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 2, new Vector2(0, 0), new Vector2(32, 32)),
                     positionOffset,
                     currentColor,
                     new Vector2(2, 2),
@@ -57,7 +57,7 @@ namespace TeamJRPG
             }
 
 
-            CurrentCharacterPointer turnPointer = new CurrentCharacterPointer(Globals.battleManager.all[Globals.battleManager.turnQueue.ElementAt(0)]);
+            CharacterPointer turnPointer = new CharacterPointer(Globals.battleManager.all[Globals.battleManager.turnQueue.ElementAt(0)]);
             children.Add(turnPointer);
 
 
@@ -66,7 +66,7 @@ namespace TeamJRPG
 
 
 
-            Button escapeButton = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 2, new Vector2(0, 32), new Vector2(32, 32)), escapeMargin, new Vector2(2, 2), 60, new List<string> { "Escape", Globals.battleManager.EscapeChance * 100 + "%" });
+            Button escapeButton = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 2, new Vector2(0, 32), new Vector2(32, 32)), escapeMargin, new Vector2(2, 2), 60, new List<string> { "Escape", Globals.battleManager.EscapeChance * 100 + "%" });
             children.Add(escapeButton);
         }
     }

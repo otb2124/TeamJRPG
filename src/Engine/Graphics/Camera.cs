@@ -41,17 +41,19 @@ namespace TeamJRPG
 
         public void Reload()
         {
-            if (Globals.currentGameState == Globals.GameState.playstate)
+            if (Globals.currentGameState == Globals.GameState.playState)
             {
                 position = Globals.player.position;
                 ClampTargetPosition();
             }
-            else if(Globals.currentGameState == Globals.GameState.mainmenustate)
+            else if(Globals.currentGameState == Globals.GameState.mainMenuState)
             {
+                zoom = DEFAULT_ZOOM;
                 position = Vector2.Zero;
             }
-            else if(Globals.currentGameState == Globals.GameState.battle)
+            else if(Globals.currentGameState == Globals.GameState.battleState)
             {
+                zoom = DEFAULT_ZOOM;
                 position.X = Globals.battleManager.background.foreGroundWidth/2;
                 position.Y = viewport.Height / 2;
                 ClampBattlePosition();
@@ -64,7 +66,7 @@ namespace TeamJRPG
 
         public void Update()
         {
-            if (Globals.currentGameState == Globals.GameState.battle)
+            if (Globals.currentGameState == Globals.GameState.battleState)
             {
                 if (Globals.inputManager.IsKeyPressed(Keys.Left)) { position += new Vector2(-5, 0); }
                 if (Globals.inputManager.IsKeyPressed(Keys.Right)) { position += new Vector2(5, 0); }
@@ -163,7 +165,7 @@ namespace TeamJRPG
             targetPosition.X = MathHelper.Clamp(targetPosition.X, cameraWidth / 2, Globals.currentMap.mapSize.X * Globals.tileSize.X - cameraWidth / 2);
             targetPosition.Y = MathHelper.Clamp(targetPosition.Y, cameraHeight / 2, Globals.currentMap.mapSize.Y * Globals.tileSize.Y - cameraHeight / 2);
 
-            if (!FollowPlayer && Globals.currentGameState != Globals.GameState.battle)
+            if (!FollowPlayer && Globals.currentGameState != Globals.GameState.battleState)
             {
                 Vector2 playerPosition = Globals.player.position;
                 targetPosition.X = MathHelper.Clamp(targetPosition.X, playerPosition.X - MAX_DISTANCE_FROM_PLAYER.X, playerPosition.X + MAX_DISTANCE_FROM_PLAYER.X);

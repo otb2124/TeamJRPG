@@ -143,7 +143,8 @@ namespace TeamJRPG
                     spriteToDraw = new Sprite(StrokeEffect.CreateStroke(sprite.texture, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType), sprite.sheetPosition, sprite.size);
                 }
 
-                spriteToDraw.Draw(adjustedPosition, color, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
+                spriteToDraw.effect = spriteEffects;
+                spriteToDraw.Draw(adjustedPosition, color, rotation, adjustedOrigin, adjustedScale, 0f);
 
 
             }
@@ -153,7 +154,9 @@ namespace TeamJRPG
                 {
                     Texture2D texture = StrokeEffect.CreateStrokeSpriteFont(Globals.assetSetter.fonts[fontID], text, color, Vector2.One, strokeSize, strokeColor, Globals.graphics.GraphicsDevice, strokeType);
                     spriteToDraw = new Sprite(texture, new Vector2(0, 0), texture.Bounds.Size.ToVector2());
-                    spriteToDraw.Draw(adjustedPosition, Color.White, rotation, adjustedOrigin, adjustedScale, spriteEffects, 0f);
+
+                    spriteToDraw.effect = spriteEffects;
+                    spriteToDraw.Draw(adjustedPosition, Color.White, rotation, adjustedOrigin, adjustedScale, 0f);
                 }
                 else
                 {

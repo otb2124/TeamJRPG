@@ -20,8 +20,6 @@ namespace TeamJRPG
             floatingText = new List<string>();
             floatingTextColors = new List<Color>();
 
-
-
             SpriteEffects effects = SpriteEffects.None;
             if (HorFlip)
             {
@@ -48,8 +46,6 @@ namespace TeamJRPG
                 image.strokeType = stroke.effects;
             }
 
-
-
             components.Add(image);
 
             for (int i = 0; i < components.Count; i++)
@@ -59,11 +55,11 @@ namespace TeamJRPG
             }
         }
 
-
         public override void Update()
         {
-            if(Globals.currentGameState == Globals.GameState.ingamemenustate || Globals.currentGameState == Globals.GameState.dialoguestate || Globals.currentGameState == Globals.GameState.battle)
+            if (Globals.currentGameState == Globals.GameState.inGameMenuState || Globals.currentGameState == Globals.GameState.dialogueState || Globals.currentGameState == Globals.GameState.battleState)
             {
+
                 if (floatingText.Count > 0)
                 {
                     Vector2 cursorPos = Globals.inputManager.GetCursorPos();
@@ -73,35 +69,41 @@ namespace TeamJRPG
                     {
                         if (!hintOn)
                         {
-                            if (floatingText.Count > 0)
+                            if (floatingTextColors.Count <= 0)
                             {
-                                if (floatingTextColors.Count <= 0)
+                                floatingTextColors = new List<Color>();
+                                for (int i = 0; i < floatingText.Count; i++)
                                 {
-                                    floatingTextColors = new List<Color>();
-                                    for (global::System.Int32 i = 0; i < floatingText.Count; i++)
-                                    {
-                                        floatingTextColors.Add(Color.White);
-                                    }
+                                    floatingTextColors.Add(Color.White);
                                 }
-                                fib = new FloatingInfoBox(floatingText, floatingTextColors);
-                                Globals.uiManager.AddElement(fib);
-                                hintOn = true;
                             }
-
+                            fib = new FloatingInfoBox(floatingText, floatingTextColors);
+                            Globals.uiManager.AddElement(fib);
+                            hintOn = true;
                         }
                     }
                     else
                     {
+                        if (hintOn)
+                        {
+                            Globals.uiManager.RemoveElement(fib);
+                            fib = null;
+                            hintOn = false;
+                        }
+                    }
+                }
+                else
+                {
+                    if (hintOn)
+                    {
                         Globals.uiManager.RemoveElement(fib);
+                        fib = null;
                         hintOn = false;
                     }
                 }
             }
-            
-
 
             base.Update();
-
         }
     }
 }

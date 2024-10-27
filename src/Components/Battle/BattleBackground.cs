@@ -22,10 +22,10 @@ namespace TeamJRPG
             positionsX = new List<float>();
 
             // Load background, midground, and foreground sprites
-            Sprite background = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 0, new Vector2(0, setID * 720), new Vector2(1280, 720));
-            Sprite midbackground = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 2, new Vector2(0, setID * 720), new Vector2(1280 * 1.1f, 720));
-            Sprite midground = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 1, new Vector2(0, setID * 720), new Vector2(1600, 720));
-            Sprite foreground = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 3, new Vector2(0, setID * 720), new Vector2(1920, 720));
+            Sprite background = Globals.textureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 0, new Vector2(0, setID * 720), new Vector2(1280, 720));
+            Sprite midbackground = Globals.textureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 2, new Vector2(0, setID * 720), new Vector2(1280 * 1.1f, 720));
+            Sprite midground = Globals.textureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 1, new Vector2(0, setID * 720), new Vector2(1600, 720));
+            Sprite foreground = Globals.textureManager.GetSprite(TextureManager.SheetCategory.battle_backgrounds, 3, new Vector2(0, setID * 720), new Vector2(1920, 720));
 
             foreGroundWidth = foreground.Width;
 
@@ -66,7 +66,7 @@ namespace TeamJRPG
             // Draw each layer
             for (int i = 0; i < layers.Count; i++)
             {
-                layers[i].Draw(new Vector2(positionsX[i], 0), Color.White, 0, Vector2.Zero, Vector2.One, Microsoft.Xna.Framework.Graphics.SpriteEffects.None, 0); // Draw at Y position 0 (assuming vertically centered)
+                layers[i].Draw(new Vector2(positionsX[i], 0), Color.White, 0, Vector2.Zero, Vector2.One, 0); // Draw at Y position 0 (assuming vertically centered)
             }
         }
     }

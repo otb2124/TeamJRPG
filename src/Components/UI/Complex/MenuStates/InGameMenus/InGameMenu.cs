@@ -24,7 +24,7 @@ namespace TeamJRPG
 
             for (int i = 0; i < 9; i++)
             {
-                Button button = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(i * 32, 32*2), new Vector2(32, 32)), new Vector2(padding.X, padding.Y + ((Globals.camera.viewport.Height-32)/9 *i)), new Vector2(2, 2), i, new List<string> { hints[i] });
+                Button button = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(i * 32, 32*2), new Vector2(32, 32)), new Vector2(padding.X, padding.Y + ((Globals.camera.viewport.Height-32)/9 *i)), new Vector2(2, 2), i, new List<string> { hints[i] });
                 children.Add(button);
             }
 

@@ -63,7 +63,7 @@ namespace TeamJRPG
         // DIALOGUES
         public void CloseDialogue()
         {
-            Globals.currentGameState = Globals.GameState.playstate;
+            Globals.currentGameState = Globals.GameState.playState;
             Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
             Globals.uiManager.MenuStateNeedsChange = true;
 

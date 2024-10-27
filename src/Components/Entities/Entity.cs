@@ -129,12 +129,12 @@ namespace TeamJRPG
             for (int i = 0; i < sprites.Length; i++)
             {
 
-                if (Globals.currentGameMode == Globals.GameMode.debugmode)
+                if (Globals.currentGameMode == Globals.GameMode.debugMode)
                 {
                     drawColor = Color.Red;
                 }
 
-                sprites[i].Draw(drawPosition, drawColor, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+                sprites[i].Draw(drawPosition, drawColor, 0, Vector2.Zero, scale, 0);
             }
 
 

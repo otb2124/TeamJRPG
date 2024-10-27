@@ -19,10 +19,10 @@ namespace TeamJRPG
 
 
         public static float TotalSeconds { get; set; }
-        public enum GameMode { playmode, debugmode }
+        public enum GameMode { playMode, debugMode }
         public static GameMode currentGameMode;
 
-        public enum GameState { playstate, ingamemenustate, mainmenustate, dialoguestate, battle }
+        public enum GameState { playState, inGameMenuState, mainMenuState, dialogueState, battleState, gameOverState }
         public static GameState currentGameState;
 
         public static List<Entity> currentEntities;
@@ -43,7 +43,7 @@ namespace TeamJRPG
         public static UIManager uiManager { get; set; }
         public static InventoryHandler inventoryHandler { get; set; }
 
-        public static TextureManager TextureManager { get; set; }
+        public static TextureManager textureManager { get; set; }
 
         public static EventManager eventManager { get; set; }
 

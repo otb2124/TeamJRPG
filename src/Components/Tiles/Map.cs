@@ -33,9 +33,9 @@ namespace TeamJRPG
             {
                 for (int y = 0; y < tiles.GetLength(1); y++)
                 {
-                    int tileKinds = Globals.TextureManager.GetSheet(TextureManager.SheetCategory.tiles, 0).GetTotalNumberOfSpritesInCol(0, new Vector2(32, 32));
+                    int tileKinds = Globals.textureManager.GetSheet(TextureManager.SheetCategory.tiles, 0).GetTotalNumberOfSpritesInCol(0, new Vector2(32, 32));
                     int tileKindIndex = RandomHelper.RandomInteger(0, tileKinds);
-                    int tileSubKinds = Globals.TextureManager.GetSheet(TextureManager.SheetCategory.tiles, 0).GetTotalNumberOfSpritesInRow(tileKindIndex, new Vector2(32, 32));
+                    int tileSubKinds = Globals.textureManager.GetSheet(TextureManager.SheetCategory.tiles, 0).GetTotalNumberOfSpritesInRow(tileKindIndex, new Vector2(32, 32));
                     int tileSubKindIndex = RandomHelper.RandomInteger(0, tileSubKinds);
 
                     tiles[x, y] = new Tile(new Point(x, y), tileKindIndex + tileSubKindIndex);

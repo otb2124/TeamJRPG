@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -60,7 +61,7 @@ namespace TeamJRPG
                         case -1:
                             break;
                         case 0:
-                            Globals.currentGameState = Globals.GameState.playstate;
+                            Globals.currentGameState = Globals.GameState.playState;
                             Globals.uiManager.currentMenuState = UIManager.MenuState.clean;
                             Globals.uiManager.MenuStateNeedsChange = true;
                             break;
@@ -171,7 +172,7 @@ namespace TeamJRPG
                             Globals.uiManager.MenuStateNeedsChange = true;
                             break;
                         case 12:
-                            Globals.currentGameState = Globals.GameState.mainmenustate;
+                            Globals.currentGameState = Globals.GameState.mainMenuState;
                             Globals.uiManager.currentMenuState = UIManager.MenuState.titlemenu;
                             Globals.uiManager.MenuStateNeedsChange = true;
                             break;
@@ -245,6 +246,19 @@ namespace TeamJRPG
                             Globals.uiManager.MenuStateNeedsChange = true;
                             break;
 
+                        //game over
+                        case 70:
+                            Console.WriteLine("Load last save");
+                            break;
+                        case 71:
+                            Console.WriteLine("Load Save");
+                            break;
+                        case 72:
+                            Console.WriteLine("Exit to Menu");
+                            break;
+                        case 73:
+                            Console.WriteLine("Exit Game");
+                            break;
 
                         //inventory character swap
                         case 100:

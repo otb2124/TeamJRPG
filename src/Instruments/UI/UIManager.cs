@@ -20,6 +20,7 @@ namespace TeamJRPG
             mainmenu, titlemenu,
             dialogue,
             battle_menu, battle_clear, battle_skills_menu, battle_consumable_menu, battle_interraction_menu, battle_target_menu,
+            gameOverMenu,
         };
         public MenuState currentMenuState;
         public MenuState previousMenuState;
@@ -42,7 +43,7 @@ namespace TeamJRPG
             {
 
                 //PLAYSTATE
-                if(Globals.currentGameState == Globals.GameState.playstate)
+                if(Globals.currentGameState == Globals.GameState.playState)
                 {
                     if(currentMenuState == MenuState.clean)
                     {
@@ -53,14 +54,15 @@ namespace TeamJRPG
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.FLOATING_INFO_BOX);
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DESCRIPTION_WINDOW);
                         RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DIALOGUE_TEXT_BOX);
+                        RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU, UIComposite.UICompositeType.BATTLE_TURN_BAR, UIComposite.UICompositeType.BATTLE_MENU, UIComposite.UICompositeType.BATTLE_STATUS, UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU);
                         if (GetAllChildrenOfType(UIComposite.UICompositeType.GROUP_BARS).Count == 0)
                         {
-                            AddElement(new GroupmemberBars(new Vector2(0, 0)));
+                            AddElement(new GroupmemberIcons(new Vector2(0, 0)));
                         }
                     }
                 }
                 //INGAMEMENU
-                else if (Globals.currentGameState == Globals.GameState.ingamemenustate)
+                else if (Globals.currentGameState == Globals.GameState.inGameMenuState)
                 {
 
                     RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT);
@@ -110,7 +112,7 @@ namespace TeamJRPG
                             RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DESCRIPTION_WINDOW);
                             if (GetAllChildrenOfType(UIComposite.UICompositeType.GROUP_BARS).Count == 0)
                             {
-                                AddElement(new GroupmemberBars(new Vector2(0, 0)));
+                                AddElement(new GroupmemberIcons(new Vector2(0, 0)));
                             }
                             break;
                     }
@@ -118,10 +120,10 @@ namespace TeamJRPG
                 }
 
                 //MAIN MENU
-                else if(Globals.currentGameState == Globals.GameState.mainmenustate)
+                else if(Globals.currentGameState == Globals.GameState.mainMenuState)
                 {
 
-                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU, UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT, UIComposite.UICompositeType.GROUP_BARS, UIComposite.UICompositeType.FLOATING_INFO_BOX, UIComposite.UICompositeType.CURRENT_CHARACTER_POINTER);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU, UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT, UIComposite.UICompositeType.GROUP_BARS, UIComposite.UICompositeType.FLOATING_INFO_BOX, UIComposite.UICompositeType.CHARACTER_POINTER);
                     
 
                     switch (currentMenuState)
@@ -145,9 +147,9 @@ namespace TeamJRPG
 
 
 
-                else if(Globals.currentGameState == Globals.GameState.dialoguestate) 
+                else if(Globals.currentGameState == Globals.GameState.dialogueState) 
                 {
-                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU, UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT, UIComposite.UICompositeType.GROUP_BARS, UIComposite.UICompositeType.FLOATING_INFO_BOX, UIComposite.UICompositeType.CURRENT_CHARACTER_POINTER, UIComposite.UICompositeType.DIALOGUE_TEXT_BOX);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU, UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT, UIComposite.UICompositeType.GROUP_BARS, UIComposite.UICompositeType.FLOATING_INFO_BOX, UIComposite.UICompositeType.CHARACTER_POINTER, UIComposite.UICompositeType.DIALOGUE_TEXT_BOX);
                     if (!HasCompositesOfType(UIComposite.UICompositeType.MOUSE_CURSOR))
                     {
                         Add(UIComposite.UICompositeType.MOUSE_CURSOR);
@@ -162,9 +164,9 @@ namespace TeamJRPG
                             break;
                     }
                 }
-                else if (Globals.currentGameState == Globals.GameState.battle)
+                else if (Globals.currentGameState == Globals.GameState.battleState)
                 {
-                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU, UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT, UIComposite.UICompositeType.GROUP_BARS, UIComposite.UICompositeType.FLOATING_INFO_BOX, UIComposite.UICompositeType.CURRENT_CHARACTER_POINTER, UIComposite.UICompositeType.DIALOGUE_TEXT_BOX);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU, UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT, UIComposite.UICompositeType.GROUP_BARS, UIComposite.UICompositeType.FLOATING_INFO_BOX, UIComposite.UICompositeType.CHARACTER_POINTER, UIComposite.UICompositeType.DIALOGUE_TEXT_BOX);
                     if (!HasCompositesOfType(UIComposite.UICompositeType.MOUSE_CURSOR))
                     {
                         Add(UIComposite.UICompositeType.MOUSE_CURSOR);
@@ -172,14 +174,16 @@ namespace TeamJRPG
                     switch (currentMenuState)
                     {
                         case MenuState.battle_clear:
-                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_TURN_BAR, UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU, UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU, UIComposite.UICompositeType.BATTLE_MENU);
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_STATUS, UIComposite.UICompositeType.BATTLE_TURN_BAR, UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU, UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU, UIComposite.UICompositeType.BATTLE_MENU);
                             Add(UIComposite.UICompositeType.BATTLE_TURN_BAR);
+                            Add(UIComposite.UICompositeType.BATTLE_STATUS);
                             
                             break;
                         case MenuState.battle_menu:
-                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_TURN_BAR, UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU, UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU);
+                            RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_STATUS, UIComposite.UICompositeType.BATTLE_TURN_BAR, UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU, UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU);
                             Add(UIComposite.UICompositeType.BATTLE_TURN_BAR);
-                            
+                            Add(UIComposite.UICompositeType.BATTLE_STATUS);
+
                             if (!HasCompositesOfType(UIComposite.UICompositeType.BATTLE_MENU))
                             {
                                 Add(UIComposite.UICompositeType.BATTLE_MENU);
@@ -224,6 +228,32 @@ namespace TeamJRPG
                             Add(UIComposite.UICompositeType.BATTLE_TARGET_MENU);
                             
                             Globals.camera.Reload();
+                            break;
+                    }
+                }
+                else if(Globals.currentGameState == Globals.GameState.gameOverState)
+                {
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.MAIN_MENU, UIComposite.UICompositeType.MAIN_MENU_CONTENT, UIComposite.UICompositeType.PRESS_ANY_KEY);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU_CHARACTERS, UIComposite.UICompositeType.INGAME_MENU_INVENTORY, UIComposite.UICompositeType.INGAME_MENU_SKILLS, UIComposite.UICompositeType.INGAME_MENU_QUESTBOOK, UIComposite.UICompositeType.INGAME_MENU_STATS, UIComposite.UICompositeType.INGAME_MENU_MAP, UIComposite.UICompositeType.INGAME_MENU_SETTINGS, UIComposite.UICompositeType.INGAME_MENU_EXIT);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.INGAME_MENU);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.FLOATING_INFO_BOX);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DESCRIPTION_WINDOW);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.DIALOGUE_TEXT_BOX);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.BATTLE_CONSUMABLE_MENU, UIComposite.UICompositeType.BATTLE_INTERRACTION_MENU, UIComposite.UICompositeType.BATTLE_TURN_BAR, UIComposite.UICompositeType.BATTLE_MENU, UIComposite.UICompositeType.BATTLE_STATUS, UIComposite.UICompositeType.BATTLE_TARGET_MENU, UIComposite.UICompositeType.BATTLE_SKILL_MENU);
+                    if (GetAllChildrenOfType(UIComposite.UICompositeType.GROUP_BARS).Count == 0)
+                    {
+                        AddElement(new GroupmemberIcons(new Vector2(0, 0)));
+                    }
+                    if (!HasCompositesOfType(UIComposite.UICompositeType.MOUSE_CURSOR))
+                    {
+                        Add(UIComposite.UICompositeType.MOUSE_CURSOR);
+                    }
+
+
+                    switch (currentMenuState)
+                    {
+                        case MenuState.gameOverMenu:
+                            Add(UIComposite.UICompositeType.GAMEOVER_MENU);
                             break;
                     }
                 }
@@ -306,6 +336,13 @@ namespace TeamJRPG
                 case UIComposite.UICompositeType.BATTLE_TARGET_MENU:
                     AddElement(new BattleTargetMenu());
                     break;
+                case UIComposite.UICompositeType.BATTLE_STATUS:
+                    AddElement(new BattleStatus());
+                    break;
+
+                case UIComposite.UICompositeType.GAMEOVER_MENU:
+                    AddElement(new GameOverMenu());
+                    break;
             }
         }
 
@@ -385,11 +422,11 @@ namespace TeamJRPG
 
             if (Globals.group.PlayerChanged)
             {
-                if (HasCompositesOfType(UIComposite.UICompositeType.CURRENT_CHARACTER_POINTER))
+                if (HasCompositesOfType(UIComposite.UICompositeType.CHARACTER_POINTER))
                 {
-                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.CURRENT_CHARACTER_POINTER);
+                    RemoveAllCompositesOfTypes(UIComposite.UICompositeType.CHARACTER_POINTER);
                 }
-                AddElement(new CurrentCharacterPointer(Globals.player, 10));
+                AddElement(new CharacterPointer(Globals.player, 10));
             }
 
 
@@ -400,15 +437,15 @@ namespace TeamJRPG
         {
             CheckState();
 
-            if(Globals.currentGameState == Globals.GameState.playstate)
+            if(Globals.currentGameState == Globals.GameState.playState)
             {
                 CheckForPointer();
             }
-            else if (Globals.currentGameState == Globals.GameState.ingamemenustate)
+            else if (Globals.currentGameState == Globals.GameState.inGameMenuState)
             {
                 CheckForPointer();
             }
-            else if(Globals.currentGameState == Globals.GameState.mainmenustate)
+            else if(Globals.currentGameState == Globals.GameState.mainMenuState)
             {
                 if(currentMenuState == MenuState.titlemenu)
                 {

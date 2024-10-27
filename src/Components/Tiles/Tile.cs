@@ -66,19 +66,19 @@ namespace TeamJRPG
             }
 
 
-            this.sprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.tiles, 0, sheetPos, new Vector2(32, 32));
+            this.sprite = Globals.textureManager.GetSprite(TextureManager.SheetCategory.tiles, 0, sheetPos, new Vector2(32, 32));
         }
 
         public void Draw()
         {
             Color color = Color.White;
 
-            if (collision && Globals.currentGameMode == Globals.GameMode.debugmode)
+            if (collision && Globals.currentGameMode == Globals.GameMode.debugMode)
             {
                 color = Color.Red;
             }
 
-            sprite.Draw(position, color, 0, Vector2.Zero, new Vector2(Globals.gameScale, Globals.gameScale), SpriteEffects.None, 0f);
+            sprite.Draw(position, color, 0, Vector2.Zero, new Vector2(Globals.gameScale, Globals.gameScale), 0f);
         }
     }
 }

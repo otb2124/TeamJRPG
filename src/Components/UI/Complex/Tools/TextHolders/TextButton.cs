@@ -12,7 +12,7 @@ namespace TeamJRPG
 
         public TextFrame textFrame;
 
-        public TextButton(string text, Vector2 startPosition, int fontId, int buttonID, Color color, int type = 0) : base(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), startPosition, Vector2.One, buttonID, null)
+        public TextButton(string text, Vector2 startPosition, int fontId, int buttonID, Color color, int type = 0) : base(Globals.textureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), startPosition, Vector2.One, buttonID, null)
         {
             this.type = type;
             this.position = startPosition;

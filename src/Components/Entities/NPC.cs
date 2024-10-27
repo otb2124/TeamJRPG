@@ -71,7 +71,7 @@ namespace TeamJRPG
                     hairColor = RandomHelper.RandomColor();
                     eyeColor = RandomHelper.RandomColor();
 
-                    this.bodySpriteSheet = Globals.TextureManager.GetSheet(TextureManager.SheetCategory.character_bodies, 0);
+                    this.bodySpriteSheet = Globals.textureManager.GetSheet(TextureManager.SheetCategory.character_bodies, 0);
 
 
                     sprites[0] = bodySpriteSheet.GetSprite(Vector2.Zero, new Vector2(32, 64));
@@ -116,25 +116,34 @@ namespace TeamJRPG
                 case 0:
 
                     //idle
-                    float frameSpeed = 0.175f;
-                    AddAnimation(Direction.down, AnimationState.idle, 4, new Vector2(0, 0), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
-                    AddAnimation(Direction.left, AnimationState.idle, 4, new Vector2(0, 64), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
-                    AddAnimation(Direction.right, AnimationState.idle, 4, new Vector2(0, 64 * 2), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
-                    AddAnimation(Direction.up, AnimationState.idle, 4, new Vector2(0, 64 * 3), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+                    float frameSpeed = 0.2f;
+                    AddAnimation(Direction.down, AnimationState.idle, 6, new Vector2(0, 0), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed, SpriteEffects.None);
+                    AddAnimation(Direction.left, AnimationState.idle, 6, new Vector2(0, 64), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed, SpriteEffects.FlipHorizontally);
+                    AddAnimation(Direction.right, AnimationState.idle, 6, new Vector2(0, 64), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed, SpriteEffects.None);
+                    AddAnimation(Direction.up, AnimationState.idle, 6, new Vector2(0, 64 * 2), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed, SpriteEffects.None);
 
                     //walking
                     frameSpeed = 0.1f;
-                    AddAnimation(Direction.down, AnimationState.walking, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
-                    AddAnimation(Direction.left, AnimationState.walking, 4, new Vector2(0, 64 * 5), new Vector2(32 + 16, 64), frameSpeed);
-                    AddAnimation(Direction.right, AnimationState.walking, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), frameSpeed);
-                    AddAnimation(Direction.up, AnimationState.walking, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+                    AddAnimation(Direction.down, AnimationState.walking, 4, new Vector2(0, 64 * 3), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed, SpriteEffects.None);
+                    AddAnimation(Direction.left, AnimationState.walking, 4, new Vector2(0, 64 * 4), new Vector2(32 + 16, 64), frameSpeed, SpriteEffects.FlipHorizontally);
+                    AddAnimation(Direction.right, AnimationState.walking, 4, new Vector2(0, 64 * 4), new Vector2(32 + 16, 64), frameSpeed, SpriteEffects.None);
+                    AddAnimation(Direction.up, AnimationState.walking, 4, new Vector2(0, 64 * 5), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed, SpriteEffects.None);
 
                     //sprint
                     frameSpeed = 0.075f;
-                    AddAnimation(Direction.down, AnimationState.sprinting, 4, new Vector2(0, 64 * 4), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
-                    AddAnimation(Direction.left, AnimationState.sprinting, 4, new Vector2(0, 64 * 5), new Vector2(32 + 16, 64), frameSpeed);
-                    AddAnimation(Direction.right, AnimationState.sprinting, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), frameSpeed);
-                    AddAnimation(Direction.up, AnimationState.sprinting, 4, new Vector2(0, 64 * 7), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed);
+                    AddAnimation(Direction.down, AnimationState.sprinting, 4, new Vector2(0, 64 * 3), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed, SpriteEffects.None);
+                    AddAnimation(Direction.left, AnimationState.sprinting, 4, new Vector2(0, 64 * 4), new Vector2(32 + 16, 64), frameSpeed, SpriteEffects.FlipHorizontally);
+                    AddAnimation(Direction.right, AnimationState.sprinting, 4, new Vector2(0, 64 * 4), new Vector2(32 + 16, 64), frameSpeed, SpriteEffects.None);
+                    AddAnimation(Direction.up, AnimationState.sprinting, 4, new Vector2(0, 64 * 5), DEFAULT_HUMANOID_BODY_SPRITE_SIZE, frameSpeed, SpriteEffects.None);
+
+                    //attack
+                    frameSpeed = 0.2f;
+                    this.attackAnimationDuration = (int)(frameSpeed * 4 * 60);
+                    AddAnimation(Direction.left, AnimationState.attacking, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), frameSpeed, SpriteEffects.FlipHorizontally);
+                    AddAnimation(Direction.right, AnimationState.attacking, 4, new Vector2(0, 64 * 6), new Vector2(32 + 16, 64), frameSpeed, SpriteEffects.None);
+
+                    this.currentStatus = Status.idle;
+                    this.direction = Direction.down;
                     break;
             }
 
@@ -153,7 +162,7 @@ namespace TeamJRPG
 
                 
 
-                if (Globals.currentGameState == Globals.GameState.playstate)
+                if (Globals.currentGameState == Globals.GameState.playState)
                 {
 
                     Entity talkingEntity = this;
@@ -172,7 +181,7 @@ namespace TeamJRPG
                     }
 
                     Globals.player.interractedEntity = talkingEntity;
-                    Globals.currentGameState = Globals.GameState.dialoguestate;
+                    Globals.currentGameState = Globals.GameState.dialogueState;
                     Globals.uiManager.currentMenuState = UIManager.MenuState.dialogue;
                     Globals.uiManager.MenuStateNeedsChange = true;
                     Globals.camera.FocusOnEntity();
@@ -223,7 +232,8 @@ namespace TeamJRPG
         public override void Draw()
         {
             drawPosition = new Vector2(position.X, position.Y - Globals.tileSize.Y);
-            sprites[0].srcRect = anims.GetCurrentFrame();
+            sprites[0].srcRect = anims.GetCurrent().GetCurrentFrame();
+            sprites[0].effect = anims.GetCurrent().effect;
 
             base.Draw();
         }

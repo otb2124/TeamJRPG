@@ -79,6 +79,7 @@ namespace TeamJRPG
             AddSheet(SheetCategory.ui, 1, "ui/menu_title");
             AddSheet(SheetCategory.ui, 2, "ui/battle_sprites");
             AddSheet(SheetCategory.ui, 3, "ui/skills_ui");
+            AddSheet(SheetCategory.ui, 4, "ui/gameover_title");
 
             //placeholders
             AddSheet(SheetCategory.placeholders, 0, "placeholders/placeholder_spritesheet");

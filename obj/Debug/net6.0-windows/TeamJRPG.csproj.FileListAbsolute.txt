@@ -65,3 +65,4 @@ C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\b
 C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\ui\battle_sprites.png
 C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\backgrounds\backgrounds_midbackgroundLayer.png
 C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\ui\skills_ui.png
+C:\Users\orest\Downloads\pojects\TeamJRPG\bin\Debug\net6.0-windows\Content\res\ui\gameover_title.png

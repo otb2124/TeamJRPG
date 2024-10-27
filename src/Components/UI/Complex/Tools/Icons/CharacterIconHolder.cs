@@ -34,9 +34,9 @@ namespace TeamJRPG
 
             Sprite frameTexture = frameType switch
             {
-                0 => Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, Vector2.Zero, new Vector2(32, 32)),
-                1 => Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0, 32 * 5), new Vector2(64, 64)),
-                2 => Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, Vector2.Zero, new Vector2(32, 32)),
+                0 => Globals.textureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, Vector2.Zero, new Vector2(32, 32)),
+                1 => Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0, 32 * 5), new Vector2(64, 64)),
+                2 => Globals.textureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, Vector2.Zero, new Vector2(32, 32)),
                 _ => null
             };
             ImageHolder frame = new ImageHolder(frameTexture, adjustedPosition, Color.White, scale, stroke);
@@ -94,13 +94,13 @@ namespace TeamJRPG
 
             bars.Clear();
 
-            Sprite hp = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 2, 32 * 5), new Vector2(32, 64));
+            Sprite hp = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 2, 32 * 5), new Vector2(32, 64));
             float hpPercent = (float)entity.currentHP / entity.maxHP;
             int hpTexHeight = (int)(hpPercent * 64);
             hp.ResetSrcRect(hp.sheetPosition, new Vector2(hp.Width, hpTexHeight));
             ImageHolder hpHolder = new ImageHolder(hp, adjustedPosition, Color.White, scale, null);
 
-            Sprite mana = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 3, 32 * 5), new Vector2(32, 64));
+            Sprite mana = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(32 * 3, 32 * 5), new Vector2(32, 64));
             float manaPercent = (float)entity.currentMana / entity.maxMana;
             int manaTexHeight = (int)(manaPercent * 64);
             mana.ResetSrcRect(mana.sheetPosition, new Vector2(mana.Width, manaTexHeight));

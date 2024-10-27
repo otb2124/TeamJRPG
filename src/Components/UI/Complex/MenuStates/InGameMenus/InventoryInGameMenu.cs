@@ -86,14 +86,14 @@ namespace TeamJRPG
             //Categories
             Vector2 catMargin = new Vector2(10, 5);
             Vector2 catItemSize = new Vector2(64, 64);
-            Vector2 catPadding = new Vector2(catItemSize.X * 0.8f, 10);
+            Vector2 catPadding = new Vector2(catItemSize.X * 0.8f, 10); 
 
-            Button weaponCategory = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0*32, 32*4), new Vector2(32, 32)), framePos3 + catMargin, new Vector2(2, 2), 30, new List<string> { "Weapons" });
-            Button armorCategory = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(1 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + catItemSize.X + catPadding.X, framePos3.Y + catMargin.Y), new Vector2(2, 2), 31, new List<string> { "Armor" });
-            Button potionCategory = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(2 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 2, framePos3.Y + catMargin.Y), new Vector2(2, 2), 32, new List<string> { "Consumables" });
-            Button materialCategory = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(3 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 3, framePos3.Y + catMargin.Y), new Vector2(2, 2), 33, new List<string> { "Materials" });
-            Button valueableCategory = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(4 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 4, framePos3.Y + catMargin.Y), new Vector2(2, 2), 34, new List<string> { "Valuables" });
-            Button questItemCategory = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(5 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 5, framePos3.Y + catMargin.Y), new Vector2(2, 2), 35, new List<string> { "Quest Items" });
+            Button weaponCategory = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0*32, 32*4), new Vector2(32, 32)), framePos3 + catMargin, new Vector2(2, 2), 30, new List<string> { "Weapons" });
+            Button armorCategory = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(1 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + catItemSize.X + catPadding.X, framePos3.Y + catMargin.Y), new Vector2(2, 2), 31, new List<string> { "Armor" });
+            Button potionCategory = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(2 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 2, framePos3.Y + catMargin.Y), new Vector2(2, 2), 32, new List<string> { "Consumables" });
+            Button materialCategory = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(3 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 3, framePos3.Y + catMargin.Y), new Vector2(2, 2), 33, new List<string> { "Materials" });
+            Button valueableCategory = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(4 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 4, framePos3.Y + catMargin.Y), new Vector2(2, 2), 34, new List<string> { "Valuables" });
+            Button questItemCategory = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(5 * 32, 32 * 4), new Vector2(32, 32)), new Vector2(framePos3.X + catMargin.X + (catItemSize.X + catPadding.X) * 5, framePos3.Y + catMargin.Y), new Vector2(2, 2), 35, new List<string> { "Quest Items" });
 
             catBCP = new ButtonChoicePanel(new Button[] { weaponCategory, armorCategory, potionCategory, materialCategory, valueableCategory, questItemCategory });
             children.Add(catBCP);
@@ -510,7 +510,7 @@ namespace TeamJRPG
                 characterComposites.Add(icon);
 
 
-                buttonArray[i] = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), iconPos, Vector2.One, 100 + i, null);
+                buttonArray[i] = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), iconPos, Vector2.One, 100 + i, null);
             }
 
             characterBCP = new ButtonChoicePanel(buttonArray);

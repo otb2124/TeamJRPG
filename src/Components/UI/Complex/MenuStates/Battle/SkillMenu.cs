@@ -49,7 +49,7 @@ namespace TeamJRPG
                         break;
                 }
 
-                Sprite skillSprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 3, skillSpritePos, new Vector2(32, 32));
+                Sprite skillSprite = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 3, skillSpritePos, new Vector2(32, 32));
 
                 Button skillButton = new Button(skillSprite, new Vector2(framePos.X, framePos.Y + 64 * i), new Vector2(2, 2), -1, new List<string> { lent.skills[i].name, lent.skills[i].description });
                 skillButtons.Add(skillButton);

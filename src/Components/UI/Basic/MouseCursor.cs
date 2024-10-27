@@ -12,7 +12,7 @@ namespace TeamJRPG
             type = UICompositeType.MOUSE_CURSOR;
             UIComponent component = new UIComponent();
             component.type = UIComponent.UIComponentType.MOUSE_CURSOR;
-            component.sprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0, 0), new Vector2(32, 32));
+            component.sprite = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0, 0), new Vector2(32, 32));
             component.IsStickToMouseCursor = true;
             component.IsStickToCamera = true;
             component.IsStickToZoom = true;

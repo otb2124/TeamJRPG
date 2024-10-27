@@ -41,7 +41,7 @@ namespace TeamJRPG
                     description = "Character hits a chosen enemy with their might and strength.";
 
                     casts = new Cast[1];
-                    casts[0] = new Cast(Cast.CastTargetType.anySelf, 1, Cast.CastType.hp, -1);
+                    casts[0] = new Cast(Cast.CastTargetType.anySelf, 1, Cast.CastType.hp, -90);
 
                     break;
                 case 1:

@@ -38,7 +38,7 @@ namespace TeamJRPG
 
         public Item() 
         {
-            this.sprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(32, 0), new Vector2(0, 0));
+            this.sprite = Globals.textureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(32, 0), new Vector2(0, 0));
             this.name = "BLANK_NAME";
             this.description = "BLANK_DESCRIPTION";
             this.value = -4;
@@ -53,11 +53,11 @@ namespace TeamJRPG
         {
             if ((type == ItemType.WEAPON || type == ItemType.ARMOR) && itemID == 0)
             {
-                sprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(GetPlaceHolderID() * 32, 32*2), new Vector2(32, 32));
+                sprite = Globals.textureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(GetPlaceHolderID() * 32, 32*2), new Vector2(32, 32));
             }
             else 
             {
-                sprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.items, GetAssettypeByItemtype(), new Vector2(0, textureID * 32), new Vector2(32, 32));
+                sprite = Globals.textureManager.GetSprite(TextureManager.SheetCategory.items, GetAssettypeByItemtype(), new Vector2(0, textureID * 32), new Vector2(32, 32));
             }
         }
 

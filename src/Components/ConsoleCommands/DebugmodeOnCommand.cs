@@ -18,10 +18,10 @@ namespace TeamJRPG
                 switch (condition)
                 {
                     case 0:
-                        Globals.currentGameMode = Globals.GameMode.playmode;
+                        Globals.currentGameMode = Globals.GameMode.playMode;
                         break;
                     case 1:
-                        Globals.currentGameMode = Globals.GameMode.debugmode;
+                        Globals.currentGameMode = Globals.GameMode.debugMode;
                         break;
                 }
                 

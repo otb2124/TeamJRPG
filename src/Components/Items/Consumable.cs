@@ -40,11 +40,11 @@ namespace TeamJRPG
                 case 0:
                     name = "Lesser Healing Potion";
                     consumableType = ConsumableType.potion;
-                    description = "Restores 100 health points.";
+                    description = "Restores 25 health points.";
                     value = 25;
 
                     casts = new Cast[1];
-                    casts[0] = new Cast(Cast.CastTargetType.allySelf, 1, Cast.CastType.hp, 100);
+                    casts[0] = new Cast(Cast.CastTargetType.allySelf, 1, Cast.CastType.hp, 25);
 
 
                     textureID = 0;
@@ -56,7 +56,7 @@ namespace TeamJRPG
                     value = 1;
 
                     casts = new Cast[1];
-                    casts[0] = new Cast(Cast.CastTargetType.allySelf, 1, Cast.CastType.hp, 100);
+                    casts[0] = new Cast(Cast.CastTargetType.allySelf, 1, Cast.CastType.hp, 5);
 
                     textureID = 1;
                     break;

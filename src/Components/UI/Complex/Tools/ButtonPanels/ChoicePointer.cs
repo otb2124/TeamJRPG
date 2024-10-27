@@ -13,7 +13,7 @@ namespace TeamJRPG
 
             this.position = startPos;
 
-            Sprite sprite = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 1, new Vector2(0, 96), new Vector2(32, 32));
+            Sprite sprite = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 1, new Vector2(0, 96), new Vector2(32, 32));
             this.size = sprite.size;
 
 

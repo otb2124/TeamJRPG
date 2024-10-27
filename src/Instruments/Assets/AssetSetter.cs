@@ -21,7 +21,7 @@ namespace TeamJRPG
 
         public AssetSetter()
         {
-            Globals.TextureManager = new TextureManager();
+            Globals.textureManager = new TextureManager();
 
             fonts = new SpriteFont[10];
             effects = new Effect[10];
@@ -30,7 +30,7 @@ namespace TeamJRPG
 
         public void SetAllAssets()
         {
-            Globals.TextureManager.SetAllSheets();
+            Globals.textureManager.SetAllSheets();
             SetFonts();
             AllAssetsLoaded = true;
         }

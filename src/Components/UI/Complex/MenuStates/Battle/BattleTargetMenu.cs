@@ -29,7 +29,7 @@ namespace TeamJRPG
             {
                 Vector2 pos = new Vector2(Globals.battleManager.all[i].battleScreenPosition.X - Globals.battleManager.TotalEntitiyX / 2 - Globals.battleManager.all[i].sprites[0].Width - 16, Globals.battleManager.all[i].battleScreenPosition.Y + Globals.tileSize.Y / 2);
 
-                Button btn = new Button(Globals.TextureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), pos, new Vector2(1, 2), -1, new List<string> { Globals.battleManager.all[i].name });
+                Button btn = new Button(Globals.textureManager.GetSprite(TextureManager.SheetCategory.placeholders, 0, new Vector2(0, 0), new Vector2(32, 32)), pos, new Vector2(1, 2), -1, null);
                 allButtons.Add(btn);
 
                 defaultColors.Add(Globals.battleManager.all[i].skinColor);
@@ -103,6 +103,14 @@ namespace TeamJRPG
                 case Cast.CastTargetType.self:
                     SelfSkip = true;
                     break;
+            }
+
+            for (int i = 0; i < Globals.battleManager.all.Count; i++)
+            {
+                if (Globals.battleManager.all[i].currentBattleStatus == LiveEntity.BattleStatus.dead)
+                {
+                    restrictedTargets.Add(i);
+                }
             }
         }
 

@@ -118,7 +118,7 @@ namespace TeamJRPG
 
 
             // Top arrows
-            Sprite buttonTexture = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0, 32 * 3), new Vector2(32, 32));
+            Sprite buttonTexture = Globals.textureManager.GetSprite(TextureManager.SheetCategory.ui, 0, new Vector2(0, 32 * 3), new Vector2(32, 32));
             Vector2 buttonOffset = new Vector2(20, 0);
 
             Button leftArrow = new Button(buttonTexture, new Vector2(Globals.camera.viewport.Width / 2 + pageName.components[0].position.X - buttonTexture.srcRect.Width - buttonOffset.X, framePos.Y + textSize.Y / 2 - buttonTexture.srcRect.Height / 3), Vector2.One, 15, new List<string> { "Previous" });

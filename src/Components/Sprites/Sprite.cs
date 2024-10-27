@@ -19,9 +19,9 @@ namespace TeamJRPG
         public int Height, Width;
 
         public bool IsEmpty;
+        public SpriteEffects effect;
 
-
-        public Sprite(SpriteSheet sheet, Vector2 sheetPosition, Vector2 size) 
+        public Sprite(SpriteSheet sheet, Vector2 sheetPosition, Vector2 size, SpriteEffects effect = SpriteEffects.None) 
         {
             this.texture = sheet.texture;
             this.sheetPosition = sheetPosition;
@@ -30,6 +30,7 @@ namespace TeamJRPG
             this.size = sheetSize;
             this.Width = sheetSize.ToPoint().X;
             this.Height = sheetSize.ToPoint().Y;
+            this.effect = effect;
         }
 
 
@@ -51,7 +52,8 @@ namespace TeamJRPG
         }
 
 
-        public void Draw(Vector2 position, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effect, float layerDepth)
+
+        public void Draw(Vector2 position, Color color, float rotation, Vector2 origin, Vector2 scale, float layerDepth)
         {
             Globals.sprites.Draw(texture, position, srcRect, color, rotation, origin, scale, effect, layerDepth);
         }

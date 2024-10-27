@@ -102,7 +102,7 @@ namespace TeamJRPG
         {
             
             sprites = new Sprite[1];
-            sprites[0] = Globals.TextureManager.GetSprite(TextureManager.SheetCategory.objects_interractive, 0, new Vector2(0, 32 * textureId), new Vector2(32, 32));
+            sprites[0] = Globals.textureManager.GetSprite(TextureManager.SheetCategory.objects_interractive, 0, new Vector2(0, 32 * textureId), new Vector2(32, 32));
         }
 
 
@@ -111,7 +111,7 @@ namespace TeamJRPG
         {
             drawPosition = new Vector2(position.X, position.Y);
 
-            if(Globals.currentGameMode == Globals.GameMode.debugmode)
+            if(Globals.currentGameMode == Globals.GameMode.debugMode)
             {
                 Globals.sprites.Draw(interractionBoxTexture, new Vector2(interractionBox.X, interractionBox.Y), Color.White);
             }

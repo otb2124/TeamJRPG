@@ -41,10 +41,9 @@ namespace TeamJRPG
             }
         }
 
-
-        public Rectangle GetCurrentFrame()
+        public Animation GetCurrent()
         {
-            return anims[lastKey].GetCurrentFrame();
+            return anims[lastKey];
         }
     }
 }
